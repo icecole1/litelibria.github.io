@@ -177,7 +177,7 @@
           return response.json()
         })
         .then(function (data) {
-          window.location.href = 'https://LiteLibria.github.io/release?id='+data["id"];
+          window.location.href = 'https://litelibria.github.io/release?id='+data["id"];
         })
 
       } else if (searchParams.get("name_t")) {
@@ -187,7 +187,7 @@
           return response.json()
         })
         .then(function (data) {
-          window.location.href = 'https://LiteLibria.github.io/release?id='+data["id"];
+          window.location.href = 'https://litelibria.github.io/release?id='+data["id"];
         })
       } else if (searchParams.get("id")) {
         var arr_api = JSON.parse(localStorage.getItem('my_api_cash'));
