@@ -1,6 +1,6 @@
 # LiteLibria
 
-LiteLibria - PWA приложение разработанное на основе официального <a href="https://github.com/anilibria/docs/blob/master/api_v2.md">ApiV2</a>
+LiteLibria - PWA приложение разработанное на основе официального <a href="https://github.com/anilibria/docs/blob/master/api_v2.md">ApiV2</a> сайта <a href="https://www.anilibria.tv/">AniLibria.tv</a>
 
 Это приложение не требует установки. Для использования необходимо открыть <a href="https://litelibria.github.io">сайт</a> в браузере и нажать на кнопку отправки на главный экран. Все, можно пользоваться.
 
