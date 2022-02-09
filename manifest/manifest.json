@@ -2,7 +2,7 @@
   "name": "LiteLibria",
   "short_name": "LiteLibria",
   "display": "standalone",
-  "start_url": "https://litelibria.github.io",
+  "start_url": "/",
   "scope": "/",
   "icons": [
         { "src": "../img/icon/web/favicon.ico", "type": "image/x-icon", "sizes": "32x32" },
