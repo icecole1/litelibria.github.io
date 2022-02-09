@@ -16,7 +16,7 @@
       "name": "Избранное",
       "short_name": "Избранное",
       "url": "/favorites",
-      "icons": [{ "src": "../img/icon/shortcuts/1.png", "sizes": "192x192" }]
+      "icons": [{ "src": "img/icon/shortcuts/1.png", "sizes": "192x192" }]
     },
     {
       "name": "История Просмотров",
