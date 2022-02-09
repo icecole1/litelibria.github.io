@@ -87,7 +87,7 @@ function load_api_cash(index_article, n) {
 
 // Функция дозагрузки тайтлов
 function load_all__api_cash() {
-  message_body('Идёт загрузка кеша, подождите немного'); // Отправляем сообщение
+  message_body('Идёт загрузка кеша, подождите немного', 1); // Отправляем сообщение
   var api_cash = localStorage.getItem('my_api_cash');
   url = "https://api.anilibria.tv/v2/getUpdates?remove=player.alternative_player,posters.original,player.playlist,torrents&limit=-1&after=100"
   fetch(url)
@@ -910,19 +910,20 @@ function load_small(arr_small, block_id) {
 
 
 
-function message_body(text) {
+function message_body(text, display) {
   var div = document.createElement('div');
   document.getElementById('block_notif').appendChild(div);
   div.className = 'notif';
   div.setAttribute("style", 'transition: .3s ease;color: var(--card-text-color-2);padding: 10px 10px;width: 100%;background: var(--card-background-3);margin-bottom: 10px;opacity: 0.9;');
   div.innerHTML = `<p style="width: 100%;word-wrap: break-word;" onclick="notif_none()">${text}</p>`;
-
-  setTimeout(function(){
-    var block_header = document.getElementsByClassName('notif');
-    for (var i = 0; i < block_header.length; i++) {
-      notif_none();
-    }
-  },5000);
+  if (display != 1) {
+    setTimeout(function(){
+      var block_header = document.getElementsByClassName('notif');
+      for (var i = 0; i < block_header.length; i++) {
+        notif_none();
+      }
+    },5000);
+  }
 }
 function notif_none() {
   setTimeout(function(){

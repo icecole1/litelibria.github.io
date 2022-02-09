@@ -414,9 +414,17 @@
     }
     function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
       var strPlayer = '';
+      var my_skips_opening = localStorage.getItem('my_skips_opening');
       for (let i = 0; i < dataPlayerSerie; i++) {
         var poster_preview
         var i2 = i+1;
+
+        var remove = "";
+        if (["playlist"][i2]["skips"]["opening"] && ["playlist"][i2]["skips"]["ending"]) {
+          if (my_skips_opening == '1') {
+            remove = '"remove":"'+["playlist"][i2]["skips"]["opening"]+'-'+["playlist"][i2]["skips"]["ending"]+'", ';
+          }
+        }
         var url_relise_480 = "";
         var url_relise_720 = "";
         var url_relise_1080 = "";
@@ -439,7 +447,7 @@
           if (i2 != dataPlayerSerie) {
             url_relise_comma = ", ";
           }
-          var str_m_Player = '{"title":"Серия '+i2+'","poster":"'+poster_preview+'", "id": "'+id_t+'s'+i2+'", "file":"'+url_relise_480+', '+url_relise_720+' '+url_relise_1080+'"}'+url_relise_comma;
+          var str_m_Player = '{"title":"Серия '+i2+'","poster":"'+poster_preview+'", '+remove+' "id": "'+id_t+'s'+i2+'", "file":"'+url_relise_480+', '+url_relise_720+' '+url_relise_1080+'"}'+url_relise_comma;
           strPlayer += str_m_Player;
         }
       }
