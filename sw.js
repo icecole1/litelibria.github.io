@@ -7,10 +7,6 @@ self.addEventListener('install', (event) => {
         caches.open(CACHE).then((cache) =>
             cache.addAll(
                 [
-                    'js/fuse.min.js',
-                    'js/fuse.basic.min.js',
-                    'js/jquery-3.1.1.min.js',
-                    'js/playerjs.js',
                     'js/script.js',
                     'js/theme.js',
                     'css/auto.css',
