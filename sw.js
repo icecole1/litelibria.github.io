@@ -7,10 +7,8 @@ self.addEventListener('install', (event) => {
         caches.open(CACHE).then((cache) =>
             cache.addAll(
                 [
-                    'js/script.js',
                     'js/theme.js',
                     'css/auto.css',
-                    'css/main.css',
                     'css/theme1.css',
                     'css/theme2.css'
                 ]
