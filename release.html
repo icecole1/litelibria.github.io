@@ -420,11 +420,12 @@
         var i2 = i+1;
 
         var remove = "";
-        if (["playlist"][i2]["skips"]["opening"] && ["playlist"][i2]["skips"]["ending"]) {
+        if (dataPlayer["playlist"][i2]["skips"]["opening"][0] && dataPlayer["playlist"][i2]["skips"]["opening"][1]) {
           if (my_skips_opening == '1') {
-            remove = '"remove":"'+["playlist"][i2]["skips"]["opening"]+'-'+["playlist"][i2]["skips"]["ending"]+'", ';
+            remove = '"remove":"'+dataPlayer["playlist"][i2]["skips"]["opening"][0]+'-'+dataPlayer["playlist"][i2]["skips"]["opening"][1]+'", ';
           }
         }
+        
         var url_relise_480 = "";
         var url_relise_720 = "";
         var url_relise_1080 = "";
