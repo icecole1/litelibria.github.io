@@ -5,7 +5,7 @@ const CACHE = 'cache-and-update-v1';
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE).then((cache) =>
-            cache.addAll(['/']))
+            cache.addAll(['../']))
     );
 });
 
