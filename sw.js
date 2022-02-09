@@ -5,7 +5,21 @@ const CACHE = 'cache-and-update-v1';
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE).then((cache) =>
-            cache.addAll(['/']))
+            cache.addAll(
+                [
+                    'js/fuse.min.js',
+                    'js/fuse.basic.min.js',
+                    'js/jquery-3.1.1.min.js',
+                    'js/playerjs.js',
+                    'js/script.js',
+                    'js/theme.js',
+                    'css/auto.css',
+                    'css/main.css',
+                    'css/theme1.css',
+                    'css/theme2.css'
+                ]
+            )
+        )
     );
 });
 
