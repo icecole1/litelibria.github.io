@@ -4,10 +4,8 @@ const CACHE = 'cache-and-update-v1';
 self.addEventListener('install', (event) => {
     console.log('Установлен');
     event.waitUntil(
-        caches.open(CACHE).then((cache) =>
-            cache.addAll(['/img']))
-            cache.addAll(['/js']))
-            cache.addAll(['/']))
+      caches.open(CACHE).then((cache) =>
+          cache.addAll(['/']))
     );
 });
 self.addEventListener('activate', (event) => {
