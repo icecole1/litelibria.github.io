@@ -94,6 +94,15 @@
         </div>
         <p class="settings_filter_p">*Нажмите для выбора</p>
       </div>
+      <div class="settings_filter">
+        <h3>Настройки страницы плеера</h3>
+        <p class="settings_filter_p">Пропуск опенинга</p>
+        <div class="settings_filter_box" id="settings_home_block_style">
+          <button id="opening1_style" class="settings_filter_button" title="Выбрать" onclick="editOpening_style('1')">Автоматически</button>
+          <button id="opening2_style" class="settings_filter_button" title="Выбрать" onclick="editOpening_style('0')" style="background: var(--card-background-2);color: var(--card-text-color) !important;">Отключить</button>
+        </div>
+        <p class="settings_filter_p">*Нажмите для выбора</p>
+      </div>
     </div>
     <div class="block_header_small">
         <div class="settings_filter">
@@ -299,6 +308,33 @@
         localStorage.setItem('my_home_style', '2');
         document.getElementById('home1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
         document.getElementById('home2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+      }
+    }
+
+    var my_skips_opening = localStorage.getItem('my_skips_opening');
+    if (!my_skips_opening) {
+      opening1_style
+      localStorage.setItem('my_skips_opening', '0');
+      document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+      document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+    } else {
+      if (my_skips_opening == "1") {
+        document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+        document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+      } else {
+        document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+        document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+      }
+    }
+    function editOpening_style(style) {
+      if (style == "1") {
+        localStorage.setItem('my_skips_opening', '1');
+        document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+        document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+      } else if (style == "0") {
+        localStorage.setItem('my_skips_opening', '0');
+        document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+        document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
       }
     }
   </script>
