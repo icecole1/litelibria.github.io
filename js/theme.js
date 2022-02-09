@@ -1,4 +1,37 @@
+function start_mess_close() {
+  localStorage.setItem('start_mess', '1')
+  document.getElementById('start_mess').setAttribute("style", "display:none;");
+  document.getElementById('android_app').setAttribute("style", "display:none;");
+  document.getElementById('ios_app').setAttribute("style", "display:none;");
+}
+
 window.onload = function() {
+  if (localStorage.getItem('start_mess') != '1') {
+    function detectOS() {
+        const platform = navigator.platform.toLowerCase(),
+            iosPlatforms = ['iphone', 'ipad', 'ipod', 'ipod touch'];
+
+        if (platform.includes('mac')) return 'MacOS';
+        if (iosPlatforms.includes(platform)) return 'iOS';
+        if (platform.includes('win')) return 'Windows';
+        if (/android/.test(navigator.userAgent.toLowerCase())) return 'Android';
+        if (/linux/.test(platform)) return 'Linux';
+
+        return 'unknown';
+    }
+    if (detectOS() == 'Android') {
+      document.getElementById('start_mess').setAttribute("style", "display:block;");
+      document.getElementById('android_app').setAttribute("style", "display:block;");
+    } else if (detectOS() == 'iOS') {
+      document.getElementById('start_mess').setAttribute("style", "display:block;");
+      document.getElementById('ios_app').setAttribute("style", "display:block;");
+    } else if (detectOS() == 'MacOS') {
+      document.getElementById('start_mess').setAttribute("style", "display:block;");
+      document.getElementById('ios_app').setAttribute("style", "display:block;");
+    }
+  }
+
+
   if (localStorage.getItem('my_theme') == 'auto') {
     document.getElementById('b_theme1').setAttribute("style", "display:none;");
     document.getElementById('b_theme2').setAttribute("style", "display:none;");
