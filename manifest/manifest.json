@@ -16,25 +16,25 @@
       "name": "Избранное",
       "short_name": "Избранное",
       "url": "/favorites",
-      "icons": [{ "src": "img/icon/shortcuts/1.png", "sizes": "192x192" }]
+      "icons": [{ "src": "../img/icon/shortcuts/1.png", "sizes": "192x192" }]
     },
     {
       "name": "История Просмотров",
       "short_name": "История",
       "url": "/myHistory",
-      "icons": [{ "src": "img/icon/shortcuts/2.png", "sizes": "192x192" }]
+      "icons": [{ "src": "../img/icon/shortcuts/2.png", "sizes": "192x192" }]
     },
     {
       "name": "Каталог",
       "short_name": "Каталог",
       "url": "/catalog",
-      "icons": [{ "src": "img/icon/shortcuts/3.png", "sizes": "192x192" }]
+      "icons": [{ "src": "../img/icon/shortcuts/3.png", "sizes": "192x192" }]
     },
     {
       "name": "Случайный релиз",
       "short_name": "Случайный релиз",
       "url": "/release?random=1",
-      "icons": [{ "src": "img/icon/shortcuts/4.png", "sizes": "192x192" }]
+      "icons": [{ "src": "../img/icon/shortcuts/4.png", "sizes": "192x192" }]
     }
   ]
 }
