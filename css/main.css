@@ -745,7 +745,7 @@ option{
   font-size: 16px;
   font-weight: 400;
   color: var(--card-text-color-3);
-  display: block;
+  display: contents;
 }
 .article_history{
   color: var(--card-text-color);
