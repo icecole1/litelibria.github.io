@@ -401,13 +401,14 @@ function load_new(n) {
       } else if(data[i]["genres"][0] != undefined) {
         genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
       }
+      var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
       div.className = 'article';
       div.setAttribute("style", "background-image: url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"')");
       div.innerHTML += `
           <a class="article-text"  href="release?id=${data[i]["id"]}">
             <p class="article-name"  style="-webkit-line-clamp: 3;line-clamp: 3;">${data[i]["names"]["ru"]}</p>
             ${genres}
-            <p class="article-description">${data[i]["description"]}</p>
+            <p class="article-description">${description}</p>
           </a>
           <div class="article_ser">${series_type}</div>`;
     } else if (my_home_style = '2') {
@@ -507,13 +508,14 @@ function load_new_search(n) {
       } else if(data[i]['item']["genres"][0] != undefined) {
         genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]['item']["genres"][0] + '</p>';
       }
+      var description = data[i]['item']["description"].replace(/<\/?[^>]+>/g,'');
       div.className = 'article';
       div.setAttribute("style", "background-image: url('https://www.anilibria.tv"+data[i]['item']["posters"]["medium"]["url"]+"')");
       div.innerHTML += `
           <a class="article-text"  href="release?id=${data[i]['item']["id"]}">
             <p class="article-name"  style="-webkit-line-clamp: 3;line-clamp: 3;">${data[i]['item']["names"]["ru"]}</p>
             ${genres}
-            <p class="article-description">${data[i]['item']["description"]}</p>
+            <p class="article-description">${description}</p>
           </a>
           <div class="article_ser">${series_type}</div>`;
     } else if (my_home_style = '2') {
@@ -724,13 +726,14 @@ function load_favorites(arr, block_id) {
       } else if(data[i]["genres"][0] != undefined) {
         genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
       }
+      var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
       div.className = 'article';
       div.setAttribute("style", "background-image: url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"')");
       div.innerHTML += `
           <a class="article-text"  href="release?id=${data[i]["id"]}">
             <p class="article-name"  style="-webkit-line-clamp: 3;line-clamp: 3;">${data[i]["names"]["ru"]}</p>
             ${genres}
-            <p class="article-description">${data[i]["description"]}</p>
+            <p class="article-description">${description}</p>
           </a>
           <div class="article_ser">${series_type}</div>`;
     } else if (my_home_style = '2') {
@@ -909,11 +912,12 @@ function load_small(arr_small, block_id) {
     } else if(data[i]["genres"][0] != undefined) {
       genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
     }
+    var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
     div.innerHTML = `
         <a class="article-text"  href="release?id=${data[i]["id"]}">
           <p class="article-name" style="-webkit-line-clamp: 3;line-clamp: 3;">${data[i]["names"]["ru"]}</p>
           ${genres}
-          <p class="article-description" style="-webkit-line-clamp: 8;line-clamp: 8;">${data[i]["description"]}</p>
+          <p class="article-description" style="-webkit-line-clamp: 8;line-clamp: 8;">${description}</p>
         </a>
         <div class="article_ser" style="margin-top: 200px;">${series_type}</div>
       `;

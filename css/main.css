@@ -323,6 +323,9 @@ header{
   text-decoration: none;
   display: none;
 }
+.article-description a,b{
+  display: none;
+}
 .article-text p{
   font-size: 14px;
   margin: 0 15px;
