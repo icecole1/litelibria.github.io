@@ -18,7 +18,7 @@ function load_api_cash(index_article, n) {
   // 2. Открываем страницу с результатом для нужной страницы
   // 3. Запускаем функцию дозагрузки тайтлов
   if (!api_cash) {
-    url = "https://api.anilibria.tv/v2/getUpdates?remove=player.alternative_player,posters.original,player.playlist,torrents&limit=100"
+    url = "https://api.anilibria.tv/v2/getUpdates?remove=player.alternative_player,posters.original,player.playlist,torrents&description_type=html&limit=100"
     fetch(url)
     .then(function (response) {
       if (response.status !== 200) {
@@ -51,7 +51,7 @@ function load_api_cash(index_article, n) {
       // Отправляем запрос на получение тайтлов вышедших после времени загрузки кэша
       var api_cash = localStorage.getItem('my_api_cash');
       var date_api_cash = localStorage.getItem('my_api_cash_date');
-      url = "https://api.anilibria.tv/v2/getChanges?remove=player.alternative_player,posters.original,player.playlist,torrents&limit=-1&since="+date_api_cash
+      url = "https://api.anilibria.tv/v2/getChanges?remove=player.alternative_player,posters.original,player.playlist,torrents&description_type=html&limit=-1&since="+date_api_cash
       fetch(url)
       .then(function (response) {
         if (response.status !== 200) {
@@ -101,7 +101,7 @@ function load_api_cash(index_article, n) {
 function load_all__api_cash() {
   message_body('Идёт загрузка кеша, подождите немного', 1); // Отправляем сообщение
   var api_cash = localStorage.getItem('my_api_cash');
-  url = "https://api.anilibria.tv/v2/getUpdates?remove=player.alternative_player,posters.original,player.playlist,torrents&limit=-1&after=100"
+  url = "https://api.anilibria.tv/v2/getUpdates?remove=player.alternative_player,posters.original,player.playlist,torrents&description_type=html&limit=-1&after=100"
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
