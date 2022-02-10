@@ -404,7 +404,7 @@ function load_new(n) {
       if (data[i]["description"]) {
         var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
       } else {
-          var description = data[i]["description"];
+          var description = '';
       }
 
       div.className = 'article';
@@ -429,7 +429,7 @@ function load_new(n) {
       if (data[i]["description"]) {
         var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
       } else {
-          var description = data[i]["description"];
+          var description = '';
       }
       div.className = 'article_design_2';
       div.innerHTML += `
@@ -523,7 +523,7 @@ function load_new_search(n) {
       if (data[i]['item']["description"]) {
         var description = data[i]['item']["description"].replace(/<\/?[^>]+>/g,'');
       } else {
-          var description = data[i]['item']["description"];
+          var description = '';
       }
       div.className = 'article';
       // div.setAttribute("style", "background: center / contain no-repeat url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"')");
@@ -544,10 +544,10 @@ function load_new_search(n) {
       } else {
         genres = '<p class="article_description_design_2" style="margin-bottom: 5px;">'+data[i]['item']["genres"][0] + '</p>';
       }
-      if (data[i]["description"]) {
-        var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      if (data[i]['item']["description"]) {
+        var description = data[i]['item']["description"].replace(/<\/?[^>]+>/g,'');
       } else {
-          var description = data[i]["description"];
+          var description = '';
       }
       div.className = 'article_design_2';
       div.innerHTML += `
@@ -631,7 +631,7 @@ function Update_Article(arr_update) {
       if (data[i]["description"]) {
         var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
       } else {
-          var description = data[i]["description"];
+          var description = '';
       }
       div.className = 'article';
       // div.setAttribute("style", "background: center / contain no-repeat url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"')");
@@ -655,7 +655,7 @@ function Update_Article(arr_update) {
       if (data[i]["description"]) {
         var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
       } else {
-          var description = data[i]["description"];
+          var description = '';
       }
       document.getElementById('article_block').insertAdjacentHTML('afterbegin', `
         <div class="article_design_2">
@@ -764,7 +764,7 @@ function load_favorites(arr, block_id) {
       if (data[i]["description"]) {
         var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
       } else {
-          var description = data[i]["description"];
+          var description = '';
       }
       div.className = 'article';
       // div.setAttribute("style", "background: center / contain no-repeat url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"')");
@@ -788,7 +788,7 @@ function load_favorites(arr, block_id) {
       if (data[i]["description"]) {
         var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
       } else {
-          var description = data[i]["description"];
+          var description = '';
       }
       div.className = 'article_design_2';
       div.innerHTML += `
@@ -956,7 +956,11 @@ function load_small(arr_small, block_id) {
     } else if(data[i]["genres"][0] != undefined) {
       genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
     }
-    var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+    if (data[i]["description"]) {
+      var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+    } else {
+        var description = '';
+    }
     div.className = 'article';
     div.setAttribute("style", "margin-top: 45px;width: 200px;height: 290px;");
     div.innerHTML += `
