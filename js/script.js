@@ -516,9 +516,9 @@ function load_new_search(n) {
       // div.setAttribute("style", "background: center / contain no-repeat url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"')");
       div.innerHTML += `
           <div class="article_ser">${series_type}</div>
-          <img src="https://www.anilibria.tv${data[i]["posters"]["medium"]["url"]}">
-          <a class="article-text"  href="release?id=${data[i]["id"]}">
-            <p class="article-name"  style="-webkit-line-clamp: 3;line-clamp: 3;">${data[i]["names"]["ru"]}</p>
+          <img src="https://www.anilibria.tv${data[i]['item']["posters"]["medium"]["url"]}">
+          <a class="article-text"  href="release?id=${data[i]['item']["id"]}">
+            <p class="article-name"  style="-webkit-line-clamp: 3;line-clamp: 3;">${data[i]['item']["names"]["ru"]}</p>
             ${genres}
             <p class="article-description">${description}</p>
           </a>
