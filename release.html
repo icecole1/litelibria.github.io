@@ -389,6 +389,13 @@
       } else {
         var announce = ''
       }
+      if (data["season"]["year"] && data["season"]["string"]){
+        var seasonANDyear = `<a style="border:0;" class="release-href release-href_hov" href="season?year=${data["season"]["year"]}&code=${data["season"]["code"]}">${data["season"]["year"]} ${data["season"]["string"]}</a>`;
+      } else if (data["season"]["year"]){
+        var seasonANDyear = `<a style="border:0;" class="release-href release-href_hov" href="season?year=${data["season"]["year"]}">${data["season"]["year"]}</a>`;
+      } else if (data["season"]["string"]){
+        var seasonANDyear = `<a style="border:0;" class="release-href release-href_hov" href="season?code=${data["season"]["code"]}">${data["season"]["string"]}</a>`;
+      }
       document.title = data["names"]["ru"];
       div.innerHTML = `
         <img src="https://www.anilibria.tv${data["posters"]["medium"]["url"]}" />
@@ -396,7 +403,7 @@
           <p class="release-name">${data["names"]["ru"]}</p>
           <p class="release-description">${genres}</p>
           <p class="release-description" style="margin-top: 10px;">
-            <a style="border:0;" class="release-href release-href_hov" href="season?year=${data["season"]["year"]}&code=${data["season"]["code"]}">${data["season"]["year"]} ${data["season"]["string"]}</a>
+            ${seasonANDyear}
             ${week_day_text_html}
             <a style="border:0;" class="release-href" href="season?type=${data["type"]["code"]}" target="_self">${data["type"]["full_string"]}</a>
           </p>
