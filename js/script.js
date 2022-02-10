@@ -419,6 +419,7 @@ function load_new(n) {
       } else {
         genres = '<p class="article_description_design_2" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
       }
+      var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
       div.className = 'article_design_2';
       div.innerHTML += `
           <a href="release?id=${data[i]["id"]}">
@@ -426,7 +427,7 @@ function load_new(n) {
             <div class="text_block_design_2">
               <p class="article_name_design_2"  style="-webkit-line-clamp: 1;line-clamp: 1;">${data[i]["names"]["ru"]}</p>
               ${genres}
-              <p class="article_description_design_2" style="-webkit-line-clamp: 5;line-clamp: 5;">${data[i]["description"]}</p>
+              <p class="article_description_design_2" style="-webkit-line-clamp: 5;line-clamp: 5;">${description}</p>
             </div>
           </a>`;
     }
@@ -526,6 +527,7 @@ function load_new_search(n) {
       } else {
         genres = '<p class="article_description_design_2" style="margin-bottom: 5px;">'+data[i]['item']["genres"][0] + '</p>';
       }
+      var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
       div.className = 'article_design_2';
       div.innerHTML += `
           <a href="release?id=${data[i]['item']["id"]}">
@@ -533,7 +535,7 @@ function load_new_search(n) {
             <div class="text_block_design_2">
               <p class="article_name_design_2"  style="-webkit-line-clamp: 1;line-clamp: 1;">${data[i]['item']["names"]["ru"]}</p>
               ${genres}
-              <p class="article_description_design_2" style="-webkit-line-clamp: 5;line-clamp: 5;">${data[i]['item']["description"]}</p>
+              <p class="article_description_design_2" style="-webkit-line-clamp: 5;line-clamp: 5;">${description}</p>
             </div>
           </a>`;
     }
@@ -622,6 +624,7 @@ function Update_Article(arr_update) {
       } else {
         genres = '<p class="article_description_design_2" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
       }
+      var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
       document.getElementById('article_block').insertAdjacentHTML('afterbegin', `
         <div class="article_design_2">
           <a href="release?id=${data[i]["id"]}">
@@ -629,7 +632,7 @@ function Update_Article(arr_update) {
             <div class="text_block_design_2">
               <p class="article_name_design_2"  style="-webkit-line-clamp: 1;line-clamp: 1;">${data[i]["names"]["ru"]}</p>
               ${genres}
-              <p class="article_description_design_2" style="-webkit-line-clamp: 5;line-clamp: 5;">${data[i]["description"]}</p>
+              <p class="article_description_design_2" style="-webkit-line-clamp: 5;line-clamp: 5;">${description}</p>
             </div>
           </a>
         </div>`);
@@ -744,6 +747,7 @@ function load_favorites(arr, block_id) {
       } else {
         genres = '<p class="article_description_design_2" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
       }
+      var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
       div.className = 'article_design_2';
       div.innerHTML += `
           <a href="release?id=${data[i]["id"]}">
@@ -751,7 +755,7 @@ function load_favorites(arr, block_id) {
             <div class="text_block_design_2">
               <p class="article_name_design_2"  style="-webkit-line-clamp: 1;line-clamp: 1;">${data[i]["names"]["ru"]}</p>
               ${genres}
-              <p class="article_description_design_2" style="-webkit-line-clamp: 5;line-clamp: 5;">${data[i]["description"]}</p>
+              <p class="article_description_design_2" style="-webkit-line-clamp: 5;line-clamp: 5;">${description}</p>
             </div>
           </a>`;
     }
