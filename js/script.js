@@ -401,7 +401,12 @@ function load_new(n) {
       } else if(data[i]["genres"][0] != undefined) {
         genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
       }
-      var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      if (data[i]["description"]) {
+        var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      } else {
+          var description = data[i]["description"];
+      }
+
       div.className = 'article';
       // div.setAttribute("style", "background: center / contain no-repeat url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"')");
       div.innerHTML += `
@@ -421,7 +426,11 @@ function load_new(n) {
       } else {
         genres = '<p class="article_description_design_2" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
       }
-      var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      if (data[i]["description"]) {
+        var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      } else {
+          var description = data[i]["description"];
+      }
       div.className = 'article_design_2';
       div.innerHTML += `
           <a href="release?id=${data[i]["id"]}">
@@ -511,7 +520,11 @@ function load_new_search(n) {
       } else if(data[i]['item']["genres"][0] != undefined) {
         genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]['item']["genres"][0] + '</p>';
       }
-      var description = data[i]['item']["description"].replace(/<\/?[^>]+>/g,'');
+      if (data[i]['item']["description"]) {
+        var description = data[i]['item']["description"].replace(/<\/?[^>]+>/g,'');
+      } else {
+          var description = data[i]['item']["description"];
+      }
       div.className = 'article';
       // div.setAttribute("style", "background: center / contain no-repeat url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"')");
       div.innerHTML += `
@@ -531,7 +544,11 @@ function load_new_search(n) {
       } else {
         genres = '<p class="article_description_design_2" style="margin-bottom: 5px;">'+data[i]['item']["genres"][0] + '</p>';
       }
-      var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      if (data[i]["description"]) {
+        var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      } else {
+          var description = data[i]["description"];
+      }
       div.className = 'article_design_2';
       div.innerHTML += `
           <a href="release?id=${data[i]['item']["id"]}">
@@ -611,6 +628,11 @@ function Update_Article(arr_update) {
       } else if(data[i]["genres"][0] != undefined) {
         genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
       }
+      if (data[i]["description"]) {
+        var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      } else {
+          var description = data[i]["description"];
+      }
       div.className = 'article';
       // div.setAttribute("style", "background: center / contain no-repeat url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"')");
       div.innerHTML += `
@@ -630,7 +652,11 @@ function Update_Article(arr_update) {
       } else {
         genres = '<p class="article_description_design_2" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
       }
-      var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      if (data[i]["description"]) {
+        var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      } else {
+          var description = data[i]["description"];
+      }
       document.getElementById('article_block').insertAdjacentHTML('afterbegin', `
         <div class="article_design_2">
           <a href="release?id=${data[i]["id"]}">
@@ -735,7 +761,11 @@ function load_favorites(arr, block_id) {
       } else if(data[i]["genres"][0] != undefined) {
         genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
       }
-      var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      if (data[i]["description"]) {
+        var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      } else {
+          var description = data[i]["description"];
+      }
       div.className = 'article';
       // div.setAttribute("style", "background: center / contain no-repeat url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"')");
       div.innerHTML += `
@@ -755,7 +785,11 @@ function load_favorites(arr, block_id) {
       } else {
         genres = '<p class="article_description_design_2" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
       }
-      var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      if (data[i]["description"]) {
+        var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
+      } else {
+          var description = data[i]["description"];
+      }
       div.className = 'article_design_2';
       div.innerHTML += `
           <a href="release?id=${data[i]["id"]}">
@@ -923,16 +957,6 @@ function load_small(arr_small, block_id) {
       genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]["genres"][0] + '</p>';
     }
     var description = data[i]["description"].replace(/<\/?[^>]+>/g,'');
-    // div.className = 'article';
-    // div.setAttribute("style", "background-image: url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"');margin-top: 45px;width: 200px;height: 290px;");
-    // div.innerHTML = `
-    //     <a class="article-text"  href="release?id=${data[i]["id"]}">
-    //       <p class="article-name" style="-webkit-line-clamp: 3;line-clamp: 3;">${data[i]["names"]["ru"]}</p>
-    //       ${genres}
-    //       <p class="article-description" style="-webkit-line-clamp: 8;line-clamp: 8;">${description}</p>
-    //     </a>
-    //     <div class="article_ser" style="margin-top: 200px;">${series_type}</div>
-    //   `;
     div.className = 'article';
     div.setAttribute("style", "margin-top: 45px;width: 200px;height: 290px;");
     div.innerHTML += `
