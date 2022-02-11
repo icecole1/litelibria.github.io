@@ -617,7 +617,7 @@ header{
 
 .login_block{
   width: 220px;
-  background: var(--card-background);
+  background: var(--card-background-2);
   position: relative;
   display: block;
   padding: 40px 20px;
@@ -642,7 +642,7 @@ header{
   padding: 0px 10px;
   margin-top: -4px;
   margin-left: 10px;
-  background: var(--card-background-2);
+  background: var(--card-background);
   border-radius: var(--border-radius);
   -webkit-appearance: none;
   margin-bottom: 20px;
