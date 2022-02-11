@@ -599,6 +599,21 @@ header{
   margin-top: 10px;
   /* margin-bottom: 30px; */
 }
+.iframe_player{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+.player_select{
+  margin: 10px 0;
+  background: var(--card-background);
+  padding: 5px 0 10px 0;
+  border-radius: var(--border-radius-2);
+}
+.player_select a{
+  background:var(--card-background-3);
+  color:var(--card-text-color-2)!important;
+  display: inline-block;
+}
 
 .login_block{
   width: 220px;

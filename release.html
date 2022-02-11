@@ -70,9 +70,36 @@
     <center>
       <div class="release-block block_header_small">
         <div id="release_block"></div>
-        <p><a href="https://www.anilibria.tv/pages/donate.php" style="display: table;font-size: 15px;font-weight: 300;color: var(--card-text-color);text-decoration: none;text-align: center;transition: .3s ease;width: 80%;margin-top: 10px;border-radius: var(--border-radius-2);max-width: calc(800px - 25px);padding: 12px;background: var(--card-background);">Поддержать проект</a></p>
+
         <div class="release-player">
-          <div id="player"></div>
+          <div class="player_select">
+            <a href="https://www.anilibria.tv/pages/donate.php" class="favor_button">Поддержать проект</a>
+          </div>
+
+
+          <div id="player_ifr" style="display: none;"></div>
+          <div id="player_bas">
+            <div id="player"></div>
+          </div>
+          <div class="player_select">
+            <button type="submit" class="favor_button" id="player_select_1" onclick="player_selec('1')" style="background:var(--card-background-3); color:var(--card-text-color-2)!important;">Основной плеер</button>
+            <button type="submit" class="favor_button" id="player_select_2" onclick="player_selec('2')" style="background:var(--card-background-2); color:var(--card-text-color)!important;">Запасной плеер</button>
+          </div>
+          <script type="text/javascript">
+            function player_selec(player) {
+              if (player == '1') {
+                document.getElementById('player_ifr').setAttribute("style", "display:none");
+                document.getElementById('player_bas').setAttribute("style", "");
+                document.getElementById('player_select_1').setAttribute("style", "background:var(--card-background-3); color:var(--card-text-color-2)!important");
+                document.getElementById('player_select_2').setAttribute("style", "background:var(--card-background-2); color:var(--card-text-color)!important;");
+              } else if (player == '2') {
+                document.getElementById('player_ifr').setAttribute("style", "margin-bottom: -4px;");
+                document.getElementById('player_bas').setAttribute("style", "display:none");
+                document.getElementById('player_select_1').setAttribute("style", "background:var(--card-background-2); color:var(--card-text-color)!important");
+                document.getElementById('player_select_2').setAttribute("style", "background:var(--card-background-3); color:var(--card-text-color-2)!important;");
+              }
+            }
+          </script>
           <div class="but_Hotkeys">
             <p><span>Клавиша F</span><span>Полноэкранный режим видео</span></p>
             <p><span>Клавиша M</span><span>Включение / выключение звука</span></p>
@@ -229,6 +256,12 @@
         return response.json()
       })
       .then(function (data) {
+        // Добавление запасного плеера
+        document.getElementById('player_ifr').innerHTML = `<iframe class="iframe_player" src="https:${data['player']['alternative_player']}"></iframe>`;
+
+
+
+
         console.log(data);
         var url = document.location;
         var paramsString = document.location.search;
