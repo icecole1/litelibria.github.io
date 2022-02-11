@@ -392,7 +392,32 @@ function load_new(n) {
     var div = document.createElement('div');
     document.getElementById('article_block').appendChild(div);
 
-    var my_home_style = localStorage.getItem('my_home_style');
+    function detectOS() {
+      const platform = navigator.platform.toLowerCase(),
+          iosPlatforms = ['iphone', 'ipad', 'ipod', 'ipod touch'];
+
+      if (platform.includes('mac')) return 'MacOS';
+      if (iosPlatforms.includes(platform)) return 'iOS';
+      if (platform.includes('win')) return 'Windows';
+      if (/android/.test(navigator.userAgent.toLowerCase())) return 'Android';
+      if (/linux/.test(platform)) return 'Linux';
+
+      return 'unknown';
+    }
+
+    if (localStorage.getItem('my_home_style')) {
+      var my_home_style = localStorage.getItem('my_home_style');
+    } else {
+      if (detectOS() == 'Android' || detectOS() == 'iOS') {
+        localStorage.setItem('my_home_style', '2');
+        var my_home_style = '2';
+      } else {
+        localStorage.setItem('my_home_style', '1');
+        var my_home_style = '1';
+      }
+    }
+
+
     if (!my_home_style || my_home_style == '1') {
       if(data[i]["genres"][2] != undefined) {
         genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]["genres"][0]+' | '+data[i]["genres"][1]+' | '+data[i]["genres"][2] + '</p>';
@@ -511,7 +536,32 @@ function load_new_search(n) {
     }
     var div = document.createElement('div');
     document.getElementById('article_block').appendChild(div);
-    var my_home_style = localStorage.getItem('my_home_style');
+
+    function detectOS() {
+      const platform = navigator.platform.toLowerCase(),
+          iosPlatforms = ['iphone', 'ipad', 'ipod', 'ipod touch'];
+
+      if (platform.includes('mac')) return 'MacOS';
+      if (iosPlatforms.includes(platform)) return 'iOS';
+      if (platform.includes('win')) return 'Windows';
+      if (/android/.test(navigator.userAgent.toLowerCase())) return 'Android';
+      if (/linux/.test(platform)) return 'Linux';
+
+      return 'unknown';
+    }
+
+    if (localStorage.getItem('my_home_style')) {
+      var my_home_style = localStorage.getItem('my_home_style');
+    } else {
+      if (detectOS() == 'Android' || detectOS() == 'iOS') {
+        localStorage.setItem('my_home_style', '2');
+        var my_home_style = '2';
+      } else {
+        localStorage.setItem('my_home_style', '1');
+        var my_home_style = '1';
+      }
+    }
+
     if (!my_home_style || my_home_style == '1') {
       if(data[i]['item']["genres"][2] != undefined) {
         genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]['item']["genres"][0]+' | '+data[i]['item']["genres"][1]+' | '+data[i]['item']["genres"][2] + '</p>';
@@ -619,7 +669,32 @@ function Update_Article(arr_update) {
     } else {
       series_type = 'Серия '+last_t+'/'+series_t;
     }
-    var my_home_style = localStorage.getItem('my_home_style');
+
+    function detectOS() {
+      const platform = navigator.platform.toLowerCase(),
+          iosPlatforms = ['iphone', 'ipad', 'ipod', 'ipod touch'];
+
+      if (platform.includes('mac')) return 'MacOS';
+      if (iosPlatforms.includes(platform)) return 'iOS';
+      if (platform.includes('win')) return 'Windows';
+      if (/android/.test(navigator.userAgent.toLowerCase())) return 'Android';
+      if (/linux/.test(platform)) return 'Linux';
+
+      return 'unknown';
+    }
+
+    if (localStorage.getItem('my_home_style')) {
+      var my_home_style = localStorage.getItem('my_home_style');
+    } else {
+      if (detectOS() == 'Android' || detectOS() == 'iOS') {
+        localStorage.setItem('my_home_style', '2');
+        var my_home_style = '2';
+      } else {
+        localStorage.setItem('my_home_style', '1');
+        var my_home_style = '1';
+      }
+    }
+
     if (!my_home_style || my_home_style == '1') {
       if(data[i]["genres"][2] != undefined) {
         genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]["genres"][0]+' | '+data[i]["genres"][1]+' | '+data[i]["genres"][2] + '</p>';
@@ -752,7 +827,32 @@ function load_favorites(arr, block_id) {
     var div = document.createElement('div');
     document.getElementById(block_id).appendChild(div);
     var genres = '';
-    var my_home_style = localStorage.getItem('my_home_style');
+
+    function detectOS() {
+      const platform = navigator.platform.toLowerCase(),
+          iosPlatforms = ['iphone', 'ipad', 'ipod', 'ipod touch'];
+
+      if (platform.includes('mac')) return 'MacOS';
+      if (iosPlatforms.includes(platform)) return 'iOS';
+      if (platform.includes('win')) return 'Windows';
+      if (/android/.test(navigator.userAgent.toLowerCase())) return 'Android';
+      if (/linux/.test(platform)) return 'Linux';
+
+      return 'unknown';
+    }
+
+    if (localStorage.getItem('my_home_style')) {
+      var my_home_style = localStorage.getItem('my_home_style');
+    } else {
+      if (detectOS() == 'Android' || detectOS() == 'iOS') {
+        localStorage.setItem('my_home_style', '2');
+        var my_home_style = '2';
+      } else {
+        localStorage.setItem('my_home_style', '1');
+        var my_home_style = '1';
+      }
+    }
+
     if (!my_home_style || my_home_style == '1') {
       if(data[i]["genres"][2] != undefined) {
         genres = '<p class="article-description" style="margin-bottom: 5px;">'+data[i]["genres"][0]+' | '+data[i]["genres"][1]+' | '+data[i]["genres"][2] + '</p>';
