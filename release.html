@@ -257,7 +257,9 @@
       })
       .then(function (data) {
         // Добавление запасного плеера
-        document.getElementById('player_ifr').innerHTML = `<iframe class="iframe_player" src="https:${data['player']['alternative_player']}"></iframe>`;
+        if (data['player']['alternative_player']) {
+          document.getElementById('player_ifr').innerHTML = `<iframe class="iframe_player" src="https:${data['player']['alternative_player']}"></iframe>`;
+        }
 
 
 

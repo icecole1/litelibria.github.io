@@ -708,9 +708,8 @@ function Update_Article(arr_update) {
       } else {
           var description = '';
       }
-      div.className = 'article';
-      // div.setAttribute("style", "background: center / contain no-repeat url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"')");
-      div.innerHTML += `
+      document.getElementById('article_block').insertAdjacentHTML('afterbegin', `
+        <div class="article">
           <div class="article_ser">${series_type}</div>
           <img src="https://www.anilibria.tv${data[i]["posters"]["medium"]["url"]}">
           <a class="article-text"  href="release?id=${data[i]["id"]}">
@@ -718,7 +717,7 @@ function Update_Article(arr_update) {
             ${genres}
             <p class="article-description">${description}</p>
           </a>
-          `;
+        </div>`);
     } else if (my_home_style = '2') {
       if(data[i]["genres"][2] != undefined) {
         genres = '<p class="article_description_design_2" style="margin-bottom: 5px;">'+data[i]["genres"][0]+' | '+data[i]["genres"][1]+' | '+data[i]["genres"][2] + '</p>';

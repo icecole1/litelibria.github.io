@@ -69,11 +69,24 @@
     <div id="login_profile" style="display:none;">
       <div class="profile-block block_header_small">
         <div class="logo" id="my_profile_img"> </div>
-        <p class="text_login" id="my_login"></p>
-        <p class="text_profile" id="my_text"></p>
+        <div class="settings_filter">
+          <style media="screen">
+            .text_profile{
+              background: var(--card-background-2) !important;
+              border-radius: var(--border-radius) !important;
+              padding: 10px !important;
+              margin: 10px 0 !important;
+            }
+          </style>
+          <p class="text_profile">Логин: <span id="my_login"></span></p>
+          <p class="text_profile">Ник: <span id="my_nickname"></span></p>
+          <p class="text_profile">Почта: <span id="my_email"></span></p>
+          <p class="text_profile">ВК ID: <span id="my_vk_id"></span></p>
+          <p class="text_profile">Patreon ID: <span id="my_patreon_id"></span></p>
+        </div>
+
         <a class="profile_button" id="profile_button" onclick="logout()">Выйти из аккаунта</a>
         <!-- <a class="profile_button" id="profile_button" href="https://www.anilibria.tv/public/logout.php">Выйти из аккаунта</a> -->
-
       </div>
     </div>
     <div id="logout_profile">
@@ -150,30 +163,53 @@
       document.getElementById('login_profile').setAttribute("style", "display:none;");
       document.getElementById('logout_profile').setAttribute("style", "");
     }
-    var cookie_my_login = localStorage.getItem('my_login');
-    var cookie_my_profile_img = localStorage.getItem('my_profile_img');
 
-    if (cookie_my_login) {
-      document.getElementById('my_login').innerHTML = ''+cookie_my_login;
-    }
-    if (!cookie_my_profile_img) {
-      function getRandomInt(max) {
-        return Math.floor(Math.random() * max);
+    var url = "https://api.anilibria.tv/v2/getUser?session="+cookie;
+    fetch(url)
+    .then(function (response) {
+      if (response.status !== 200) {
+        return Promise.reject(new Error(response.statusText))
       }
-      if (getRandomInt(4) == 1) {
-        document.getElementById('my_profile_img').setAttribute("style", "background-image: url('img/profile/my_profile_img.jpg');background-position: center;background-size: cover;");
-      } else if (getRandomInt(4) == 2) {
-        document.getElementById('my_profile_img').setAttribute("style", "background-image: url('img/profile/my_profile_img_2.jpg');background-position: center;background-size: cover;");
-      } else if (getRandomInt(4) == 3) {
-        document.getElementById('my_profile_img').setAttribute("style", "background-image: url('img/profile/my_profile_img_3.jpg');background-position: center;background-size: cover;");
+      return Promise.resolve(response)
+    })
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (data) {
+      var my_login = data['login'];
+      var my_nickname = data['nickname'];
+      var my_email = data['email'];
+      var my_avatar_original = data['avatar_original'];
+      var my_avatar_thumbnail = data['avatar_thumbnail'];
+      var my_vk_id = data['vk_id'];
+      var my_patreon_id = data['patreon_id'];
+
+      if (my_login) {document.getElementById('my_login').innerHTML = my_login;}
+      if (my_nickname) {document.getElementById('my_nickname').innerHTML = my_nickname;}
+      if (my_email) {document.getElementById('my_email').innerHTML = my_email;}
+      if (my_vk_id) {document.getElementById('my_vk_id').innerHTML = my_vk_id;}
+      if (my_patreon_id) {document.getElementById('my_patreon_id').innerHTML = my_patreon_id;}
+
+      if (my_avatar_original) {
+        document.getElementById('my_profile_img').setAttribute("style", "background-image: url('img/profile/my_avatar_original.jpg');background-position: center;background-size: cover;");
       } else {
-        document.getElementById('my_profile_img').setAttribute("style", "background-image: url('img/profile/my_profile_img_1.jpg');background-position: center;background-size: cover;");
+        function getRandomInt(max) {
+          return Math.floor(Math.random() * max);
+        }
+        if (getRandomInt(4) == 1) {
+          document.getElementById('my_profile_img').setAttribute("style", "background-image: url('img/profile/my_profile_img.jpg');background-position: center;background-size: cover;");
+        } else if (getRandomInt(4) == 2) {
+          document.getElementById('my_profile_img').setAttribute("style", "background-image: url('img/profile/my_profile_img_2.jpg');background-position: center;background-size: cover;");
+        } else if (getRandomInt(4) == 3) {
+          document.getElementById('my_profile_img').setAttribute("style", "background-image: url('img/profile/my_profile_img_3.jpg');background-position: center;background-size: cover;");
+        } else {
+          document.getElementById('my_profile_img').setAttribute("style", "background-image: url('img/profile/my_profile_img_1.jpg');background-position: center;background-size: cover;");
+        }
       }
-    }
+    })
 
     function logout() {
       localStorage.setItem('PHPSESSID', '');
-      localStorage.setItem('my_login', '');
       document.getElementById('login_profile').setAttribute("style", "display:none;");
       document.getElementById('logout_profile').setAttribute("style", "");
     }
@@ -194,10 +230,6 @@
           console.log(data);
           if (data['key'] == 'success') {
             localStorage.setItem('PHPSESSID', data['sessionId']);
-            localStorage.setItem('my_login', '');
-            var cookie_my_login = localStorage.getItem('my_login');
-            var cookie_my_profile_img = localStorage.getItem('my_profile_img');
-            document.getElementById('my_login').innerHTML = cookie_my_login;
             document.getElementById('login_profile').setAttribute("style", "");
             document.getElementById('logout_profile').setAttribute("style", "display:none;");
           } else {
