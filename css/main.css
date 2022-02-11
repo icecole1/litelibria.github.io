@@ -7,9 +7,9 @@
   margin: 0;
   font-weight: 300;
 }
+input {outline:none;}
 
-
-  .no-touch ::-webkit-scrollbar {
+.no-touch ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
   background-color: #f9f9fd;
