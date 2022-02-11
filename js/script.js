@@ -188,7 +188,7 @@ function article(index_article, n) {
       max_art = 24, // Количество тайтлов на странице
       art = 0;
 
-  localStorage.setItem('my_page', 0); // Устанавливаем первоначальное количество страниц
+  localStorage.setItem('my_page', 24); // Устанавливаем первоначальное количество страниц
 
   if (index_article == 'Home') {
 
@@ -354,9 +354,9 @@ function load_new(n) {
   }
 
 // Вывод ошибки при отсутствии тайтлов
-  if (data == '') {
-    document.getElementById('error').setAttribute("style", `display:block;`);
-  }
+  // if (data == '') {
+  //   document.getElementById('error').setAttribute("style", `display:block;`);
+  // }
 
 // Цикл вывода тайтлов на страницу
   for (var i = 0; i < data.length; i++) {
@@ -499,9 +499,9 @@ function load_new_search(n) {
   }
 
 // Вывод ошибки при отсутствии тайтлов
-  if (data == '') {
-    document.getElementById('error').setAttribute("style", `display:block;`);
-  }
+  // if (data == '') {
+  //   document.getElementById('error').setAttribute("style", `display:block;`);
+  // }
 
 // Цикл вывода тайтлов на страницу
   for (var i = 0; i < data.length; i++) {
