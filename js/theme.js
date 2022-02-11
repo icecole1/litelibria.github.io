@@ -93,19 +93,23 @@ window.onload = function() {
 
   edit_description_href();
 };
+
+
 function edit_description_href() {
   setTimeout(function() {
-    var a = document.getElementById("release_description_text");
-    var b = a.getElementsByTagName("a");
-    var c = Array.from(b)
-    var d = c.map(i => {return i.href})
+    if (document.getElementById("release_description_text")) {
+      var a = document.getElementById("release_description_text");
+      var b = a.getElementsByTagName("a");
+      var c = Array.from(b)
+      var d = c.map(i => {return i.href})
 
-    for (var i = 0; i < d.length; i++) {
-      if (d[i].substring(24, 0) == 'https://www.anilibria.tv'){ // Проверяем ссылку на наличие https://www.anilibria.tv
-        var name_href_release = d[i].substr(33);
-        var name_release = name_href_release.substring(0, name_href_release.length - 5);
-        $('a[href="'+d[i]+'"]').attr('target', '_self');
-        $('a[href="'+d[i]+'"]').attr('href', 'release?name_t='+name_release);
+      for (var i = 0; i < d.length; i++) {
+        if (d[i].substring(24, 0) == 'https://www.anilibria.tv'){ // Проверяем ссылку на наличие https://www.anilibria.tv
+          var name_href_release = d[i].substr(33);
+          var name_release = name_href_release.substring(0, name_href_release.length - 5);
+          $('a[href="'+d[i]+'"]').attr('target', '_self');
+          $('a[href="'+d[i]+'"]').attr('href', 'release?name_t='+name_release);
+        }
       }
     }
   }, 500);

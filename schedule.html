@@ -20,14 +20,19 @@
     <meta property="og:description" content="Смотреть аниме онлайн в любимой озучке.">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
     <link rel="icon" id="appIcon" type="image/png" href="img/Logo.png">
-    <link rel="stylesheet" type="text/css" href="css/auto.css" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link rel="manifest" href="manifest.json">
     <script type="text/javascript" src="js/playerjs.js" ></script>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/theme.js" ></script>
     <script type="text/javascript" src="js/script.js" ></script>
     <script src="https://use.fontawesome.com/b559c64803.js"></script>
+
+    <script>
+        document.documentElement.setAttribute('class', 'ontouchend' in document ? 'touch' : 'no-touch');
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="css/auto.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
 
     <!-- iOS web app configuration -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,7 +53,7 @@
     <div id="preloader"><div id="preloader_preload" onclick="preloader_none();"></div><p id="preloader_preload_but"><span id="loader_text">Идёт загрузка...</span><span id="loader1"></span><span id="loader2"></span></p></div>
     <a class="back_to_top" title="Наверх">↑</a>
     <header>
-      <div class="block_header">
+      <div class="block_header no-touch">
         <a href="index">Главная</a>
         <a href="catalog">Каталог</a>
         <a href="favorites">Избранное</a>
