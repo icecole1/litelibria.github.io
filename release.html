@@ -13,24 +13,24 @@
 
 
     <meta charset="utf-8">
-    <title>LiteLibria</title>
-
     <!-- meta Open Graph -->
     <meta property="og:locale" content="ru_RU">
     <meta property="og:type" content="website">
     <meta property="og:title" content="LiteLibria">
-    <meta property="og:description" content="">
+    <meta property="og:description" content="Смотреть аниме онлайн в любимой озучке.">
     <meta property="og:url" content="https://litelibria.github.io">
     <meta property="og:image" content="https://litelibria.github.io/img/pleer.jpg">
     <meta property="og:site_name" content="LiteLibria">
     <script>
-      var URLString = document.location;
       var paramsString = document.location.search;
       var searchParams = new URLSearchParams(paramsString);
       var image_og = 'https://api.7o7.co/anilibria_bot/getPoster/'+searchParams.get("id");
       document.querySelector('meta[property=og\\:image]').setAttribute("content", image_og);
-      document.querySelector('meta[property=og\\:url]').setAttribute("content", URLString);
+      document.querySelector('meta[property=og\\:url]').setAttribute("content", document.location);
     </script>
+
+    <title>LiteLibria</title>
+
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
     <link rel="icon" id="appIcon" type="image/png" href="img/Logo.png">
     <link rel="manifest" href="manifest.json">
@@ -450,6 +450,7 @@
         var seasonANDyear = `<a style="border:0;" class="release-href release-href_hov" href="season?code=${data["season"]["code"]}">${data["season"]["string"]}</a>`;
       }
 
+      document.title = data["names"]["ru"];
 
       div.innerHTML = `
         <img src="https://www.anilibria.tv${data["posters"]["medium"]["url"]}" />
