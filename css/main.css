@@ -602,6 +602,7 @@ header{
 .iframe_player{
   width: 100%;
   aspect-ratio: 16 / 9;
+  border-radius: var(--border-radius-2);
 }
 .player_select{
   margin: 10px 0;
@@ -621,7 +622,7 @@ header{
   position: relative;
   display: block;
   padding: 40px 20px;
-  margin: 40px;
+  margin: 40px 10px;
   border-radius: var(--border-radius-2);
 }
 .login_block p{

@@ -538,6 +538,19 @@
         cuid: id_t
       });
       player.api("file", str_playlist);
+
+      if (localStorage.getItem('my_player_style')) {
+        var style = localStorage.getItem('my_player_style');
+        if (style == '1') {
+          player.api("design",1);
+          document.getElementById('player_style_select_1').setAttribute("style", "background:var(--card-background-3); color:var(--card-text-color-2)!important");
+          document.getElementById('player_style_select_2').setAttribute("style", "background:var(--card-background-2); color:var(--card-text-color)!important;");
+        } else if (style == '2') {
+          player.api("design",2);
+          document.getElementById('player_style_select_1').setAttribute("style", "background:var(--card-background-2); color:var(--card-text-color)!important");
+          document.getElementById('player_style_select_2').setAttribute("style", "background:var(--card-background-3); color:var(--card-text-color-2)!important;");
+        }
+      }
     }
     function load_relise_Fav(id_t) {
       var cookie = localStorage.getItem('PHPSESSID');

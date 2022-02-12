@@ -137,6 +137,12 @@
           <button id="opening1_style" class="settings_filter_button" title="Выбрать" onclick="editOpening_style('1')">Автоматически</button>
           <button id="opening2_style" class="settings_filter_button" title="Выбрать" onclick="editOpening_style('0')" style="background: var(--card-background-2);color: var(--card-text-color) !important;">Отключить</button>
         </div>
+        <hr style="border: 1px solid var(--card-background-2);"/>
+        <p class="settings_filter_p">Нативный плеер</p>
+        <div class="settings_filter_box" id="settings_home_block_style">
+          <button id="Player1_style" class="settings_filter_button" title="Выбрать" onclick="editPlayer_style('1')">Включить</button>
+          <button id="Player2_style" class="settings_filter_button" title="Выбрать" onclick="editPlayer_style('2')" style="background: var(--card-background-2);color: var(--card-text-color) !important;">Отключить</button>
+        </div>
         <p class="settings_filter_p">*Нажмите для выбора</p>
       </div>
       <div class="settings_filter">
@@ -379,7 +385,6 @@
 
     var my_skips_opening = localStorage.getItem('my_skips_opening');
     if (!my_skips_opening) {
-      opening1_style
       localStorage.setItem('my_skips_opening', '0');
       document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
       document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
@@ -401,6 +406,34 @@
         localStorage.setItem('my_skips_opening', '0');
         document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
         document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+      }
+    }
+
+
+
+    var my_player_style = localStorage.getItem('my_player_style');
+    if (!my_player_style) {
+      localStorage.setItem('my_player_style', '1');
+      document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+      document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+    } else {
+      if (my_player_style == "1") {
+        document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+        document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+      } else if (my_player_style == "2") {
+        document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+        document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+      }
+    }
+    function editPlayer_style(style) {
+      if (style == "1") {
+        localStorage.setItem('my_player_style', '1');
+        document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+        document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+      } else if (style == "2") {
+        localStorage.setItem('my_player_style', '2');
+        document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+        document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
       }
     }
 
