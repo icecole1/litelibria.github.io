@@ -34,7 +34,7 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
     <link rel="icon" id="appIcon" type="image/png" href="img/Logo.png">
     <link rel="manifest" href="manifest.json">
-    <script type="text/javascript" src="js/playerjs.js" ></script>
+    <script type="text/javascript" src="js/playerjs1.js" ></script>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/theme.js" ></script>
     <script type="text/javascript" src="js/script.js" ></script>
@@ -544,8 +544,10 @@
         var style = localStorage.getItem('my_player_style');
         if (style == '1') {
           player.api("design",1);
+          console.log('design 1');
         } else if (style == '2') {
           player.api("design",2);
+          console.log('design 2');
         }
       }
     }
