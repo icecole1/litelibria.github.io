@@ -44,11 +44,15 @@ window.onload = function() {
     document.getElementById('b_theme1').setAttribute("style", "");
     document.getElementById('b_auto').setAttribute("style", "display:none;");
     $('link[href="css/auto.css"]').attr('href', 'css/theme1.css');
+    document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]').setAttribute("content", "black");
+
   } else if (localStorage.getItem('my_theme') == 'theme2') {
     document.getElementById('b_theme1').setAttribute("style", "display:none;");
     document.getElementById('b_theme2').setAttribute("style", "");
     document.getElementById('b_auto').setAttribute("style", "display:none;");
     $('link[href="css/auto.css"]').attr('href', 'css/theme2.css');
+    document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]').setAttribute("content", "black-translucent");
+
   } else {
     localStorage.setItem('my_theme', 'auto');
     document.getElementById('b_theme1').setAttribute("style", "display:none;");
