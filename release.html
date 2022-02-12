@@ -94,7 +94,7 @@
           <div id="player_bas">
             <div id="player"></div>
           </div>
-          <div class="player_select">
+          <div id="player_btn" class="player_select">
             <button type="submit" class="favor_button" id="player_select_1" onclick="player_selec('1')" style="background:var(--card-background-3); color:var(--card-text-color-2)!important;">Основной плеер</button>
             <button type="submit" class="favor_button" id="player_select_2" onclick="player_selec('2')" style="background:var(--card-background-2); color:var(--card-text-color)!important;">Запасной плеер</button>
           </div>
@@ -199,7 +199,7 @@
       }
       xhr.send();
       document.getElementById('delFavorite_rel').setAttribute("style", "display:none;");
-      document.getElementById('addFavorite_rel').setAttribute("style", "background:var(--card-background); color:var(--card-text-color)!important;");
+      document.getElementById('addFavorite_rel').setAttribute("style", "background:#2e2e2e!important;");
     }
     function addFavorite(id_t) {
       console.log(id_t);
@@ -272,6 +272,8 @@
         // Добавление запасного плеера
         if (data['player']['alternative_player']) {
           document.getElementById('player_ifr').innerHTML = `<iframe class="iframe_player" src="https:${data['player']['alternative_player']}"></iframe>`;
+        } else {
+          document.getElementById('player_btn').setAttribute("style", "display:none;");
         }
 
 
@@ -352,18 +354,23 @@
       if (data["status"]["code"] == '1' || data["status"]["code"] == '4') {
         var week_day = data["season"]["week_day"];
         var week_day_text,
-            week_day_text_html;
-        if (week_day == '0') {week_day_text = 'Пн';}
-        if (week_day == '1') {week_day_text = 'Вт';}
-        if (week_day == '2') {week_day_text = 'Ср';}
-        if (week_day == '3') {week_day_text = 'Чт';}
-        if (week_day == '4') {week_day_text = 'Пт';}
-        if (week_day == '5') {week_day_text = 'Сб';}
-        if (week_day == '6') {week_day_text = 'Вс';}
-
-        week_day_text_html = '<a style="border: 0;"  class="release-href release-href_hov" href="schedule" target="_self">'+week_day_text+'</a>';
+            week_day_text_style_1,
+            week_day_text_style_2,
+            week_day_text_style_3,
+            week_day_text_style_4,
+            week_day_text_style_5,
+            week_day_text_style_6,
+            week_day_text_style_7,
+            week_day_text_none;
+        if (week_day == '0') {week_day_text_style_1 = 'style="background: var(--card-background-3);color: var(--card-text-color-2) !important;"';}
+        if (week_day == '1') {week_day_text_style_2 = 'style="background: var(--card-background-3);color: var(--card-text-color-2) !important;"';}
+        if (week_day == '2') {week_day_text_style_3 = 'style="background: var(--card-background-3);color: var(--card-text-color-2) !important;"';}
+        if (week_day == '3') {week_day_text_style_4 = 'style="background: var(--card-background-3);color: var(--card-text-color-2) !important;"';}
+        if (week_day == '4') {week_day_text_style_5 = 'style="background: var(--card-background-3);color: var(--card-text-color-2) !important;"';}
+        if (week_day == '5') {week_day_text_style_6 = 'style="background: var(--card-background-3);color: var(--card-text-color-2) !important;"';}
+        if (week_day == '6') {week_day_text_style_7 = 'style="background: var(--card-background-3);color: var(--card-text-color-2) !important;"';}
       } else {
-        week_day_text_html = ''
+        week_day_text_none = 'style="display:none;"';
       }
 
       var voice_html,
@@ -438,41 +445,111 @@
         var decor_html = 'undefined'
       }
       if (data["announce"]){
-        var announce = data["announce"];
+        var announce = '<br />'+data["announce"];
       } else {
         var announce = ''
       }
       if (data["season"]["year"] && data["season"]["string"]){
-        var seasonANDyear = `<a style="border:0;" class="release-href release-href_hov" href="season?year=${data["season"]["year"]}&code=${data["season"]["code"]}">${data["season"]["year"]} ${data["season"]["string"]}</a>`;
+        var seasonANDyear = `<a class="release-href favor_button_a release-href_hov" style="padding: 8px !important;" href="season?year=${data["season"]["year"]}&code=${data["season"]["code"]}">${data["season"]["year"]} ${data["season"]["string"]}</a>`;
       } else if (data["season"]["year"]){
-        var seasonANDyear = `<a style="border:0;" class="release-href release-href_hov" href="season?year=${data["season"]["year"]}">${data["season"]["year"]}</a>`;
+        var seasonANDyear = `<a class="release-href favor_button_a release-href_hov" style="padding: 8px !important;" href="season?year=${data["season"]["year"]}">${data["season"]["year"]}</a>`;
       } else if (data["season"]["string"]){
-        var seasonANDyear = `<a style="border:0;" class="release-href release-href_hov" href="season?code=${data["season"]["code"]}">${data["season"]["string"]}</a>`;
+        var seasonANDyear = `<a class="release-href favor_button_a release-href_hov" style="padding: 8px !important;" href="season?code=${data["season"]["code"]}">${data["season"]["string"]}</a>`;
       }
 
       document.title = data["names"]["ru"];
 
       div.innerHTML = `
+        <span class="img_favorite">В избранном у  ${data["in_favorites"]}</span>
         <img src="https://www.anilibria.tv${data["posters"]["medium"]["url"]}" />
         <div class="release-det">
           <p class="release-name">${data["names"]["ru"]}</p>
           <p class="release-description">${genres}</p>
-          <p class="release-description" style="margin-top: 10px;">
-            ${seasonANDyear}
-            ${week_day_text_html}
-            <a style="border:0;" class="release-href" href="season?type=${data["type"]["code"]}" target="_self">${data["type"]["full_string"]}</a>
-          </p>
-          <div style="display: contents;">
-            <button type="submit" class="favor_button" name="delFavorite" id="delFavorite_rel" onclick="delFavorite(id_t)"style="display:none;">В избранном</button>
-            <button type="submit" class="favor_button" name="addFavorite" id="addFavorite_rel" onclick="addFavorite(id_t)"style="display:none;">Добавить в избранное</button>
-          </div>
-          <p class="release-description" style="padding: 10px 0;">
-            <a class="release-href" style="border:0;background:var(--card-text-color-3); color:var(--card-background-2)!important;">Смотрят ${data["in_favorites"]}</a>
-          </p>
+          <style>
+            .img_favorite{
+              position: absolute;
+              display: block;
+              background: var(--card-background-3);
+              opacity: 0.8;
+              font-size: 16px;
+              font-weight: 300;
+              color: var(--card-text-color-2) !important;
+              text-decoration: none;
+              padding: 8px 15px;
+              text-align: center;
+              border-radius: 0px var(--card-border-radius) 0px var(--card-border-radius);
+              transition: .3s ease;
+              margin-top: 375px;
+            }
+            @media (max-width: 880px){
+              .img_favorite{
+                display: initial;
+              }
+            }
+            .week_block{
+              background: var(--card-background);
+              margin-top: 15px;
+              width: calc(100% - 10px);
+              display: inline-block;
+              font-size: 16px;
+              font-weight: 300;
+              color: var(--card-text-color-2) !important;
+              text-decoration: none;
+              padding: 10px 5px;
+              text-align: center;
+              border-radius: var(--border-radius);
+              margin-right: 10px;
+              transition: .3s ease;
+            }
+            .week_block_a{
+              background: #2e2e2e;
+              color: var(--card-text-color-2) !important;
+            }
+            .release-href{
+              padding: 8px 9px;
+              font-size: 15px;
+              border: 0px;
+              margin: 0px;
+            }
+            .favor_button{
+              padding: 5px 7px;
+            }
+            .favor_button_a{
+              border: 0 !important;
+              padding: 4.5px 5px !important;
+              margin: 0px 2px !important;
+              margin: -12px 0px !important;
+              cursor: pointer;
+            }
+            .favor_button_a img{
+              float: left !important;
+              height: 25px;
+              margin: 0px;
+            }
+          </style>
+          <center>
+            <div class="week_block" ${week_day_text_none}>
+              <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" ${week_day_text_style_1}>Пн</a>
+              <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" ${week_day_text_style_2}>Вт</a>
+              <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" ${week_day_text_style_3}>Ср</a>
+              <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" ${week_day_text_style_4}>Чт</a>
+              <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" ${week_day_text_style_5}>Пт</a>
+              <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" ${week_day_text_style_6}>Сб</a>
+              <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" ${week_day_text_style_7}>Вс</a>
+            </div>
+          </center>
+          <center>
+            <div class="week_block">
+              ${seasonANDyear}
+              <a class="release-href favor_button_a release-href_hov" style="padding: 8px !important;margin: 0px !important;" href="season?type=${data["type"]["code"]}" target="_self">${data["type"]["full_string"]}</a>
+              <a class="release-href favor_button_a release-href_hov" title="Удалить из избранное" id="delFavorite_rel" onclick="delFavorite(id_t)" style="display:none;"><img src="img/icons/20_W.png"/></a>
+              <a class="release-href favor_button_a release-href_hov" title="Добавить в избранное" id="addFavorite_rel" onclick="addFavorite(id_t)" style="display:none;"><img src="img/icons/19_W.png"/></a>
+            </div>
+          </center>
 
           <p class="release-description">${announce}</p><br />
 
-          <p class="release-description" id="release_description_text">${data["description"].substr(0, 270)}<span id="hidden3" style="display: contents;">...</span><span id="hidden1" style="display: none;color: var(--card-text-color-3);">${data["description"].substr(270)}</span></p></p>
+          <p class="release-description" id="release_description_text">${data["description"].substr(0, 370)}<span id="hidden3" style="display: contents;">...</span><span id="hidden1" style="display: none;color: var(--card-text-color-3);">${data["description"].substr(370)}</span></p></p>
           <div id="hidden2" style="display: none;">
             <br />
             <p class="release-description">Статус: ${data["status"]["string"]}</p>
@@ -568,7 +645,7 @@
              return;
           }else {
             document.getElementById('delFavorite_rel').setAttribute("style", "display:none;");
-            document.getElementById('addFavorite_rel').setAttribute("style", "background:var(--card-background); color:var(--card-text-color)!important;");
+            document.getElementById('addFavorite_rel').setAttribute("style", "background:#2e2e2e!important;");
           }
         }
       })
