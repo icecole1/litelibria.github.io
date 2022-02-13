@@ -2,14 +2,14 @@
 <html>
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TC5V5CZHDQ"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-TC5V5CZHDQ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-TC5V5CZHDQ');
-    </script>
+    </script> -->
 
 
     <meta charset="utf-8">
@@ -24,7 +24,10 @@
     <script src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/theme.js" ></script>
     <script type="text/javascript" src="js/script.js" ></script>
-    <script src="https://use.fontawesome.com/b559c64803.js"></script>
+    <script src="https://kit.fontawesome.com/7c9aa3bfd8.js" crossorigin="anonymous"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <script>
         document.documentElement.setAttribute('class', 'ontouchend' in document ? 'touch' : 'no-touch');
@@ -50,11 +53,21 @@
 
     <div id="block_notif"></div>
     <div id="preloader"><div id="preloader_preload" onclick="preloader_none();"></div><p id="preloader_preload_but"><span id="loader_text">Идёт загрузка...</span><span id="loader1"></span><span id="loader2"></span></p></div>
-    <header>
+    <!-- <header>
       <div class="block_header">
-        <a href="index">Главная</a>
-        <a href="catalog">Каталог</a>
-        <a href="favorites">Избранное</a>
+        <a href="index" style="background: var(--card-background-3);">
+          <span class="icon_m" style="color: var(--card-text-color-2);"><ion-icon name="home"></ion-icon></span>
+          <span class="text_m" style="color: var(--card-text-color-2);">Главная</span>
+        </a>
+
+        <a href="catalog" style="background: var(--card-background-3);">
+          <span class="icon_m" style="color: var(--card-text-color-2);"><ion-icon name="albums"></ion-icon></span>
+          <span class="text_m" style="color: var(--card-text-color-2);">Каталог</span>
+        </a>
+        <a href="favorites" style="background: var(--card-background-3);">
+          <span class="icon_m" style="color: var(--card-text-color-2);"><ion-icon name="star"></ion-icon></span>
+          <span class="text_m" style="color: var(--card-text-color-2);">Избранное</span>
+        </a>
         <form class="block_search" method="get" action="search">
           <input type="text" name="q" class="search_box" placeholder="Поиск релиза...">
           <button type="submit" class="search_button"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -63,7 +76,188 @@
           <a type="submit" class="theme" id="b_auto" onclick="theme_auto()"><img src="img/auto.png" alt="" style="width: 20px;"></a>
         </form>
       </div>
-    </header>
+    </header> -->
+      <style media="screen">
+        .navigation{
+          height: 55px;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: var(--card-background-2);
+        }
+        .navigation ul {
+          display: flex;
+        }
+        .navigation ul li {
+          position: relative;
+          list-style: none;
+          width: 60px;
+          height: 70px;
+          z-index: 1;
+        }
+        .navigation ul li a{
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          width: 100%;
+          text-align: center;
+          font-weight: 500;
+        }
+        .navigation ul li a .icon_m {
+          color: var(--card-text-color);
+          font-size: 24px;
+          position: relative;
+          display: block;
+          line-height: 75px;
+          text-align: center;
+          transition:  0.5s;
+        }
+        .navigation ul li:hover a .icon_m {
+          transform: translateY(-10px);
+        }
+        .navigation ul li a .text_m{
+          font-size: 0.85em;
+          font-weight: 400;
+          color: var(--card-text-color);
+          position: absolute;
+          letter-spacing: 0.05em;
+          transition: 0.5s;
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        .navigation ul li:hover a .text_m{
+          opacity: 1;
+          transform: translateY(5px);
+        }
+
+        #menu_n{
+          transition: 0.5s;
+          opacity: 1;
+        }
+        #search_n{
+          display: flex;
+          height: 30px;
+          position: absolute;
+          transition: 0.5s;
+          transform: translateY(-40px);
+          opacity: 0;
+        }
+        .search_s .button_s {
+          text-decoration: none;
+          font-weight: 400;
+          height: 30px;
+          width: 35px;
+          color: var(--card-text-color);
+          border: 0;
+          background: var(--card-background);
+          border-radius: 0px var(--border-radius) var(--border-radius) 0px;
+          transition: .3s ease;
+          float: left;
+        }
+        .search_s .button_s ion-icon{
+          font-size: 24px;
+          margin: 2px 0px;
+        }
+        .search_s .box_s {
+          transition: .3s ease;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 400;
+          height: 30px;
+          width: 170px;
+          color: var(--card-text-color);
+          padding: 0px 10px;
+          background: var(--card-background);
+          border-radius: var(--border-radius) 0px 0px var(--border-radius);
+          float: left;
+        }
+
+
+
+
+
+
+        /* .navigation:hover .menu_n{
+          transform: translateY(-80px);
+          opacity: 0;
+        }
+        .navigation:hover .search_n{
+          transform: translateY(0px);
+          opacity: 1;
+        } */
+
+
+      </style>
+      <div class="navigation">
+        <ul id="menu_n">
+          <li>
+            <a href="#">
+              <span class="icon_m" style="color: var(--card-background-5);"><ion-icon name="home"></ion-icon></span>
+              <span class="text_m">Главная</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon_m"><ion-icon name="albums"></ion-icon></span>
+              <span class="text_m">Каталог</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon_m"><ion-icon name="star"></ion-icon></span>
+              <span class="text_m">Избранное</span>
+            </a>
+          </li>
+          <li id="b_search" onclick="b_search()">
+            <a href="#">
+              <span class="icon_m"><ion-icon name="search"></ion-icon></span>
+              <span class="text_m">Поиск</span>
+            </a>
+          </li>
+          <li id="b_theme1" onclick="theme1()" style="display: none;">
+            <a href="#">
+              <span class="icon_m"><ion-icon name="sunny"></ion-icon></span>
+              <span class="text_m" >День</span>
+            </a>
+          </li>
+          <li id="b_theme2" onclick="theme2()" style="display: none;">
+            <a href="#">
+              <span class="icon_m"><ion-icon name="moon"></ion-icon></span>
+              <span class="text_m">Ночь</span>
+            </a>
+          </li>
+          <li id="b_auto" onclick="theme_auto()" style="display: none;">
+            <a href="#">
+              <span class="icon_m"><ion-icon name="sync-circle"></ion-icon></span>
+              <span class="text_m">Авто</span>
+            </a>
+          </li>
+        </ul>
+
+        <div id="search_n" class="search_s">
+          <button class="button_s" onclick="b_navigation()" style="border-radius: var(--border-radius);position: relative;margin-right: 10px;"><ion-icon name="arrow-up"></ion-icon></button>
+          <form method="get" action="search">
+            <input type="text" name="q" class="box_s" placeholder="Поиск релиза...">
+            <button type="submit" class="button_s"><ion-icon name="search"></ion-icon></button>
+          </form>
+        </div>
+
+      </div>
+      <script type="text/javascript">
+        function b_search() {
+          document.getElementById('menu_n').setAttribute("style", "transform: translateY(-80px);opacity: 0;");
+          document.getElementById('search_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
+        }
+        function b_navigation() {
+          document.getElementById('menu_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
+          document.getElementById('search_n').setAttribute("style", "transform: translateY(-40px);opacity: 0;");
+        }
+
+      </script>
+
     <center>
     <div id="login_profile" style="display:none;">
       <div class="profile-block block_header_small">
@@ -154,14 +348,6 @@
         <p class="settings_filter_p">*Нажмите для выбора</p>
       </div>
     </div>
-
-    <div class="block_header_small">
-      <div class="settings_filter">
-        <h3>Тестовые страницы</h3>
-        <a class="settings_filter_button" href="https://litelibria.github.io/test.html" style="display: inline-block;">Тест меню</a>
-      </div>
-    </div>
-
     <div class="block_header_small">
       <div class="settings_filter">
         <h3>Ссылки</h3>
