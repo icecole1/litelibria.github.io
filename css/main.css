@@ -1309,7 +1309,7 @@ details span {
     position: fixed;
     bottom: 0;
     width: 100%;
-    margin: 0;
+    margin: -1px 0;
     border-radius: var(--border-radius-2) var(--border-radius-2) 0 0;
   }
   body{
