@@ -1304,6 +1304,7 @@ details span {
 }
 @media (max-width: 800px){
   .navigation {
+    z-index: 999;
     position: fixed;
     bottom: 0;
     width: 100%;
