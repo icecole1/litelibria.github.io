@@ -593,7 +593,7 @@ header{
   /* white-space: nowrap; */
   border-radius: var(--border-radius-2);
   overflow: inherit;
-  margin: 5px 0px 0px 0px;
+  margin: 6px 0px 0px 0px;
   padding: 5px;
   background: var(--card-background);
   height: 130px;
