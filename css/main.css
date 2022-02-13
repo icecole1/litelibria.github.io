@@ -183,7 +183,7 @@ body{
   position: relative;
   display: flex;
   justify-content: flex-start;
-  padding-left: 40px;
+  padding-left: 5%;
   align-items: center;
   background: var(--card-background-2);
 }
