@@ -1206,19 +1206,6 @@ details span {
   color: var(--card-text-color);
 }
 @media (max-width: 880px){
-  .back_to_top {
-    position: fixed;
-    bottom: 35px;
-    right: 25px;
-    width: 35px;
-    height: 35px;
-    font-size: 22px;
-    line-height: 32px;
-    color: var(--card-text-color-2);
-    background: var(--card-background-3);
-    border-radius: var(--border-radius);
-  }
-
   .article_design_2{
     display: block;
   }
@@ -1303,6 +1290,19 @@ details span {
   }
 }
 @media (max-width: 800px){
+  .back_to_top {
+    position: fixed;
+    bottom: 85px;
+    right: 25px;
+    width: 35px;
+    height: 35px;
+    font-size: 22px;
+    line-height: 32px;
+    color: var(--card-text-color-2);
+    background: var(--card-background-3);
+    border-radius: var(--border-radius);
+    z-index: 90
+  }
   .navigation {
     overflow: hidden;
     z-index: 9990;
