@@ -182,7 +182,8 @@ body{
   height: 55px;
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 40px;
   align-items: center;
   background: var(--card-background-2);
 }
@@ -1313,6 +1314,9 @@ details span {
     height: 50px;
     margin: -1px 0;
     border-radius: var(--border-radius-2) var(--border-radius-2) 0 0;
+
+    justify-content: center;
+    padding-left: 0px;
   }
   body{
     margin-bottom: 80px;
