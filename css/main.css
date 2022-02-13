@@ -1363,6 +1363,7 @@ details span {
     height: 35px;
     margin-top: 10px;
     max-width: none;
+    width: 100% !important;
   }
 }
 @media (max-width: 555px){
