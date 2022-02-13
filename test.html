@@ -92,7 +92,7 @@
         .navigation ul li {
           position: relative;
           list-style: none;
-          width: 60px;
+          width: 70px;
           height: 70px;
           z-index: 1;
         }
@@ -105,6 +105,7 @@
           width: 100%;
           text-align: center;
           font-weight: 500;
+          cursor: pointer;
         }
         .navigation ul li a .icon_m {
           color: var(--card-text-color);
@@ -156,6 +157,7 @@
           border-radius: 0px var(--border-radius) var(--border-radius) 0px;
           transition: .3s ease;
           float: left;
+          cursor: pointer;
         }
         .search_s .button_s ion-icon{
           font-size: 24px;
@@ -167,7 +169,7 @@
           font-size: 14px;
           font-weight: 400;
           height: 30px;
-          width: 170px;
+          width: 190px;
           color: var(--card-text-color);
           padding: 0px 10px;
           background: var(--card-background);
@@ -194,43 +196,43 @@
       <div class="navigation">
         <ul id="menu_n">
           <li>
-            <a href="#">
+            <a href="/">
               <span class="icon_m" style="color: var(--card-background-5);"><ion-icon name="home"></ion-icon></span>
               <span class="text_m">Главная</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="catalog">
               <span class="icon_m"><ion-icon name="albums"></ion-icon></span>
               <span class="text_m">Каталог</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="favorites">
               <span class="icon_m"><ion-icon name="star"></ion-icon></span>
               <span class="text_m">Избранное</span>
             </a>
           </li>
           <li id="b_search" onclick="b_search()">
-            <a href="#">
+            <a>
               <span class="icon_m"><ion-icon name="search"></ion-icon></span>
               <span class="text_m">Поиск</span>
             </a>
           </li>
           <li id="b_theme1" onclick="theme1()" style="display: none;">
-            <a href="#">
+            <a>
               <span class="icon_m"><ion-icon name="sunny"></ion-icon></span>
               <span class="text_m" >День</span>
             </a>
           </li>
           <li id="b_theme2" onclick="theme2()" style="display: none;">
-            <a href="#">
+            <a>
               <span class="icon_m"><ion-icon name="moon"></ion-icon></span>
               <span class="text_m">Ночь</span>
             </a>
           </li>
           <li id="b_auto" onclick="theme_auto()" style="display: none;">
-            <a href="#">
+            <a>
               <span class="icon_m"><ion-icon name="sync-circle"></ion-icon></span>
               <span class="text_m">Авто</span>
             </a>
