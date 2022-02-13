@@ -1304,6 +1304,7 @@ details span {
     z-index: 90
   }
   .navigation {
+    box-shadow: var(--shadow-l4);
     overflow: hidden;
     z-index: 9990;
     position: fixed;
