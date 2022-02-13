@@ -660,16 +660,16 @@
       });
       player.api("file", str_playlist);
 
-      if (localStorage.getItem('my_player_style')) {
-        var style = localStorage.getItem('my_player_style');
-        if (style == '1') {
-          player.api("design",1);
-          console.log('design 1');
-        } else if (style == '2') {
-          player.api("design",2);
-          console.log('design 2');
-        }
-      }
+      // if (localStorage.getItem('my_player_style')) {
+      //   var style = localStorage.getItem('my_player_style');
+      //   if (style == '1') {
+      //     player.api("design",1);
+      //     console.log('design 1');
+      //   } else if (style == '2') {
+      //     player.api("design",2);
+      //     console.log('design 2');
+      //   }
+      // }
     }
     function load_relise_Fav(id_t) {
       var cookie = localStorage.getItem('PHPSESSID');
