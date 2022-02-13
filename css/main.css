@@ -1301,6 +1301,17 @@ details span {
     margin-right: 10px;
   }
 }
+@media (max-width: 800px){
+  .navigation {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+  }
+  body{
+    margin-bottom: 80px;
+  }
+}
 @media (max-width: 725px){
   .block_header_small_a{
     font-size: 14px;
@@ -1314,13 +1325,13 @@ details span {
   .small_bac {
     /* background: var(--card-background); */
     background: 0;
-    margin-left: -30;
-    padding: 0px;
+    margin-left: -30px;
+    padding: 15px 0 0 0;
     overflow-x: auto;
     overflow-y: clip;
     white-space: nowrap;
     height: 35px;
-    margin-top: 0px;
+    margin-top: 10px;
     max-width: 1500px;
   }
 }
@@ -1339,12 +1350,12 @@ details span {
     /* background: var(--card-background); */
     background: 0;
     margin-left: 0;
-    padding: 10px 0px;
+    padding: 15px 0 0 0;
     overflow-x: auto;
     overflow-y: clip;
     white-space: nowrap;
     height: 35px;
-    margin-top: 0px;
+    margin-top: 10px;
     max-width: none;
   }
 }
