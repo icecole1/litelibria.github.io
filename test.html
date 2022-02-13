@@ -53,212 +53,87 @@
 
     <div id="block_notif"></div>
     <div id="preloader"><div id="preloader_preload" onclick="preloader_none();"></div><p id="preloader_preload_but"><span id="loader_text">Идёт загрузка...</span><span id="loader1"></span><span id="loader2"></span></p></div>
-    <!-- <header>
-      <div class="block_header">
-        <a href="index" style="background: var(--card-background-3);">
-          <span class="icon_m" style="color: var(--card-text-color-2);"><ion-icon name="home"></ion-icon></span>
-          <span class="text_m" style="color: var(--card-text-color-2);">Главная</span>
-        </a>
 
-        <a href="catalog" style="background: var(--card-background-3);">
-          <span class="icon_m" style="color: var(--card-text-color-2);"><ion-icon name="albums"></ion-icon></span>
-          <span class="text_m" style="color: var(--card-text-color-2);">Каталог</span>
-        </a>
-        <a href="favorites" style="background: var(--card-background-3);">
-          <span class="icon_m" style="color: var(--card-text-color-2);"><ion-icon name="star"></ion-icon></span>
-          <span class="text_m" style="color: var(--card-text-color-2);">Избранное</span>
-        </a>
-        <form class="block_search" method="get" action="search">
-          <input type="text" name="q" class="search_box" placeholder="Поиск релиза...">
-          <button type="submit" class="search_button"><i class="fa fa-search" aria-hidden="true"></i></button>
-          <a type="submit" class="theme" id="b_theme1" onclick="theme1()" style="display: none;"><img src="img/sun.png" alt=""style="width: 20px;"></a>
-          <a type="submit" class="theme" id="b_theme2" onclick="theme2()" style="display: none;"><img src="img/moon.png" alt="" style="width: 20px;"></a>
-          <a type="submit" class="theme" id="b_auto" onclick="theme_auto()"><img src="img/auto.png" alt="" style="width: 20px;"></a>
+    <div class="navigation">
+      <ul id="menu_n">
+        <li>
+          <a href="/">
+            <span class="icon_m" style="color: var(--card-background-5);"><ion-icon name="home"></ion-icon></span>
+            <span class="text_m">Главная</span>
+          </a>
+        </li>
+        <li>
+          <a href="catalog">
+            <span class="icon_m"><ion-icon name="albums"></ion-icon></span>
+            <span class="text_m">Каталог</span>
+          </a>
+        </li>
+        <li>
+          <a href="favorites">
+            <span class="icon_m"><ion-icon name="star"></ion-icon></span>
+            <span class="text_m">Избранное</span>
+          </a>
+        </li>
+        <li id="b_search" onclick="b_search()">
+          <a>
+            <span class="icon_m"><ion-icon name="search"></ion-icon></span>
+            <span class="text_m">Поиск</span>
+          </a>
+        </li>
+        <li id="b_theme1" onclick="theme1()" style="display: none;">
+          <a>
+            <span class="icon_m"><ion-icon name="sunny"></ion-icon></span>
+            <span class="text_m" >День</span>
+          </a>
+        </li>
+        <li id="b_theme2" onclick="theme2()" style="display: none;">
+          <a>
+            <span class="icon_m"><ion-icon name="moon"></ion-icon></span>
+            <span class="text_m">Ночь</span>
+          </a>
+        </li>
+        <li id="b_auto" onclick="theme_auto()" style="display: none;">
+          <a>
+            <span class="icon_m"><ion-icon name="sync-circle"></ion-icon></span>
+            <span class="text_m">Авто</span>
+          </a>
+        </li>
+      </ul>
+      <div id="search_n" class="search_s">
+        <button class="button_s" onclick="b_navigation()" style="border-radius: var(--border-radius);position: relative;margin-right: 10px;"><ion-icon name="arrow-up"></ion-icon></button>
+        <form method="get" action="search">
+          <input type="text" name="q" class="box_s" placeholder="Поиск релиза...">
+          <button type="submit" class="button_s"><ion-icon name="search"></ion-icon></button>
         </form>
       </div>
-    </header> -->
-      <style media="screen">
-        .navigation{
-          height: 55px;
-          position: relative;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background: var(--card-background-2);
-        }
-        .navigation ul {
-          display: flex;
-        }
-        .navigation ul li {
-          position: relative;
-          list-style: none;
-          width: 70px;
-          height: 70px;
-          z-index: 1;
-        }
-        .navigation ul li a{
-          position: relative;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          width: 100%;
-          text-align: center;
-          font-weight: 500;
-          cursor: pointer;
-        }
-        .navigation ul li a .icon_m {
-          color: var(--card-text-color);
-          font-size: 24px;
-          position: relative;
-          display: block;
-          line-height: 75px;
-          text-align: center;
-          transition:  0.5s;
-        }
-        .navigation ul li:hover a .icon_m {
-          transform: translateY(-10px);
-        }
-        .navigation ul li a .text_m{
-          font-size: 0.85em;
-          font-weight: 400;
-          color: var(--card-text-color);
-          position: absolute;
-          letter-spacing: 0.05em;
-          transition: 0.5s;
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        .navigation ul li:hover a .text_m{
-          opacity: 1;
-          transform: translateY(5px);
-        }
-
-        #menu_n{
-          transition: 0.5s;
-          opacity: 1;
-        }
-        #search_n{
-          display: flex;
-          height: 30px;
-          position: absolute;
-          transition: 0.5s;
-          transform: translateY(-40px);
-          opacity: 0;
-        }
-        .search_s .button_s {
-          text-decoration: none;
-          font-weight: 400;
-          height: 30px;
-          width: 35px;
-          color: var(--card-text-color);
-          border: 0;
-          background: var(--card-background);
-          border-radius: 0px var(--border-radius) var(--border-radius) 0px;
-          transition: .3s ease;
-          float: left;
-          cursor: pointer;
-        }
-        .search_s .button_s ion-icon{
-          font-size: 24px;
-          margin: 2px 0px;
-        }
-        .search_s .box_s {
-          transition: .3s ease;
-          text-decoration: none;
-          font-size: 14px;
-          font-weight: 400;
-          height: 30px;
-          width: 190px;
-          color: var(--card-text-color);
-          padding: 0px 10px;
-          background: var(--card-background);
-          border-radius: var(--border-radius) 0px 0px var(--border-radius);
-          float: left;
-        }
-
-
-
-
-
-
-        /* .navigation:hover .menu_n{
-          transform: translateY(-80px);
-          opacity: 0;
-        }
-        .navigation:hover .search_n{
-          transform: translateY(0px);
-          opacity: 1;
-        } */
-
-
-      </style>
-      <div class="navigation">
-        <ul id="menu_n">
-          <li>
-            <a href="/">
-              <span class="icon_m" style="color: var(--card-background-5);"><ion-icon name="home"></ion-icon></span>
-              <span class="text_m">Главная</span>
-            </a>
-          </li>
-          <li>
-            <a href="catalog">
-              <span class="icon_m"><ion-icon name="albums"></ion-icon></span>
-              <span class="text_m">Каталог</span>
-            </a>
-          </li>
-          <li>
-            <a href="favorites">
-              <span class="icon_m"><ion-icon name="star"></ion-icon></span>
-              <span class="text_m">Избранное</span>
-            </a>
-          </li>
-          <li id="b_search" onclick="b_search()">
-            <a>
-              <span class="icon_m"><ion-icon name="search"></ion-icon></span>
-              <span class="text_m">Поиск</span>
-            </a>
-          </li>
-          <li id="b_theme1" onclick="theme1()" style="display: none;">
-            <a>
-              <span class="icon_m"><ion-icon name="sunny"></ion-icon></span>
-              <span class="text_m" >День</span>
-            </a>
-          </li>
-          <li id="b_theme2" onclick="theme2()" style="display: none;">
-            <a>
-              <span class="icon_m"><ion-icon name="moon"></ion-icon></span>
-              <span class="text_m">Ночь</span>
-            </a>
-          </li>
-          <li id="b_auto" onclick="theme_auto()" style="display: none;">
-            <a>
-              <span class="icon_m"><ion-icon name="sync-circle"></ion-icon></span>
-              <span class="text_m">Авто</span>
-            </a>
-          </li>
-        </ul>
-
-        <div id="search_n" class="search_s">
-          <button class="button_s" onclick="b_navigation()" style="border-radius: var(--border-radius);position: relative;margin-right: 10px;"><ion-icon name="arrow-up"></ion-icon></button>
-          <form method="get" action="search">
-            <input type="text" name="q" class="box_s" placeholder="Поиск релиза...">
-            <button type="submit" class="button_s"><ion-icon name="search"></ion-icon></button>
-          </form>
+    </div>
+    <script type="text/javascript">
+      function b_search() {
+        document.getElementById('menu_n').setAttribute("style", "transform: translateY(-80px);opacity: 0;");
+        document.getElementById('search_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
+      }
+      function b_navigation() {
+        document.getElementById('menu_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
+        document.getElementById('search_n').setAttribute("style", "transform: translateY(-40px);opacity: 0;");
+      }
+    </script>
+    <div class="article-block">
+      <center>
+        <div class="block_header_small small_bac">
+          <span style="margin-left: 5px;"></span>
+          <a href="schedule" class="block_header_small_a">Расписание</a>
+          <a href="release?random=1" class="block_header_small_a">Случайный релиз</a>
+          <a href="myHistory" class="block_header_small_a">Истрория просмотров</a>
+          <a href="settings" class="block_header_small_a" style="color: var(--card-text-color-2);background: var(--card-background-3);">Настройки</a>
+          <span style="margin-right: 5px;"></span>
         </div>
+      </center>
+    </div>
 
-      </div>
-      <script type="text/javascript">
-        function b_search() {
-          document.getElementById('menu_n').setAttribute("style", "transform: translateY(-80px);opacity: 0;");
-          document.getElementById('search_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
-        }
-        function b_navigation() {
-          document.getElementById('menu_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
-          document.getElementById('search_n').setAttribute("style", "transform: translateY(-40px);opacity: 0;");
-        }
 
-      </script>
+
+
+
 
     <center>
     <div id="login_profile" style="display:none;">

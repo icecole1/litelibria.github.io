@@ -173,6 +173,110 @@ body{
   display: block;
   position: fixed;
 }
+
+
+
+.navigation{
+  margin-bottom: 10px;
+  height: 55px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--card-background-2);
+}
+.navigation ul {
+  display: flex;
+}
+.navigation ul li {
+  position: relative;
+  list-style: none;
+  width: 70px;
+  height: 70px;
+  z-index: 1;
+}
+.navigation ul li a{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
+}
+.navigation ul li a .icon_m {
+  color: var(--card-text-color);
+  font-size: 24px;
+  position: relative;
+  display: block;
+  line-height: 75px;
+  text-align: center;
+  transition:  0.5s;
+}
+.navigation ul li:hover a .icon_m {
+  transform: translateY(-10px);
+}
+.navigation ul li a .text_m{
+  font-size: 0.85em;
+  font-weight: 400;
+  color: var(--card-text-color);
+  position: absolute;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  opacity: 0;
+  transform: translateY(10px);
+}
+.navigation ul li:hover a .text_m{
+  opacity: 1;
+  transform: translateY(5px);
+}
+
+#menu_n{
+  transition: 0.5s;
+  opacity: 1;
+}
+#search_n{
+  display: flex;
+  height: 30px;
+  position: absolute;
+  transition: 0.5s;
+  transform: translateY(-40px);
+  opacity: 0;
+}
+.search_s .button_s {
+  text-decoration: none;
+  font-weight: 400;
+  height: 30px;
+  width: 35px;
+  color: var(--card-text-color);
+  border: 0;
+  background: var(--card-background);
+  border-radius: 0px var(--border-radius) var(--border-radius) 0px;
+  transition: .3s ease;
+  float: left;
+  cursor: pointer;
+}
+.search_s .button_s ion-icon{
+  font-size: 24px;
+  margin: 2px 0px;
+}
+.search_s .box_s {
+  transition: .3s ease;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  height: 30px;
+  width: 190px;
+  color: var(--card-text-color);
+  padding: 0px 10px;
+  background: var(--card-background);
+  border-radius: var(--border-radius) 0px 0px var(--border-radius);
+  float: left;
+}
+
+
 header{
   display: block;
   position: relative;
@@ -229,6 +333,7 @@ header{
   border-radius: var(--border-radius);
   transition: .3s ease;
   float: left;
+  margin: 0 5px 0 0;
 }
 .block_header_small_a:hover{
   background: var(--card-background);
@@ -732,9 +837,11 @@ option{
   background: var(--card-background-2);
 }
 .small_bac{
-  margin-left: -40px;
   height: 35px;
   max-width: 1500px;
+  margin-left: 0px;
+  padding: 10px 20px 0 0;
+  background: 0;
 }
 .block_header_small_a{
   font-size: 15px;
