@@ -621,7 +621,7 @@
         var remove = "";
         if (dataPlayer["playlist"][i2]["skips"]["opening"][0] && dataPlayer["playlist"][i2]["skips"]["opening"][1]) {
           if (my_skips_opening == '1') {
-            remove = '"remove":"'+dataPlayer["playlist"][i2]["skips"]["opening"][0]+'-'+dataPlayer["playlist"][i2]["skips"]["opening"][1]+'", ';
+            remove = '"start":"0", "remove":"'+dataPlayer["playlist"][i2]["skips"]["opening"][0]+'-'+dataPlayer["playlist"][i2]["skips"]["opening"][1]+'", ';
           }
         }
 
@@ -656,20 +656,16 @@
         id:"player",
         poster:"img/pleer.jpg",
         file:"",
-        cuid: id_t,
+        cuid: id_t
       });
       player.api("file", str_playlist);
 
       if (localStorage.getItem('my_player_style')) {
         var style = localStorage.getItem('my_player_style');
         if (style == '1') {
-          player.api("design",1);
           player.api("update:nativefullios",1);
-          console.log('design 1');
         } else if (style == '2') {
-          player.api("design",2);
           player.api("update:nativefullios",0);
-          console.log('design 2');
         }
       }
     }
