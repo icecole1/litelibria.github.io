@@ -23,7 +23,7 @@ function page_myHistory() {
              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172 172" style="margin: 0 0 -6px 0;width: 25px;">
                 <path d="M61.47656,26.875l-1.51172,2.51953l-43,69.875l-1.67969,2.6875l1.51172,2.85547l21.5,37.625l1.51172,2.6875h92.38281l1.51172,-2.6875l21.5,-37.625l1.51172,-2.85547l-1.67969,-2.6875l-43,-69.875l-1.51172,-2.51953zM74.07422,37.625h30.40234l36.44922,59.125h-30.40234zM64.5,42.49609l15.95703,26.03516l-37.28906,60.63672l-15.45312,-27.04297zM86.83984,78.77734l11.08594,17.97266h-22.17187zM69.20313,107.5h72.05859l-15.45312,26.875h-73.23437z"></path>
              </svg>
-             <span style="display: inline-block;padding: 5px 0;">Войти в Google</span>
+             <span style="display: inline-block;padding: 5px 0;color: var(--card-text-color);">Войти в Google</span>
            </button>
            <button onclick='logOut(); logOut_n()' id="logOutG" class="release-href release-href_hov but_his" style="padding: 4px 8px; display:none;">
              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172 172" style="margin: 0 0 -6px 0;width: 25px;fill: var(--card-text-color-2);">
