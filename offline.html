@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LiteLibria</title>
+  <meta property="og:site_name" content="LiteLibria">
+  <meta property="og:type" content="Website">
+  <meta property="og:title" content="LiteLibria">
+  <meta property="og:description" content="Смотреть аниме онлайн в любимой озучке.">
+  <!-- Start Single Page Apps for GitHub Pages -->
+  <script>
+    (function(){
+      var redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect != location.href) {
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
+  <!-- End Single Page Apps for GitHub Pages -->
+
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+  <link rel="manifest" href="manifest.json">
+  <script src="js/jquery-3.1.1.min.js"></script>
+
+  <script>
+      document.documentElement.setAttribute('class', 'ontouchend' in document ? 'touch' : 'no-touch');
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="css/auto.css" />
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+  <!-- iOS web app configuration -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AniLibria lite">
+
+  <!-- WEB web app icons -->
+  <link rel="icon" href="../img/icon/web/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../img/icon/web/apple-touch-icon.png">
+
+  <link rel="apple-touch-icon" sizes="152x152" href="../img/icon/web/Logo-152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="../img/icon/web/Logo-167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/icon/web/Logo-180.png">
+  <!-- WEB splash screens -->
+  <!-- iPad -->
+  <link rel="apple-touch-startup-image" href="../img/icon/web/apple-touch-icon.png">
+
+  <!-- Конфигурация приложения -->
+  <script src="config.js" ></script>
+
+  <!-- Загрузка страниц -->
+
+  <script type="text/javascript">
+    function b_search() {
+      document.getElementById('menu_n').setAttribute("style", "transform: translateY(-80px);opacity: 0;");
+      document.getElementById('search_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
+    }
+    $(document).mouseup(function (e) {
+      var container = $("#search_n");
+      if (container.has(e.target).length === 0){
+        document.getElementById('menu_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
+        document.getElementById('search_n').setAttribute("style", "transform: translateY(-40px);opacity: 0;");
+      }
+    });
+    function b_navigation() {
+      document.getElementById('menu_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
+      document.getElementById('search_n').setAttribute("style", "transform: translateY(-40px);opacity: 0;");
+    }
+
+
+    function start_mess_close() {
+      localStorage.setItem('start_mess', '1')
+      document.getElementById('start_mess').setAttribute("style", "display:none;");
+      document.getElementById('android_app').setAttribute("style", "display:none;");
+      document.getElementById('ios_app').setAttribute("style", "display:none;");
+    }
+
+    window.onload = function() {
+      if (!window.matchMedia('(display-mode: standalone)').matches) {
+        if (localStorage.getItem('start_mess') != '1') {
+          function detectOS() {
+              const platform = navigator.platform.toLowerCase(),
+                  iosPlatforms = ['iphone', 'ipad', 'ipod', 'ipod touch'];
+
+              if (platform.includes('mac')) return 'MacOS';
+              if (iosPlatforms.includes(platform)) return 'iOS';
+              if (platform.includes('win')) return 'Windows';
+              if (/android/.test(navigator.userAgent.toLowerCase())) return 'Android';
+              if (/linux/.test(platform)) return 'Linux';
+
+              return 'unknown';
+          }
+          if (detectOS() == 'Android') {
+            document.getElementById('start_mess').setAttribute("style", "display:block;");
+            document.getElementById('android_app').setAttribute("style", "display:block;");
+          } else if (detectOS() == 'iOS') {
+            document.getElementById('start_mess').setAttribute("style", "display:block;");
+            document.getElementById('ios_app').setAttribute("style", "display:block;");
+          } else if (detectOS() == 'MacOS') {
+            document.getElementById('start_mess').setAttribute("style", "display:block;");
+            document.getElementById('ios_app').setAttribute("style", "display:block;");
+          }
+        }
+      }
+
+
+      if (localStorage.getItem('my_theme') == 'auto') {
+        document.getElementById('b_theme1').setAttribute("style", "display:none;");
+        document.getElementById('b_theme2').setAttribute("style", "display:none;");
+        document.getElementById('b_auto').setAttribute("style", "");
+        $('link[href="css/auto.css"]').attr('href', 'css/auto.css');
+      } else if (localStorage.getItem('my_theme') == 'theme1') {
+        document.getElementById('b_theme2').setAttribute("style", "display:none;");
+        document.getElementById('b_theme1').setAttribute("style", "");
+        document.getElementById('b_auto').setAttribute("style", "display:none;");
+        $('link[href="css/auto.css"]').attr('href', 'css/theme1.css');
+        document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]').setAttribute("content", "black");
+
+      } else if (localStorage.getItem('my_theme') == 'theme2') {
+        document.getElementById('b_theme1').setAttribute("style", "display:none;");
+        document.getElementById('b_theme2').setAttribute("style", "");
+        document.getElementById('b_auto').setAttribute("style", "display:none;");
+        $('link[href="css/auto.css"]').attr('href', 'css/theme2.css');
+        document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]').setAttribute("content", "black-translucent");
+
+      } else {
+        localStorage.setItem('my_theme', 'auto');
+        document.getElementById('b_theme1').setAttribute("style", "display:none;");
+        document.getElementById('b_theme2').setAttribute("style", "display:none;");
+        document.getElementById('b_auto').setAttribute("style", "");
+        $('link[href="css/auto.css"]').attr('href', 'css/auto.css');
+      }
+      var loader1 = $("#loader1").width();
+      if (loader1 != '130px') {
+        timer = setInterval(function () {
+          var loader1 = $("#loader1").width();
+          if (loader1 != '130') {
+            document.getElementById('loader1').setAttribute("style", `width: calc(${loader1}px + 1px)`);
+          }
+        }, 1000)
+      }
+
+
+
+      var width = document.documentElement.clientWidth;
+      var tallage = 92;
+      var result = width / 100 * tallage; //вычисление процентов
+      if (width <= 800) {
+        document.getElementById('app').style.width = "100%";
+      } else {
+        document.getElementById('app').style.width = result+"px";
+      }
+
+      edit_description_href();
+    };
+
+
+    function edit_description_href() {
+      setTimeout(function() {
+        if (document.getElementById("release_description_text")) {
+          var a = document.getElementById("release_description_text");
+          var b = a.getElementsByTagName("a");
+          var c = Array.from(b)
+          var d = c.map(i => {return i.href})
+
+          for (var i = 0; i < d.length; i++) {
+            if (d[i].substring(24, 0) == 'https://www.anilibria.tv'){ // Проверяем ссылку на наличие https://www.anilibria.tv
+              var name_href_release = d[i].substr(33);
+              var name_release = name_href_release.substring(0, name_href_release.length - 5);
+              $('a[href="'+d[i]+'"]').attr('target', '_self');
+              $('a[href="'+d[i]+'"]').attr('href', 'release?name_t='+name_release);
+            }
+          }
+        }
+      }, 500);
+    }
+
+
+    function preloader_none() {
+      var preloader = document.getElementById("preloader");
+      var preloader_preload = document.getElementById("preloader_preload");
+      function fadeOutnojquery(el){
+        el.style.opacity = 1;
+        var interpreloader = setInterval(
+          function(){
+            el.style.opacity = el.style.opacity - 0.05;
+            if (el.style.opacity <=0.05){
+              clearInterval(interpreloader);
+              preloader_preload.style.display = "none";
+              preloader.style.display = "none";
+            }
+          },16
+        );
+      }
+      setTimeout(function(){
+        document.getElementById('loader1').setAttribute("style", 'width: 130px');
+        fadeOutnojquery(preloader_preload);
+        fadeOutnojquery(preloader);
+      },400);
+    };
+
+
+
+    function theme_auto() {
+      localStorage.setItem('my_theme', 'theme1');
+      document.getElementById('b_theme1').setAttribute("style", "");
+      document.getElementById('b_theme2').setAttribute("style", "display:none;");
+      document.getElementById('b_auto').setAttribute("style", "display:none;");
+      $('link[href="css/auto.css"]').attr('href', 'css/theme1.css');
+    };
+    function theme1() {
+      localStorage.setItem('my_theme', 'theme2');
+      document.getElementById('b_theme2').setAttribute("style", "");
+      document.getElementById('b_theme1').setAttribute("style", "display:none;");
+      document.getElementById('b_auto').setAttribute("style", "display:none;");
+      $('link[href="css/theme1.css"]').attr('href', 'css/theme2.css');
+    };
+    function theme2() {
+      localStorage.setItem('my_theme', 'auto');
+      document.getElementById('b_auto').setAttribute("style", "");
+      document.getElementById('b_theme2').setAttribute("style", "display:none;");
+      document.getElementById('b_theme1').setAttribute("style", "display:none;");
+      $('link[href="css/theme2.css"]').attr('href', 'css/auto.css');
+    };
+
+
+
+    window.addEventListener("resize", function() {
+      var width = document.documentElement.clientWidth;
+      var tallage = 92;
+      var result = width / 100 * tallage; //вычисление процентов
+      if (width <= 800) {
+        document.getElementById('app').style.width = "100%";
+      } else {
+        document.getElementById('app').style.width = result+"px";
+      }
+    }, false);
+  </script>
+  <!-- Загрузка страниц -->
+
+</head>
+<body>
+  <style media="screen"> .add_app{ display: block; position: fixed; z-index: 99999; top: 0; left: 0; width: 100%; height: 100%; min-width: 1000px; background-color: #21221d; } .add_app_center{ display: block; position: fixed; z-index: 99999; top: 0; left: 0; top: 50%; left: 50%; width: 300px; height: 400px; margin-top: -200px; margin-left: -150px; background: #2e2e2e; border-radius: var(--border-radius); } .add_app_center p{ color: #efefef; text-align: center; font-size: 18px; padding: 5px; margin: 10px 5px 5px 5px; font-weight: 400; border-radius: var(--border-radius); } .app_t{ color: #efefef; font-size: 18px; padding: 5px; margin: 5px; background: #21221d; font-weight: 400; display: inline-flex; border-radius: var(--border-radius); } .text_img{ width: 42px; height: 42px; padding: 10px; } .text_img img{ width: 40px; height: 40px; } .text_t{ padding: 5px 0px; } .text_t span{ font-size: 14px; float: left; font-weight: 300; } .add_app_close{ width: calc(100% - 10px); background: var(--card-background-3); color: #efefef; text-align: center; font-size: 18px; padding: 5px; margin: 10px 5px 5px 5px; font-weight: 400; border-radius: var(--border-radius); } .browser_text{font-size: 12px !important;margin: -10px 0 5px 55px !important;padding: 0 !important;font-weight: 300 !important;text-align: left !important;} </style> <div class="add_app" id="start_mess" style="display: none"> <div class="add_app_center"> <p>Настройка приожения</p> <div id="ios_app" style="display: none"> <p class="browser_text">*Актуально для Safary</p> <div class="app_t"> <div class="text_img"> <img src="img/icons/2_W.png" /> </div> <div class="text_t"> <span>Шаг 1.</span> <span>Нажмите кнопку «Общий доступ» на панели инструментов.</span> </div> </div> <div class="app_t"> <div class="text_img"> <img src="img/icons/1_W.png" /> </div> <div class="text_t"> <span>Шаг 2.</span> <span>Выберите «Добавить на главный экран» в меню.</span> </div> </div> <div class="app_t"> <div class="text_img"> <img src="img/icon/web/ios.png" /> </div> <div class="text_t"> <span>Шаг 3.</span> <span>Запустите LiteLibria на главном экране.</span> </div> </div> </div> <div id="android_app" style="display: none"> <p class="browser_text">*Актуально для Chrome</p> <div class="app_t"> <div class="text_img"> <img src="img/icons/17_W.png" /> </div> <div class="text_t"> <span>Шаг 1.</span> <span>Нажмите кнопку «Меню» на панели инструментов.</span> </div> </div> <div class="app_t"> <div class="text_img"> <img src="img/icons/18_W.png" /> </div> <div class="text_t"> <span>Шаг 2.</span> <span>Выберите «Добавить на гл. экран» в меню.</span> </div> </div> <div class="app_t"> <div class="text_img"> <img src="img/icon/web/Android.png" /> </div> <div class="text_t"> <span>Шаг 3.</span> <span>Запустите LiteLibria на главном экране.</span> </div> </div> </div> <p>ИЛИ</p> <button class="add_app_close" onclick="start_mess_close()">Открыть сайт</button> </div> </div>
+
+  <div id="block_notif"></div>
+
+  <div id="preloader">
+    <div id="preloader_preload" onclick="preloader_none();"></div>
+    <p id="preloader_preload_but">
+      <span id="loader_text">Идёт загрузка...</span>
+      <span id="loader1"></span>
+      <span id="loader2"></span>
+    </p>
+  </div>
+
+  <a class="back_to_top" title="Наверх">↑</a>
+  <div class="navigation">
+    <ul id="menu_n">
+      <li>
+        <a id="home_hash" href="/">
+          <span class="icon_m" id="b_page_home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M261.56 101.28a8 8 0 00-11.06 0L66.4 277.15a8 8 0 00-2.47 5.79L63.9 448a32 32 0 0032 32H192a16 16 0 0016-16V328a8 8 0 018-8h80a8 8 0 018 8v136a16 16 0 0016 16h96.06a32 32 0 0032-32V282.94a8 8 0 00-2.47-5.79z"></path><path d="M490.91 244.15l-74.8-71.56V64a16 16 0 00-16-16h-48a16 16 0 00-16 16v32l-57.92-55.38C272.77 35.14 264.71 32 256 32c-8.68 0-16.72 3.14-22.14 8.63l-212.7 203.5c-6.22 6-7 15.87-1.34 22.37A16 16 0 0043 267.56L250.5 69.28a8 8 0 0111.06 0l207.52 198.28a16 16 0 0022.59-.44c6.14-6.36 5.63-16.86-.76-22.97z"></path></svg>
+          </span>
+          <span class="text_m">Главная</span>
+        </a>
+      </li>
+      <li>
+        <a href="/catalog">
+          <span class="icon_m" id="b_page_catalog">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M368 96H144a16 16 0 010-32h224a16 16 0 010 32zM400 144H112a16 16 0 010-32h288a16 16 0 010 32zM419.13 448H92.87A44.92 44.92 0 0148 403.13V204.87A44.92 44.92 0 0192.87 160h326.26A44.92 44.92 0 01464 204.87v198.26A44.92 44.92 0 01419.13 448z"></path></svg>
+          </span>
+          <span class="text_m">Каталог</span>
+        </a>
+      </li>
+      <li>
+        <a href="/favorites">
+          <span class="icon_m" id="b_page_favorites">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M394 480a16 16 0 01-9.39-3L256 383.76 127.39 477a16 16 0 01-24.55-18.08L153 310.35 23 221.2a16 16 0 019-29.2h160.38l48.4-148.95a16 16 0 0130.44 0l48.4 149H480a16 16 0 019.05 29.2L359 310.35l50.13 148.53A16 16 0 01394 480z"></path></svg>
+          </span>
+          <span class="text_m">Избранное</span>
+        </a>
+      </li>
+      <li id="b_search" onclick="b_search()">
+        <a>
+          <span class="icon_m" id="b_page_search">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M456.69 421.39L362.6 327.3a173.81 173.81 0 0034.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.81 173.81 0 00327.3 362.6l94.09 94.09a25 25 0 0035.3-35.3zM97.92 222.72a124.8 124.8 0 11124.8 124.8 124.95 124.95 0 01-124.8-124.8z"></path></svg>
+          </span>
+          <span class="text_m">Поиск</span>
+        </a>
+      </li>
+      <li id="b_theme1" onclick="theme1()" style="display: none;">
+        <a>
+          <span class="icon_m" id="b_page_t1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 118a22 22 0 01-22-22V48a22 22 0 0144 0v48a22 22 0 01-22 22zM256 486a22 22 0 01-22-22v-48a22 22 0 0144 0v48a22 22 0 01-22 22zM369.14 164.86a22 22 0 01-15.56-37.55l33.94-33.94a22 22 0 0131.11 31.11l-33.94 33.94a21.93 21.93 0 01-15.55 6.44zM108.92 425.08a22 22 0 01-15.55-37.56l33.94-33.94a22 22 0 1131.11 31.11l-33.94 33.94a21.94 21.94 0 01-15.56 6.45zM464 278h-48a22 22 0 010-44h48a22 22 0 010 44zM96 278H48a22 22 0 010-44h48a22 22 0 010 44zM403.08 425.08a21.94 21.94 0 01-15.56-6.45l-33.94-33.94a22 22 0 0131.11-31.11l33.94 33.94a22 22 0 01-15.55 37.56zM142.86 164.86a21.89 21.89 0 01-15.55-6.44l-33.94-33.94a22 22 0 0131.11-31.11l33.94 33.94a22 22 0 01-15.56 37.55zM256 358a102 102 0 11102-102 102.12 102.12 0 01-102 102z"></path></svg>
+          </span>
+          <span class="text_m" >День</span>
+        </a>
+      </li>
+      <li id="b_theme2" onclick="theme2()" style="display: none;">
+        <a>
+          <span class="icon_m" id="b_page_t2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M264 480A232 232 0 0132 248c0-94 54-178.28 137.61-214.67a16 16 0 0121.06 21.06C181.07 76.43 176 104.66 176 136c0 110.28 89.72 200 200 200 31.34 0 59.57-5.07 81.61-14.67a16 16 0 0121.06 21.06C442.28 426 358 480 264 480z"></path></svg>
+          </span>
+          <span class="text_m">Ночь</span>
+        </a>
+      </li>
+      <li id="b_auto" onclick="theme_auto()" style="display: none;">
+        <a>
+          <span class="icon_m" id="b_page_t3">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm83.69 282.65a112.24 112.24 0 01-195-61.29 16 16 0 01-20.13-24.67l23.6-23.6a16 16 0 0122.37-.25l24.67 23.6a16 16 0 01-18 26 80.25 80.25 0 00138.72 38.83 16 16 0 0123.77 21.41zm47.76-63.34l-23.6 23.6a16 16 0 01-22.37.25l-24.67-23.6a16 16 0 0117.68-26.11A80.17 80.17 0 00196 202.64a16 16 0 11-23.82-21.37 112.17 112.17 0 01194.88 61.57 16 16 0 0120.39 24.47z"></path></svg>
+          </span>
+          <span class="text_m">Авто</span>
+        </a>
+      </li>
+    </ul>
+    <div id="search_n" class="search_s">
+      <button class="button_s" onclick="b_navigation()" style="border-radius: var(--border-radius);position: relative;margin-right: 10px;fill: var(--card-text-color);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172 172" style="margin-top: 3px;"><path d="M84.13135,21.5c-1.39872,0.02045 -2.73437,0.58534 -3.72331,1.57471l-50.16667,50.16667c-1.40412,1.34815 -1.96972,3.35005 -1.47867,5.23364c0.49105,1.8836 1.96202,3.35456 3.84561,3.84561c1.8836,0.49105 3.88549,-0.07455 5.23364,-1.47867l40.99137,-40.99137v105.27441c-0.02741,1.93842 0.99102,3.74144 2.66532,4.71865c1.6743,0.97721 3.74507,0.97721 5.41937,0c1.6743,-0.97721 2.69273,-2.78023 2.66532,-4.71865v-105.27441l40.99137,40.99137c1.34815,1.40412 3.35005,1.96971 5.23364,1.47866c1.88359,-0.49105 3.35456,-1.96202 3.84561,-3.84561c0.49105,-1.88359 -0.07455,-3.88549 -1.47866,-5.23364l-50.16667,-50.16667c-1.02666,-1.02708 -2.4252,-1.59508 -3.87728,-1.57471z"></path></svg>
+      </button>
+      <input type="text" id="search_q" name="q" class="box_s" placeholder="Поиск релиза...">
+      <button class="button_s" onclick="search_b()"><ion-icon name="search"></ion-icon></button>
+
+    </div>
+  </div>
+  <script type="text/javascript">
+    document.getElementById('b_page_home').setAttribute("style", "fill: var(--card-background-5);");
+    document.getElementById('b_page_catalog').setAttribute("style", "fill: var(--card-text-color);");
+    document.getElementById('b_page_favorites').setAttribute("style", "fill: var(--card-text-color);");
+    document.getElementById('b_page_search').setAttribute("style", "fill: var(--card-text-color);");
+    document.getElementById('b_page_t1').setAttribute("style", "fill: var(--card-text-color);");
+    document.getElementById('b_page_t2').setAttribute("style", "fill: var(--card-text-color);");
+    document.getElementById('b_page_t3').setAttribute("style", "fill: var(--card-text-color);");
+  </script>
+
+  <center>
+
+
+    <style>
+      .app_container {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        z-index: 15;
+      }
+      #app {
+        margin-bottom: 45px;
+      }
+    </style>
+
+
+    <div class="app_container">
+      <div id="app">
+        <div style="background: var(--card-background-2);border-radius: var(--border-radius);">
+          <h1 style="margin-top: 70px;color:var(--card-text-color);padding: 20px">Нет сети !</h1>
+          <h1><a href="game.html" style="color:var(--card-background-5);padding: 20px">Поиграть</a></h1>
+          <img src="img/libriatyan/1.png" style="max-width: 80%;margin-top: 30px;margin-bottom: 100px;"/>
+        </div>
+      </div>
+
+      <span id="app_version" title="Код обновления" style="font-size: 15px;font-weight: 300;text-decoration: none;background: var(--card-background-2);padding: 5px 10px;color: var(--card-text-color);float: left;margin-bottom: 65px;margin-left: 15px;border-radius: var(--border-radius);">app version</span>
+      <a href="https://rozenrod.github.io/" style="font-size: 15px;font-weight: 300;text-decoration: none;background: var(--card-background-2);padding: 5px 10px;color: var(--card-text-color);float: right;margin-bottom: 65px;margin-right: 15px;border-radius: var(--border-radius);">Rozenrod 2022</a><br />
+    </div>
+
+
+  </center>
+
+
+  <!-- Закрытие анимации загрузки -->
+  <script type="text/javascript">
+    preloader_none();
+    document.getElementById('app_version').innerHTML = `${config["cache_prefix"]}-${config["cache_version"]}`;
+  </script>
+</body>
+</html>

@@ -14,10 +14,20 @@
   --card-background-3: linear-gradient(140deg, #d93333, #b91d1d);
   --card-background-4: #e7e7e7;
   --card-background-5: #d53c3c;
+  --card-background-6: #fbfbfb;
   --card-text-color: #565656;
   --card-text-color-2: #efefef;
   --card-text-color-3: #404040 !important;
+  --card-text-color-4: #efefef;
+
+  --card-background_loader: #f4f3f4;
 }
 #preloader_preload{
   background: url('../img/2.gif');
 }
+/* #preloader_video_1{
+  display: none;
+}
+#preloader_video_2{
+  display: none;
+} */

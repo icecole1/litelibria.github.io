@@ -14,14 +14,24 @@
   --card-background-3: linear-gradient(140deg, #d93333, #b91d1d);
   --card-background-4: #272822;
   --card-background-5: #d53c3c;
+  --card-background-6: #1c1c19;
   --card-text-color: #efefef;
   --card-text-color-2: #efefef;
   --card-text-color-3: #d1d1d1 !important;
+  --card-text-color-4: #efefef;
   --image-filter: grayscale(20%);
+
+  --card-background_loader: #1b1c16;
 }
 #preloader_preload{
   background: url('../img/1.gif');
 }
+/* #preloader_video_1{
+  display: none;
+}
+#preloader_video_2{
+  display: none;
+} */
 /* .article {
   filter: grayscale(20%);
 }

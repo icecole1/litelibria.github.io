@@ -1,0 +1,10 @@
+https://litelibria.github.io/
+https://litelibria.github.io/?/catalog
+https://litelibria.github.io/?/release
+https://litelibria.github.io/?/season
+https://litelibria.github.io/?/favorites
+https://litelibria.github.io/?/myHistory
+https://litelibria.github.io/?/schedule
+https://litelibria.github.io/?/search
+https://litelibria.github.io/?/settings
+https://litelibria.github.io/game.html
