@@ -3,6 +3,7 @@
   "name": "LiteGame",
   "short_name": "LiteGame",
   "display": "standalone",
+  "id":"/game.html",
   "start_url": "/game.html",
   "scope": "/game.html",
   "background_color": "#21221d",
