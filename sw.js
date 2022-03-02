@@ -47,7 +47,6 @@ const assetUrls = [
   '/LiteGame/mp3/1.mp3',
   '/LiteGame/mp3/2.mp3',
   '/LiteGame/mp3/3.mp3',
-  // '/LiteGame/mp3/4.mp3',
   '/LiteGame/img/favicon.ico',
   '/LiteGame/img/apple-touch-icon.png',
   '/LiteGame/img/Logo-152.png',
