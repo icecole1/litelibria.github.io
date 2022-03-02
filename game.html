@@ -194,10 +194,6 @@
     </div>
 </body>
 <script>
-  function play_0() {
-    var audio0 = new Audio('LiteGame/mp3/0.wav');
-    audio0.play();
-  }
   function play_1() {
     var audio1 = new Audio('LiteGame/mp3/1.wav');
     audio1.play();
@@ -209,10 +205,6 @@
   function play_3() {
     var audio3 = new Audio('LiteGame/mp3/3.wav');
     audio3.play();
-  }
-  function play_4() {
-    var audio4 = new Audio('LiteGame/mp3/4.wav');
-    audio4.play();
   }
 
   if (localStorage.getItem('my_game_record')) {
@@ -382,14 +374,6 @@
       play_3();
       scf = sco;
     }
-
-    // if (localStorage.getItem('my_game_record') < sco && localStorage.getItem('my_game_record') != 0) {
-    //   if (scmr != 1) {
-    //     play_4();
-    //     scmr = 1;
-    //   }
-    // }
-
 	}
 
 	function spwn(e) {
