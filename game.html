@@ -212,6 +212,12 @@
     var audio4 = new Audio('LiteGame/mp3/4.mp3');
     audio4.play();
   }
+  function play_5() {
+    var audio5 = new Audio('LiteGame/mp3/5.mp3');
+    audio5.loop = true;
+    audio5.volume = 0.5;
+    audio5.play();
+  }
 
   if (localStorage.getItem('my_game_record')) {
    var my_record = localStorage.getItem('my_game_record');
@@ -396,8 +402,9 @@
 	}
 
 	function strt() {
-		phtmr = setInterval(phl, 20), spwn(8)
-    play_0()
+		phtmr = setInterval(phl, 20), spwn(8);
+    play_0();
+    play_5();
 	}
 	speed = 1, vel = {
 		x: 0,
