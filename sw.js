@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Ekidona';
-var CACHE_VERSION = '1.0.4';
+var CACHE_VERSION = '1.0.5';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
@@ -32,10 +32,8 @@ const assetUrls = [
   '/build-'+CACHE_VERSION+'/catalog.js',
   '/build-'+CACHE_VERSION+'/Sync_G.js',
   '/build-'+CACHE_VERSION+'/season.js',
+
   'game.html',
-  '/LiteGame/mp3/1.wav',
-  '/LiteGame/mp3/2.wav',
-  '/LiteGame/mp3/3.wav',
   '/LiteGame/img/favicon.ico',
   '/LiteGame/awards/1.gif',
   '/LiteGame/awards/2.gif',
