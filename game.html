@@ -196,34 +196,23 @@
 <script>
   function play_0() {
     var audio0 = new Audio('LiteGame/mp3/0.mp3');
-    audio0.volume = 0.5;
     audio0.play();
   }
   function play_1() {
     var audio1 = new Audio('LiteGame/mp3/1.mp3');
-    audio1.volume = 0.5;
     audio1.play();
   }
   function play_2() {
     var audio2 = new Audio('LiteGame/mp3/2.mp3');
-    audio2.volume = 0.5;
     audio2.play();
   }
   function play_3() {
     var audio3 = new Audio('LiteGame/mp3/3.mp3');
-    audio3.volume = 0.5;
     audio3.play();
   }
   function play_4() {
     var audio4 = new Audio('LiteGame/mp3/4.mp3');
-    audio4.volume = 0.5;
     audio4.play();
-  }
-  function play_5() {
-    var audio5 = new Audio('LiteGame/mp3/5.mp3');
-    audio5.loop = true;
-    audio5.volume = 0.3;
-    audio5.play();
   }
 
   if (localStorage.getItem('my_game_record')) {
@@ -393,7 +382,7 @@
       play_3();
       scf = sco;
     }
-    //
+
     // if (localStorage.getItem('my_game_record') < sco && localStorage.getItem('my_game_record') != 0) {
     //   if (scmr != 1) {
     //     play_4();
@@ -459,7 +448,7 @@
 		x: e.x,
 		y: e.y + r * sc
 	})), canvas.addEventListener("mousedown", function(e) {
-    // play_1();
+    play_1();
 		vel.x = (e.clientX - canvas.getBoundingClientRect().left) / w * 10 - 5, vel.y = -5 * pos.y / h, !started && (started = 1, strt())
 	}), drlp();
    </script>
