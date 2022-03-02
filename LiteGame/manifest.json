@@ -10,10 +10,10 @@
   "version": "1.0.0",
   "version_name": "Ekidona-1.0.0",
   "icons": [
-        { "src": "./LiteGame/img/favicon.ico", "type": "image/x-icon", "sizes": "32x32" },
-        { "src": "./LiteGame/img/icon-192.png", "type": "image/png", "sizes": "192x192" },
-        { "src": "./LiteGame/img/icon-512.png", "type": "image/png", "sizes": "512x512" },
-        { "src": "./LiteGame/img/icon-192-maskable.png", "type": "image/png", "sizes": "192x192", "purpose": "maskable" },
-        { "src": "./LiteGame/img/icon-512-maskable.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
+        { "src": "./img/favicon.ico", "type": "image/x-icon", "sizes": "32x32" },
+        { "src": "./img/icon-192.png", "type": "image/png", "sizes": "192x192" },
+        { "src": "./img/icon-512.png", "type": "image/png", "sizes": "512x512" },
+        { "src": "./img/icon-192-maskable.png", "type": "image/png", "sizes": "192x192", "purpose": "maskable" },
+        { "src": "./img/icon-512-maskable.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
       ]
 }
