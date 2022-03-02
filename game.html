@@ -389,17 +389,17 @@
 	function phl() {
 		for (ob of (pos.x += vel.x, pos.y += vel.y, vel.x *= .99, vel.y += .1, ns = sc + speed + (pos.y < h / 2 ? 3 - pos.y / (h / 6) : 0), speed < 4 && (speed += .001), ~~(sc / 300) != ~~(ns / 300) && spwn(~~(9 * ra())), sc = ns, pos.y > h && die(), o)) dist(scr(ob, 1), pos) < 23 && die();
 		b = b.filter(e => dist(scr(e, 1), pos) > 23 || sco++ && !1);
-    if (scf != sco) {
-      play_3();
-      scf = sco;
-    }
-
-    if (localStorage.getItem('my_game_record') < sco && localStorage.getItem('my_game_record') != 0) {
-      if (scmr != 1) {
-        play_4();
-        scmr = 1;
-      }
-    }
+    // if (scf != sco) {
+    //   play_3();
+    //   scf = sco;
+    // }
+    //
+    // if (localStorage.getItem('my_game_record') < sco && localStorage.getItem('my_game_record') != 0) {
+    //   if (scmr != 1) {
+    //     play_4();
+    //     scmr = 1;
+    //   }
+    // }
 
 	}
 
@@ -411,7 +411,6 @@
 	function strt() {
 		phtmr = setInterval(phl, 20), spwn(8);
     play_0();
-    // play_5();
 	}
 	speed = 1, vel = {
 		x: 0,
