@@ -208,6 +208,10 @@
     var audio3 = new Audio('LiteGame/mp3/3.mp3');
     audio3.play();
   }
+  function play_4() {
+    var audio4 = new Audio('LiteGame/mp3/4.mp3');
+    audio4.play();
+  }
 
   if (localStorage.getItem('my_game_record')) {
    var my_record = localStorage.getItem('my_game_record');
@@ -273,6 +277,7 @@
 		sc = 0,
 		sco = 0,
     scf = 0;
+    scmr = 0;
 
 	function ci(e, r, s, t) {
 		c.beginPath(), c.ellipse(e, r, s, s, .79, 0, 6.28), c.fill(), c.beginPath(),
@@ -375,6 +380,14 @@
       play_3();
       scf = sco;
     }
+
+    if (localStorage.getItem('my_game_record') == sco && localStorage.getItem('my_game_record') != 0) {
+      if (scmr != 1) {
+        play_4();
+        scmr = 1;
+      }
+    }
+
 	}
 
 	function spwn(e) {
