@@ -232,6 +232,16 @@
    localStorage.setItem('my_game_record', 0);
    document.getElementById('my_record').innerHTML = '0';
   }
+   // document.getElementById('a1').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a2').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a3').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a4').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a5').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a6').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a7').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a8').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a9').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a10').setAttribute("style", "display: inline-grid;");
 	g = (e => [...Array(e).keys()]);
 	const w = 480,
 		h = 640;
@@ -246,7 +256,28 @@
 		o = [],
 		b = [],
 		sc = 0,
-		sco = 0;
+		sco = 0,
+    scf = 0,
+    scmr = 0;
+
+  function play_strt() {
+    var audio_strt = new Audio('LiteGame/mp3/music/1.mp3');
+    audio_strt.loop = true;
+    audio_strt.volume = 0.4;
+    audio_strt.play();
+  }
+  function play_click() {
+    // var audio_click = new Audio('LiteGame/mp3/1.wav');
+    // audio_click.play();
+  }
+  function play_die() {
+    // var audio_die = new Audio('LiteGame/mp3/2.wav');
+    // audio_die.play();
+  }
+  function play_ball() {
+    // var audio_ball = new Audio('LiteGame/mp3/3.wav');
+    // audio_ball.play();
+  }
 
 	function ci(e, r, s, t) {
 		c.beginPath(), c.ellipse(e, r, s, s, .79, 0, 6.28), c.fill(), c.beginPath(),
@@ -261,6 +292,7 @@
 	}
 
 	function die() {
+    play_die();
 		clearInterval(phtmr), setTimeout(function() {
       console.log(sco);
       if (sco > localStorage.getItem('my_game_record')) {
@@ -344,6 +376,11 @@
 	function phl() {
 		for (ob of (pos.x += vel.x, pos.y += vel.y, vel.x *= .99, vel.y += .1, ns = sc + speed + (pos.y < h / 2 ? 3 - pos.y / (h / 6) : 0), speed < 4 && (speed += .001), ~~(sc / 300) != ~~(ns / 300) && spwn(~~(9 * ra())), sc = ns, pos.y > h && die(), o)) dist(scr(ob, 1), pos) < 23 && die();
 		b = b.filter(e => dist(scr(e, 1), pos) > 23 || sco++ && !1);
+    if (scf != sco) {
+      play_ball();
+      scf = sco;
+    }
+
 	}
 
 	function spwn(e) {
@@ -352,6 +389,7 @@
 	}
 
 	function strt() {
+    play_strt();
 		phtmr = setInterval(phl, 20), spwn(8);
 	}
 	speed = 1, vel = {
@@ -402,6 +440,7 @@
 		y: e.y + r * sc
 	})), canvas.addEventListener("mousedown", function(e) {
 		vel.x = (e.clientX - canvas.getBoundingClientRect().left) / w * 10 - 5, vel.y = -5 * pos.y / h, !started && (started = 1, strt())
+    play_click();
 	}), drlp();
    </script>
 </html>

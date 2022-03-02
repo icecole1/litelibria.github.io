@@ -45,6 +45,7 @@ const assetUrls = [
   '/LiteGame/awards/8.gif',
   '/LiteGame/awards/9.gif',
   '/LiteGame/awards/10.gif',
+  '/LiteGame/mp3/music/1.mp3',
   '/LiteGame/script.js'
 ]
 
