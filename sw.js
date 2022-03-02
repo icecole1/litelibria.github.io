@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Ekidona';
-var CACHE_VERSION = '1.0.2';
+var CACHE_VERSION = '1.0.3';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
@@ -46,7 +46,7 @@ const assetUrls = [
   '/LiteGame/mp3/0.mp3',
   '/LiteGame/mp3/1.mp3',
   '/LiteGame/mp3/2.mp3',
-  // '/LiteGame/mp3/3.mp3',
+  '/LiteGame/mp3/3.mp3',
   // '/LiteGame/mp3/4.mp3',
   '/LiteGame/img/favicon.ico',
   '/LiteGame/img/apple-touch-icon.png',
