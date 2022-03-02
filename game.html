@@ -232,16 +232,6 @@
    localStorage.setItem('my_game_record', 0);
    document.getElementById('my_record').innerHTML = '0';
   }
-   // document.getElementById('a1').setAttribute("style", "display: inline-grid;");
-   // document.getElementById('a2').setAttribute("style", "display: inline-grid;");
-   // document.getElementById('a3').setAttribute("style", "display: inline-grid;");
-   // document.getElementById('a4').setAttribute("style", "display: inline-grid;");
-   // document.getElementById('a5').setAttribute("style", "display: inline-grid;");
-   // document.getElementById('a6').setAttribute("style", "display: inline-grid;");
-   // document.getElementById('a7').setAttribute("style", "display: inline-grid;");
-   // document.getElementById('a8').setAttribute("style", "display: inline-grid;");
-   // document.getElementById('a9').setAttribute("style", "display: inline-grid;");
-   // document.getElementById('a10').setAttribute("style", "display: inline-grid;");
 	g = (e => [...Array(e).keys()]);
 	const w = 480,
 		h = 640;
@@ -263,19 +253,22 @@
   function play_strt() {
     var audio_strt = new Audio('LiteGame/mp3/music/1.mp3');
     audio_strt.loop = true;
-    audio_strt.volume = 0.4;
+    audio_strt.volume = 0.2;
     audio_strt.play();
   }
   function play_click() {
-    // var audio_click = new Audio('LiteGame/mp3/1.wav');
+    // var audio_click = new Audio('LiteGame/mp3/1.mp3');
+    // audio_click.volume = 0.5;
     // audio_click.play();
   }
   function play_die() {
-    // var audio_die = new Audio('LiteGame/mp3/2.wav');
+    // var audio_die = new Audio('LiteGame/mp3/2.mp3');
+    // audio_die.volume = 0.5;
     // audio_die.play();
   }
   function play_ball() {
-    // var audio_ball = new Audio('LiteGame/mp3/3.wav');
+    // var audio_ball = new Audio('LiteGame/mp3/3.mp3');
+    // audio_ball.volume = 0.5;
     // audio_ball.play();
   }
 
@@ -439,7 +432,7 @@
 		x: e.x,
 		y: e.y + r * sc
 	})), canvas.addEventListener("mousedown", function(e) {
-		vel.x = (e.clientX - canvas.getBoundingClientRect().left) / w * 10 - 5, vel.y = -5 * pos.y / h, !started && (started = 1, strt())
+		vel.x = (e.clientX - canvas.getBoundingClientRect().left) / w * 10 - 5, vel.y = -5 * pos.y / h, !started && (started = 1, strt());
     play_click();
 	}), drlp();
    </script>
