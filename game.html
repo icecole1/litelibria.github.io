@@ -1,94 +1,262 @@
 <!DOCTYPE html>
 <html>
-   <head>
-     <!-- Global site tag (gtag.js) - Google Analytics -->
-     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TC5V5CZHDQ"></script>
-     <script>
-       window.dataLayer = window.dataLayer || [];
-       function gtag(){dataLayer.push(arguments);}
-       gtag('js', new Date());
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TC5V5CZHDQ"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-       gtag('config', 'G-TC5V5CZHDQ');
-     </script>
-     <!-- Global site tag (gtag.js) - Google Analytics -->
-     <meta charset="utf-8">
-     <title>LiteLibria - Game</title>
-     <meta property="og:site_name" content="LiteLibria - Game">
-     <meta property="og:type" content="Website">
-     <meta property="og:title" content="LiteLibria - Game">
-     <meta property="og:description" content="Смотреть аниме онлайн в любимой озучке.">
-     <link rel="icon" href="../img/icon/web/favicon.ico" sizes="any">
+  gtag('config', 'G-TC5V5CZHDQ');
+  </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="utf-8">
+  <title>LiteGame</title>
+  <meta property="og:site_name" content="LiteGame">
+  <meta property="og:type" content="Website">
+  <meta property="og:title" content="LiteGame">
+  <meta property="og:description" content="Смотреть аниме онлайн в любимой озучке.">
+
+  <!-- iOS web app configuration -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="LiteGame">
+
+  <!-- WEB web app icons -->
+  <link rel="icon" href="LiteGame/img/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="LiteGame/img/apple-touch-icon.png">
+
+  <link rel="apple-touch-icon" sizes="152x152" href="LiteGame/img/Logo-152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="LiteGame/img/Logo-167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="LiteGame/img/Logo-180.png">
+  <!-- WEB splash screens -->
+  <!-- iPad -->
+  <link rel="apple-touch-startup-image" href="LiteGame/img/apple-touch-icon.png">
+
+  <script src="LiteGame/script.js" ></script>
 
 
-      <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
-      <style>
-    		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-        *{
-          -webkit-touch-callout: none; /* iOS Safari */
-          -webkit-user-select: none;   /* Chrome/Safari/Opera */
-          -khtml-user-select: none;    /* Konqueror */
-          -moz-user-select: none;      /* Firefox */
-          -ms-user-select: none;       /* Internet Explorer/Edge */
-          user-select: none;           /* Non-prefixed version, currently
-                                          not supported by any browser */
-        }
-    		body{
-    			background:#2e2e2e;
-    			margin: 10px 0;
-          font-family: 'Roboto', sans-serif;
-    		}
-    		#c{
-    			background:#21221d;
-    			margin:auto;
-    			display:block;
-    			border-radius: 10px;
-    			width: calc(100% - 20px);
-    			max-width: 480px;
-          font-family: 'Roboto', sans-serif;
-    		}
-    		.about{
-    			background:#21221d;
-    			margin:auto;
-    			display:block;
-    			border-radius: 10px;
-    			margin-top: 10px;
-    			margin-bottom: 10px;
-    			width: calc(100% - 20px);
-    			max-width: 480px;
-          text-align: center;
-          padding: 5px 0;
-    		}
-    		.about p{
-    			color: #efefef;
-    			font-family: 'Roboto', sans-serif;
-    			font-size: 14  px;
-    			padding: 5px;
-    		}
-    		.about a{
-    			color: #efefef;
-    			font-family: 'Roboto', sans-serif;
-    			font-size: 14px;
-    			text-decoration: none;
-    			border-bottom: 2px solid #d53c3c;
-    		}
-      </style>
-   </head>
-   <body>
-      <canvas id="c" width="480px" height="640px"></canvas>
-	  <div class="about">
-      <p>Рекорд <span id="my_record"></span></p>
-      <a href="/">Вернутся на LiteLibria</a>
-		  <p>Игра основана на проекте <a href="https://github.com/emeraldpowder/QrGame">Emerald Powder</a></p>
-	  </div>
-   </body>
-   <script>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+    *{
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none;   /* Chrome/Safari/Opera */
+      -khtml-user-select: none;    /* Konqueror */
+      -moz-user-select: none;      /* Firefox */
+      -ms-user-select: none;       /* Internet Explorer/Edge */
+      user-select: none;           /* Non-prefixed version, currently
+                not supported by any browser */
+      font-family: 'Roboto', sans-serif;
+    }
+    body{
+      background:#2e2e2e;
+      margin: 10px 0;
+    }
+    #c{
+      background:#21221d;
+      margin:auto;
+      display:block;
+      border-radius: 10px;
+      width: calc(100% - 20px);
+      max-width: 480px;
+    }
+    .about{
+      background:#21221d;
+      margin:auto;
+      display:block;
+      border-radius: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: calc(100% - 20px);
+      max-width: 480px;
+      text-align: center;
+      padding: 5px 0;
+    }
+    .about p{
+      color: #efefef;
+      font-size: 14px;
+    }
+    .about a{
+      color: #efefef;
+      font-size: 14px;
+      text-decoration: none;
+      border-bottom: 2px solid #d53c3c;
+    }
+    details{
+      text-align: left;
+      color: #efefef;
+      font-weight: 400;
+      max-width: calc(800px - 10px);
+      padding: 5px;
+      background: #2e2e2e;
+      margin: 10px;
+      border-radius: 10px;
+    }
+    summary{
+      text-align: left;
+      color: #efefef;
+      cursor: pointer;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 10px 20px;
+    }
+    h3{
+      text-align: left;
+      padding: 0;
+      margin: 5px;
+      font-size: 18px;
+    }
+    .awards_block{
+      max-width: 130px;
+      width: 100%;
+      height: 170px;
+      background: #333;
+      margin: 5px;
+      border-radius: 10px;
+      display: inline-grid;
+    }
+    .awards_block img{
+      max-width: 120px;
+      padding: 5px;
+      border-radius: 10px;
+    }
+    .awards_block span{
+      font-size: 12px;
+      padding: 4px;
+    }
+  </style>
+</head>
+<body>
+    <canvas id="c" width="480px" height="640px"></canvas>
 
-   if (localStorage.getItem('my_game_record')) {
-     document.getElementById('my_record').innerHTML = localStorage.getItem('my_game_record');
-   } else{
-     localStorage.setItem('my_game_record', 0);
-     document.getElementById('my_record').innerHTML = '0';
+    <div class="about">
+      <p style="font-weight: 400;padding: 10px;background: #2e2e2e;margin: 10px;border-radius: 10px;">Рекорд <span id="my_record"></span></p>
+      <details id="servers" style="text-align: center;">
+      <summary>Награды и ссылки</summary>
+
+      <div style="background: #21221d;padding: 5px;border-radius: 10px;">
+        <h3>Награды</h3>
+
+        <div id="a1" title="Ты собрал 1 шар" class="awards_block" style="display: none;">
+            <img src="LiteGame/awards/1.gif"/>
+            <span>Новичок</span>
+        </div>
+        <div id="a2" title="Ты собрал 4 шара" class="awards_block" style="display: none;">
+          <img src="LiteGame/awards/2.gif"/>
+          <span>Прогресс</span>
+        </div>
+        <div id="a3" title="Ты собрал 10 шаров" class="awards_block" style="display: none;">
+          <img src="LiteGame/awards/3.gif"/>
+          <span>Давай-давай</span>
+        </div>
+        <div id="a4" title="Ты собрал 15 шаров" class="awards_block" style="display: none;">
+          <img src="LiteGame/awards/4.gif"/>
+          <span>Ты монстр</span>
+        </div>
+        <div id="a5" title="Ты собрал 20 шаров" class="awards_block" style="display: none;">
+          <img src="LiteGame/awards/5.gif"/>
+          <span>Даже разраб так не смог...</span>
+        </div>
+        <div id="a6" title="Ты собрал 25 шаров" class="awards_block" style="display: none;">
+          <img src="LiteGame/awards/6.gif"/>
+          <span>Куда катится твоя жизнь...</span>
+        </div>
+        <div id="a7" title="Ты собрал 30 шаров" class="awards_block" style="display: none;">
+          <img src="LiteGame/awards/7.gif"/>
+          <span>А мама разрешила ?</span>
+        </div>
+        <div id="a8" title="Ты собрал 35 шаров" class="awards_block" style="display: none;">
+          <img src="LiteGame/awards/8.gif"/>
+          <span>Делай скрин!</span>
+        </div>
+        <div id="a9" title="Ты собрал 40 шаров" class="awards_block" style="display: none;">
+          <img src="LiteGame/awards/9.gif"/>
+          <span>DEAD INSIDE</span>
+        </div>
+        <div id="a10" title="Ты собрал больше 45 шаров" class="awards_block" style="display: none;">
+          <img src="LiteGame/awards/10.gif"/>
+          <span>Вы прошли игру?</span>
+        </div>
+
+      </div>
+      <br /><br />
+
+      <div style="background: #21221d;padding: 5px;border-radius: 10px;">
+        <h3>Ссылки</h3>
+        <a href="/">Вернутся на LiteLibria</a>
+        <p>Игра основана на проекте <a href="https://github.com/emeraldpowder/QrGame">Emerald Powder</a></p>
+      </div>
+      </details>
+    </div>
+</body>
+<script>
+  function play_0() {
+    var audio0 = new Audio('LiteGame/mp3/0.mp3');
+    audio0.play();
+  }
+  function play_1() {
+    var audio1 = new Audio('LiteGame/mp3/1.mp3');
+    audio1.play();
+  }
+  function play_2() {
+    var audio2 = new Audio('LiteGame/mp3/2.mp3');
+    audio2.play();
+  }
+  function play_3() {
+    var audio3 = new Audio('LiteGame/mp3/3.mp3');
+    audio3.play();
+  }
+
+  if (localStorage.getItem('my_game_record')) {
+   var my_record = localStorage.getItem('my_game_record');
+   document.getElementById('my_record').innerHTML = my_record;
+   console.log(my_record);
+   if (my_record >= 1) {
+     document.getElementById('a1').setAttribute("style", "display: inline-grid;");
    }
+   if (my_record >= 4) {
+     document.getElementById('a2').setAttribute("style", "display: inline-grid;");
+   }
+   if (my_record >= 10) {
+     document.getElementById('a3').setAttribute("style", "display: inline-grid;");
+   }
+   if (my_record >= 15) {
+     document.getElementById('a4').setAttribute("style", "display: inline-grid;");
+   }
+   if (my_record >= 20) {
+     document.getElementById('a5').setAttribute("style", "display: inline-grid;");
+   }
+   if (my_record >= 25) {
+     document.getElementById('a6').setAttribute("style", "display: inline-grid;");
+   }
+   if (my_record >= 30) {
+     document.getElementById('a7').setAttribute("style", "display: inline-grid;");
+   }
+   if (my_record >= 35) {
+     document.getElementById('a8').setAttribute("style", "display: inline-grid;");
+   }
+   if (my_record >= 40) {
+     document.getElementById('a9').setAttribute("style", "display: inline-grid;");
+   }
+   if (my_record >= 45) {
+     document.getElementById('a10').setAttribute("style", "display: inline-grid;");
+   }
+  } else{
+   localStorage.setItem('my_game_record', 0);
+   document.getElementById('my_record').innerHTML = '0';
+  }
+   // document.getElementById('a1').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a2').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a3').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a4').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a5').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a6').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a7').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a8').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a9').setAttribute("style", "display: inline-grid;");
+   // document.getElementById('a10').setAttribute("style", "display: inline-grid;");
 	g = (e => [...Array(e).keys()]);
 	const w = 480,
 		h = 640;
@@ -103,7 +271,8 @@
 		o = [],
 		b = [],
 		sc = 0,
-		sco = 0;
+		sco = 0,
+    scf = 0;
 
 	function ci(e, r, s, t) {
 		c.beginPath(), c.ellipse(e, r, s, s, .79, 0, 6.28), c.fill(), c.beginPath(),
@@ -118,11 +287,76 @@
 	}
 
 	function die() {
+    play_2();
 		clearInterval(phtmr), setTimeout(function() {
       console.log(sco);
       if (sco > localStorage.getItem('my_game_record')) {
         localStorage.setItem('my_game_record', sco);
-        alert("Game Over \nНовый рекорд!\nРекорд = "+sco)
+
+        var awards1 = localStorage.getItem('awards1');
+        var awards2 = localStorage.getItem('awards2');
+        var awards3 = localStorage.getItem('awards3');
+        var awards4 = localStorage.getItem('awards4');
+        var awards5 = localStorage.getItem('awards5');
+        var awards6 = localStorage.getItem('awards6');
+        var awards7 = localStorage.getItem('awards7');
+        var awards8 = localStorage.getItem('awards8');
+        var awards9 = localStorage.getItem('awards9');
+
+        if (sco >= 1) {
+          if (awards1 != "1") {
+            localStorage.setItem('awards1', '1');
+            alert("Game Over \nНовый рекорд!\nРекорд = "+sco+"\nОткрыто новое достижение")
+          }
+        }
+        if (sco >= 4) {
+          if (awards2 != "1") {
+            localStorage.setItem('awards2', '1');
+            alert("Game Over \nНовый рекорд!\nРекорд = "+sco+"\nОткрыто новое достижение")
+          }
+        }
+        if (sco >= 10) {
+          if (awards3 != "1") {
+            localStorage.setItem('awards3', '1');
+            alert("Game Over \nНовый рекорд!\nРекорд = "+sco+"\nОткрыто новое достижение")
+          }
+        }
+        if (sco >= 15) {
+          if (awards4 != "1") {
+            localStorage.setItem('awards4', '1');
+            alert("Game Over \nНовый рекорд!\nРекорд = "+sco+"\nОткрыто новое достижение")
+          }
+        }
+        if (sco >= 20) {
+          if (awards5 != "1") {
+            localStorage.setItem('awards5', '1');
+            alert("Game Over \nНовый рекорд!\nРекорд = "+sco+"\nОткрыто новое достижение")
+          }
+        }
+        if (sco >= 25) {
+          if (awards6 != "1") {
+            localStorage.setItem('awards6', '1');
+            alert("Game Over \nНовый рекорд!\nРекорд = "+sco+"\nОткрыто новое достижение")
+          }
+        }
+        if (sco >= 30) {
+          if (awards7 != "1") {
+            localStorage.setItem('awards7', '1');
+            alert("Game Over \nНовый рекорд!\nРекорд = "+sco+"\nОткрыто новое достижение")
+          }
+        }
+        if (sco >= 35) {
+          if (awards8 != "1") {
+            localStorage.setItem('awards8', '1');
+            alert("Game Over \nНовый рекорд!\nРекорд = "+sco+"\nОткрыто новое достижение")
+          }
+        }
+        if (sco >= 40) {
+          if (awards9 != "1") {
+            localStorage.setItem('awards9', '1');
+            alert("Game Over \nНовый рекорд!\nРекорд = "+sco+"\nОткрыто новое достижение")
+          }
+        }
       } else {
         alert("Game Over \nРекорд = "+localStorage.getItem('my_game_record'))
       }
@@ -136,7 +370,11 @@
 
 	function phl() {
 		for (ob of (pos.x += vel.x, pos.y += vel.y, vel.x *= .99, vel.y += .1, ns = sc + speed + (pos.y < h / 2 ? 3 - pos.y / (h / 6) : 0), speed < 4 && (speed += .001), ~~(sc / 300) != ~~(ns / 300) && spwn(~~(9 * ra())), sc = ns, pos.y > h && die(), o)) dist(scr(ob, 1), pos) < 23 && die();
-		b = b.filter(e => dist(scr(e, 1), pos) > 23 || sco++ && !1)
+		b = b.filter(e => dist(scr(e, 1), pos) > 23 || sco++ && !1);
+    if (scf != sco) {
+      play_3();
+      scf = sco;
+    }
 	}
 
 	function spwn(e) {
@@ -146,6 +384,7 @@
 
 	function strt() {
 		phtmr = setInterval(phl, 20), spwn(8)
+    play_0()
 	}
 	speed = 1, vel = {
 		x: 0,
@@ -194,6 +433,7 @@
 		x: e.x,
 		y: e.y + r * sc
 	})), canvas.addEventListener("mousedown", function(e) {
+    play_1();
 		vel.x = (e.clientX - canvas.getBoundingClientRect().left) / w * 10 - 5, vel.y = -5 * pos.y / h, !started && (started = 1, strt())
 	}), drlp();
    </script>

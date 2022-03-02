@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Ekidona';
-var CACHE_VERSION = '1.0.1';
+var CACHE_VERSION = '1.0.2';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
@@ -8,7 +8,6 @@ const assetUrls = [
   'config.js',
   '/',
   'offline.html',
-  'game.html',
   '/404.html',
   '/img/pleer.jpg',
   '/img/poster.png',
@@ -41,7 +40,30 @@ const assetUrls = [
   '/build-'+CACHE_VERSION+'/search.js',
   '/build-'+CACHE_VERSION+'/catalog.js',
   '/build-'+CACHE_VERSION+'/Sync_G.js',
-  '/build-'+CACHE_VERSION+'/season.js'
+  '/build-'+CACHE_VERSION+'/season.js',
+
+  'game.html',
+  '/LiteGame/mp3/0.mp3',
+  '/LiteGame/mp3/1.mp3',
+  '/LiteGame/mp3/2.mp3',
+  '/LiteGame/mp3/3.mp3',
+  '/LiteGame/img/favicon.ico',
+  '/LiteGame/img/apple-touch-icon.png',
+  '/LiteGame/img/Logo-152.png',
+  '/LiteGame/img/Logo-167.png',
+  '/LiteGame/img/Logo-180.png',
+  '/LiteGame/img/apple-touch-icon.png',
+  '/LiteGame/awards/1.gif',
+  '/LiteGame/awards/2.gif',
+  '/LiteGame/awards/3.gif',
+  '/LiteGame/awards/4.gif',
+  '/LiteGame/awards/5.gif',
+  '/LiteGame/awards/6.gif',
+  '/LiteGame/awards/7.gif',
+  '/LiteGame/awards/8.gif',
+  '/LiteGame/awards/9.gif',
+  '/LiteGame/awards/10.gif',
+  '/LiteGame/script.js'
 ]
 
 self.addEventListener('install', async event => {
