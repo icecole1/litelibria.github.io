@@ -35,7 +35,6 @@ const assetUrls = [
   '/build-'+CACHE_VERSION+'/season.js',
 
   'game.html',
-  '/LiteGame/mp3/0.mp3',
   '/LiteGame/mp3/1.mp3',
   '/LiteGame/mp3/2.mp3',
   '/LiteGame/mp3/3.mp3',
