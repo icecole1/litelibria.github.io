@@ -1,6 +1,16 @@
 [
   {
     "prefix":"Ekidona",
+    "version":"1.0.4",
+    "date":1646421600
+  },
+  {
+    "prefix":"Ekidona",
+    "version":"1.0.3",
+    "date":1646257200
+  },
+  {
+    "prefix":"Ekidona",
     "version":"1.0.2",
     "date":1646235000
   },

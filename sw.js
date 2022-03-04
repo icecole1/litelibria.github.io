@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Ekidona';
-var CACHE_VERSION = '1.0.3';
+var CACHE_VERSION = '1.0.4';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
