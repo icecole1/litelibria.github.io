@@ -35,17 +35,6 @@ const assetUrls = [
 
   'game.html',
   '/LiteGame/img/favicon.ico',
-  '/LiteGame/awards/1.gif',
-  '/LiteGame/awards/2.gif',
-  '/LiteGame/awards/3.gif',
-  '/LiteGame/awards/4.gif',
-  '/LiteGame/awards/5.gif',
-  '/LiteGame/awards/6.gif',
-  '/LiteGame/awards/7.gif',
-  '/LiteGame/awards/8.gif',
-  '/LiteGame/awards/9.gif',
-  '/LiteGame/awards/10.gif',
-  '/LiteGame/mp3/music/1.mp3',
   '/LiteGame/script.js'
 ]
 
