@@ -233,8 +233,10 @@
    document.getElementById('my_record').innerHTML = '0';
   }
 	g = (e => [...Array(e).keys()]);
-	const w = 480,
-		h = 640;
+  const w = 480,
+		    h = 640,
+        w2 = 460,
+        w3 = 20;
 	var canvas = document.getElementById("c"),
 		c = canvas.getContext("2d"),
 		phtmr = null,
@@ -367,6 +369,8 @@
 	}
 
 	function phl() {
+    if(pos.x > w2) pos.x = w2
+    if(pos.x < w3) pos.x = w3
 		for (ob of (pos.x += vel.x, pos.y += vel.y, vel.x *= .99, vel.y += .1, ns = sc + speed + (pos.y < h / 2 ? 3 - pos.y / (h / 6) : 0), speed < 4 && (speed += .001), ~~(sc / 300) != ~~(ns / 300) && spwn(~~(9 * ra())), sc = ns, pos.y > h && die(), o)) dist(scr(ob, 1), pos) < 23 && die();
 		b = b.filter(e => dist(scr(e, 1), pos) > 23 || sco++ && !1);
     if (scf != sco) {

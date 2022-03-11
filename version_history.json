@@ -3,57 +3,72 @@ version_history = [
     "prefix":"Ekidona",
     "version":"1.0.5",
     "date":"11 March 2022",
-    "update":[{
-      "type":"ADDED",
-      "text":"Добавлена ​​страница - <a href='buildHistory.html'>Примечания к обновлениям LiteLibria</a>"
-    }]
+    "update":[
+      {
+        "type":"ADDED",
+        "text":"Добавлена ​​страница - <a href='buildHistory.html'>Примечания к обновлениям LiteLibria</a>"
+      },{
+        "type":"FIXED",
+        "text":"Во встроенную <a href='game.html'>игру</a> добавлены лимиты по бокам"
+      }
+    ]
   },
   {
     "prefix":"Ekidona",
     "version":"1.0.4",
     "date":"4 March 2022",
-    "update":[{
-      "type":"IMPROVED",
-      "text":"Обновлён плеер"
-    }]
+    "update":[
+      {
+        "type":"IMPROVED",
+        "text":"Обновлён плеер"
+      }
+    ]
   },
   {
     "prefix":"Ekidona",
     "version":"1.0.3",
     "date":"2 March 2022",
-    "update":[{
-      "type":"FIXED",
-      "text":"Обновление встроенной игры"
-    }]
+    "update":[
+      {
+        "type":"FIXED",
+        "text":"Обновление встроенной <a href='game.html'>игры</a>"
+      }
+    ]
   },
   {
     "prefix":"Ekidona",
     "version":"1.0.2",
     "date":"2 March 2022",
-    "update":[{
-      "type":"FIXED",
-      "text":"Обновление встроенной игры"
-    }]
+    "update":[
+      {
+        "type":"FIXED",
+        "text":"Обновление встроенной <a href='game.html'>игры</a>"
+      }
+    ]
   },
   {
     "prefix":"Ekidona",
     "version":"1.0.1",
     "date":"28 February 2022",
-    "update":[{
-      "type":"ADDED",
-      "text":"Добавлена ​​игра - <a href='game.html'>Поиграть</a>"
-    }]
+    "update":[
+      {
+        "type":"ADDED",
+        "text":"Добавлена ​​игра - <a href='game.html'>Поиграть</a>"
+      }
+    ]
   },
   {
     "prefix":"Ekidona",
     "version":"1.0.0",
     "date":"28 February 2022",
-    "update":[{
-      "type":"FIXED",
-      "text":"Обновленная структура приложения"
-    },{
-      "type":"IMPROVED",
-      "text":"Изменина архитектура приложения"
-    }]
+    "update":[
+      {
+        "type":"FIXED",
+        "text":"Обновленная структура приложения"
+      },{
+        "type":"IMPROVED",
+        "text":"Изменина архитектура приложения"
+      }
+    ]
   }
 ];
