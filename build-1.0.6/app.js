@@ -39,6 +39,7 @@ function load_href() {
     } else if (id_s) {
       edit_href(href, 'id', id_s);
     }
+    localStorage.setItem('my_last_page', '');
   } else if (href == '/season') {
     edit_href(href, year_s, code_s, genres_s, voice_s, timing_s, translator_s, editing_s, decor_s, type_s);
   } else if (href == '/favorites') {
@@ -64,8 +65,31 @@ function search_b() {
   edit_href("/search", search_q);
 }
 
+function back_app() {
+  if (localStorage.getItem('my_last_page') != '') {
+    var my_scroll = localStorage.getItem('my_scroll');
+    var my_last_page = localStorage.getItem('my_last_page');
+    document.getElementById('content_release').setAttribute("style", "display: none;");
+    document.getElementById('app_release').innerHTML = "";
+    document.getElementById('content_all').setAttribute("style", "display: block;");
+    document.getElementById('but_back').setAttribute("style", "display: none;");
+    document.getElementById('but_home').setAttribute("style", "display: list-item;");
+    window.scroll(0, my_scroll);
+    editPushState(my_last_page);
+  } else {
+    document.getElementById('b_page_home').setAttribute("style", "fill: var(--card-background-5);");
+    new_url = '/';
+    editPushState(new_url);
+    page_home();
+  }
+}
+
 
 function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
+  var last_href = window.location.pathname;
+  localStorage.setItem('my_last_page', last_href);
+
+  document.getElementById('b_page_back').setAttribute("style", "fill: var(--card-text-color);");
   document.getElementById('b_page_home').setAttribute("style", "fill: var(--card-text-color);");
   document.getElementById('b_page_catalog').setAttribute("style", "fill: var(--card-text-color);");
   document.getElementById('b_page_favorites').setAttribute("style", "fill: var(--card-text-color);");
@@ -84,10 +108,11 @@ function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
     page_catalog();
 
   } else if (href == '/release') {
+    localStorage.setItem('my_scroll', window.pageYOffset);
+    window.scroll(0, 0);
     releaseConfigSync() // Функция автоматического сохранения в Google Drive
 
     if (s1 == 'id') {
-      document.getElementById('app').innerHTML = ``;
       new_url = '/release?id=' + s2;
       editPushState(new_url);
 
@@ -114,7 +139,10 @@ function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
         },100)
       })
     }
-
+    document.getElementById('content_release').setAttribute("style", "display: block;");
+    document.getElementById('content_all').setAttribute("style", "display: none;");
+    document.getElementById('but_back').setAttribute("style", "display: list-item;");
+    document.getElementById('but_home').setAttribute("style", "display: none;");
   } else if (href == '/season') {
     var href, year_s, code_s, genres_s, voice_s, timing_s, translator_s, editing_s, decor_s, type_s;
 
@@ -167,6 +195,10 @@ function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
 }
 
 function editPushState(new_url) {
+  document.getElementById('content_release').setAttribute("style", "display: none;");
+  document.getElementById('content_all').setAttribute("style", "display: block;");
+  document.getElementById('but_back').setAttribute("style", "display: none;");
+  document.getElementById('but_home').setAttribute("style", "display: list-item;");
   document.title = 'LiteLibria';
   scheduleConfigSync(0) // Синхронизация истории
   history.pushState(null, null, new_url);

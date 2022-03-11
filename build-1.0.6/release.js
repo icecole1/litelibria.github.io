@@ -1,5 +1,5 @@
 function page_release(s1) {
-  document.getElementById('app').innerHTML = `
+  document.getElementById('app_release').innerHTML = `
   <style>
     .img_favorite{
       position: absolute;

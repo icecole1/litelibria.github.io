@@ -62,20 +62,20 @@
   <script src="config.js" ></script>
 
   <!-- Загрузка страниц -->
-  <script src="build-1.0.5/catalog.js"></script>
-  <script src="build-1.0.5/release.js"></script>
-  <script src="build-1.0.5/season.js"></script>
-  <script src="build-1.0.5/favorites.js"></script>
-  <script src="build-1.0.5/myHistory.js"></script>
-  <script src="build-1.0.5/schedule.js"></script>
-  <script src="build-1.0.5/search.js"></script>
-  <script src="build-1.0.5/settings.js"></script>
-  <script src="build-1.0.5/home.js"></script>
-  <script src="build-1.0.5/playerjs.js" ></script>
-  <script src="build-1.0.5/script.js" ></script>
-  <script src="build-1.0.5/theme.js"></script>
-  <script src="build-1.0.5/Sync_G.js" ></script>
-  <script src="build-1.0.5/app.js"></script>
+  <script src="build-1.0.6/catalog.js"></script>
+  <script src="build-1.0.6/release.js"></script>
+  <script src="build-1.0.6/season.js"></script>
+  <script src="build-1.0.6/favorites.js"></script>
+  <script src="build-1.0.6/myHistory.js"></script>
+  <script src="build-1.0.6/schedule.js"></script>
+  <script src="build-1.0.6/search.js"></script>
+  <script src="build-1.0.6/settings.js"></script>
+  <script src="build-1.0.6/home.js"></script>
+  <script src="build-1.0.6/playerjs.js" ></script>
+  <script src="build-1.0.6/script.js" ></script>
+  <script src="build-1.0.6/theme.js"></script>
+  <script src="build-1.0.6/Sync_G.js" ></script>
+  <script src="build-1.0.6/app.js"></script>
   <!-- Загрузка страниц -->
 
   <script src="https://apis.google.com/js/api.js"
@@ -106,8 +106,16 @@
   <a class="back_to_top" title="Наверх">↑</a>
   <div class="navigation">
     <ul id="menu_n">
-      <li>
-        <a id="home_hash" onclick="edit_href('/')">
+      <li id="but_back">
+        <a onclick="back_app()">
+          <span class="icon_m" id="b_page_back">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172 172"></path><g fill="#cccccc"><path d="M76.93669,32.20101c-1.39592,0.04068 -2.72121,0.62301 -3.69531,1.6237l-50.16667,50.16667c-2.09823,2.0991 -2.09823,5.50149 0,7.60059l50.16667,50.16667c1.34815,1.40412 3.35005,1.96971 5.23364,1.47866c1.88359,-0.49105 3.35456,-1.96202 3.84561,-3.84561c0.49105,-1.88359 -0.07455,-3.88549 -1.47866,-5.23364l-40.99137,-40.99137h105.27441c1.93842,0.02741 3.74144,-0.99102 4.71865,-2.66532c0.97721,-1.6743 0.97721,-3.74507 0,-5.41937c-0.97721,-1.6743 -2.78023,-2.69273 -4.71865,-2.66532h-105.27441l40.99137,-40.99137c1.58706,-1.54566 2.06336,-3.90666 1.19966,-5.94672c-0.8637,-2.04007 -2.89048,-3.34134 -5.10493,-3.27756z"></path></svg>
+          </span>
+          <span class="text_m">Назад</span>
+        </a>
+      </li>
+      <li id="but_home">
+        <a onclick="edit_href('/')">
           <span class="icon_m" id="b_page_home">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M261.56 101.28a8 8 0 00-11.06 0L66.4 277.15a8 8 0 00-2.47 5.79L63.9 448a32 32 0 0032 32H192a16 16 0 0016-16V328a8 8 0 018-8h80a8 8 0 018 8v136a16 16 0 0016 16h96.06a32 32 0 0032-32V282.94a8 8 0 00-2.47-5.79z"></path><path d="M490.91 244.15l-74.8-71.56V64a16 16 0 00-16-16h-48a16 16 0 00-16 16v32l-57.92-55.38C272.77 35.14 264.71 32 256 32c-8.68 0-16.72 3.14-22.14 8.63l-212.7 203.5c-6.22 6-7 15.87-1.34 22.37A16 16 0 0043 267.56L250.5 69.28a8 8 0 0111.06 0l207.52 198.28a16 16 0 0022.59-.44c6.14-6.36 5.63-16.86-.76-22.97z"></path></svg>
           </span>
@@ -184,6 +192,9 @@
         right: 0;
         z-index: 15;
       }
+      #app_release {
+        margin-bottom: 45px;
+      }
       #app {
         margin-bottom: 45px;
       }
@@ -208,11 +219,6 @@
         animation: show 0.5s;
         z-index: 1;
       }
-
-      @keyframes showBottom {
-        from {bottom: -40px;opacity: 0;}
-        to {bottom: 0;opacity: 1;}
-      }
       @keyframes show {
         from {opacity: 0;}
         to {opacity: 1;}
@@ -221,7 +227,12 @@
 
 
     <div class="app_container">
-      <div id="app"></div>
+      <div id="content_release" style="display: none;">
+        <div id="app_release" class="release-block"></div>
+      </div>
+      <div id="content_all" style="display: none;">
+        <div id="app"></div>
+      </div>
 
       <a href="game.html" style="color: var(--card-background-5);padding: 20px;font-size: 15px;font-weight: 400;text-decoration: none;background: var(--card-background-2);padding: 5px 10px;border-radius: var(--border-radius);">Поиграть</a><br /><br /><br /><br />
       <a href="buildHistory.html"><span id="app_version" title="Код обновления" style="font-size: 15px;font-weight: 300;text-decoration: none;background: var(--card-background-2);padding: 5px 10px;color: var(--card-text-color);float: left;margin-bottom: 65px;margin-left: 15px;border-radius: var(--border-radius);">app version</span></a>

@@ -11,6 +11,11 @@
 		<priority>1.0</priority>
 	</url>
 	<url>
+		<loc>https://litelibria.github.io/buildHistory.html</loc>
+		<lastmod>2022-03-11</lastmod>
+		<priority>1.0</priority>
+	</url>
+	<url>
 		<loc>https://litelibria.github.io/?/catalog</loc>
 		<lastmod>2022-03-11</lastmod>
 		<priority>1.0</priority>

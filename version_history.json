@@ -1,6 +1,17 @@
 version_history = [
   {
     "prefix":"Ekidona",
+    "version":"1.0.6",
+    "date":"11 March 2022",
+    "update":[
+      {
+        "type":"IMPROVED",
+        "text":"Добавлена ​​возможность перехода на предыдущую страницу с сохранением позиции"
+      }
+    ]
+  },
+  {
+    "prefix":"Ekidona",
     "version":"1.0.5",
     "date":"11 March 2022",
     "update":[

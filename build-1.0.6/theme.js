@@ -94,8 +94,10 @@ window.onload = function() {
   var result = width / 100 * tallage; //вычисление процентов
   if (width <= 800) {
     document.getElementById('app').style.width = "100%";
+    document.getElementById('app_release').style.width = "100%";
   } else {
     document.getElementById('app').style.width = result+"px";
+    document.getElementById('app_release').style.width = result+"px";
   }
 
   edit_description_href();
@@ -178,7 +180,9 @@ window.addEventListener("resize", function() {
   var result = width / 100 * tallage; //вычисление процентов
   if (width <= 800) {
     document.getElementById('app').style.width = "100%";
+    document.getElementById('app_release').style.width = "100%";
   } else {
     document.getElementById('app').style.width = result+"px";
+    document.getElementById('app_release').style.width = result+"px";
   }
 }, false);
