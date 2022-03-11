@@ -139,10 +139,12 @@ function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
         },100)
       })
     }
-    document.getElementById('content_release').setAttribute("style", "display: block;");
-    document.getElementById('content_all').setAttribute("style", "display: none;");
-    document.getElementById('but_back').setAttribute("style", "display: list-item;");
-    document.getElementById('but_home').setAttribute("style", "display: none;");
+    setTimeout(function(){
+      document.getElementById('content_release').setAttribute("style", "display: block;");
+      document.getElementById('content_all').setAttribute("style", "display: none;");
+      document.getElementById('but_back').setAttribute("style", "display: list-item;");
+      document.getElementById('but_home').setAttribute("style", "display: none;");
+    },200)
   } else if (href == '/season') {
     var href, year_s, code_s, genres_s, voice_s, timing_s, translator_s, editing_s, decor_s, type_s;
 
