@@ -1,53 +1,53 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-	<loc>https://litelibria.github.io/</loc>
-	<lastmod>2022-03-11T10:23:37+01:00</lastmod>
+	<loc>https://litelibria.github.io</loc>
+	<lastmod>2022-03-11</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
 	<loc>https://litelibria.github.io/game.html</loc>
-	<lastmod>2022-03-11T10:23:37+01:00</lastmod>
+	<lastmod>2022-03-11</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
 	<loc>https://litelibria.github.io/?/catalog</loc>
-	<lastmod>2022-03-11T10:23:37+01:00</lastmod>
+	<lastmod>2022-03-11</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
 	<loc>https://litelibria.github.io/?/release</loc>
-	<lastmod>2022-03-11T10:23:37+01:00</lastmod>
+	<lastmod>2022-03-11</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
 	<loc>https://litelibria.github.io/?/season</loc>
-	<lastmod>2022-03-11T10:23:37+01:00</lastmod>
+	<lastmod>2022-03-11</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
 	<loc>https://litelibria.github.io/?/favorites</loc>
-	<lastmod>2022-03-11T10:23:37+01:00</lastmod>
+	<lastmod>2022-03-11</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
 	<loc>https://litelibria.github.io/?/myHistory</loc>
-	<lastmod>2022-03-11T10:23:37+01:00</lastmod>
+	<lastmod>2022-03-11</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
 	<loc>https://litelibria.github.io/?/schedule</loc>
-	<lastmod>2022-03-11T10:23:37+01:00</lastmod>
+	<lastmod>2022-03-11</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
 	<loc>https://litelibria.github.io/?/search</loc>
-	<lastmod>2022-03-11T10:23:37+01:00</lastmod>
+	<lastmod>2022-03-11</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
 	<loc>https://litelibria.github.io/?/settings</loc>
-	<lastmod>2022-03-11T10:23:37+01:00</lastmod>
+	<lastmod>2022-03-11</lastmod>
 	<priority>1.0</priority>
 </url>
 </urlset>
