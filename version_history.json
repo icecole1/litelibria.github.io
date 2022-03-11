@@ -1,27 +1,59 @@
-[
+version_history = [
+  {
+    "prefix":"Ekidona",
+    "version":"1.0.5",
+    "date":"11 March 2022",
+    "update":[{
+      "type":"ADDED",
+      "text":"Добавлена ​​страница - <a href='buildHistory.html'>Примечания к обновлениям LiteLibria</a>"
+    }]
+  },
   {
     "prefix":"Ekidona",
     "version":"1.0.4",
-    "date":1646421600
+    "date":"4 March 2022",
+    "update":[{
+      "type":"IMPROVED",
+      "text":"Обновлён плеер"
+    }]
   },
   {
     "prefix":"Ekidona",
     "version":"1.0.3",
-    "date":1646257200
+    "date":"2 March 2022",
+    "update":[{
+      "type":"FIXED",
+      "text":"Обновление встроенной игры"
+    }]
   },
   {
     "prefix":"Ekidona",
     "version":"1.0.2",
-    "date":1646235000
+    "date":"2 March 2022",
+    "update":[{
+      "type":"FIXED",
+      "text":"Обновление встроенной игры"
+    }]
   },
   {
     "prefix":"Ekidona",
     "version":"1.0.1",
-    "date":1646080200
+    "date":"28 February 2022",
+    "update":[{
+      "type":"ADDED",
+      "text":"Добавлена ​​игра - <a href='game.html'>Поиграть</a>"
+    }]
   },
   {
     "prefix":"Ekidona",
     "version":"1.0.0",
-    "date":1646060400
+    "date":"28 February 2022",
+    "update":[{
+      "type":"FIXED",
+      "text":"Обновленная структура приложения"
+    },{
+      "type":"IMPROVED",
+      "text":"Изменина архитектура приложения"
+    }]
   }
-]
+];

@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+*{
+  border: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  font-weight: 300;
+  outline:none;
+}
+
+.no-touch ::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  background-color: #f9f9fd;
+  border-radius: 10px;
+  background: 0;
+}
+.no-touch ::-webkit-scrollbar-thumb {
+  background: linear-gradient(140deg, #d93333, #b91d1d);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 10px;
+}
+a{
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+body{
+  background-color: #21221d;
+  color: #fff;
+  transition: .3s ease;
+}
+
+.his{
+  max-width: 1000px;
+  width: 90%;
+  min-height: 100px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+.his h1{
+  text-align: left;
+  font-size: 24px;
+  color: #efefef;
+  padding: 5px 10px;
+}
+
+.his_block{
+  width: 100%;
+  min-height: 10px;
+  background-color: #2e2e2e;
+  margin: 10px 0 20px 0;
+  border-radius: 10px;
+  text-align: left;
+  padding: 10px 0;
+}
+.his_block p{
+  padding: 10px;
+}
+
+.his_block_v1 span{
+  color: #adadad;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.his_block_v2{
+  background: linear-gradient(140deg, #d93333, #b91d1d) !important;
+  color: #efefef !important;
+}
+
+
+
+.change-log {
+  list-style: none !important;
+  margin: 10px 10px 5px 10px;
+  background: #21221d;
+  padding: 5px;
+  border-radius: 10px;
+}
+.d-flex {
+  display: flex !important;
+  margin: 4px !important;
+  margin-left: 10px;
+  align-items: flex-start !important;
+}
+.change-badge {
+  display: inline;
+  font-size: 12px;
+  font-weight: 400;
+  margin-right: 8px;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px 10px !important;
+  flex: 0 0 75px;
+}
+.change-description{
+  padding-top: 4px;
+  font-size: 14px;
+  font-weight: 300;
+}
+.change-description a{
+  color: #efefef;
+  border-bottom: 1px solid #d53c3c;
+  padding-top: 4px;
+  font-size: 14px;
+  font-weight: 300;
+}
+.his_ADDED{
+  background: #287c3b !important;
+  color: #efefef !important;
+}
+.his_FIXED{
+  background: #a78117 !important;
+  color: #efefef !important;
+}
+.his_IMPROVED{
+  background: #2f506c !important;
+  color: #efefef !important;
+}
+.his_text{
+  display: inline-block;
+  background: #21221d;
+  color: #efefef;
+  padding: 5px 10px !important;
+  border-radius: 10px;
+  margin: 5px 0;
+  padding-top: 4px;
+}
