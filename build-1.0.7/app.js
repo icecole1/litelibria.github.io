@@ -26,6 +26,8 @@ function load_href() {
 
   if (href == '/catalog') {
     edit_href(href);
+  } else if (href == '/random') {
+    edit_href('/release', 'random');
   } else if (href == '/release') {
     if (name_t) {
       url = 'https://api.anilibria.tv/v2/getTitle?code='+name_t+'&filter=id';
@@ -121,7 +123,10 @@ function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
       setTimeout(function(){
         page_release(s2);
       },100)
-
+      document.getElementById('content_release').setAttribute("style", "display: block;");
+      document.getElementById('content_all').setAttribute("style", "display: none;");
+      document.getElementById('but_back').setAttribute("style", "display: list-item;");
+      document.getElementById('but_home').setAttribute("style", "display: none;");
     } else if (s1 == 'random') {
       url = 'https://api.anilibria.tv/v2/getRandomTitle?filter=id';
       fetch(url)
@@ -138,13 +143,13 @@ function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
           page_release(data["id"]);
         },100)
       })
+      setTimeout(function(){
+        document.getElementById('content_release').setAttribute("style", "display: block;");
+        document.getElementById('content_all').setAttribute("style", "display: none;");
+        document.getElementById('but_back').setAttribute("style", "display: list-item;");
+        document.getElementById('but_home').setAttribute("style", "display: none;");
+      },200)
     }
-    setTimeout(function(){
-      document.getElementById('content_release').setAttribute("style", "display: block;");
-      document.getElementById('content_all').setAttribute("style", "display: none;");
-      document.getElementById('but_back').setAttribute("style", "display: list-item;");
-      document.getElementById('but_home').setAttribute("style", "display: none;");
-    },200)
   } else if (href == '/season') {
     var href, year_s, code_s, genres_s, voice_s, timing_s, translator_s, editing_s, decor_s, type_s;
 

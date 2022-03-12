@@ -1,6 +1,17 @@
 version_history = [
   {
     "prefix":"Ekidona",
+    "version":"1.0.7",
+    "date":"12 March 2022",
+    "update":[
+      {
+        "type":"FIXED",
+        "text":"Исправлены ошибки"
+      }
+    ]
+  },
+  {
+    "prefix":"Ekidona",
     "version":"1.0.6",
     "date":"11 March 2022",
     "update":[
