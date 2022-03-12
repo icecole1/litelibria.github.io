@@ -29,6 +29,7 @@ function load_href() {
   } else if (href == '/random') {
     edit_href('/release', 'random');
     setTimeout(function(){
+      localStorage.setItem('my_last_page', '');
       document.getElementById('content_release').setAttribute("style", "display: block;");
       document.getElementById('content_all').setAttribute("style", "display: none;");
       document.getElementById('but_back').setAttribute("style", "display: list-item;");
