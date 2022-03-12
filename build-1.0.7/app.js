@@ -28,6 +28,12 @@ function load_href() {
     edit_href(href);
   } else if (href == '/random') {
     edit_href('/release', 'random');
+    setTimeout(function(){
+      document.getElementById('content_release').setAttribute("style", "display: block;");
+      document.getElementById('content_all').setAttribute("style", "display: none;");
+      document.getElementById('but_back').setAttribute("style", "display: list-item;");
+      document.getElementById('but_home').setAttribute("style", "display: none;");
+    },200)
   } else if (href == '/release') {
     if (name_t) {
       url = 'https://api.anilibria.tv/v2/getTitle?code='+name_t+'&filter=id';
