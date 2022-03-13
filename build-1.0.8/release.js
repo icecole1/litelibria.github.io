@@ -120,14 +120,8 @@ function page_release(s1) {
           <a href="https://www.anilibria.tv/pages/donate.php" class="favor_button">Поддержать проект</a>
         </div>
 
-
-        <div id="player_ifr" style="display: none;"></div>
         <div id="player_bas">
           <div id="player"></div>
-        </div>
-        <div id="player_btn" class="player_select">
-          <button type="submit" class="favor_button" id="player_select_1" onclick="player_selec('1')" style="background:var(--card-background-3); color:var(--card-text-color-2)!important;">Основной плеер</button>
-          <button type="submit" class="favor_button" id="player_select_2" onclick="player_selec('2')" style="background:var(--card-background-2); color:var(--card-text-color)!important;">Запасной плеер</button>
         </div>
         <div class="but_Hotkeys">
           <p><span>Клавиша F</span><span>Полноэкранный режим видео</span></p>
