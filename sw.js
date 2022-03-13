@@ -10,7 +10,7 @@ const assetUrls = [
   'offline.html',
   '/404.html',
   '/img/pleer.png',
-  '/img/poster_mobile.jpg',
+  '/img/poster_mobile.png',
   '/img/poster.png',
   '/img/2.gif',
   '/img/1.gif',
