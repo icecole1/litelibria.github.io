@@ -1,6 +1,17 @@
 version_history = [
   {
     "prefix":"Ekidona",
+    "version":"1.0.8",
+    "date":"13 March 2022",
+    "update":[
+      {
+        "type":"IMPROVED",
+        "text":"Добавлен новый вид релиза для мобильных устройств"
+      }
+    ]
+  },
+  {
+    "prefix":"Ekidona",
     "version":"1.0.7",
     "date":"12 March 2022",
     "update":[

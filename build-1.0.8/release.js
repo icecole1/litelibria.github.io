@@ -69,6 +69,7 @@ function page_release(s1) {
         <div class="release-list">
           <span class="img_favorite" id="rel_in_favorites">В избранном у 0</span>
           <img id="rel_posters_medium_url" src="img/poster.png" alt=""/>
+          <img id="rel_posters_mobile_url" src="" alt="" style="display:none"/>
           <div class="release-det">
             <p class="release-name" id="rel_names_ru">Тайтл</p>
             <p class="release-description" id="rel_genres"></p>
@@ -147,7 +148,193 @@ function page_release(s1) {
 
   var my_server = localStorage.getItem('my_server');
 
-  var url = "https://api.anilibria.tv/v2/getCachingNodes";
+  // var url = "https://api.anilibria.tv/v2/getCachingNodes";
+  var url = config["titels_api"]+"getCachingNodes";
+  fetch(url)
+  .then(function (response) {
+    if (response.status !== 200) {
+      return Promise.reject(new Error(response.statusText))
+    }
+    return Promise.resolve(response)
+  })
+  .then(function (response) {
+    return response.json()
+  })
+  .then(function (data) {
+    for (var i = 0; i < data.length; i++) {
+
+      if (!my_server) {
+        var style_server = "background: var(--card-background-2);color: var(--card-text-color)!important;cursor:pointer;";
+        var title_server = "Сменить сервер";
+      } else if (my_server == 'auto') {
+        var style_server = "background: var(--card-background-2);color: var(--card-text-color)!important;cursor:pointer;";
+        var title_server = "Сменить сервер";
+      }else{
+        if (my_server == data[i]) {
+          var style_server = "color: var(--card-text-color-2)!important;background: var(--card-background-3)!important;cursor:pointer;";
+          var title_server = "Выбранный сервер";
+        } else {
+          var style_server = "background: var(--card-background-2);color: var(--card-text-color)!important;cursor:pointer;";
+          var title_server = "Сменить сервер";
+        }
+      }
+
+      var div = document.createElement('span');
+      document.getElementById('servers').appendChild(div);
+      div.innerHTML += `<a title="${title_server}" onclick="release_server('${data[i]}')" class="release-href release-href_hov" style="margin: 5px !important;width: 100px;${style_server}">Сервер ${data[i]}</a>`;
+    }
+    var div = document.createElement('span');
+    document.getElementById('servers').appendChild(div);
+    if (!my_server) {
+      div.innerHTML += `<a title="Выбранный сервер" onclick="release_server(\'auto\')" class="release-href release-href_hov" style="cursor:pointer;margin: 5px !important;width: 100px;color: var(--card-text-color-2)!important;background: var(--card-background-3)!important;">Сервер авто выбор</a>`;
+    } else if (my_server == 'auto') {
+      div.innerHTML += `<a title="Выбранный сервер" onclick="release_server(\'auto\')" class="release-href release-href_hov" style="cursor:pointer;margin: 5px !important;width: 100px;color: var(--card-text-color-2)!important;background: var(--card-background-3)!important;">Сервер авто выбор</a>`;
+    } else {
+      div.innerHTML += `<a title="Сменить сервер" onclick="release_server(\'auto\')" class="release-href release-href_hov" style="cursor:pointer;margin: 5px !important;width: 100px;background: var(--card-background-2);color: var(--card-text-color)!important;">Сервер авто выбор</a>`;
+    }
+  })
+
+  load_relise(s1);
+
+}
+
+function page_release_mobile(s1) {
+  document.getElementById('app_release').innerHTML = `
+  <style>
+    .img_favorite{
+      position: absolute;
+      display: block;
+      background: var(--card-background-3);
+      opacity: 0.8;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--card-text-color-2) !important;
+      text-decoration: none;
+      padding: 8px 15px;
+      text-align: center;
+      border-radius: 0px var(--card-border-radius) 0px var(--card-border-radius);
+      transition: .3s ease;
+      margin-top: 375px;
+    }
+    @media (max-width: 880px){
+      .img_favorite{
+        display: initial;
+      }
+    }
+    .week_block{
+      background: var(--card-background);
+      margin-top: 15px;
+      width: calc(100% - 10px);
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--card-text-color-2) !important;
+      text-decoration: none;
+      padding: 10px 5px;
+      text-align: center;
+      border-radius: var(--border-radius);
+      margin-right: 10px;
+      transition: .3s ease;
+    }
+    .week_block_a{
+      background: #2e2e2e;
+      color: var(--card-text-color-2) !important;
+    }
+    .release-href{
+      padding: 8px 9px;
+      font-size: 15px;
+      border: 0px;
+      margin: 0px;
+    }
+    .favor_button{
+      padding: 5px 7px;
+    }
+    .favor_button_a{
+      border: 0 !important;
+      padding: 4.5px 5px !important;
+      margin: 0px 2px !important;
+      margin: -12px 0px !important;
+      cursor: pointer;
+    }
+    .favor_button_a img{
+      float: left !important;
+      height: 25px;
+      margin: 0px;
+    }
+  </style>
+
+  <div class="release-block">
+    <center>
+      <div class="release-player" style="padding: 10px;width: calc(100% - 20px);">
+        <div id="player_bas">
+          <div id="player"></div>
+        </div>
+      </div>
+      <div id="release_block">
+        <div class="release-list" style="margin-top: 0;">
+          <div class="release-det" style="margin: 0px 20px;">
+            <img id="rel_posters_mobile_url" src="img/poster_mobile.png" alt="" style="width: 100%;height: auto;border-radius: 4px;margin-top: 10px;"/>
+            <img id="rel_posters_medium_url" src="" alt="" style="display:none"/>
+            <span class="img_favorite" id="rel_in_favorites" style="position: relative;display: block;border-radius: 0 0 4px 4px;margin-top: -39px;">В избранном у 0</span>
+            <p class="release-name" id="rel_names_ru">Тайтл</p>
+            <p class="release-description" id="rel_genres"></p>
+            <center>
+              <div class="week_block" id="rel_week_day_text_none">
+                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_1">Пн</a>
+                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_2">Вт</a>
+                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_3">Ср</a>
+                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_4">Чт</a>
+                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_5">Пт</a>
+                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_6">Сб</a>
+                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_7">Вс</a>
+              </div>
+            </center>
+            <center>
+              <div class="week_block">
+                <a id="rel_seasonANDyear" class="release-href favor_button_a release-href_hov" style="padding: 8px !important;">2022</a>
+                <a id="rel_type_code" class="release-href favor_button_a release-href_hov" style="padding: 8px !important;margin: 0px !important;">ТВ (12 эп.), 24 мин.</a>
+                <a class="release-href favor_button_a release-href_hov" title="Удалить из избранное" id="delFavorite_rel" onclick="delFavorite(id_t)" style="display:none;"><img src="img/icons/20_W.png"/></a>
+                <a class="release-href favor_button_a release-href_hov" title="Добавить в избранное" id="addFavorite_rel" onclick="addFavorite(id_t)" style="display:none;"><img src="img/icons/19_W.png"/></a>
+              </div>
+            </center>
+
+            <p class="release-description" id="rel_announce"></p><br />
+
+            <p class="release-description" id="release_description_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div id="hidden2" style="display: none;">
+              <br />
+              <p class="release-description" id="rel_status_string" >Статус: </p>
+              <p class="release-description" id="rel_voice_html" >Озвучка: </p>
+              <p class="release-description" id="rel_timing_html" >Тайминг: </p>
+              <p class="release-description" id="rel_translator_html" >Перевод: </p>
+              <p class="release-description" id="rel_editing_html" >Редактура: </p>
+              <p class="release-description" id="rel_decor_html" >Оформление: </p>
+              <br />
+              <p class="release-description" id="rel_names_en">Навзание EN: </p>
+              <br />
+              <p class="release-description"><a id="rel_SHIKIMORI" href="https://shikimori.one/animes?search=" target="_blank">Поиск SHIKIMORI</a></p>
+              <br />
+            </div>
+            <p style="cursor:pointer;margin-top:10px; margin-bottom: 5px;"><a onclick="view('hidden1', 'hidden2', 'hidden3'); return false" style="color: var(--card-text-color-3);border-bottom: 1px solid var(--card-background-5);">Подробнее...</a></p>
+            <br><br>
+            <div class="player_select" style="text-align: center;">
+              <a href="https://www.anilibria.tv/pages/donate.php" class="favor_button">Поддержать проект</a>
+            </div>
+            <details id="servers" style="text-align: center;">
+               <summary>Если серия не грузит, то попробуйте поменять сервер.</summary>
+            </details>
+          </div>
+        </div>
+      </div>
+    </center>
+  </div>
+  `;
+
+
+  var my_server = localStorage.getItem('my_server');
+
+  // var url = "https://api.anilibria.tv/v2/getCachingNodes";
+  var url = config["titels_api"]+"getCachingNodes";
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -202,7 +389,8 @@ var dataPlayer,
 
 function delFavorite(id_t) {
   // console.log(id_t);
-  var url = "https://api.anilibria.tv/v2/delFavorite?session="+cookie+"&title_id="+id_t;
+  // var url = "https://api.anilibria.tv/v2/delFavorite?session="+cookie+"&title_id="+id_t;
+  var url = config["titels_api"]+"delFavorite?session="+cookie+"&title_id="+id_t;
 
   var xhr = new XMLHttpRequest();
   xhr.open("DELETE", url, true);
@@ -220,7 +408,8 @@ function delFavorite(id_t) {
 }
 function addFavorite(id_t) {
   // console.log(id_t);
-  var url = "https://api.anilibria.tv/v2/addFavorite?session="+cookie+"&title_id="+id_t;
+  // var url = "https://api.anilibria.tv/v2/addFavorite?session="+cookie+"&title_id="+id_t;
+  var url = config["titels_api"]+"addFavorite?session="+cookie+"&title_id="+id_t;
 
   var xhr = new XMLHttpRequest();
   xhr.open("PUT", url, true);
@@ -236,28 +425,17 @@ function addFavorite(id_t) {
   document.getElementById('delFavorite_rel').setAttribute("style", "");
   document.getElementById('addFavorite_rel').setAttribute("style", "display:none;");
 }
-function player_selec(player) {
-  if (player == '1') {
-    document.getElementById('player_ifr').setAttribute("style", "display:none");
-    document.getElementById('player_bas').setAttribute("style", "");
-    document.getElementById('player_select_1').setAttribute("style", "background:var(--card-background-3); color:var(--card-text-color-2)!important");
-    document.getElementById('player_select_2').setAttribute("style", "background:var(--card-background-2); color:var(--card-text-color)!important;");
-  } else if (player == '2') {
-    document.getElementById('player_ifr').setAttribute("style", "margin-bottom: -4px;");
-    document.getElementById('player_bas').setAttribute("style", "display:none");
-    document.getElementById('player_select_1').setAttribute("style", "background:var(--card-background-2); color:var(--card-text-color)!important");
-    document.getElementById('player_select_2').setAttribute("style", "background:var(--card-background-3); color:var(--card-text-color-2)!important;");
-  }
-}
 
 function load_relise(s1) {
   var url_relise = '';
 
   var arr_api = JSON.parse(localStorage.getItem('my_api_cash'));
   if (!arr_api) {
-    url = 'https://api.anilibria.tv/v2/getTitle?id='+s1+'&description_type=html&remove=posters.small,posters.original,torrents';
+    // url = 'https://api.anilibria.tv/v2/getTitle?id='+s1+'&description_type=html&remove=posters.small,posters.original,torrents';
+    url = config["titels_api"]+'getTitle?id='+s1+'&description_type=html&remove=posters.small,posters.original,torrents';
   } else {
-    url = 'https://api.anilibria.tv/v2/getTitle?id='+s1+'&filter=id,player';
+    // url = 'https://api.anilibria.tv/v2/getTitle?id='+s1+'&filter=id,player';
+    url = config["titels_api"]+'getTitle?id='+s1+'&filter=id,player';
   }
 
   fetch(url)
@@ -271,13 +449,6 @@ function load_relise(s1) {
     return response.json()
   })
   .then(function (data) {
-    // Добавление запасного плеера
-    if (data['player']['alternative_player']) {
-      document.getElementById('player_ifr').innerHTML = `<iframe class="iframe_player" src="https:${data['player']['alternative_player']}" allowfullscreen></iframe>`;
-    } else {
-      document.getElementById('player_btn').setAttribute("style", "display:none;");
-    }
-
     // console.log(data);
     var url = document.location;
     var paramsString = document.location.search;
@@ -461,6 +632,7 @@ function release_html(id_t, data) {
 
   document.getElementById('rel_in_favorites').innerHTML = `В избранном у  ${data["in_favorites"]}`;
   document.getElementById('rel_posters_medium_url').src = "https://www.anilibria.tv"+data["posters"]["medium"]["url"];
+  document.getElementById('rel_posters_mobile_url').src = "https://api.7o7.co/anilibria_bot/getPoster/"+data["id"];
   document.getElementById('rel_names_ru').innerHTML = `${data["names"]["ru"]}`;
   document.getElementById('rel_genres').innerHTML = `${genres}`;
   document.getElementById('rel_seasonANDyear').innerHTML = `${seasonANDyear_text}`;
@@ -515,7 +687,7 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
       if (dataPlayer["playlist"][i2]["preview"]) {
         poster_preview = "https://anilibria.tv/"+dataPlayer["playlist"][i2]["preview"];
       } else {
-        poster_preview = "img/pleer.jpg";
+        poster_preview = "img/pleer.png";
       }
       var url_relise_comma = " ";
       if (i2 != dataPlayerSerie) {
@@ -528,7 +700,7 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
   let str_playlist = JSON.parse('['+strPlayer+']');
   var player = new Playerjs({
     id:"player",
-    poster:"img/pleer.jpg",
+    poster:"img/pleer.png",
     file:"",
     cuid: id_t
   });
@@ -551,7 +723,8 @@ function PlayerjsEvents(event,id,info){
 
 function load_relise_Fav(id_t) {
   var cookie = localStorage.getItem('PHPSESSID');
-  var url_ses="https://api.anilibria.tv/v2/getFavorites?session="+cookie+"&filter=id&limit=4000";
+  // var url_ses="https://api.anilibria.tv/v2/getFavorites?session="+cookie+"&filter=id&limit=4000";
+  var url_ses = config["titels_api"]+"getFavorites?session="+cookie+"&filter=id&limit=4000";
   fetch(url_ses)
   .then(function (response) {
     return Promise.resolve(response)

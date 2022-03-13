@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Ekidona';
-var CACHE_VERSION = '1.0.7';
+var CACHE_VERSION = '1.0.8';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX;
@@ -9,7 +9,8 @@ const assetUrls = [
   '/',
   'offline.html',
   '/404.html',
-  '/img/pleer.jpg',
+  '/img/pleer.png',
+  '/img/poster_mobile.jpg',
   '/img/poster.png',
   '/img/2.gif',
   '/img/1.gif',

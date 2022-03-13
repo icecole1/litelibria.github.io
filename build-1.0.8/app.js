@@ -37,7 +37,9 @@ function load_href() {
     },200)
   } else if (href == '/release') {
     if (name_t) {
-      url = 'https://api.anilibria.tv/v2/getTitle?code='+name_t+'&filter=id';
+      // url = 'https://api.anilibria.tv/v2/getTitle?code='+name_t+'&filter=id';
+      url = config["titels_api"]+'getTitle?code='+name_t+'&filter=id';
+
       fetch(url)
       .then(function (response) {
         return response.json()
@@ -117,6 +119,8 @@ function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
     page_catalog();
 
   } else if (href == '/release') {
+    var width = document.documentElement.clientWidth;
+
     localStorage.setItem('my_scroll', window.pageYOffset);
     window.scroll(0, 0);
     releaseConfigSync() // Функция автоматического сохранения в Google Drive
@@ -128,14 +132,20 @@ function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
       // Открываем релиз по таймеру
       // Для прокрутки страници вверх
       setTimeout(function(){
-        page_release(s2);
+        if (width > 800) {
+          page_release(s2);
+        } else {
+          page_release_mobile(s2)
+        }
+
       },100)
       document.getElementById('content_release').setAttribute("style", "display: block;");
       document.getElementById('content_all').setAttribute("style", "display: none;");
       document.getElementById('but_back').setAttribute("style", "display: list-item;");
       document.getElementById('but_home').setAttribute("style", "display: none;");
     } else if (s1 == 'random') {
-      url = 'https://api.anilibria.tv/v2/getRandomTitle?filter=id';
+      // url = 'https://api.anilibria.tv/v2/getRandomTitle?filter=id';
+      url = config["titels_api"]+'getRandomTitle?filter=id';
       fetch(url)
       .then(function (response) {
         return response.json()
@@ -147,7 +157,11 @@ function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
         // Открываем релиз по таймеру
         // Для прокрутки страници вверх
         setTimeout(function(){
-          page_release(data["id"]);
+          if (width > 800) {
+            page_release(data["id"]);
+          } else {
+            page_release_mobile(data["id"])
+          }
         },100)
       })
       setTimeout(function(){
