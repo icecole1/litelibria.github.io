@@ -451,7 +451,7 @@ body{
   padding: 4px 8px;
   width: 187px;
   background: var(--card-background-3);
-  opacity: 0.9;
+  opacity: 1;
   display: block;
   text-decoration: none;
   font-size: 14px;
@@ -461,6 +461,30 @@ body{
   position: absolute;
   white-space: break-spaces;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
+  animation: show_announce 0.5s;
+}
+.button_announce{
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  background: var(--card-background-3);
+  opacity: 1;
+  border-radius: 0px var(--border-radius);
+  display: block;
+  margin-left: 173px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 300;
+  color: #efefef;
+  z-index: 1;
+  position: absolute;
+  box-shadow: var(--shadow-l1);
+  animation: show_announce 0.5s;
+}
+@keyframes show_announce {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 .article:hover{
     box-shadow: var(--shadow-l4);
@@ -474,8 +498,7 @@ body{
     transition: .3s ease;
     opacity: 1;
 }
-.article:hover .article_ser,
-.article:hover .article_announce{
+.article:hover .article_ser{
     opacity:0;
     display: none;
     /* transition: .15s ease; */

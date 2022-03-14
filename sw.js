@@ -1,8 +1,8 @@
 var CACHE_PREFIX = 'Ekidona';
-var CACHE_VERSION = '1.0.9';
+var CACHE_VERSION = '1.0.10';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
-const dynamicCacheName = 'd-'+CACHE_PREFIX;
+const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 
 const assetUrls = [
   'config.js',

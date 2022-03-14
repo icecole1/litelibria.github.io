@@ -28,7 +28,8 @@ function load_api_home(n) {
   edit = parseInt(localStorage.getItem('my_page'));
   after_num = edit;
 
-  var url = "https://api.anilibria.tv/v2/getUpdates?remove=torrents,player.playlist&limit="+num+"&after="+after_num;
+  // var url = "https://api.anilibria.tv/v2/getUpdates?remove=torrents,player.playlist&limit="+num+"&after="+after_num;
+  var url = config["titels_api"]+"getUpdates?remove=torrents,player.playlist&limit="+num+"&after="+after_num;
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -256,7 +257,9 @@ function load_api_search(index_article, n, s1) {
   edit = parseInt(localStorage.getItem('my_page'));
   after_num = edit;
 
-  var url = "https://api.anilibria.tv/v2/searchTitles?search="+s1+"&remove=torrents,player.playlist&limit="+num+"&after="+after_num;
+  // var url = "https://api.anilibria.tv/v2/searchTitles?search="+s1+"&remove=torrents,player.playlist&limit="+num+"&after="+after_num;
+  var url = config["titels_api"]+"searchTitles?search="+s1+"&remove=torrents,player.playlist&limit="+num+"&after="+after_num;
+
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -451,7 +454,9 @@ function article_favorites(url_pop, block_id) {
 // Функция вывода тайтлов в блок слайдера отсортированных по популярности
 function article_small_INfavorites(block_id) {
   var block_id
-  var url_pop = 'https://api.anilibria.tv/v2/advancedSearch?query=1&order_by=in_favorites&sort_direction=1&remove=torrents,player.playlist&description_type=html&limit=20';
+  // var url_pop = 'https://api.anilibria.tv/v2/advancedSearch?query=1&order_by=in_favorites&sort_direction=1&remove=torrents,player.playlist&description_type=html&limit=20';
+  var url_pop = config["titels_api"]+'advancedSearch?query=1&order_by=in_favorites&sort_direction=1&remove=torrents,player.playlist&description_type=html&limit=20';
+
   fetch(url_pop)
   .then(function (response) {
     if (response.status !== 200) {
@@ -591,7 +596,8 @@ function load_small(arr_small, block_id) {
     div.setAttribute("style", "width: 203px;height: 290px;");
     div.innerHTML += `
         <div class="article_ser" style="margin-top: 200px;">${series_type}</div>
-        <div class="article_announce" style="${announce_none}">${announce}</div>
+        <button class="button_announce" id="announce_button_${data[i]["id"]}" style="${announce_none}" onclick="announce_view(${data[i]["id"]})">i</button>
+        <div class="article_announce" id="announce_text_${data[i]["id"]}" style="display:none;">${announce}</div>
         <img src="https://www.anilibria.tv${data[i]["posters"]["medium"]["url"]}" style="width: 203px;height: 290px;${genres_style}" alt="">
         <a class="article-text" onclick="edit_href('/release', 'id', ${data[i]["id"]})" style="width: 190px;height: 275px;">
           <p class="article-name"  style="-webkit-line-clamp: 3;line-clamp: 3;">${data[i]["names"]["ru"]}</p>
@@ -601,7 +607,16 @@ function load_small(arr_small, block_id) {
         `;
   }
 }
-
+function announce_view(id) {
+  var elem_text = "announce_text_"+id;
+  var elem_button = "announce_button_"+id;
+  document.getElementById(elem_text).setAttribute("style", "display: block;");
+  document.getElementById(elem_button).setAttribute("style", "display: none;");
+  setTimeout(function(){
+    document.getElementById(elem_text).setAttribute("style", "display: none;");
+    document.getElementById(elem_button).setAttribute("style", "display: block;");
+  },3000)
+}
 
 
 
