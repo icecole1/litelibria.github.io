@@ -267,9 +267,8 @@ function page_release_mobile(s1) {
       <div id="release_block">
         <div class="release-list" style="margin-top: 0;">
           <div class="release-det" style="margin: 0px 20px;">
-            <img id="rel_posters_mobile_url" src="img/poster_mobile.png" alt="" style="width: 100%;height: auto;border-radius: 4px;margin-top: 10px;"/>
+            <img id="rel_posters_mobile_url" src="img/poster_mobile.png" alt="" style="width: 100%;height: auto;border-radius: 4px;margin-top: 10px;display:none;"/>
             <img id="rel_posters_medium_url" src="" alt="" style="display:none"/>
-            <span class="img_favorite" id="rel_in_favorites" style="position: relative;display: block;border-radius: 0 0 4px 4px;margin-top: -39px;">В избранном у 0</span>
             <p class="release-name" id="rel_names_ru">Тайтл</p>
             <p class="release-description" id="rel_genres"></p>
             <center>
@@ -283,6 +282,7 @@ function page_release_mobile(s1) {
                 <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_7">Вс</a>
               </div>
             </center>
+            <span class="img_favorite" id="rel_in_favorites" style="position: relative;display: block;border-radius: var(--border-radius);margin-top: 15px;opacity: 1;background: var(--card-background);color: var(--card-text-color) !important;">В избранном у 0</span>
             <center>
               <div class="week_block">
                 <a id="rel_seasonANDyear" class="release-href favor_button_a release-href_hov" style="padding: 8px !important;">2022</a>
@@ -681,7 +681,8 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
       if (dataPlayer["playlist"][i2]["preview"]) {
         poster_preview = "https://anilibria.tv/"+dataPlayer["playlist"][i2]["preview"];
       } else {
-        poster_preview = "img/pleer.png";
+        // poster_preview = "img/pleer.png";
+        poster_preview = "https://api.7o7.co/anilibria_bot/getPoster/"+id_t;
       }
       var url_relise_comma = " ";
       if (i2 != dataPlayerSerie) {
