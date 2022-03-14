@@ -259,7 +259,7 @@ function page_release_mobile(s1) {
 
   <div class="release-block">
     <center>
-      <div class="release-player" style="padding: 10px;width: calc(100% - 20px);">
+      <div class="release-player" style="padding: 10px;width: calc(100% - 20px);margin-top: 0;">
         <div id="player_bas">
           <div id="player"></div>
         </div>
