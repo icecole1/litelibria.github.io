@@ -61,6 +61,12 @@ function page_release(s1) {
       height: 25px;
       margin: 0px;
     }
+		.player_s{
+			min-height: 100px;
+			background: var(--card-background);
+			border-radius: var(--border-radius);
+			aspect-ratio: 16 / 9;
+		}
   </style>
 
   <div class="release-block">
@@ -120,8 +126,8 @@ function page_release(s1) {
           <a href="https://www.anilibria.tv/pages/donate.php" class="favor_button">Поддержать проект</a>
         </div>
 
-        <div id="player_bas">
-          <div id="player"></div>
+        <div id="player_bas" style="min-height: 100px;background: var(--card-background);border-radius: var(--border-radius);aspect-ratio: 16 / 9;">
+          <div id="player" class="player_s"></div>
         </div>
         <div class="but_Hotkeys">
           <p><span>Клавиша F</span><span>Полноэкранный режим видео</span></p>
@@ -255,13 +261,19 @@ function page_release_mobile(s1) {
       height: 25px;
       margin: 0px;
     }
+		.player_s{
+			min-height: 100px;
+			background: var(--card-background);
+			border-radius: var(--border-radius);
+			aspect-ratio: 16 / 9;
+		}
   </style>
 
   <div class="release-block">
     <center>
       <div class="release-player" style="padding: 10px;width: calc(100% - 20px);margin-top: 0;">
         <div id="player_bas">
-          <div id="player"></div>
+          <div id="player" class="player_s"></div>
         </div>
       </div>
       <div id="release_block">
@@ -681,8 +693,8 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
       if (dataPlayer["playlist"][i2]["preview"]) {
         poster_preview = "https://anilibria.tv/"+dataPlayer["playlist"][i2]["preview"];
       } else {
-        // poster_preview = "img/pleer.png";
-        poster_preview = "https://api.7o7.co/anilibria_bot/getPoster/"+id_t;
+        poster_preview = "img/pleer.png";
+        // poster_preview = "https://api.7o7.co/anilibria_bot/getPoster/"+id_t;
       }
       var url_relise_comma = " ";
       if (i2 != dataPlayerSerie) {
