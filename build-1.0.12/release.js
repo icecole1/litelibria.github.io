@@ -126,8 +126,8 @@ function page_release(s1) {
           <a href="https://www.anilibria.tv/pages/donate.php" class="favor_button">Поддержать проект</a>
         </div>
 
-        <div id="player_bas" style="min-height: 100px;background: var(--card-background);border-radius: var(--border-radius);aspect-ratio: 16 / 9;">
-          <div id="player" class="player_s"></div>
+        <div id="player_bas" class="player_s">
+          <div id="player"></div>
         </div>
         <div class="but_Hotkeys">
           <p><span>Клавиша F</span><span>Полноэкранный режим видео</span></p>
@@ -272,8 +272,8 @@ function page_release_mobile(s1) {
   <div class="release-block">
     <center>
       <div class="release-player" style="padding: 10px;width: calc(100% - 20px);margin-top: 0;">
-        <div id="player_bas">
-          <div id="player" class="player_s"></div>
+        <div id="player_bas" class="player_s">
+          <div id="player"></div>
         </div>
       </div>
       <div id="release_block">
