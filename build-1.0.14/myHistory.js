@@ -184,55 +184,78 @@ function load_his() {
     var paramsString = document.location.search;
     var searchParams = new URLSearchParams(paramsString);
 
-    var namesList_payer_release_1 = localStorage.getItem(key).replace("}", "-").replace("–", "-");;
-    var namesList_payer_release = namesList_payer_release_1.replace("–", "-");
-    var List_payer_release = namesList_payer_release.split(/\s*-\s*/);
-    var id_payer_release_text = List_payer_release[2] + 'text';
-    // var id_payer_release = key.substr(33); // удаление 33 символов из pljsplayfrom_LiteLibria.github.io
-    // var id_payer_release = key.substr(36); // удаление 36 символов из pljsplayfrom_rozenrod-beta.github.io
-    //
-    // var href_pathname = window.location.href;
-    // var href_substr1 = href_pathname.replace(/\/myHistory/gi, '');
-    // var href_substr = href_substr1.replace(/https:\/\//gi, '');
-    // var text_ed1 = key.replace(/pljsplayfrom_/gi, '');
-    // var id_payer_release = text_ed1.replace(href_substr, '');
+		var x = localStorage.getItem(key);
+		var	v = '';
 
-    var text_ed1 = key.replace(/pljsplayfrom_/gi, '');
-    var id_payer_release = text_ed1.replace(config['domains'], '');
-
-
+		function get_player_storage(comand) {
+			var x_seria_bit = '';
+			var x_id = '';
+			var x_seria = '';
+			var x_time = 0;
+			var x_time_old = 0;
+			var x_date = 0;
+			if (x.indexOf("{") == 0) {
+				v = x.substr(1, x.indexOf("}") - 1)
+				x = x.substr(x.indexOf("}") + 1);
+			}
+			if (v) {
+				if (v.indexOf("-") > 0) {
+					var q = v.split("-");
+					var qs = v.split("s");
+					x_seria_bit = parseFloat(q[1]);
+					x_id = parseFloat(q[2]);
+					x_seria = parseFloat(qs[1]);
+				}
+			}
+			if (x) {
+					if (x.indexOf("--") > 0) {
+							var y = x.split("--");
+							x_time = parseFloat(y[0]);
+							x_time_old = parseFloat(y[1]);
+							x_date = parseFloat(y[2]);
+					}
+			}
+			switch (comand) {
+				case "seria_bit":
+					return x_seria_bit;
+					break;
+				case "id":
+					return x_id;
+					break;
+				case "seria":
+					return x_seria;
+					break;
+				case "time":
+					return x_time;
+					break;
+				case "time_old":
+					return x_time_old;
+					break;
+				case "date":
+					return x_date;
+					break;
+			}
+		}
     var pljsplayfrom = key.substr(0, 12);
-    var serie_payer_release = Number(List_payer_release[1])+1;
-    var minutes_payer_release = (List_payer_release[3] / 60).toFixed(2).replace(".", ":");
-    if (List_payer_release.length == 6) {
-      var milliseconds_payer_release = Number(List_payer_release[5]);
-    } else {
-      var milliseconds_payer_release = Number(List_payer_release[7]);
-    }
-    var dateObject_payer_release = new Date(milliseconds_payer_release);
+		var minutes_payer_release = (get_player_storage("time") / 60).toFixed(2).replace(".", ":");
+		var dateObject_payer_release = new Date(get_player_storage("date"));
     var date_payer_release = dateObject_payer_release.toLocaleString()
-    var url_data = ''
 
     if (pljsplayfrom == "pljsplayfrom") {
-      // console.log(List_payer_release);
-
-
-      var url = 'https://api.anilibria.tv/v2/getTitle?id='+id_payer_release+'&filter=id,posters.small,names';
-
+      var url = 'https://api.anilibria.tv/v2/getTitle?id='+get_player_storage("id")+'&filter=id,posters.small,names';
       var div = document.createElement('div');
-      // div.setAttribute('href', "release?id="+id_payer_release);
       document.getElementById('history_payer_release').appendChild(div);
       div.className = 'article_his';
-      div.id = 'article_history'+id_payer_release;
+      div.id = 'article_history'+get_player_storage("id");
       div.innerHTML =
         `<div class="article_history">
-          <img id="img${id_payer_release}" src="https://www.anilibria.tv">
+          <img id="img${get_player_storage("id")}" src="./img/poster.png">
           <div class="aarticle_history_text">
-            <p style="font-size: 16px;" id="names${id_payer_release}"></p>
-            <p> Серия ${serie_payer_release} <span style="margin-left:5px;">Минута</span> ${minutes_payer_release}</p>
+            <p style="font-size: 16px;" id="names${get_player_storage("id")}"></p>
+            <p> Серия ${get_player_storage("seria")} <span style="margin-left:5px;">Минута</span> ${minutes_payer_release}</p>
             <p> Дата ${date_payer_release}</p>
-            <a class="open_history" onclick="edit_href('/release', 'id', ${id_payer_release})">Открыть</a>
-            <p class="del_history" onclick="del_his_but('${key}', '${id_payer_release}')">Удалить</p>
+            <a class="open_history" onclick="edit_href('/release', 'id', ${get_player_storage("id")})">Открыть</a>
+            <p class="del_history" onclick="del_his_but('${key}', '${get_player_storage("id")}')">Удалить</p>
           </div>
         </div>`;
 
