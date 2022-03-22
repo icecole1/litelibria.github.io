@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Ekidona';
-var CACHE_VERSION = '1.0.16';
+var CACHE_VERSION = '1.0.17';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
@@ -20,7 +20,7 @@ const assetUrls = [
   '/css/theme1.css',
   '/js/jquery-3.1.1.min.js',
   '/build-'+CACHE_VERSION+'/theme.js',
-  '/build-'+CACHE_VERSION+'/player_alt.js',
+  '/build-'+CACHE_VERSION+'/playerjs.js',
   '/build-'+CACHE_VERSION+'/script.js',
   '/build-'+CACHE_VERSION+'/release.js',
   '/build-'+CACHE_VERSION+'/home.js',
