@@ -715,9 +715,30 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 }
 
 function PlayerjsEvents(event,id,info){
+	if(event=="fullscreen"){
+		console.log("fullscreen");
+		player_navigation('none');
+	}
+
+	if(event=="exitfullscreen"){
+		console.log("exitfullscreen");
+		player_navigation('flex');
+	}
+
   if(event=="pause"){
     saveConfig(dynamic_text_his())
   }
+}
+
+function player_navigation(display){
+	if(display == "none"){
+		document.getElementById('navi').setAttribute("style", "display:none;");
+		document.getElementById('back_to_top').setAttribute("style", "display:none;");
+	}
+	if(display == "flex"){
+		document.getElementById('navi').setAttribute("style", "display:flex;");
+		document.getElementById('back_to_top').setAttribute("style", "");
+	}
 }
 
 function load_relise_Fav(id_t) {
