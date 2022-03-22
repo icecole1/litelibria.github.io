@@ -229,5 +229,5 @@ function editPushState(new_url) {
   document.getElementById('but_home').setAttribute("style", "display: list-item;");
   document.title = 'LiteLibria';
   scheduleConfigSync(0) // Синхронизация истории
-  // history.pushState(null, null, new_url);
+  history.pushState(null, null, new_url);
 }
