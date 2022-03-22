@@ -148,7 +148,6 @@ function page_release(s1) {
 
   var my_server = localStorage.getItem('my_server');
 
-  // var url = "https://api.anilibria.tv/v2/getCachingNodes";
   var url = config["titels_api"]+"getCachingNodes";
   fetch(url)
   .then(function (response) {
@@ -339,7 +338,6 @@ function page_release_mobile(s1) {
 
   var my_server = localStorage.getItem('my_server');
 
-  // var url = "https://api.anilibria.tv/v2/getCachingNodes";
   var url = config["titels_api"]+"getCachingNodes";
   fetch(url)
   .then(function (response) {
@@ -394,8 +392,6 @@ var dataPlayer,
     cookie = localStorage.getItem('PHPSESSID');
 
 function delFavorite(id_t) {
-  // console.log(id_t);
-  // var url = "https://api.anilibria.tv/v2/delFavorite?session="+cookie+"&title_id="+id_t;
   var url = config["titels_api"]+"delFavorite?session="+cookie+"&title_id="+id_t;
 
   var xhr = new XMLHttpRequest();
@@ -413,8 +409,6 @@ function delFavorite(id_t) {
   document.getElementById('addFavorite_rel').setAttribute("style", "background:#2e2e2e!important;");
 }
 function addFavorite(id_t) {
-  // console.log(id_t);
-  // var url = "https://api.anilibria.tv/v2/addFavorite?session="+cookie+"&title_id="+id_t;
   var url = config["titels_api"]+"addFavorite?session="+cookie+"&title_id="+id_t;
 
   var xhr = new XMLHttpRequest();
@@ -437,10 +431,8 @@ function load_relise(s1) {
 
   var arr_api = JSON.parse(localStorage.getItem('my_api_cash'));
   if (!arr_api) {
-    // url = 'https://api.anilibria.tv/v2/getTitle?id='+s1+'&description_type=html&remove=posters.small,posters.original,torrents';
     url = config["titels_api"]+'getTitle?id='+s1+'&description_type=html&remove=posters.small,posters.original,torrents';
   } else {
-    // url = 'https://api.anilibria.tv/v2/getTitle?id='+s1+'&filter=id,player';
     url = config["titels_api"]+'getTitle?id='+s1+'&filter=id,player';
   }
 
@@ -730,7 +722,6 @@ function PlayerjsEvents(event,id,info){
 
 function load_relise_Fav(id_t) {
   var cookie = localStorage.getItem('PHPSESSID');
-  // var url_ses="https://api.anilibria.tv/v2/getFavorites?session="+cookie+"&filter=id&limit=4000";
   var url_ses = config["titels_api"]+"getFavorites?session="+cookie+"&filter=id&limit=4000";
   fetch(url_ses)
   .then(function (response) {
