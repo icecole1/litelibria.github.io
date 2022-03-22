@@ -1,6 +1,17 @@
 version_history = [
   {
     "prefix":"Ekidona",
+    "version":"1.0.18",
+    "date":"22 March 2022",
+    "update":[
+			{
+        "type":"IMPROVED",
+        "text":"Обновлены анимации плеера"
+      }
+    ]
+  },
+	{
+    "prefix":"Ekidona",
     "version":"1.0.17",
     "date":"22 March 2022",
     "update":[
