@@ -715,10 +715,6 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 }
 
 function PlayerjsEvents(event,id,info){
-	if(event=="init"){
-    document.getElementById('oframeplayer').style.borderRadius = "10px";
-  }
-
 	if(event=="fullscreen"){
 		console.log("fullscreen");
 		player_navigation('none');
@@ -738,12 +734,10 @@ function player_navigation(display){
 	if(display == "none"){
 		document.getElementById('navi').setAttribute("style", "display:none;");
 		document.getElementById('back_to_top').setAttribute("style", "display:none;");
-		document.getElementById('oframeplayer').style.borderRadius = "0px";
 	}
 	if(display == "flex"){
 		document.getElementById('navi').setAttribute("style", "display:flex;");
 		document.getElementById('back_to_top').setAttribute("style", "");
-		document.getElementById('oframeplayer').style.borderRadius = "10px";
 	}
 }
 
