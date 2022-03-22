@@ -693,8 +693,8 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
       if (dataPlayer["playlist"][i2]["preview"]) {
         poster_preview = "https://anilibria.tv/"+dataPlayer["playlist"][i2]["preview"];
       } else {
-        // poster_preview = "img/pleer.png";
-        poster_preview = "https://api.7o7.co/anilibria_bot/getPoster/"+id_t;
+        poster_preview = "img/pleer.png";
+        // poster_preview = "https://api.7o7.co/anilibria_bot/getPoster/"+id_t;
       }
       var url_relise_comma = " ";
       if (i2 != dataPlayerSerie) {

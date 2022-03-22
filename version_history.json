@@ -1,20 +1,6 @@
 version_history = [
   {
     "prefix":"Ekidona",
-    "version":"1.0.15",
-    "date":"22 March 2022",
-    "update":[
-			{
-        "type":"FIXED",
-        "text":"Исправлены ошибки"
-      },{
-        "type":"IMPROVED",
-        "text":"Обновлён плеер"
-      }
-    ]
-  },
-	{
-    "prefix":"Ekidona",
     "version":"1.0.14",
     "date":"21 March 2022",
     "update":[
