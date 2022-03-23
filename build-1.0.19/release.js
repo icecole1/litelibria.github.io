@@ -734,10 +734,12 @@ function player_navigation(display){
 	if(display == "none"){
 		document.getElementById('navi').setAttribute("style", "display:none;");
 		document.getElementById('back_to_top').setAttribute("style", "display:none;");
+		document.body.style.overflow = 'hidden';
 	}
 	if(display == "flex"){
 		document.getElementById('navi').setAttribute("style", "display:flex;");
 		document.getElementById('back_to_top').setAttribute("style", "");
+		document.body.style.overflow = '';
 	}
 }
 

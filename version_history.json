@@ -1,6 +1,17 @@
 version_history = [
   {
     "prefix":"Ekidona",
+    "version":"1.0.19",
+    "date":"23 March 2022",
+    "update":[
+			{
+        "type":"FIXED",
+        "text":"Убрана прокрутка приложений в полноэкранном режиме плеера"
+      }
+    ]
+  },
+	{
+    "prefix":"Ekidona",
     "version":"1.0.18",
     "date":"22 March 2022",
     "update":[
