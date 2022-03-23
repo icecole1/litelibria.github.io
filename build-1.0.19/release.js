@@ -729,20 +729,23 @@ function PlayerjsEvents(event,id,info){
     saveConfig(dynamic_text_his())
   }
 }
-
+var scroll_release = 0;
 function player_navigation(display){
+	var width = document.documentElement.clientWidth;
+
 	if(display == "none"){
 		document.getElementById('navi').setAttribute("style", "display:none;");
 		document.getElementById('back_to_top').setAttribute("style", "display:none;");
-		document.body.setAttribute("style", "overflow:hidden;height: 100vh;");
-		$(document).on('touchmove',function(e){
-			e.preventDefault();
-		});
+		if (width <= 800) {
+			document.body.setAttribute("style", "top: "+window.pageYOffset+"px;left: 0px;right: 0px;position: fixed;");
+		}
 	}
 	if(display == "flex"){
 		document.getElementById('navi').setAttribute("style", "display:flex;");
 		document.getElementById('back_to_top').setAttribute("style", "");
-		document.body.setAttribute("style", "");
+		if (width <= 800) {
+			document.body.setAttribute("style", "");
+		}
 	}
 }
 
