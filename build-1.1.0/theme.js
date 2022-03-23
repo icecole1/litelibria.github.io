@@ -77,15 +77,17 @@ window.onload = function() {
     document.getElementById('b_auto').setAttribute("style", "");
     $('link[href="css/auto.css"]').attr('href', 'css/auto.css');
   }
-  var loader1 = $("#loader1").width();
-  if (loader1 != '130px') {
-    timer = setInterval(function () {
-      var loader1 = $("#loader1").width();
-      if (loader1 != '130') {
-        document.getElementById('loader1').setAttribute("style", `width: calc(${loader1}px + 1px)`);
-      }
-    }, 1000)
-  }
+
+
+  // var loader1 = $("#loader1").width();
+  // if (loader1 != '130px') {
+  //   timer = setInterval(function () {
+  //     var loader1 = $("#loader1").width();
+  //     if (loader1 != '130') {
+  //       document.getElementById('loader1').setAttribute("style", `width: calc(${loader1}px + 1px)`);
+  //     }
+  //   }, 1000)
+  // }
 
 
 
@@ -142,10 +144,12 @@ function preloader_none() {
     );
   }
   setTimeout(function(){
-    document.getElementById('loader1').setAttribute("style", 'width: 130px');
     fadeOutnojquery(preloader_preload);
     fadeOutnojquery(preloader);
-  },400);
+		clearInterval(intervalTimer);
+		intervalTimer = 0;
+
+  },5000);
 };
 
 
