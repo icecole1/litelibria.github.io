@@ -731,21 +731,15 @@ function PlayerjsEvents(event,id,info){
 }
 var scroll_release = 0;
 function player_navigation(display){
-	var width = document.documentElement.clientWidth;
-
 	if(display == "none"){
 		document.getElementById('navi').setAttribute("style", "display:none;");
 		document.getElementById('back_to_top').setAttribute("style", "display:none;");
-		if (detectOS() == 'iOS') {
-			document.body.setAttribute("style", "top: "+window.pageYOffset+"px;left: 0px;right: 0px;position: fixed;");
-		}
+		document.body.setAttribute("style", "touch-action: none;-ms-touch-action: none;");
 	}
 	if(display == "flex"){
 		document.getElementById('navi').setAttribute("style", "display:flex;");
 		document.getElementById('back_to_top').setAttribute("style", "");
-		if (detectOS() == 'iOS') {
-			document.body.setAttribute("style", "");
-		}
+		document.body.setAttribute("style", "");
 	}
 }
 
