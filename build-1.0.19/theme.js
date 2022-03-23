@@ -1,3 +1,16 @@
+function detectOS() {
+	const platform = navigator.platform.toLowerCase(),
+			iosPlatforms = ['iphone', 'ipad', 'ipod', 'ipod touch'];
+
+	if (platform.includes('mac')) return 'MacOS';
+	if (iosPlatforms.includes(platform)) return 'iOS';
+	if (platform.includes('win')) return 'Windows';
+	if (/android/.test(navigator.userAgent.toLowerCase())) return 'Android';
+	if (/linux/.test(platform)) return 'Linux';
+
+	return 'unknown';
+}
+
 function b_search() {
   document.getElementById('menu_n').setAttribute("style", "transform: translateY(-80px);opacity: 0;");
   document.getElementById('search_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
@@ -21,22 +34,9 @@ function start_mess_close() {
   document.getElementById('android_app').setAttribute("style", "display:none;");
   document.getElementById('ios_app').setAttribute("style", "display:none;");
 }
-
 window.onload = function() {
   if (!window.matchMedia('(display-mode: standalone)').matches) {
     if (localStorage.getItem('start_mess') != '1') {
-      function detectOS() {
-          const platform = navigator.platform.toLowerCase(),
-              iosPlatforms = ['iphone', 'ipad', 'ipod', 'ipod touch'];
-
-          if (platform.includes('mac')) return 'MacOS';
-          if (iosPlatforms.includes(platform)) return 'iOS';
-          if (platform.includes('win')) return 'Windows';
-          if (/android/.test(navigator.userAgent.toLowerCase())) return 'Android';
-          if (/linux/.test(platform)) return 'Linux';
-
-          return 'unknown';
-      }
       if (detectOS() == 'Android') {
         document.getElementById('start_mess').setAttribute("style", "display:block;");
         document.getElementById('android_app').setAttribute("style", "display:block;");

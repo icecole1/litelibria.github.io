@@ -736,14 +736,14 @@ function player_navigation(display){
 	if(display == "none"){
 		document.getElementById('navi').setAttribute("style", "display:none;");
 		document.getElementById('back_to_top').setAttribute("style", "display:none;");
-		if (width <= 800) {
+		if (detectOS() == 'iOS') {
 			document.body.setAttribute("style", "top: "+window.pageYOffset+"px;left: 0px;right: 0px;position: fixed;");
 		}
 	}
 	if(display == "flex"){
 		document.getElementById('navi').setAttribute("style", "display:flex;");
 		document.getElementById('back_to_top').setAttribute("style", "");
-		if (width <= 800) {
+		if (detectOS() == 'iOS') {
 			document.body.setAttribute("style", "");
 		}
 	}
