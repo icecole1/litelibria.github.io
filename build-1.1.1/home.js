@@ -19,6 +19,11 @@ function page_home() {
       <div id="article_block_small_none" style="display:none;">
         <div class="article-list block_slider" id="article_block_small" style="overflow-x: auto;white-space: nowrap;padding-top: 45px;">
           <h1 id="article_block_small_text"></h1>
+					<div id="load_anim_block_small" style="display:none;">
+						<br /><br />
+						<img src="img/load.svg" style="max-width: 45px;">
+						<br /><br />
+					</div>	
         </div>
         <br /><br />
       </div>
@@ -27,7 +32,11 @@ function page_home() {
       <div class="article-list">
         <h1>Последние обновления</h1>
         <div id="article_block"></div>
-        <br /><br />
+        <div id="load_anim" style="display:none;">
+					<br /><br />
+					<img src="img/load.svg" style="max-width: 45px;">
+				</div>	
+				<br /><br />
         <span id="load_new_article"></span>
         <!-- <input type="button" class="pstrnav pages_catalog" onclick="load_new('1')" value="Загрузить ещё" style="font-size: 16px;"> -->
       </div>

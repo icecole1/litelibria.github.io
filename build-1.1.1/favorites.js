@@ -41,6 +41,12 @@ function page_favorites() {
           <p>Вы не авторизованы</p>
           <a class="release-href release-href_hov" onclick="edit_href('/settings')" style="margin: 20px 0 0 0;">Авторизоваться</a>
         </form>
+				
+				<div id="load_anim" style="display:none;">
+					<br /><br />
+					<img src="img/load.svg" style="max-width: 45px;">
+				</div>	
+				<br /><br />
       </div>
     </center>
   </div>

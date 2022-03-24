@@ -1,5 +1,9 @@
 function page_release(s1) {
   document.getElementById('app_release').innerHTML = `
+
+	<div id="load_anim_release">
+		<div id="load_anim_release_svg"></div>
+	</div>
   <style>
     .img_favorite{
       position: absolute;
@@ -199,6 +203,9 @@ function page_release(s1) {
 
 function page_release_mobile(s1) {
   document.getElementById('app_release').innerHTML = `
+	<div id="load_anim_release">
+		<div id="load_anim_release_svg"></div>
+	</div>
   <style>
     .img_favorite{
       position: absolute;
@@ -494,6 +501,12 @@ function load_relise(s1) {
     if (cookie) {
       load_relise_Fav(id_t);
     }
+
+		document.getElementById("load_anim_release").style = "animation: show_load 0.5s;";
+		setTimeout(function(){
+			document.getElementById("load_anim_release").style = "display:none;";
+		},490)
+		
   })
   .catch(function (error) {
     console.log('error', error)

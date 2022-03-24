@@ -1,10 +1,12 @@
 var CACHE_PREFIX = 'Peterugiusu';
-var CACHE_VERSION = '1.1.0';
+var CACHE_VERSION = '1.1.1';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 
 const assetUrls = [
+	'meeting_tips.json',
+	'version_history.json',
   'config.js',
   '/',
   'offline.html',
@@ -14,6 +16,7 @@ const assetUrls = [
   '/img/poster.png',
   '/img/2.gif',
   '/img/1.gif',
+	'/img/load.svg',
   '/css/main.css',
   '/css/auto.css',
   '/css/theme2.css',

@@ -16,6 +16,11 @@ function page_schedule() {
 
   <div class="article-block">
     <center>
+			<div id="load_anim_block_small" style="display:none;">
+				<br /><br />
+				<img src="img/load.svg" style="max-width: 45px;">
+				<br /><br />
+			</div>
       <div class="article-list block_header_small block_slider" id="article_block_small" style="overflow-x: auto;white-space: nowrap;padding-top: 45px;">
         <div id="Monday">
           <h1 style="position: absolute;margin-top: -35px;">Понедельник</h1>

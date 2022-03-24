@@ -9,6 +9,7 @@
  }
 
 function load_api_home(n) {
+	document.getElementById("load_anim").style.display = "";
   var num = 24;
   var get_page,
       new_page,
@@ -35,6 +36,7 @@ function load_api_home(n) {
     if (response.status !== 200) {
       return Promise.reject(new Error(response.statusText))
     }
+		document.getElementById("load_anim").style.display = "none";
     return Promise.resolve(response)
   })
   .then(function (response) {
@@ -49,6 +51,7 @@ function load_api_home(n) {
 }
 
 function load_api_catalog(n, url_in) {
+	document.getElementById("load_anim").style.display = "";
   var num = 24;
   var get_page,
       new_page,
@@ -74,6 +77,7 @@ function load_api_catalog(n, url_in) {
     if (response.status !== 200) {
       return Promise.reject(new Error(response.statusText))
     }
+		document.getElementById("load_anim").style.display = "none";
     return Promise.resolve(response)
   })
   .then(function (response) {
@@ -291,6 +295,7 @@ function load_api_search(index_article, n, s1) {
 
 // Функция вывода тайтлов в блок Тип 2
 function article_favorites(url_pop, block_id) {
+	document.getElementById("load_anim").style.display = "";
   var block_id
 
   fetch(url_pop)
@@ -298,6 +303,7 @@ function article_favorites(url_pop, block_id) {
     if (response.status !== 200) {
       return Promise.reject(new Error(response.statusText))
     }
+		document.getElementById("load_anim").style.display = "none";
     return Promise.resolve(response)
   })
   .then(function (response) {
@@ -453,6 +459,7 @@ function article_favorites(url_pop, block_id) {
 
 // Функция вывода тайтлов в блок слайдера отсортированных по популярности
 function article_small_INfavorites(block_id) {
+	document.getElementById("load_anim_block_small").style.display = "";
   var block_id
   // var url_pop = 'https://api.anilibria.tv/v2/advancedSearch?query=1&order_by=in_favorites&sort_direction=1&remove=torrents,player.playlist&description_type=html&limit=20';
   var url_pop = config["titels_api"]+'advancedSearch?query=1&order_by=in_favorites&sort_direction=1&remove=torrents,player.playlist&description_type=html&limit=20';
@@ -462,6 +469,7 @@ function article_small_INfavorites(block_id) {
     if (response.status !== 200) {
       return Promise.reject(new Error(response.statusText))
     }
+		document.getElementById("load_anim_block_small").style.display = "none";
     return Promise.resolve(response)
   })
   .then(function (response) {
@@ -477,12 +485,14 @@ function article_small_INfavorites(block_id) {
 
 // Функция вывода тайтлов в блок слайдера ожидаемых сегодня
 function article_small_dey(url_pop, block_id) {
+	document.getElementById("load_anim_block_small").style.display = "";
   var block_id
   fetch(url_pop)
   .then(function (response) {
     if (response.status !== 200) {
       return Promise.reject(new Error(response.statusText))
     }
+		document.getElementById("load_anim_block_small").style.display = "none";
     return Promise.resolve(response)
   })
   .then(function (response) {
