@@ -159,6 +159,7 @@ body{
 /* Стили для анимации загрузки релиза */
 /* Начало */
 #load_anim_release{
+	opacity: 1;
 	display: block;
 	position: fixed;
 	z-index: 99999;

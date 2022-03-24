@@ -490,9 +490,11 @@ function load_relise(s1) {
 
       release_html(id_t, data_arr[0]);
       preloader_none();
+			load_anim_release_none();
     } else {
       release_html(id_t, data);
       preloader_none();
+			load_anim_release_none();
     }
 
     dataPlayer = data["player"];
@@ -501,16 +503,17 @@ function load_relise(s1) {
     if (cookie) {
       load_relise_Fav(id_t);
     }
-
-		document.getElementById("load_anim_release").style = "animation: show_load 0.5s;";
-		setTimeout(function(){
-			document.getElementById("load_anim_release").style = "display:none;";
-		},490)
-		
   })
   .catch(function (error) {
     console.log('error', error)
   })
+}
+
+function load_anim_release_none(){
+	document.getElementById("load_anim_release").style = "animation: show_load 0.5s;";
+	setTimeout(function(){
+		document.getElementById("load_anim_release").style = "display: none;";
+	},500)
 }
 
 function release_html(id_t, data) {
