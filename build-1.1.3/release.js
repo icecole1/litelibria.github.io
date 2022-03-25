@@ -3,6 +3,7 @@ function page_release(s1) {
 
 	<div id="load_anim_release">
 		<div id="load_anim_release_svg"></div>
+		<string id="load_anim_release_string">Идёт загрузка...</string>
 	</div>
   <style>
     .img_favorite{
@@ -205,6 +206,7 @@ function page_release_mobile(s1) {
   document.getElementById('app_release').innerHTML = `
 	<div id="load_anim_release">
 		<div id="load_anim_release_svg"></div>
+		<string id="load_anim_release_string">Идёт загрузка...</string>
 	</div>
   <style>
     .img_favorite{

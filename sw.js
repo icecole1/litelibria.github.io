@@ -1,27 +1,36 @@
 var CACHE_PREFIX = 'Peterugiusu';
-var CACHE_VERSION = '1.1.2';
+var CACHE_VERSION = '1.1.3';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 
 const assetUrls = [
+	'/',
+
 	'meeting_tips.json',
 	'version_history.json',
+
   'config.js',
-  '/',
+
   'offline.html',
   '/404.html',
+
+	'/img/icons/20_W.png',
+	'/img/icons/19_W.png',
   '/img/pleer.png',
   '/img/poster_mobile.png',
   '/img/poster.png',
   '/img/2.gif',
   '/img/1.gif',
 	'/img/load.svg',
+
   '/css/main.css',
   '/css/auto.css',
   '/css/theme2.css',
   '/css/theme1.css',
+
   '/js/jquery-3.1.1.min.js',
+	
   '/build-'+CACHE_VERSION+'/theme.js',
   '/build-'+CACHE_VERSION+'/playerjs.js',
   '/build-'+CACHE_VERSION+'/script.js',

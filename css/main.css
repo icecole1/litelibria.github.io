@@ -159,15 +159,17 @@ body{
 /* Стили для анимации загрузки релиза */
 /* Начало */
 #load_anim_release{
-	opacity: 1;
 	display: block;
 	position: fixed;
 	z-index: 99999;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	min-width: 1000px;
+	top: 50%;
+	left: 50%;
+	width: 200px;
+	height: 200px;
+	margin-top: -100px;
+	margin-left: -100px;
+	border-radius: 40px;
+	box-shadow: var(--shadow-l4);
 	background-color: var(--card-background_loader);
 }
 #load_anim_release_svg{
@@ -185,6 +187,12 @@ body{
 	background-position: center !important;
 	background-size: cover !important;
 	background: url(../img/load.svg);
+}
+#load_anim_release_string{
+	display: block;
+	z-index: 99999;
+	margin-top: 140px;
+	color: var(--card-text-color);
 }
 @keyframes show_load {
 	from {opacity: 1;}

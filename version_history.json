@@ -1,6 +1,17 @@
 version_history = [
   {
     "prefix":"Peterugiusu",
+    "version":"1.1.3",
+    "date":"24 March 2022",
+    "update":[
+			{
+        "type":"IMPROVED",
+        "text":"Обновлена ​​анимация загрузки в релизе"
+      }
+    ]
+  },
+	{
+    "prefix":"Peterugiusu",
     "version":"1.1.2",
     "date":"24 March 2022",
     "update":[
