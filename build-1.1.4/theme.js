@@ -146,6 +146,7 @@ function preloader_none() {
     fadeOutnojquery(preloader);
 		clearInterval(intervalTimer);
 		intervalTimer = 0;
+		mess_update();
 	},5000);
 };
 

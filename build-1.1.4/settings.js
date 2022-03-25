@@ -82,9 +82,62 @@ function page_settings() {
         </div>
         <hr style="border: 1px solid var(--card-background-2);"/>
         <p class="settings_filter_p">Основной блок</p>
-        <div class="settings_filter_box" id="settings_home_block_style">
-          <button id="home1_style" class="settings_filter_button" title="Выбрать" onclick="editHome_style('1')">Большой блок</button>
-          <button id="home2_style" class="settings_filter_button" title="Выбрать" onclick="editHome_style('2')" style="background: var(--card-background-2);color: var(--card-text-color) !important;">Маленькая карточка</button>
+				<style>
+					.settings_home_design{
+						display: grid;
+					}
+					.settings_home_design svg{
+						border-radius: var(--border-radius);
+						width: 200px;
+						height: auto;
+						margin: 5px;
+					}
+					.settings_home_design span{
+						width: calc(100% - 10px);
+						background: var(--card-background);
+						border-radius: var(--border-radius);
+						margin: 0 5px;
+						padding: 5px 0;
+						color: var(--card-text-color);
+					}
+				</style>
+				<div class="settings_filter_box" id="settings_home_block_style" style="display: flex;overflow: overlay;padding-bottom: 15px;">
+          <button id="home1_style" class="settings_filter_button settings_home_design" title="Выбрать" onclick="editHome_style('1')">
+						<span>Большой блок</span>
+						<svg width="375" height="280" xmlns="http://www.w3.org/2000/svg">
+							<g>
+								<title>background</title>
+								<rect fill="var(--card-background)" id="canvas_background" height="150.4" width="201.06" y="-1" x="-1"/>
+								<g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+								<rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+								</g>
+							</g>
+							<g>
+								<title>Layer 1</title>
+								<rect rx="10" id="svg_1" height="117.33" width="80" y="16.33" x="13.86" stroke-width="0" stroke="#000" fill="var(--card-background-2)"/>
+								<rect rx="10" id="svg_2" height="117.33" width="80" y="16.33" x="106.66" stroke-width="0" stroke="#000" fill="var(--card-background-2)"/>
+							</g>
+						</svg>
+					</button>
+          <button id="home2_style" class="settings_filter_button settings_home_design" title="Выбрать" onclick="editHome_style('2')" style="background: var(--card-background-2);color: var(--card-text-color) !important;">
+						<span>Маленькая карточка</span>
+						<svg xmlns="http://www.w3.org/2000/svg">
+							<g>
+								<title>background</title>
+								<rect fill="var(--card-background)" id="canvas_background" height="150.4" width="201.06" y="-1" x="-1"/>
+								<g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+								<rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+								</g>
+							</g>
+							<g>
+								<title>Layer 1</title>
+								<rect stroke="#000" rx="10" id="svg_3" height="56.5333" width="135.8933" y="13.38666" x="41.6533" stroke-width="0" fill="var(--card-background-2)"/>
+								<rect stroke="#000" rx="10" id="svg_1" height="64" width="43.6266" y="8.8" x="22.4533" stroke-width="0" fill="var(--card-background-5)"/>
+								<rect stroke="#000" rx="10" id="svg_4" height="56.5333" width="135.8933" y="81.3333" x="41.6533" stroke-width="0" fill="var(--card-background-2)"/>
+								<rect stroke="#000" rx="10" id="svg_5" height="64" width="43.6266" y="76.5333" x="22.4533" stroke-width="0" fill="var(--card-background-5)"/>
+							</g>
+						</svg>
+					</button>
         </div>
         <p class="settings_filter_p">*Нажмите для выбора</p>
       </div>

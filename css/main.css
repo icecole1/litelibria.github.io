@@ -188,7 +188,7 @@ body{
 	background-size: cover !important;
 	background: url(../img/load.svg);
 }
-#load_anim_release_string{
+#load_anim_release_span{
 	display: block;
 	z-index: 99999;
 	margin-top: 140px;

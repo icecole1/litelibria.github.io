@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Peterugiusu';
-var CACHE_VERSION = '1.1.3';
+var CACHE_VERSION = '1.1.4';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
@@ -30,7 +30,7 @@ const assetUrls = [
   '/css/theme1.css',
 
   '/js/jquery-3.1.1.min.js',
-	
+
   '/build-'+CACHE_VERSION+'/theme.js',
   '/build-'+CACHE_VERSION+'/playerjs.js',
   '/build-'+CACHE_VERSION+'/script.js',
