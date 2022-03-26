@@ -730,7 +730,9 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
     } else if (style == '2') {
       player.api("update:nativefullios",0);
     }
-  }
+  } else {
+		player.api("update:nativefullios",0);
+	}
 }
 
 function PlayerjsEvents(event,id,info){	
