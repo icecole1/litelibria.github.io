@@ -6,6 +6,15 @@ function page_release(s1) {
 		<span id="load_anim_release_span">Идёт загрузка...</span>
 	</div>
   <style>
+		#player pjsdiv:nth-child(2) pjsdiv:nth-child(1) > svg > path,
+		#player pjsdiv:nth-child(2) pjsdiv:nth-child(2) > svg > path,
+		#player pjsdiv:nth-child(2) pjsdiv:nth-child(3) > svg > path,
+		#player pjsdiv:nth-child(2) pjsdiv:nth-child(4) > svg > path{
+			// fill: var(--card-background-2);
+		}
+		#builder_player_control_player_js_b_skips{
+			// display: none;
+		}
     .img_favorite{
       position: absolute;
       display: block;
@@ -138,9 +147,7 @@ function page_release(s1) {
           <p><span>Клавиша F</span><span>Полноэкранный режим видео</span></p>
           <p><span>Клавиша M</span><span>Включение / выключение звука</span></p>
           <p><span>Пробел</span><span>Переключение пуск / пауза</span></p>
-          <p><span>Скролл на полном экране</span><span>Изменяет громкость</span></p>
           <p><span>Стрелки ← и →</span><span>Перемотка</span></p>
-          <p><span>Стрелки ↑ и ↓</span><span>Изменяет громкость</span></p>
         </div>
         <details id="servers" style="text-align: center;">
            <summary>Если серия не грузит, то попробуйте поменять сервер.</summary>
@@ -684,7 +691,9 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
     if (dataPlayer["playlist"][i2]["skips"]["opening"][0] && dataPlayer["playlist"][i2]["skips"]["opening"][1]) {
       if (my_skips_opening == '1') {
         remove = '"start":"0", "remove":"'+dataPlayer["playlist"][i2]["skips"]["opening"][0]+'-'+dataPlayer["playlist"][i2]["skips"]["opening"][1]+'", ';
-      }
+      } else {
+				remove = '"skip":"'+dataPlayer["playlist"][i2]["skips"]["opening"][0]+'-'+dataPlayer["playlist"][i2]["skips"]["opening"][1]+'", '
+			}
     }
 
     var url_relise_480 = "";
@@ -719,7 +728,8 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
     id:"player",
     poster:"img/pleer.png",
     file:"",
-    cuid: id_t
+    cuid: id_t,
+		bgcolor: getComputedStyle(document.documentElement).getPropertyValue('--card-background-2')
   });
   player.api("file", str_playlist);
   if (localStorage.getItem('my_player_style')) {
@@ -732,9 +742,8 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
   }
 }
 
-function PlayerjsEvents(event,id,info){
+function PlayerjsEvents(event,id,info){	
 	if(event=="fullscreen"){
-		console.log("fullscreen");
 		player_navigation('none');
 	}
 

@@ -322,9 +322,9 @@ function page_settings() {
 
   var my_player_style = localStorage.getItem('my_player_style');
   if (!my_player_style) {
-    localStorage.setItem('my_player_style', '1');
-    document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
-    document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+    localStorage.setItem('my_player_style', '2');
+    document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+    document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
   } else {
     if (my_player_style == "1") {
       document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
