@@ -670,7 +670,7 @@ function release_html(id_t, data) {
   document.getElementById('rel_names_en').innerHTML = `Навзание EN: ${data["names"]["en"]}`;
   document.getElementById('rel_SHIKIMORI').href = `https://shikimori.one/animes?search=${data["names"]["en"]}`;
 }
-
+var player;
 function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
   var strPlayer = '';
   var my_skips_opening = localStorage.getItem('my_skips_opening');
@@ -715,7 +715,7 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
     }
   }
   let str_playlist = JSON.parse('['+strPlayer+']');
-  var player = new Playerjs({
+  player = new Playerjs({
     id:"player",
     poster:"img/pleer.png",
     file:"",
@@ -735,21 +735,31 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 	}
 }
 
+function mobile_play_fullscreen(){
+	var width = document.documentElement.clientWidth;
+	if(width <= 800){
+		player.api("fullscreen");
+	}
+}
+
 function PlayerjsEvents(event,id,info){	
+	if(event=="play"){
+		mobile_play_fullscreen();
+  }
+
+	if(event=="pause"){
+    saveConfig(dynamic_text_his())
+  }
+
 	if(event=="fullscreen"){
 		player_navigation('none');
 	}
 
 	if(event=="exitfullscreen"){
-		console.log("exitfullscreen");
 		player_navigation('flex');
 	}
-
-  if(event=="pause"){
-    saveConfig(dynamic_text_his())
-  }
 }
-var scroll_release = 0;
+
 function player_navigation(display){
 	if(display == "none"){
 		document.getElementById('navi').setAttribute("style", "display:none;");
