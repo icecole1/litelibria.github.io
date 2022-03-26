@@ -6,15 +6,6 @@ function page_release(s1) {
 		<span id="load_anim_release_span">Идёт загрузка...</span>
 	</div>
   <style>
-		#player pjsdiv:nth-child(2) pjsdiv:nth-child(1) > svg > path,
-		#player pjsdiv:nth-child(2) pjsdiv:nth-child(2) > svg > path,
-		#player pjsdiv:nth-child(2) pjsdiv:nth-child(3) > svg > path,
-		#player pjsdiv:nth-child(2) pjsdiv:nth-child(4) > svg > path{
-			// fill: var(--card-background-2);
-		}
-		#builder_player_control_player_js_b_skips{
-			// display: none;
-		}
     .img_favorite{
       position: absolute;
       display: block;
@@ -729,7 +720,7 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
     poster:"img/pleer.png",
     file:"",
     cuid: id_t,
-		bgcolor: getComputedStyle(document.documentElement).getPropertyValue('--card-background-2')
+		bgcolor: 'var(--card-background-2)'
   });
   player.api("file", str_playlist);
   if (localStorage.getItem('my_player_style')) {
