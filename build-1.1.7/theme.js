@@ -147,7 +147,7 @@ function preloader_none() {
 		clearInterval(intervalTimer);
 		intervalTimer = 0;
 		mess_update();
-	},5000);
+	},1000);
 };
 
 
