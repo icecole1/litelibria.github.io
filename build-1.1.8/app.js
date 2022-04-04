@@ -48,7 +48,9 @@ function load_href() {
         edit_href(href, 'id', data["id"]);
       })
     } else if (id_s) {
-      edit_href(href, 'id', id_s);
+
+			var id_s_e = id_s.replace(/[^\d]/g, '');
+      edit_href(href, 'id', id_s_e);
     }
     localStorage.setItem('my_last_page', '');
   } else if (href == '/season') {
