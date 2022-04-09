@@ -10,6 +10,10 @@ function page_season(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
           <img src="img/libriatyan/1.png" style="max-width: 90%;">
         </div>
         <div id="article_block"></div>
+				<div id="load_anim" style="display:none;">
+					<br /><br />
+					<img src="img/load.svg" style="max-width: 45px;">
+				</div>	
         <br /><br />
         <span id="load_new_article"></span>
         <!-- <input type="button" class="pstrnav pages_catalog" onclick="load_new('1')" value="Загрузить ещё" style="font-size: 16px;"> -->

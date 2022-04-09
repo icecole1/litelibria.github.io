@@ -17,18 +17,20 @@ function page_catalog() {
             <option value="3">Лето</option>
             <option value="4">Осень</option>
           </select>
-          <select class="chosen_box" id="Sorting_block">
-            <option value="">Сортировать по ...</option>
-            <option value="&order_by=season.year">Году</option>
-            <option value="&order_by=code">Названию</option>
-            <option value="&order_by=in_favorites">Популярности</option>
-            <option value="&order_by=type.series">Количеству серий</option>
-            <option value="&order_by=season.code">Типу</option>
-          </select>
-          <label class="container">
-            <input type="checkbox" checked="checked" id="checkbox_sorting">
-            <span class="checkmark"></span>
-          </label>
+					<span class="sort_block">
+						<select class="chosen_box" id="Sorting_block">
+							<option value="">Сортировать по ...</option>
+							<option value="&order_by=season.year">Году</option>
+							<option value="&order_by=code">Названию</option>
+							<option value="&order_by=in_favorites">Популярности</option>
+							<option value="&order_by=type.series">Количеству серий</option>
+							<option value="&order_by=season.code">Типу</option>
+						</select>
+						<label class="container">
+							<input type="checkbox" checked="checked" id="checkbox_sorting">
+							<span class="checkmark"></span>
+						</label>
+					</span>	
           <button class="chosen_button" onclick="load_sortingTitles()">Показать</button>
         </div>
     </div>

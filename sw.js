@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Peterugiusu';
-var CACHE_VERSION = '1.1.9';
+var CACHE_VERSION = '1.1.10';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;

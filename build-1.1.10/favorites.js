@@ -4,18 +4,20 @@ function page_favorites() {
     <div class="article-list block_chosen">
         <!-- <a class="pages_catalog" href="" style="cursor:pointer;">⇅</a> -->
         <div class="select_form">
-          <select class="chosen_box" id="Sorting_block">
-            <option value="0">Сортировать по ...</option>
-            <option value="year">Году</option>
-            <option value="codes">Названию</option>
-            <option value="in_favorites">Популярности</option>
-            <option value="series">Количеству серий</option>
-            <option value="code">Типу</option>
-          </select>
-          <label class="container">
-            <input type="checkbox" checked="checked" id="checkbox_sorting">
-            <span class="checkmark"></span>
-          </label>
+					<span class="sort_block">
+						<select class="chosen_box" id="Sorting_block">
+							<option value="0">Сортировать по ...</option>
+							<option value="year">Году</option>
+							<option value="codes">Названию</option>
+							<option value="in_favorites">Популярности</option>
+							<option value="series">Количеству серий</option>
+							<option value="code">Типу</option>
+						</select>
+						<label class="container">
+							<input type="checkbox" checked="checked" id="checkbox_sorting">
+							<span class="checkmark"></span>
+						</label>
+					</span>
           <button class="chosen_button" onclick="load_sortingTitles_Favorites()">Показать</button>
         </div>
     </div>
