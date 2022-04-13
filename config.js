@@ -5,5 +5,5 @@ let config = {
   'g_clientId': '116898535578-na8fsq2p1igt77ve615sa444ur2l1bvv.apps.googleusercontent.com',
   'domains': 'litelibria.github.io',
   'titels_api':'https://api.sdev.xyz/v2/',
-	'posters':'https://anilibria.tv'
+	'posters':'https://tb2og.anilib.top'
 }
