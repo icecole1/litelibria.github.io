@@ -85,6 +85,6 @@ function load_sortingSeason(n, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
     and_1 = ' and '
   }
 
-  var url = 'https://api.anilibria.tv/v2/advancedSearch?query='+ year_s + and_1 + code_s + genres_s + voice_s + timing_s + translator_s + editing_s + decor_s + type_s +'&remove=torrents,player.playlist';
+  var url = config["titels_api"]+'advancedSearch?query='+ year_s + and_1 + code_s + genres_s + voice_s + timing_s + translator_s + editing_s + decor_s + type_s +'&remove=torrents,player.playlist';
   load_api_catalog(n, url);
 }

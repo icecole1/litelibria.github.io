@@ -140,9 +140,9 @@ function load_sortingCatalog(n) {
      checkbox_sorting = '0';
   }
   if (genres_sort == 0 && years_sort == 0 && season_sort == 0 && sorting == '') {
-    var url = "https://api.anilibria.tv/v2/getUpdates?remove=torrents,player.playlist";
+    var url = config["titels_api"]+"getUpdates?remove=torrents,player.playlist";
   } else {
-    var url = 'https://api.anilibria.tv/v2/advancedSearch?query='+ query_1 + genres + and_1 + years + and_2 + season + sorting +'&sort_direction='+checkbox_sorting+'&remove=torrents,player.playlist';
+    var url = config["titels_api"]+'advancedSearch?query='+ query_1 + genres + and_1 + years + and_2 + season + sorting +'&sort_direction='+checkbox_sorting+'&remove=torrents,player.playlist';
   }
   load_api_catalog(n, url);
 }
@@ -154,7 +154,7 @@ function load_sortingCatalog(n) {
 
 
 function my_genres_fun() {
-  url = "https://api.anilibria.tv/v2/getGenres"
+  url = config["titels_api"]+"getGenres"
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -184,7 +184,7 @@ function my_genres_fun() {
   })
 }
 function my_years_fun() {
-  url = "https://api.anilibria.tv/v2/getYears"
+  url = config["titels_api"]+"getYears"
 
   fetch(url)
   .then(function (response) {

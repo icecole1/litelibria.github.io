@@ -99,7 +99,7 @@ function loadFavorites(cookie) {
   document.getElementById('sorting_block_none').setAttribute("style", "");
   document.getElementById('form_login').setAttribute("style", "display:none;");
 
-  var url = "https://api.anilibria.tv/v2/getFavorites?session="+cookie+"?remove=torrents,player.playlist&limit=-1";
+  var url = config["titels_api"]+"getFavorites?session="+cookie+"&remove=torrents,player.playlist&limit=-1";
 
   article_favorites(url, 'relise_block');
 }

@@ -202,7 +202,7 @@ function load_new(n, data) {
       // div.setAttribute("style", "background: center / contain no-repeat url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"')");
       div.innerHTML += `
           <div class="article_ser">${series_type}</div>
-          <img src="https://www.anilibria.tv${data[i]["posters"]["medium"]["url"]}" style="${genres_style}" alt="">
+          <img src="${config["posters"]}${data[i]["posters"]["medium"]["url"]}" style="${genres_style}" alt="">
           <a class="article-text" onclick="edit_href('/release', 'id', ${data[i]["id"]})">
             <p class="article-name"  style="-webkit-line-clamp: 3;line-clamp: 3;">${data[i]["names"]["ru"]}</p>
             ${genres}
@@ -225,7 +225,7 @@ function load_new(n, data) {
       div.className = 'article_design_2';
       div.innerHTML += `
           <a onclick="edit_href('/release', 'id', ${data[i]["id"]})">
-            <img src="https://www.anilibria.tv${data[i]["posters"]["medium"]["url"]}" alt="" style="${genres_style}">
+            <img src="${config["posters"]}${data[i]["posters"]["medium"]["url"]}" alt="" style="${genres_style}">
             <div class="text_block_design_2">
               <p class="article_name_design_2"  style="-webkit-line-clamp: 1;line-clamp: 1;">${data[i]["names"]["ru"]}</p>
               ${genres}
@@ -407,7 +407,7 @@ function article_favorites(url_pop, block_id) {
         // div.setAttribute("style", "background: center / contain no-repeat url('https://www.anilibria.tv"+data[i]["posters"]["medium"]["url"]+"')");
         div.innerHTML += `
             <div class="article_ser">${series_type}</div>
-            <img src="https://www.anilibria.tv${data[i]["posters"]["medium"]["url"]}" alt="">
+            <img src="${config["posters"]}${data[i]["posters"]["medium"]["url"]}" alt="">
             <a class="article-text" onclick="edit_href('/release', 'id', ${data[i]["id"]})">
               <p class="article-name"  style="-webkit-line-clamp: 3;line-clamp: 3;">${data[i]["names"]["ru"]}</p>
               ${genres}
@@ -430,7 +430,7 @@ function article_favorites(url_pop, block_id) {
         div.className = 'article_design_2';
         div.innerHTML += `
             <a onclick="edit_href('/release', 'id', ${data[i]["id"]})">
-              <img src="https://www.anilibria.tv${data[i]["posters"]["medium"]["url"]}" alt="">
+              <img src="${config["posters"]}${data[i]["posters"]["medium"]["url"]}" alt="">
               <div class="text_block_design_2">
                 <p class="article_name_design_2"  style="-webkit-line-clamp: 1;line-clamp: 1;">${data[i]["names"]["ru"]}</p>
                 ${genres}
@@ -602,7 +602,7 @@ function load_small(arr_small, block_id) {
         <div class="article_ser" style="margin-top: 200px;">${series_type}</div>
         <button class="button_announce" id="announce_button_${data[i]["id"]}" style="${announce_none}" onclick="announce_view(${data[i]["id"]})">i</button>
         <div class="article_announce" id="announce_text_${data[i]["id"]}" style="display:none;">${announce}</div>
-        <img src="https://www.anilibria.tv${data[i]["posters"]["medium"]["url"]}" style="width: 203px;height: 290px;${genres_style}" alt="">
+        <img src="${config["posters"]}${data[i]["posters"]["medium"]["url"]}" style="width: 203px;height: 290px;${genres_style}" alt="">
         <a class="article-text" onclick="edit_href('/release', 'id', ${data[i]["id"]})" style="width: 190px;height: 275px;">
           <p class="article-name"  style="-webkit-line-clamp: 3;line-clamp: 3;">${data[i]["names"]["ru"]}</p>
           ${genres}

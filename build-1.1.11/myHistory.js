@@ -242,7 +242,7 @@ function load_his() {
     var date_payer_release = dateObject_payer_release.toLocaleString()
 
     if (pljsplayfrom == "pljsplayfrom") {
-      var url = 'https://api.anilibria.tv/v2/getTitle?id='+get_player_storage("id")+'&filter=id,posters.small,names';
+      var url = config["titels_api"]+'getTitle?id='+get_player_storage("id")+'&filter=id,posters.small,names';
       var div = document.createElement('div');
       document.getElementById('history_payer_release').appendChild(div);
       div.className = 'article_his';
@@ -262,7 +262,7 @@ function load_his() {
       var page_content;
       $.get(url, function(data){
           page_content = data;
-          document.getElementById("img"+data["id"]).src = "https://www.anilibria.tv"+data["posters"]["small"]["url"];
+          document.getElementById("img"+data["id"]).src = config["posters"]+""+data["posters"]["small"]["url"];
           document.getElementById("names"+data["id"]).innerHTML = data["names"]["ru"];
       });
     }

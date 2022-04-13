@@ -218,7 +218,7 @@ function page_settings() {
     document.getElementById('logout_profile').setAttribute("style", "");
   }
 
-  url = "https://api.anilibria.tv/v2/getGenres";
+  url = config["titels_api"]+"getGenres";
   $.get(url, function(data){
     // let data = ['Боевые искусства', 'Вампиры', 'Демоны', 'Детектив', 'Драма', 'Игры', 'Исторический', 'Комедия', 'Магия', 'Меха', 'Мистика', 'Музыка', 'Повседневность', 'Приключения', 'Психологическое', 'Романтика', 'Сверхъестественное', 'Сёдзе', 'Сейнен', 'Сёнен', 'Спорт', 'Супер сила', 'Триллер', 'Ужасы', 'Фантастика', 'Фэнтези', 'Школа', 'Экшен', 'Этти']
     var data_arr = data;
@@ -339,7 +339,7 @@ function page_settings() {
 }
 
 function load_profile(sessionId) {
-  var url = "https://api.anilibria.tv/v2/getUser?session="+sessionId;
+  var url = config["titels_api"]+"getUser?session="+sessionId;
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {

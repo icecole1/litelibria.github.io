@@ -1,6 +1,17 @@
 version_history = [
   {
     "prefix":"Peterugiusu",
+    "version":"1.1.11",
+    "date":"13 April 2022",
+    "update":[
+			{
+        "type":"IMPROVED",
+        "text":"Изменён домен APi"
+      }
+    ]
+  },
+	{
+    "prefix":"Peterugiusu",
     "version":"1.1.10",
     "date":"9 April 2022",
     "update":[

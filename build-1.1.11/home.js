@@ -72,7 +72,7 @@ function page_home() {
       var days = ['6','0','1','2','3','4','5'];
       var d = new Date();
       var n = d.getDay();
-      var url_pop = 'https://api.anilibria.tv/v2/getSchedule?days='+days[n]+'&remove=torrents&description_type=html';
+      var url_pop = config["titels_api"]+'getSchedule?days='+days[n]+'&remove=torrents&description_type=html';
       article_small_dey(url_pop, 'article_block_small');
     }
 

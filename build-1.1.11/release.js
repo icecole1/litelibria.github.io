@@ -645,7 +645,7 @@ function release_html(id_t, data) {
   document.title = data["names"]["ru"];
 
   document.getElementById('rel_in_favorites').innerHTML = `В избранном у  ${data["in_favorites"]}`;
-  document.getElementById('rel_posters_medium_url').src = "https://www.anilibria.tv"+data["posters"]["medium"]["url"];
+  document.getElementById('rel_posters_medium_url').src = config["posters"]+''+data["posters"]["medium"]["url"];
   document.getElementById('rel_posters_mobile_url').src = "https://api.7o7.co/anilibria_bot/getPoster/"+data["id"];
   document.getElementById('rel_names_ru').innerHTML = `${data["names"]["ru"]}`;
   document.getElementById('rel_genres').innerHTML = `${genres}`;
@@ -701,7 +701,7 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
         url_relise_1080 = ",[1080p]https://"+dataPlayer["host"]+dataPlayer["playlist"][i2]["hls"]["fhd"];
       }
       if (dataPlayer["playlist"][i2]["preview"]) {
-        poster_preview = "https://anilibria.tv/"+dataPlayer["playlist"][i2]["preview"];
+        poster_preview = config["posters"]+''+dataPlayer["playlist"][i2]["preview"];
       } else {
         // poster_preview = "img/pleer.png";
         poster_preview = "https://api.7o7.co/anilibria_bot/getPoster/"+id_t;
