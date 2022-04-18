@@ -16,42 +16,32 @@
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://litelibria.github.io/?/catalog</loc>
+		<loc>https://litelibria.github.io/catalog</loc>
 		<lastmod>2022-03-11</lastmod>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://litelibria.github.io/?/release</loc>
+		<loc>https://litelibria.github.io/favorites</loc>
 		<lastmod>2022-03-11</lastmod>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://litelibria.github.io/?/season</loc>
+		<loc>https://litelibria.github.io/myHistory</loc>
 		<lastmod>2022-03-11</lastmod>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://litelibria.github.io/?/favorites</loc>
+		<loc>https://litelibria.github.io/schedule</loc>
 		<lastmod>2022-03-11</lastmod>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://litelibria.github.io/?/myHistory</loc>
+		<loc>https://litelibria.github.io/search</loc>
 		<lastmod>2022-03-11</lastmod>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://litelibria.github.io/?/schedule</loc>
-		<lastmod>2022-03-11</lastmod>
-		<priority>1.0</priority>
-	</url>
-	<url>
-		<loc>https://litelibria.github.io/?/search</loc>
-		<lastmod>2022-03-11</lastmod>
-		<priority>1.0</priority>
-	</url>
-	<url>
-		<loc>https://litelibria.github.io/?/settings</loc>
+		<loc>https://litelibria.github.io/settings</loc>
 		<lastmod>2022-03-11</lastmod>
 		<priority>1.0</priority>
 	</url>
