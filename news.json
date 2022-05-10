@@ -1,7 +1,7 @@
 {
 	"blockNewTrailer": {
 		"Visible": true,
-		"Colors" : "0xff000000",
+		"Colors" : "Color(0xff000000)",
 		"ImageBG": "https://m.media-amazon.com/images/M/MV5BODU3NmY5Y2ItYzI3YS00MmY3LTk1Y2YtNzQxOGI1NTI2Mzk3XkEyXkFqcGdeQXVyMTMyNDQ0NjM2._V1_.jpg",
 		"Poster": "https://m.media-amazon.com/images/M/MV5BNGRmN2Y2MTgtNjU1MS00YzhkLWIzNGYtNGE1OTU3ODFiNTRmXkEyXkFqcGdeQXVyMTMzNDExODE5._V1_FMjpg_UX712_.jpg",
 		"TextBig": "Новый трейлер",
@@ -11,7 +11,7 @@
 	},
 	"blockSelectRecommend": {
 		"Visible": true,
-		"Colors" : "0xff000000",
+		"Colors" : "Color(0xff000000)",
 		"ImageBG": "https://m.media-amazon.com/images/M/MV5BODU3NmY5Y2ItYzI3YS00MmY3LTk1Y2YtNzQxOGI1NTI2Mzk3XkEyXkFqcGdeQXVyMTMyNDQ0NjM2._V1_.jpg",
 		"TextBig": "Рекомендуем к просмотру",
 		"TextMedium": "Потборка хороших тайтлов\nдля просмотра перед\nновым Аниме сезоном",
