@@ -12,7 +12,7 @@
 	"blockSelectRecommend": {
 		"Visible": true,
 		"Colors" : "Color(0xff000000)",
-		"ImageBG": "https://www.themoviedb.org/t/p/original/uX03ODgZ3nphQoJ6D2ewk5cI6f8.jpg",
+		"ImageBG": "https://litelibria.github.io/img/bg1.jpg",
 		"TextBig": "Рекомендуем",
 		"TextMedium": "Подборка хороших тайтлов\nс прошлого аниме сезона",
 		"TextSmall": "*По мнению LiteLibria",
