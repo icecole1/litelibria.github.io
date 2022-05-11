@@ -170,7 +170,7 @@ function page_settings() {
     <div class="article-list">
       <div class="settings_filter">
         <h3>Ссылки</h3>
-        <a class="settings_filter_button" href="https://rozenrod.github.io/" style="display: inline-block;color: var(--card-text-color-2);">Сайт разработчика</a>
+        <a class="settings_filter_button" href="https://rozenrod.com" style="display: inline-block;color: var(--card-text-color-2);">Сайт разработчика</a>
         <a class="settings_filter_button" href="https://github.com/LiteLibria/litelibria.github.io" style="display: inline-block;color: var(--card-text-color-2);">Страница GitHub</a>
         <a class="settings_filter_button" href="https://www.instagram.com/rozenrod/" style="display: inline-block;color: var(--card-text-color-2);">Страница Instagram</a>
       </div>
