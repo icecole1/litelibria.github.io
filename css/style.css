@@ -1,0 +1,445 @@
+
+
+/* Стили для страницы Line */
+.LineBlock {
+	position: relative;
+	animation: show 0.5s;
+}
+
+
+/* Стили для страницы Line с раздилением на 2 столбика */
+.DesctopBlock{
+	margin-top: 15px;
+	max-width: 1500px;
+	transition: .3s ease;
+	padding: 10px 0 10px 0;
+	display: flex;
+}
+/* Стили для левого столбика */
+.LeftBlock{
+	border-radius: 10px;
+	width: 70%;
+	min-height: 200px;
+	background: var(--ColorThemes2);
+}
+/* Стили для правого столбика */
+.RightBlock{
+	border-radius: 10px;
+	width: 30%;
+	margin-left: 10px;
+	min-height: 200px;
+	background: var(--ColorThemes2);
+}
+
+
+/* Стили карточек Истории */
+.LineCard-History{
+	width: calc(100% - 20px);
+	position: relative;
+	display: inline-flex;
+	overflow: hidden;
+	flex-direction: row;
+	box-shadow: var(--shadow-l1);
+	transition: box-shadow .3s ease;
+	margin: 6px;
+	border-radius: var(--border-radius-2);
+	background: var(--ColorThemes1);
+	color: var(--ColorThemes3);
+}
+.LineCard-History img{
+  height: 90px;
+  aspect-ratio: 7 / 10;
+	border-radius: var(--card-border-radius);
+	padding: 10px;
+}
+.LineCard-History-BlockText{
+	padding: 10px 0;
+	text-overflow: ellipsis;
+	width: calc(100% - 95px);
+}
+.LineCard-History p{
+	font-size: 14px;
+	text-align: left;
+	width: -webkit-fill-available;
+	text-overflow: ellipsis;
+	float: left;
+	overflow: hidden;
+}
+.LineCard-History:hover{
+	opacity: 0.8;
+	cursor: pointer;
+	box-shadow: var(--shadow-l3);
+	transition: .3s ease;
+	-webkit-transform: scale(1.02) translateY(0);
+	-o-transform: scale(1.02) translateY(0);
+	transform: scale(1.02) translateY(0);
+}
+
+
+
+/* Стили карточек Жанров */
+.LineCard-Genres{
+	position: relative;
+	display: inline-flex;
+	overflow: hidden;
+	flex-direction: row;
+	box-shadow: var(--shadow-l1);
+	transition: box-shadow .3s ease;
+	margin: 6px;
+  border-radius: var(--border-radius-2);
+	padding: 10px 15px;
+	background: var(--ColorThemes0);
+	color: var(--ColorThemes3);
+}
+.LineCard-Genres:hover{
+	opacity: 0.8;
+	cursor: pointer;
+	box-shadow: var(--shadow-l3);
+	transition: .3s ease;
+	-webkit-transform: scale(1.02) translateY(0);
+	-o-transform: scale(1.02) translateY(0);
+	transform: scale(1.02) translateY(0);
+}
+
+/* Стили карточек Релизов и Видео*/
+.LineList-Button-All{
+	font-size: 14px;
+	color: var(--PrimaryColor);
+	font-weight: 400;
+}
+.LineList-Button-All:hover{
+	opacity: 0.8;
+	transition: .3s ease;
+}
+.LineCard-TextSerie{
+	box-sizing: border-box;
+	text-align: center;
+	padding: 12px 4px;
+	width: 115px;
+	background: var(--PrimaryColor);
+	opacity: 0.9;
+	display: block;
+	cursor: pointer;
+	text-decoration: none;
+	float: left;
+	font-weight: 500;
+	color: var(--PrimaryColorText);
+	z-index: 1;
+	position: absolute;
+	margin-top: 0px;
+	margin-left: calc(50% - 115px / 2);
+	font-size: 14px;
+	border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+.LineCard-Hover{
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  background: 0;
+  text-decoration: none;
+  display: none;
+  position: absolute;
+  -webkit-transform: scale(1.05) translateY(0);
+  -o-transform: scale(1.05) translateY(0);
+  transform: scale(1.05) translateY(0);
+}
+.LineCard-Hover-Name{
+  font-size: 15px;
+  margin: 10px 20px 5px 20px;
+	padding-top: 5px;
+  font-weight: 600;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+	text-align: left;
+	white-space: break-spaces;
+}
+.LineCard-Hover-Genres{
+	margin: 0 20px 5px 20px;
+	font-size: 13px;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -moz-box;
+	-moz-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	line-clamp: 1;
+	-webkit-box-orient: vertical;
+	box-orient: vertical;
+	opacity: 0;
+	white-space: normal;
+	text-decoration: none;
+}
+.LineCard-Hover-Description{
+	margin: 0 20px 5px 20px;
+	font-size: 13px;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -moz-box;
+	-moz-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	box-orient: vertical;
+	opacity: 0;
+	white-space: normal;
+	text-decoration: none;
+}
+.LineCard-Hover-Description a,b{
+  display: none;
+}
+.LineCard-Hover:hover,
+.LineCard-Hover:active{
+	background: rgb(0 0 0 / 80%);
+	transition: .3s ease;
+}
+.LineCard-Hover:hover p{
+	opacity: 1;
+	display: -webkit-box;
+	transition: .3s ease;
+}
+.LineCard-Hover:hover .LineCard-TextSerie{
+	opacity:0;
+	display: none;
+	transition: .3s ease;
+}
+
+/* Адаптация LineCard к размеру Big */
+.LineGenerator-BigHovers{
+	overflow-x: auto;
+	white-space: nowrap;
+	align-items: start;
+  display: -webkit-box;
+}
+.LineCard-BigHovers{
+  height: 180px;
+	aspect-ratio: 16 / 9;
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  flex-direction: row;
+  background-color: var(--ColorThemes0);
+  box-shadow: var(--shadow-l1);
+  border-radius: var(--card-border-radius);
+  margin-bottom: var(--section-separation);
+  transition: box-shadow .3s ease;
+  margin: 6px;
+  color: #fff;
+  background-position: center;
+  background-size: cover;
+}
+.LineCard-BigHovers img{
+  height: 180px;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+.LineCard-BigHovers > .LineCard-Hover{
+  height: 180px;
+	aspect-ratio: 16 / 9;
+}
+.LineCard-BigHovers  > .LineCard-Hover > .LineCard-Hover-Description{
+	-webkit-line-clamp: 5;
+	line-clamp: 5;
+}
+.LineCard-BigHovers:hover{
+	box-shadow: var(--shadow-l4);
+	transition: .3s ease;
+	-webkit-transform: scale(1.04) translateY(0);
+	-o-transform: scale(1.04) translateY(0);
+	transform: scale(1.04) translateY(0);
+}
+.LineCard-BigHovers:hover .LineCard-Hover{
+	display: inline-block;
+	transition: .3s ease;
+	opacity: 1;
+}
+.LineCard-BigHovers:hover .LineCard-TextSerie{
+	opacity:0;
+	display: none;
+	transition: .3s ease;
+}
+.LineCard-BigHovers:hover img{
+	transition: .3s ease;
+	filter: blur(5px);
+}
+
+/* Адаптация LineCard к размеру Medium */
+.LineGenerator-MediumHovers{
+	overflow-x: auto;
+	white-space: nowrap;
+	align-items: start;
+  display: -webkit-box;
+}
+.LineCard-MediumHovers{
+  height: 320px;
+  aspect-ratio: 7 / 10;
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  flex-direction: row;
+  background-color: var(--ColorThemes0);
+  box-shadow: var(--shadow-l1);
+  border-radius: var(--card-border-radius);
+  margin-bottom: var(--section-separation);
+  transition: box-shadow .3s ease;
+  margin: 6px;
+  color: #fff;
+  background-position: center;
+  background-size: cover;
+}
+.LineCard-MediumHovers img{
+  height: 320px;
+  aspect-ratio: 7 / 10;
+}
+.LineCard-Hover-Serie{
+	font-size: 15px;
+	padding-top: calc(50% + 20px);
+	width: 70px;
+	display: block !important;
+	text-align: center;
+	font-weight: 600;
+}
+.LineCard-MediumHovers > .LineCard-Hover{
+  height: 320px;
+  aspect-ratio: 7 / 10;
+}
+.LineCard-MediumHovers  > .LineCard-Hover > .LineCard-Hover-Description{
+	-webkit-line-clamp: 13;
+	line-clamp: 13;
+}
+.LineCard-MediumHovers:hover{
+	cursor: pointer;
+	box-shadow: var(--shadow-l3);
+	transition: .3s ease;
+	-webkit-transform: scale(1.02) translateY(0);
+	-o-transform: scale(1.02) translateY(0);
+	transform: scale(1.02) translateY(0);
+}
+.LineCard-MediumHovers:hover img{
+	transition: .3s ease;
+	filter: blur(5px);
+}
+.LineCard-MediumHovers:hover .LineCard-Hover{
+	display: inline-block;
+	transition: .3s ease;
+	opacity: 1;
+}
+.LineCard-MediumHovers:hover .LineCard-TextSerie{
+	opacity:0;
+	display: none;
+	transition: .5s ease;
+}
+
+/* Адаптация LineCard к размеру Small */
+.LineGenerator-SmallHovers{
+	overflow-x: auto;
+	white-space: nowrap;
+	align-items: start;
+  display: -webkit-box;
+}
+.LineCard-SmallHovers{
+  height: 200px;
+  aspect-ratio: 7 / 10;
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  flex-direction: row;
+  background-color: var(--ColorThemes0);
+  box-shadow: var(--shadow-l1);
+  border-radius: var(--card-border-radius);
+  margin-bottom: var(--section-separation);
+  transition: box-shadow .3s ease;
+  margin: 6px;
+  color: #fff;
+  background-position: center;
+  background-size: cover;
+}
+.LineCard-SmallHovers img{
+  height: 200px;
+  aspect-ratio: 7 / 10;
+}
+.LineCard-SmallHovers > .LineCard-Hover{
+  height: 200px;
+  aspect-ratio: 7 / 10;
+}
+.LineCard-SmallHovers:hover{
+	cursor: pointer;
+	box-shadow: var(--shadow-l3);
+	transition: .3s ease;
+	-webkit-transform: scale(1.02) translateY(0);
+	-o-transform: scale(1.02) translateY(0);
+	transform: scale(1.02) translateY(0);
+}
+.LineCard-SmallHovers:hover img{
+	transition: .3s ease;
+	filter: blur(5px);
+}
+.LineCard-SmallHovers:hover .LineCard-Hover{
+	display: inline-block;
+	transition: .3s ease;
+	opacity: 1;
+}
+.LineCard-SmallHovers:hover .LineCard-TextSerie{
+	opacity:0;
+	display: none;
+	transition: .5s ease;
+}
+
+
+
+
+/* Адаптация LineList под раздел Updates */
+.LineList-Updates {
+	border-radius: 10px;
+	background: var(--ColorThemes2);
+	max-width: 1500px;
+	transition: .3s ease;
+	padding: 10px 0 10px 0;
+}
+.LineList-Updates h1 {
+	font-weight: 400;
+	text-align: left;
+	color: var(--ColorThemes3);
+	padding: 0 10px;
+	font-size: 18px;
+}
+
+/* Адаптация LineList под раздел Schedule */
+.LineList-Schedule {
+	border-radius: 10px;
+	background: var(--ColorThemes2);
+	max-width: 1500px;
+	transition: .3s ease;
+	padding: 10px 0 10px 0;
+}
+.LineList-Schedule h1 {
+	font-weight: 400;
+	text-align: left;
+	color: var(--ColorThemes3);
+	padding: 0 10px;
+	font-size: 18px;
+}
+
+/* Адаптация LineList под раздел Genres */
+.LineGenerator-Genres{
+	overflow-x: auto;
+	white-space: nowrap;
+	align-items: start;
+  display: -webkit-box;
+}
+.LineList-Genres h1 {
+	font-weight: 400;
+	text-align: left;
+	color: var(--ColorThemes3);
+	padding: 0 10px;
+	font-size: 18px;
+}
+
+/* Адаптация LineList под раздел History */
+.LineList-History h1 {
+	font-weight: 400;
+	text-align: left;
+	color: var(--ColorThemes3);
+	padding: 0 10px;
+	font-size: 18px;
+}

@@ -64,6 +64,8 @@ function load_href() {
   } else if (href == '/search') {
     edit_href(href, search_s);
   } else if (href == '/settings') {
+		edit_href(href);
+	} else if (href == '/line') {
     edit_href(href);
   } else {
     edit_href(href);
@@ -212,9 +214,13 @@ function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
     page_search(s1);
 
   } else if (href == '/settings') {
-    new_url = '/settings';
+		new_url = '/settings';
     editPushState(new_url);
     page_settings();
+	} else if (href == '/line') {
+    new_url = '/line';
+    editPushState(new_url);
+    page_line();
 
   } else {
     document.getElementById('b_page_home').setAttribute("style", "fill: var(--card-background-5);");

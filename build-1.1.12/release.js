@@ -42,8 +42,8 @@ function page_release(s1) {
       transition: .3s ease;
     }
     .week_block_a{
-      background: #2e2e2e;
-      color: var(--card-text-color-2) !important;
+      background: var(--card-background-2);
+      color: var(--card-text-color) !important;
     }
     .release-href{
       padding: 8px 9px;
@@ -78,7 +78,6 @@ function page_release(s1) {
     <center>
       <div id="release_block">
         <div class="release-list">
-          <span class="img_favorite" id="rel_in_favorites">В избранном у 0</span>
           <img id="rel_posters_medium_url" src="img/poster.png" alt=""/>
           <img id="rel_posters_mobile_url" src="" alt="" style="display:none"/>
           <div class="release-det">
@@ -95,6 +94,13 @@ function page_release(s1) {
                 <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_7">Вс</a>
               </div>
             </center>
+
+						<center>
+              <div class="week_block">
+                <p style="color: var(--card-text-color) !important" id="rel_in_favorites">В избранном у 0</p>
+              </div>
+            </center>
+
             <center>
               <div class="week_block">
                 <a id="rel_seasonANDyear" class="release-href favor_button_a release-href_hov" style="padding: 8px !important;">2022</a>
@@ -103,6 +109,7 @@ function page_release(s1) {
                 <a class="release-href favor_button_a release-href_hov" title="Добавить в избранное" id="addFavorite_rel" onclick="addFavorite(id_t)" style="display:none;"><img src="img/icons/19_W.png"/></a>
               </div>
             </center>
+						
 
             <p class="release-description" id="rel_announce"></p><br />
 

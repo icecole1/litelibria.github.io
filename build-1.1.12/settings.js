@@ -175,6 +175,13 @@ function page_settings() {
         <a class="settings_filter_button" href="https://www.instagram.com/rozenrod/" style="display: inline-block;color: var(--card-text-color-2);">Страница Instagram</a>
       </div>
     </div>
+
+		<div class="article-list">
+      <div class="settings_filter">
+        <h3>Тестовые страницы</h3>
+        <a class="settings_filter_button" onclick="edit_href('/line')" style="display: inline-block;color: var(--card-text-color-2);">Обновлённая главная страница</a>
+      </div>
+    </div>
   </center>
   `;
 

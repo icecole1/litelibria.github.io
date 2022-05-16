@@ -1144,7 +1144,9 @@ option{
   padding: 0;
 }
 .container input:checked ~ .checkmark {
-  background: var(--card-background-3);
+  /* background: var(--card-background-3); */
+	background: var(--card-background-2);
+
   padding: 0;
 }
 .checkmark:after {
@@ -1152,6 +1154,7 @@ option{
   position: absolute;
   display: none;
   padding: 0;
+	color: var(--card-text-color);
 }
 .checkmark:before {
   content: "↓";
@@ -1159,6 +1162,7 @@ option{
   display: block;
   padding: 0;
   display: contents;
+	color: var(--card-text-color);
 }
 .container input:checked ~ .checkmark:before {
   display: none;
