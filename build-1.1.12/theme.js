@@ -90,7 +90,7 @@ window.onload = function() {
 
 
   var width = document.documentElement.clientWidth;
-  var tallage = 92;
+  var tallage = 95;
   var result = width / 100 * tallage; //вычисление процентов
   if (width <= 800) {
     document.getElementById('app').style.width = "100%";
@@ -178,7 +178,7 @@ function theme2() {
 
 window.addEventListener("resize", function() {
   var width = document.documentElement.clientWidth;
-  var tallage = 92;
+  var tallage = 95;
   var result = width / 100 * tallage; //вычисление процентов
   if (width <= 800) {
     document.getElementById('app').style.width = "100%";

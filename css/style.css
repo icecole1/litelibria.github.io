@@ -10,7 +10,7 @@
 /* Стили для страницы Line с раздилением на 2 столбика */
 .DesctopBlock{
 	margin-top: 15px;
-	max-width: 1500px;
+	max-width: 1600px;
 	transition: .3s ease;
 	padding: 10px 0 10px 0;
 	display: flex;
@@ -24,11 +24,33 @@
 }
 /* Стили для правого столбика */
 .RightBlock{
+	height: 855px;
 	border-radius: 10px;
 	width: 30%;
 	margin-left: 10px;
 	min-height: 200px;
 	background: var(--ColorThemes2);
+}
+
+/* Стили для страницы Line для маленьких экранов */
+@media (max-width: 1000px){
+	.DesctopBlock{
+		display: block;
+		margin-top: 0;
+		padding: 0;
+	}
+	.LeftBlock{
+		border-radius: 0;
+		width: 100%;
+		background: var(--ColorThemes1);
+	}
+	.RightBlock{
+		height: 360px;
+		border-radius: 0;
+		width: 100%;
+		margin-left: 0;
+		background: var(--ColorThemes1);
+	}
 }
 
 
@@ -40,11 +62,12 @@
 	overflow: hidden;
 	flex-direction: row;
 	box-shadow: var(--shadow-l1);
-	transition: box-shadow .3s ease;
+	transition: .3s ease;
 	margin: 6px;
 	border-radius: var(--border-radius-2);
 	background: var(--ColorThemes1);
 	color: var(--ColorThemes3);
+	align-items: center;
 }
 .LineCard-History img{
   height: 90px;
@@ -56,6 +79,9 @@
 	padding: 10px 0;
 	text-overflow: ellipsis;
 	width: calc(100% - 95px);
+}
+.LineCard-History-Title{
+	font-weight: 400;
 }
 .LineCard-History p{
 	font-size: 14px;
@@ -74,6 +100,13 @@
 	-o-transform: scale(1.02) translateY(0);
 	transform: scale(1.02) translateY(0);
 }
+/* Стили карточек Истории для маленьких экранов */
+@media (max-width: 1000px){
+	.LineCard-History{
+		width: calc(100% - 10px);
+		background: var(--ColorThemes0);
+	}
+}
 
 
 
@@ -84,7 +117,7 @@
 	overflow: hidden;
 	flex-direction: row;
 	box-shadow: var(--shadow-l1);
-	transition: box-shadow .3s ease;
+	transition: .3s ease;
 	margin: 6px;
   border-radius: var(--border-radius-2);
 	padding: 10px 15px;
@@ -222,7 +255,7 @@
   box-shadow: var(--shadow-l1);
   border-radius: var(--card-border-radius);
   margin-bottom: var(--section-separation);
-  transition: box-shadow .3s ease;
+  transition: .3s ease;
   margin: 6px;
   color: #fff;
   background-position: center;
@@ -281,7 +314,7 @@
   box-shadow: var(--shadow-l1);
   border-radius: var(--card-border-radius);
   margin-bottom: var(--section-separation);
-  transition: box-shadow .3s ease;
+  transition: .3s ease;
   margin: 6px;
   color: #fff;
   background-position: center;
@@ -348,7 +381,7 @@
   box-shadow: var(--shadow-l1);
   border-radius: var(--card-border-radius);
   margin-bottom: var(--section-separation);
-  transition: box-shadow .3s ease;
+  transition: .3s ease;
   margin: 6px;
   color: #fff;
   background-position: center;
@@ -391,8 +424,7 @@
 /* Адаптация LineList под раздел Updates */
 .LineList-Updates {
 	border-radius: 10px;
-	background: var(--ColorThemes2);
-	max-width: 1500px;
+	max-width: 1600px;
 	transition: .3s ease;
 	padding: 10px 0 10px 0;
 }
@@ -407,8 +439,7 @@
 /* Адаптация LineList под раздел Schedule */
 .LineList-Schedule {
 	border-radius: 10px;
-	background: var(--ColorThemes2);
-	max-width: 1500px;
+	max-width: 1600px;
 	transition: .3s ease;
 	padding: 10px 0 10px 0;
 }
@@ -435,11 +466,225 @@
 	font-size: 18px;
 }
 
+/* Адаптация LineList под раздел Video */
+.LineList-Video {
+	border-radius: 10px;
+	max-width: 1600px;
+	transition: .3s ease;
+	padding: 10px 0 10px 0;
+}
+.LineList-Video h1 {
+	font-weight: 400;
+	text-align: left;
+	color: var(--ColorThemes3);
+	padding: 0 10px;
+	font-size: 18px;
+}
+
+/* Адаптация LineList под раздел Recomend */
+.LineList-Recomend {
+	border-radius: 10px;
+	max-width: 1600px;
+	transition: .3s ease;
+	padding: 10px 0 10px 0;
+}
+.LineList-Recomend h1 {
+	font-weight: 400;
+	text-align: left;
+	color: var(--ColorThemes3);
+	padding: 0 10px;
+	font-size: 18px;
+}
+
 /* Адаптация LineList под раздел History */
+.LineGenerator-History{
+	overflow-x: hidden;
+	overflow-y: auto;
+	white-space: inherit;
+	align-items: start;
+	height: 815px;
+}
 .LineList-History h1 {
 	font-weight: 400;
 	text-align: left;
 	color: var(--ColorThemes3);
 	padding: 0 10px;
 	font-size: 18px;
+}
+/* Адаптация LineList под раздел History для маленьких экранов */
+@media (max-width: 1000px){
+	.LineGenerator-History{
+    height: 315px;
+	}
+}
+
+
+/* Адаптация LineList под раздел Trailer */
+.LineList-Trailer {
+	max-width: 1600px;
+	transition: .3s ease;
+	padding-bottom: 10px;
+	overflow-x: auto;
+	align-items: start;
+	display: -webkit-box;
+}
+.LineList-Trailer a{
+	min-width: 550px;
+	width: 100%;
+	display: block;
+}
+.LineList-Trailer h1 {
+	font-weight: 400;
+	text-align: left;
+	color: var(--ColorThemes3);
+	padding: 0 10px;
+	font-size: 18px;
+}
+.LineList-Trailer-BG{
+	width: 100%;
+	height: 250px;
+	position: relative;
+	display: block;
+	background-size: cover;
+	background-position: center;
+	border-radius: 10px 10px 0 0;
+}
+.LineList-Trailer-BG-Gradien{
+	background: linear-gradient(90deg, #000000, #000000c2, #00000000);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 10px 10px 0 0;
+}
+@media (max-width: 1000px){
+	.LineList-Trailer-BG{
+    border-radius: 0px;
+	}
+	.LineList-Trailer-BG-Gradien{
+    border-radius: 0px;
+	}
+}
+.LineList-Trailer-Text{
+	width: 400px;
+}
+.LineList-Trailer-Text-Big{
+	font-size: 30px;
+	font-weight: 500;
+	color: #e7e7e7;
+}
+.LineList-Trailer-Text-Medium{
+	font-size: 20px;
+	font-weight: 400;
+	color: #e7e7e7;
+	opacity: 0.8;
+	padding: 5px 0;
+}
+.LineList-Trailer-Text-Small{
+	font-size: 14px;
+	font-weight: 300;
+	color: #e7e7e7;
+	opacity: 0.8;
+}
+.LineList-Trailer-Poster{
+	height: 225px;
+	background: var(--ColorThemes0);
+	aspect-ratio: 7 / 10;
+	border-radius: 10px;
+	margin-right: 10px;
+	position: relative;
+	display: block;
+	background-size: cover;
+	background-position: center;
+	transition: .3s ease;
+	transform: scale(1.00000000001);
+}
+.LineList-Trailer-Poster:hover{
+	cursor: pointer;
+	box-shadow: var(--shadow-l3);
+	transition: .3s ease;
+	-webkit-transform: scale(1.02) translateY(0);
+	-o-transform: scale(1.02) translateY(0);
+	transform: scale(1.02) translateY(0);
+}
+
+
+
+/* Адаптация LineList под раздел SelectRecommend */
+.LineList-SelectRecommend {
+	max-width: 1600px;
+	transition: .3s ease;
+	padding-bottom: 10px;
+}
+.LineList-SelectRecommend h1 {
+	font-weight: 400;
+	text-align: left;
+	color: var(--ColorThemes3);
+	padding: 0 10px;
+	font-size: 18px;
+}
+.LineList-SelectRecommend-BG{
+	width: 100%;
+	height: 250px;
+	position: relative;
+	display: block;
+	background-size: cover;
+	background-position: center;
+}
+.LineList-SelectRecommend-BG-Gradien{
+	background: linear-gradient(90deg, #000000, #000000c2, #00000000);
+	width: 100%;
+	height: 100%;
+	overflow-x: auto;
+	display: -webkit-box;
+	display: inline-flex;
+	align-items: center;
+}
+.LineList-SelectRecommend-Text{
+	width: 350px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.LineList-SelectRecommend-Text-Big{
+	font-size: 30px;
+	font-weight: 500;
+	color: #e7e7e7;
+}
+.LineList-SelectRecommend-Text-Medium{
+	font-size: 20px;
+	font-weight: 400;
+	color: #e7e7e7;
+	opacity: 0.8;
+	padding: 5px 0;
+}
+.LineList-SelectRecommend-Text-Small{
+	font-size: 14px;
+	font-weight: 300;
+	color: #e7e7e7;
+	opacity: 0.8;
+}
+.LineList-SelectRecommend-Poster{
+	height: 225px;
+	background: var(--ColorThemes0);
+	aspect-ratio: 7 / 10;
+	margin-right: 10px;
+	position: relative;
+	display: block;
+	background-size: cover;
+	background-position: center;
+	border-radius: 10px;
+	transition: .3s ease;
+	transform: scale(1.00000000001);
+}
+.LineList-SelectRecommend-Poster:hover{
+	cursor: pointer;
+	box-shadow: var(--shadow-l3);
+	transition: .3s ease;
+	-webkit-transform: scale(1.02) translateY(0);
+	-o-transform: scale(1.02) translateY(0);
+	transform: scale(1.02) translateY(0);
 }

@@ -1,8 +1,18 @@
 @media (prefers-color-scheme: light) {
   :root {
+		/* PrimaryColor-Test */
+		/* --PrimaryColor: #ff5722;
+		--PrimaryColor: #03a9f4;
+		--PrimaryColor: #4caf50;
+		--PrimaryColor: #d53c3c;
+		--PrimaryColorText: #f3f3f3;
+		--PrimaryColorText: #2e2e2e; */
+
+
+
 		/* PrimaryColor */
 		--PrimaryColor: #d53c3c;
-		--PrimaryColorText: #2e2e2e;
+		--PrimaryColorText: #f3f3f3;
 		/* BGColor */
 		--ColorThemes0: #fbfbfb;
 		--ColorThemes1: #f3f3f3;
