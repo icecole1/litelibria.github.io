@@ -9,20 +9,20 @@ if ('serviceWorker' in navigator) {
 }
 
 window.onload = function() {
-  if (!window.matchMedia('(display-mode: standalone)').matches) {
-    if (localStorage.getItem('start_mess') != '1') {
-      if (detectOS() == 'Android') {
-        document.getElementById('start_mess').setAttribute("style", "display:block;");
-        document.getElementById('android_app').setAttribute("style", "display:block;");
-      } else if (detectOS() == 'iOS') {
-        document.getElementById('start_mess').setAttribute("style", "display:block;");
-        document.getElementById('ios_app').setAttribute("style", "display:block;");
-      } else if (detectOS() == 'MacOS') {
-        document.getElementById('start_mess').setAttribute("style", "display:block;");
-        document.getElementById('ios_app').setAttribute("style", "display:block;");
-      }
-    }
-  }
+  // if (!window.matchMedia('(display-mode: standalone)').matches) {
+  //   if (localStorage.getItem('start_mess') != '1') {
+  //     if (detectOS() == 'Android') {
+  //       document.getElementById('start_mess').setAttribute("style", "display:block;");
+  //       document.getElementById('android_app').setAttribute("style", "display:block;");
+  //     } else if (detectOS() == 'iOS') {
+  //       document.getElementById('start_mess').setAttribute("style", "display:block;");
+  //       document.getElementById('ios_app').setAttribute("style", "display:block;");
+  //     } else if (detectOS() == 'MacOS') {
+  //       document.getElementById('start_mess').setAttribute("style", "display:block;");
+  //       document.getElementById('ios_app').setAttribute("style", "display:block;");
+  //     }
+  //   }
+  // }
 
   if (localStorage.getItem('my_theme') == 'auto') {
     $('link[href="css/auto.css"]').attr('href', 'css/auto.css');
