@@ -46,14 +46,14 @@ function page_options() {
 				<h3>Настройки страницы плеера</h3>
 				<p class="settings_filter_p">Пропуск опенинга</p>
 				<div id="settings_home_block_style" style="margin-bottom: 15px;">
-					<button id="opening1_style" class="OptionsCardButton" title="Выбрать" onclick="editOpening_style('1')">Автоматически</button>
-					<button id="opening2_style" class="OptionsCardButton" title="Выбрать" onclick="editOpening_style('0')" style="background: var(--ColorThemes2);color: var(--ColorThemes3) !important;">Отключить</button>
+					<button id="opening1_style" class="OptionsCardButton" title="Выбрать" onclick="SetOpening_style('1')">Автоматически</button>
+					<button id="opening2_style" class="OptionsCardButton" title="Выбрать" onclick="SetOpening_style('0')" style="background: var(--ColorThemes2);color: var(--ColorThemes3) !important;">Отключить</button>
 				</div>
 				<hr style="border: 1px solid var(--ColorThemes2);"/>
 				<p class="settings_filter_p">Нативный плеер iOS</p>
 				<div id="settings_home_block_style" style="margin-bottom: 15px;">
-					<button id="Player1_style" class="OptionsCardButton" title="Выбрать" onclick="editPlayer_style('1')">Включить</button>
-					<button id="Player2_style" class="OptionsCardButton" title="Выбрать" onclick="editPlayer_style('2')" style="background: var(--ColorThemes2);color: var(--ColorThemes3) !important;">Отключить</button>
+					<button id="Player1_style" class="OptionsCardButton" title="Выбрать" onclick="SetPlayer_style('1')">Включить</button>
+					<button id="Player2_style" class="OptionsCardButton" title="Выбрать" onclick="SetPlayer_style('2')" style="background: var(--ColorThemes2);color: var(--ColorThemes3) !important;">Отключить</button>
 				</div>
 				<p class="settings_filter_p">*Нажмите для выбора</p>
 			</div>
@@ -136,6 +136,9 @@ function page_options() {
 	GetThemeEditStyle();
 	GetMirrorMode();
 	GetMirrorString();
+	GetOpening_style();
+	GetPlayer_style();
+
 
   Scroll_to_top();
 }
@@ -297,4 +300,62 @@ function SetMirrorString(){
 
 	localStorage.setItem('GetMirrorTitels', MirrorTitels);
 	localStorage.setItem('GetMirrorPosters', MirrorPosters);
+}
+
+function GetOpening_style(){
+	var my_player_style = localStorage.getItem('my_player_style');
+  if (!my_player_style) {
+    localStorage.setItem('my_player_style', '2');
+    document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+    document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+  } else {
+    if (my_player_style == "1") {
+      document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+      document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+    } else if (my_player_style == "2") {
+      document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+      document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+    }
+  }
+}
+function SetOpening_style(style) {
+  if (style == "1") {
+    localStorage.setItem('my_skips_opening', '1');
+    document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+    document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+  } else if (style == "0") {
+    localStorage.setItem('my_skips_opening', '0');
+    document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+    document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+  }
+}
+
+
+
+function GetPlayer_style(){
+	var my_skips_opening = localStorage.getItem('my_skips_opening');
+  if (!my_skips_opening) {
+    localStorage.setItem('my_skips_opening', '0');
+    document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+    document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+  } else {
+    if (my_skips_opening == "1") {
+      document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+      document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+    } else {
+      document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+      document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+    }
+  }
+}
+function SetPlayer_style(style) {
+  if (style == "1") {
+    localStorage.setItem('my_player_style', '1');
+    document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+    document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+  } else if (style == "2") {
+    localStorage.setItem('my_player_style', '2');
+    document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+    document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+  }
 }
