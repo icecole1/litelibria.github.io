@@ -1,3 +1,426 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+*{
+  border: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  font-weight: 300;
+  outline:none;
+}
+
+.no-touch ::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  background-color: #f9f9fd;
+  border-radius: var(--border-radius);
+  background: 0;
+}
+.no-touch ::-webkit-scrollbar-thumb {
+  background: var(--card-background-3);
+  border-radius: var(--border-radius);
+}
+::-webkit-scrollbar-track {
+  background: 0;
+  border: 0;
+  margin: 0;
+  border-radius: var(--border-radius);
+}
+a{
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+body{
+  background-color: var(--card-background);
+  color: #fff;
+  transition: .3s ease;
+}
+
+details {
+	text-align: left;
+	color: var(--card-text-color);
+	font-weight: 400;
+	font-family: 'Roboto Condensed', sans-serif;
+	max-width: calc(800px - 10px);
+	padding: 5px;
+	background: var(--card-background);
+	margin-top: 10px;
+	border-radius: var(--border-radius-2);
+}
+details summary {
+	text-align: left;
+	color: var(--card-text-color);
+	cursor: pointer;
+	font-size: 16px;
+	cursor: pointer;
+	padding: 10px 20px;
+}
+details span {
+	border-radius: 2px;
+	margin-right: 10px;
+	/* background: var(--card-background-2); */
+	color: var(--card-text-color);
+}
+
+
+/* Стили для всплывающий уведомлений */
+/* Начало */
+#error_mes{
+	background: var(--PrimaryColor);
+	font-size: 16px;
+	font-weight: 300;
+	color: var(--PrimaryColorText);
+	text-decoration: none;
+	padding: 4px 8px;
+	text-align: center;
+	margin-top: -30px;
+	border-radius: 15px;
+}
+#block_notif{
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  width: 250px;
+  height: auto;
+  z-index: 99;
+}
+.notif{
+  padding: 10px 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.9;
+  color: var(--card-text-color-2);
+  background: var(--card-background-3);
+  border-radius: var(--border-radius);
+}
+/* Конец */
+/* Стили для всплывающий уведомлений */
+
+
+
+/* Стили для кнопки вверх */
+/* Начало */
+.back_to_top {
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  z-index: 9999;
+  width: 35px;
+  height: 35px;
+  font-size: 22px;
+  text-align: center;
+  line-height: 32px;
+  color: var(--card-text-color-2);
+  background: var(--card-background-3);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  display: none;
+}
+.back_to_top:hover {
+  opacity: 0.9;
+}
+.back_to_top-show {
+  display: block;
+}
+/* Конец */
+/* Стили для кнопки вверх */
+
+
+
+/* Стили для анимации загрузки */
+/* Начало */
+#preloader{
+  display: block;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 1000px;
+  background-color: var(--card-background_loader);
+}
+#preloader_preload{
+  display: block;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 300px;
+  margin-top: -150px;
+  margin-left: -75px;
+  background-position: center !important;
+  background-size: cover !important;
+}
+#preloader_text_block{
+  display: block;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  top: 100%;
+  left: 50%;
+	width: 260px;
+	margin-top: -120px;
+	margin-left: -130px;
+  padding: 5px;
+  color: var(--card-text-color);
+	text-align: center;
+}
+#preloader_text{
+	font-size: 15px;
+	margin-top: 5px;
+	display: block;
+	opacity: 0.7;
+}
+/* Конец */
+/* Стили для анимации загрузки */
+
+/* Стили для анимации загрузки релиза */
+/* Начало */
+#load_anim_release{
+	display: block;
+	position: fixed;
+	z-index: 99999;
+	top: 50%;
+	left: 50%;
+	width: 200px;
+	height: 200px;
+	margin-top: -100px;
+	margin-left: -100px;
+	border-radius: 40px;
+	box-shadow: var(--shadow-l4);
+	background-color: var(--card-background_loader);
+}
+#load_anim_release_svg{
+	display: block;
+	position: fixed;
+	z-index: 99999;
+	top: 0;
+	left: 0;
+	top: 50%;
+	left: 50%;
+	width: 45px;
+	height: 45px;
+	margin-top: calc(-45px / 2);
+	margin-left: calc(-45px / 2);
+	background-position: center !important;
+	background-size: cover !important;
+	background: url(../img/load.svg);
+}
+#load_anim_release_span{
+	display: block;
+	z-index: 99999;
+	margin-top: 140px;
+	color: var(--card-text-color);
+}
+@keyframes show_load {
+	from {opacity: 1;}
+	to {opacity: 0;}
+}
+/* Конец */
+/* Стили для анимации загрузки релиза */
+
+/* Стили для основного меню */
+/* Начало */
+.navigation_c{
+	background: var(--card-background-6);
+}
+.navigation{
+  height: 55px;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 20px;
+  align-items: center;
+	max-width: 1500px;
+	background: var(--card-background-6);
+}
+.navigation ul {
+  display: flex;
+}
+.navigation ul li {
+  position: relative;
+  list-style: none;
+  width: 70px;
+  height: 70px;
+  z-index: 1;
+}
+.navigation ul li a{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
+}
+.navigation ul li a .icon_m {
+  color: var(--card-text-color);
+  font-size: 24px;
+  position: relative;
+  display: block;
+  line-height: 75px;
+  text-align: center;
+  transition:  0.5s;
+}
+.navigation ul li:hover a .icon_m {
+  transform: translateY(-10px);
+}
+.navigation svg{
+  width: 24px;
+}
+.navigation ul li a .text_m{
+  font-size: 0.85em;
+  font-weight: 400;
+  color: var(--card-text-color);
+  position: absolute;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  opacity: 0;
+  transform: translateY(10px);
+}
+.navigation ul li:hover a .text_m{
+  opacity: 1;
+  transform: translateY(5px);
+}
+#menu_n{
+  transition: 0.5s;
+  opacity: 1;
+}
+#search_n{
+  display: flex;
+  height: 30px;
+  position: absolute;
+  transition: 0.5s;
+  transform: translateY(-40px);
+  opacity: 0;
+}
+.search_s .button_s {
+  text-decoration: none;
+  font-weight: 400;
+  height: 30px;
+  width: 35px;
+  color: var(--card-text-color);
+  border: 0;
+  background: var(--card-background);
+  border-radius: 0px var(--border-radius) var(--border-radius) 0px;
+  transition: .3s ease;
+  float: left;
+  cursor: pointer;
+}
+.search_s .button_s ion-icon{
+  font-size: 24px;
+  margin: 2px 0px;
+}
+.search_s .box_s {
+  transition: .3s ease;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  height: 30px;
+  width: 190px;
+  color: var(--card-text-color);
+  padding: 0px 10px;
+  background: var(--card-background);
+  border-radius: var(--border-radius) 0px 0px var(--border-radius);
+  float: left;
+}
+
+@media (max-width: 800px){
+	.navigation {
+		box-shadow: var(--shadow-l4);
+		overflow: hidden;
+		z-index: 9990;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		height: 50px;
+		margin: -1px 0;
+		border-radius: var(--border-radius-2) var(--border-radius-2) 0 0;
+		justify-content: center;
+		padding-left: 0px;
+	}
+	.small_bac {
+    width: calc(100% - 20px);
+    padding: 10px;
+    background: 0;
+    overflow-x: auto;
+    overflow-y: clip;
+    white-space: nowrap;
+    position: relative;
+    display: inline-flex;
+    margin: 5px 0 0 0;
+  }
+}
+/* Конец */
+/* Стили для основного меню */
+
+
+
+/* Стили для плавующего меню */
+/* Начало */
+.small_bac{
+  max-width: 1500px;
+  padding: 10px 0px 0 0;
+  background: 0;
+  margin: 5px 0 20px 0;
+}
+.small_bac a{
+  font-weight: 400;
+  color: var(--card-text-color);
+  background: var(--card-background-2);
+  text-decoration: none;
+  margin-left: 10px;
+  padding: 6px 20px;
+  border-radius: var(--border-radius);
+  transition: .3s ease;
+  float: left;
+  margin: 0 5px 0 0;
+}
+.small_bac a:hover{
+  background: var(--card-background);
+  color: var(--card-text-color);
+  box-shadow: var(--shadow-l3);
+  transition: .3s ease;
+}
+/* Конец */
+/* Стили для плавующего меню */
+
+/* Стили для основного блока App */
+.app_container {
+	position: absolute;
+	top: 60px;
+	left: 0;
+	right: 0;
+	z-index: 15;
+}
+#app_release {
+	margin-bottom: 45px;
+}
+#app {
+	margin-bottom: 45px;
+}
+@keyframes show {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+@media (max-width: 800px){
+	.app_container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 15;
+	}
+}
 
 
 /* Стили для страницы Line */
@@ -45,7 +468,7 @@
 		background: var(--ColorThemes1);
 	}
 	.RightBlock{
-		height: 360px;
+		height: 360px !important;
 		border-radius: 0;
 		width: 100%;
 		margin-left: 0;
@@ -139,6 +562,7 @@
 	font-size: 14px;
 	color: var(--PrimaryColor);
 	font-weight: 400;
+	transition: .3s ease;
 }
 .LineList-Button-All:hover{
 	opacity: 0.8;
@@ -157,12 +581,13 @@
 	float: left;
 	font-weight: 500;
 	color: var(--PrimaryColorText);
-	z-index: 1;
+	z-index: 3;
 	position: absolute;
 	margin-top: 0px;
 	margin-left: calc(50% - 115px / 2);
 	font-size: 14px;
 	border-radius: 0 0 var(--border-radius) var(--border-radius);
+	transition: .3s ease;
 }
 .LineCard-Hover{
   position: relative;
@@ -175,6 +600,7 @@
   -webkit-transform: scale(1.05) translateY(0);
   -o-transform: scale(1.05) translateY(0);
   transform: scale(1.05) translateY(0);
+	transition: .3s ease;
 }
 .LineCard-Hover-Name{
   font-size: 15px;
@@ -185,6 +611,7 @@
   line-clamp: 3;
 	text-align: left;
 	white-space: break-spaces;
+	transition: .3s ease;
 }
 .LineCard-Hover-Genres{
 	margin: 0 20px 5px 20px;
@@ -202,6 +629,7 @@
 	opacity: 0;
 	white-space: normal;
 	text-decoration: none;
+	transition: .3s ease;
 }
 .LineCard-Hover-Description{
 	margin: 0 20px 5px 20px;
@@ -217,6 +645,7 @@
 	opacity: 0;
 	white-space: normal;
 	text-decoration: none;
+	transition: .3s ease;
 }
 .LineCard-Hover-Description a,b{
   display: none;
@@ -224,7 +653,6 @@
 .LineCard-Hover:hover,
 .LineCard-Hover:active{
 	background: rgb(0 0 0 / 80%);
-	transition: .3s ease;
 }
 .LineCard-Hover:hover p{
 	opacity: 1;
@@ -261,14 +689,24 @@
   background-position: center;
   background-size: cover;
 }
+.LineCard-BigHovers svg{
+	fill: var(--ColorThemes2);
+	position: absolute;
+	width: 100px;
+	padding: 40px 110px;
+	z-index: 1;
+}
 .LineCard-BigHovers img{
   height: 180px;
 	aspect-ratio: 16 / 9;
 	object-fit: cover;
+	z-index: 2;
+	border-radius: 20px;
 }
 .LineCard-BigHovers > .LineCard-Hover{
   height: 180px;
 	aspect-ratio: 16 / 9;
+	z-index: 2;
 }
 .LineCard-BigHovers  > .LineCard-Hover > .LineCard-Hover-Description{
 	-webkit-line-clamp: 5;
@@ -320,9 +758,18 @@
   background-position: center;
   background-size: cover;
 }
+.LineCard-MediumHovers svg{
+	fill: var(--ColorThemes2);
+	position: absolute;
+	width: 100px;
+	padding: 110px 62px;
+	z-index: 1;
+}
 .LineCard-MediumHovers img{
   height: 320px;
   aspect-ratio: 7 / 10;
+	z-index: 2;
+	border-radius: 20px;
 }
 .LineCard-Hover-Serie{
 	font-size: 15px;
@@ -331,14 +778,19 @@
 	display: block !important;
 	text-align: center;
 	font-weight: 600;
+	z-index: 2;
+	transition: .3s ease;
 }
 .LineCard-MediumHovers > .LineCard-Hover{
   height: 320px;
   aspect-ratio: 7 / 10;
+	z-index: 2;
+	transition: .3s ease;
 }
 .LineCard-MediumHovers  > .LineCard-Hover > .LineCard-Hover-Description{
 	-webkit-line-clamp: 13;
 	line-clamp: 13;
+	transition: .3s ease;
 }
 .LineCard-MediumHovers:hover{
 	cursor: pointer;
@@ -360,7 +812,7 @@
 .LineCard-MediumHovers:hover .LineCard-TextSerie{
 	opacity:0;
 	display: none;
-	transition: .5s ease;
+	transition: .3s ease;
 }
 
 /* Адаптация LineCard к размеру Small */
@@ -387,13 +839,23 @@
   background-position: center;
   background-size: cover;
 }
+.LineCard-SmallHovers svg{
+	fill: var(--ColorThemes2);
+	position: absolute;
+	width: 100px;
+	padding: 50px 20px;
+	z-index: 1;
+}
 .LineCard-SmallHovers img{
   height: 200px;
   aspect-ratio: 7 / 10;
+	z-index: 2;
+	border-radius: 20px;
 }
 .LineCard-SmallHovers > .LineCard-Hover{
   height: 200px;
   aspect-ratio: 7 / 10;
+	z-index: 2;
 }
 .LineCard-SmallHovers:hover{
 	cursor: pointer;
@@ -418,7 +880,133 @@
 	transition: .5s ease;
 }
 
-
+/* Адаптация LineCard к размеру Long */
+.LineGenerator-Long{
+	overflow-x: auto;
+	white-space: nowrap;
+	align-items: start;
+  display: -webkit-box;
+}
+.LineCard-Long{
+	overflow: hidden;
+	flex-direction: row;
+	transition: box-shadow .3s ease;
+	max-width: 450px;
+	height: 150px;
+	margin: 0 10px;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+.LineCard-Long-Left{
+	float: left;
+	display: flex;
+	height: 150px;
+	aspect-ratio: 7 / 10;
+	margin-right: 10px;
+	border-radius: 15px;
+	background-color: var(--ColorThemes0);
+}
+.LineCard-Long-Left svg{
+	fill: var(--ColorThemes2);
+	position: absolute;
+	width: 60px;
+	padding: 45px 23px;
+	z-index: 1;
+}
+.LineCard-Long-Left img{
+  height: 150px;
+  aspect-ratio: 7 / 10;
+	z-index: 2;
+	border-radius: 15px;
+}
+.LineCard-Long-Right{
+	background-color: var(--ColorThemes1);
+	border-radius: 15px;
+	transition: box-shadow .3s ease;
+	max-width: 450px;
+	height: 130px;
+	margin-top: 10px;
+}
+.LineCard-Long-Right p{
+	color: var(--ColorThemes3);
+}
+.LineCard-Long-Name{
+	padding: 5px 5px 0 0;
+	font-size: 15px;
+	font-weight: 600;
+	-webkit-line-clamp: 1;
+	line-clamp: 1;
+	text-align: left;
+	transition: .3s ease;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -moz-box;
+	-moz-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	box-orient: vertical;
+	white-space: normal;
+	text-decoration: none;
+}
+.LineCard-Long-Genres{
+	padding: 0px 5px 0 0;
+	font-size: 13px;
+	font-weight: 400;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -moz-box;
+	-moz-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	line-clamp: 1;
+	-webkit-box-orient: vertical;
+	box-orient: vertical;
+	white-space: normal;
+	text-decoration: none;
+	transition: .3s ease;
+}
+.LineCard-Long-Description{
+	padding: 0px 5px 0 0;
+	font-size: 13px;
+	font-weight: 400;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -moz-box;
+	-moz-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	box-orient: vertical;
+	white-space: normal;
+	text-decoration: none;
+	transition: .3s ease;
+	-webkit-line-clamp: 5;
+	line-clamp: 5;
+}
+.LineCard-Long:hover{
+	cursor: pointer;
+	transition: .3s ease;
+	-webkit-transform: scale(1.02) translateY(0);
+	-o-transform: scale(1.02) translateY(0);
+	transform: scale(1.02) translateY(0);
+}
+.LineCard-Long:hover .LineCard-Long-Right{
+	box-shadow: var(--shadow-l3);
+	transition: .3s ease;
+} 
+/* Стили карточек Истории для маленьких экранов */
+@media (max-width: 1000px){
+	.LineCard-Long-Left{
+		background-color: var(--ColorThemes0);
+	}
+	.LineCard-Long-Left svg{
+		fill: var(--ColorThemes1);
+	}
+	.LineCard-Long-Right{
+		background-color: var(--ColorThemes2);
+	}
+}
 
 
 /* Адаптация LineList под раздел Updates */
@@ -514,7 +1102,7 @@
 /* Адаптация LineList под раздел History для маленьких экранов */
 @media (max-width: 1000px){
 	.LineGenerator-History{
-    height: 315px;
+    height: 315px !important;
 	}
 }
 
@@ -687,4 +1275,835 @@
 	-webkit-transform: scale(1.02) translateY(0);
 	-o-transform: scale(1.02) translateY(0);
 	transform: scale(1.02) translateY(0);
+}
+
+
+
+
+
+
+/* Стили для страницы Catalog */
+.CatalogBlock {
+	position: relative;
+	animation: show 0.5s;
+}
+.CatalogList {
+	border-radius: 10px;
+	max-width: 1500px;
+	transition: .3s ease;
+	padding: 10px 0 10px 0;
+	background: var(--ColorThemes2);
+	margin-top: 10px;
+}
+.CatalogList h1 {
+	font-weight: 400;
+	text-align: left;
+	color: var(--ColorThemes3);
+	padding: 0 10px;
+	font-size: 18px;
+}
+.CatalogListButton {
+	float: right;
+	margin-right: 10px;
+}
+.CatalogListButton svg {
+	width: 25px;
+}
+.CatalogListButton svg:hover{
+	cursor: pointer;
+	box-shadow: var(--shadow-l3);
+	transition: .3s ease;
+	-webkit-transform: scale(1.02) translateY(0);
+	-o-transform: scale(1.02) translateY(0);
+	transform: scale(1.02) translateY(0);
+}
+
+.LoadApiButton{
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 400;
+	height: 35px;
+	width: 135px;
+	margin-top: 20px;
+	color: var(--PrimaryColorText);
+	padding: 2px 10px;
+	background: var(--PrimaryColor);
+	border-radius: 15px;
+	opacity: 1;
+	transition: opacity 0.3s ease, box-shadow 0.3s ease;
+}
+.LoadApiButton:hover {
+	cursor: pointer;
+	opacity: 0.9;
+	transition: opacity 0.3s ease, box-shadow 0.3s ease;
+	box-shadow: var(--shadow-l3);
+}
+
+@media (max-width: 1000px){
+	.CatalogList {
+		transition: .3s ease;
+		background: var(--ColorThemes1);
+	}
+}
+
+
+/* Стили для страницы History */
+.HistoryBlock {
+	position: relative;
+	animation: show 0.5s;
+}
+.HistoryList {
+	border-radius: 10px;
+	max-width: 1500px;
+	transition: .3s ease;
+	padding: 10px 0 10px 0;
+	background: var(--ColorThemes2);
+	margin-top: 10px;
+}
+.HistoryList h1 {
+	font-weight: 400;
+	text-align: left;
+	color: var(--ColorThemes3);
+	padding: 0 10px;
+	font-size: 18px;
+}
+.HistoryCard {
+	width: calc(100% - 20px);
+	position: relative;
+	display: inline-flex;
+	overflow: hidden;
+	flex-direction: row;
+	box-shadow: var(--shadow-l1);
+	transition: .3s ease;
+	margin: 6px;
+	border-radius: var(--border-radius-2);
+	background: var(--ColorThemes1);
+	color: var(--ColorThemes3);
+	align-items: center;
+}
+.HistoryCard img{
+  height: 90px;
+  aspect-ratio: 7 / 10;
+	border-radius: var(--card-border-radius);
+	padding: 10px;
+}
+.HistoryCard-BlockText{
+	padding: 10px 0;
+	text-overflow: ellipsis;
+	width: calc(100% - 95px);
+}
+.HistoryCard-Title{
+	font-weight: 400;
+}
+.HistoryCard p{
+	font-size: 14px;
+	text-align: left;
+	width: -webkit-fill-available;
+	text-overflow: ellipsis;
+	float: left;
+	overflow: hidden;
+}
+.HistoryCard-Open{
+	font-weight: 300;
+	color: var(--ColorThemes3);
+	background: var(--ColorThemes2);
+	padding: 4px 8px;
+	margin-top: 10px;
+	border-radius: 15px;
+	cursor: pointer;
+	transition: .3s ease;
+	width: 65px !important;
+	text-align: center !important;
+}
+.HistoryCard-Del{
+	font-weight: 300;
+	color: var(--PrimaryColorText);
+	background: var(--PrimaryColor);
+	padding: 4px 8px;
+	margin-top: 10px;
+	border-radius: 15px;
+	cursor: pointer;
+	transition: .3s ease;
+	width: 65px !important;
+	text-align: center !important;
+	float: right !important;
+}
+.HistoryCard-Open:hover,
+.HistoryCard-Del:hover {
+	opacity: 0.9;
+	box-shadow: var(--shadow-l1);
+	transition: .3s ease;
+	-webkit-transform: scale(1.005) translateY(0);
+	-o-transform: scale(1.005) translateY(0);
+	transform: scale(1.005) translateY(0);
+}
+@media (max-width: 1000px){
+	.HistoryCard{
+		width: calc(100% - 10px);
+		background: var(--ColorThemes0);
+	}
+}
+
+
+
+
+/* Стили для страницы Options */
+.OptionsBlock{
+	position: relative;
+	animation: show 0.5s;
+	border-radius: 10px;
+	max-width: 1500px;
+	transition: .3s ease;
+	padding: 10px 0 10px 0;
+	margin: 10px;
+}
+/* Стили для блока аккаунта */
+.OptionsAccount{
+	margin-top: 65px;
+	background: var(--ColorThemes2);
+	min-height: 34px;
+	transition: .3s ease;
+	border-radius: 15px;
+}
+.OptionsAccountLogo {
+	width: 75px;
+	height: 75px;
+	margin-top: -55px;
+	background: var(--PrimaryColor);
+	transition: .3s ease;
+	border-radius: 15px;
+	border: 5px solid var(--PrimaryColorText);
+	box-shadow: var(--shadow-l3);
+	display: inline-flex;
+}
+.OptionsAccountText{
+	text-align: left;
+	color: var(--card-text-color);
+	font-weight: 400;
+	font-family: 'Roboto Condensed', sans-serif;
+	max-width: calc(800px - 40px);
+	padding: 20px;
+	background: var(--card-background);
+	margin: 5px 0;
+	border-radius: var(--border-radius-2);
+	font-size: 16px;
+	display: block;
+	margin: 10px;
+}
+.OptionsAccountTextProfile{
+	background: var(--card-background-2);
+	border-radius: var(--border-radius);
+	padding: 10px;
+	margin: 10px 0;
+}
+.OptionsAccountText p{
+	text-align: left;
+	color: var(--ColorThemes3);
+	font-size: 14px;
+	margin-top: 4px;
+	font-weight: 300;
+}
+/* Стили для блока авторизации */
+.OptionsAuth{
+	background: var(--ColorThemes2);
+  border-radius: 10px;
+	padding: 20px;
+}
+.OptionsAuth form{
+	max-width: 420px;
+	background: var(--ColorThemes1);
+	position: relative;
+	display: block;
+	padding: 40px 10px;
+	margin: 40px 10px;
+	border-radius: 15px;
+}
+.OptionsAuth form p{
+  color: var(--card-text-color);
+}
+.OptionsAuth form label{
+  float: left;
+  color: var(--card-text-color);
+}
+.loginsBox{
+  float: right;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  height: 30px;
+  width: 130px;
+  color: var(--ColorThemes3);
+  padding: 0px 10px;
+  margin-top: -4px;
+  margin-left: 10px;
+  background: var(--ColorThemes2);
+  border-radius: 20px;
+  -webkit-appearance: none;
+  margin-bottom: 20px;
+}
+.OptionsButtom{
+	text-decoration: none;
+	width: 100px;
+	-webkit-appearance: none;
+	font-size: 15px;
+	font-weight: 400;
+	height: 32px;
+	color: var(--PrimaryColorText);
+	padding: 2px 10px;
+	background: var(--PrimaryColor);
+	border-radius: 15px;
+	opacity: 1;
+	transition: opacity 0.3s ease, box-shadow 0.3s ease;
+}
+.OptionsButtom:hover {
+	cursor: pointer;
+	opacity: 0.9;
+	transition: opacity 0.3s ease, box-shadow 0.3s ease;
+	box-shadow: var(--shadow-l3);
+}
+.OptionsButtom:hover {
+	cursor: pointer;
+	opacity: 0.9;
+	transition: opacity 0.3s ease, box-shadow 0.3s ease;
+	box-shadow: var(--shadow-l3);
+}
+.OptionsAuthText{
+	text-align: left;
+	color: var(--ColorThemes3);
+	font-size: 14px;
+	margin-top: 4px;
+	font-weight: 400;
+}
+.OptionsAuthText a {
+	text-align: left;
+	color: var(--ColorThemes3);
+	font-size: 14px;
+	margin-top: 4px;
+	font-weight: 400;
+	border-bottom: 1px solid var(--PrimaryColor);
+	text-decoration: none;
+}
+.OptionsBlockCard{
+	background: var(--ColorThemes2);
+	border-radius: 15px;
+	padding: 10px;
+	margin: 10px 0;
+}
+.OptionsCard{
+	text-align: left;
+	color: var(--ColorThemes3);
+	font-weight: 400;
+	max-width: calc(800px - 40px);
+	padding: 20px;
+	background: var(--ColorThemes1);
+	margin: 5px 0;
+	border-radius: 15px;
+	font-size: 16px;
+	display: block;
+}
+.OptionsCard h3 {
+	text-align: left;
+	font-size: 18px;
+	font-weight: 500;
+	color: var(--ColorThemes3);
+}
+.OptionsCard p {
+	text-align: left;
+	color: var(--ColorThemes3);
+	font-size: 14px;
+	margin-top: 4px;
+	font-weight: 400;
+}
+.settings_filter_p{
+	font-size: 13px !important;
+	margin-top: 25px !important;
+	opacity: 0.8 !important;
+}
+
+.formMirror{
+	background: var(--ColorThemes0);
+	padding: 15px;
+	border-radius: 15px;
+	display: inline-grid;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	justify-items: stretch;
+}
+.blockMirror{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.MirrorBox{
+	float: right;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 400;
+	height: 30px;
+	width: 150px;
+	color: var(--ColorThemes3);
+	padding: 0px 10px;
+	margin-top: -4px;
+	margin-left: 10px;
+	background: var(--ColorThemes2);
+	border-radius: 20px;
+	-webkit-appearance: none;
+}
+
+.OptionsCardButton {
+	background: var(--PrimaryColor);
+	margin-top: 8px;
+	font-size: 16px;
+	font-weight: 300;
+	color: var(--PrimaryColorText);
+	text-decoration: none;
+	padding: 4px 8px;
+	text-align: center;
+	border-radius: 15px;
+	margin-right: 8px;
+	transition: .3s ease;
+	cursor: pointer;
+}
+
+
+
+/* Стили для страницы Relise */
+.img_favorite{
+	position: absolute;
+	display: block;
+	background: var(--card-background-3);
+	opacity: 0.8;
+	font-size: 16px;
+	font-weight: 300;
+	color: var(--card-text-color-2) !important;
+	text-decoration: none;
+	padding: 8px 15px;
+	text-align: center;
+	border-radius: 0px var(--card-border-radius) 0px var(--card-border-radius);
+	transition: .3s ease;
+	margin-top: 375px;
+}
+@media (max-width: 880px){
+	.img_favorite{
+		display: initial;
+	}
+}
+.release-href{
+	padding: 8px 9px;
+	font-size: 15px;
+	border: 0px;
+	margin: 0px;
+}
+.favor_button{
+	padding: 5px 7px;
+}
+.favor_button_a{
+	border: 0 !important;
+	padding: 4.5px 5px !important;
+	margin: 0px 2px !important;
+	margin: -12px 0px !important;
+	cursor: pointer;
+}
+.favor_button_a img{
+	float: left !important;
+	height: 25px;
+	margin: 0px;
+}
+.player_s{
+	min-height: 100px;
+	background: var(--card-background);
+	border-radius: var(--border-radius);
+	aspect-ratio: 16 / 9;
+}
+
+.ReleaseBlock {
+	max-width: 1500px;
+	background: var(--card-background-2);
+	border-radius: var(--border-radius-2);
+	padding-bottom: 30px;
+	position: relative;
+	animation: show 0.5s;
+	z-index: 1;
+	margin: 10px;
+}
+
+.release-list{
+  margin-top: 15px;
+  max-width: 800px;
+  height: auto;
+  position: relative;
+  display: inline-block;
+}
+.release-list img{
+  float: left;
+  height: 400px;
+  border-radius: var(--card-border-radius);
+  margin-top: 10px;
+}
+.release-det{
+  text-align: left;
+  float: left;
+  max-width: 400px;
+  margin: 10px 20px;
+}
+@media (max-width: 880px){
+	.release-list img {
+		float: none;
+	}
+	.release-det {
+    float: none;
+    text-align: justify;
+    text-align: left;
+	}
+}
+.release-name{
+  font-size: 25px;
+  font-weight: 500;
+  color: var(--card-text-color-3);
+}
+.release-description, .release-description b {
+	font-size: 16px;
+	font-weight: 300;
+	color: var(--card-text-color-3);
+	white-space: pre-line
+}
+.release-description a {
+	font-size: 16px;
+	font-weight: 300;
+	color: var(--card-text-color-3);
+	border-bottom: 1px solid var(--card-background-5);
+	text-decoration: none;
+}
+.release-href{
+  background: var(--PrimaryColor);
+  margin-top: 5px;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--PrimaryColorText) !important;
+  text-decoration: none;
+  padding: 8px 15px;
+  text-align: center;
+  border-radius: 15px;
+  margin-right: 10px;
+  transition: .3s ease;
+}
+.release-href_hov:hover{
+  box-shadow: var(--shadow-l3);
+  transition: .3s ease;
+  opacity: 0.9;
+
+}
+.week_block {
+	background: var(--card-background);
+	margin-top: 15px;
+	width: calc(100% - 10px);
+	display: inline-block;
+	font-size: 16px;
+	font-weight: 300;
+	color: var(--card-text-color-2) !important;
+	text-decoration: none;
+	padding: 10px 5px;
+	text-align: center;
+	border-radius: var(--border-radius);
+	margin-right: 10px;
+	transition: .3s ease;
+	min-height: 32px;
+}
+.week_block_a {
+	background: var(--ColorThemes2);
+	color: var(--ColorThemes3) !important;
+}
+.release-href {
+	padding: 8px 9px;
+	font-size: 15px;
+	border: 0px;
+	margin: 0px;
+}
+.but_Hotkeys {
+	min-height: 40px;
+	margin-top: 10px;
+	text-align: left;
+	margin-bottom: 10px;
+	background: var(--card-background);
+	padding: 10px;
+	border-radius: var(--border-radius-2);
+}
+.but_Hotkeys p {
+	margin: 20px;
+	color: var(--card-text-color-3);
+}
+.but_Hotkeys span {
+	padding: 5px;
+	border-radius: var(--border-radius);
+	margin-right: 10px;
+	background: var(--card-background-2);
+	color: var(--card-text-color-3);
+}
+
+
+.favor_button {
+  background: var(--card-background-3);
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: 300;
+  color: #efefef;
+  text-decoration: none;
+  padding: 8px 15px;
+  text-align: center;
+  border-radius: 15px;
+  margin-right: 10px;
+  transition: .3s ease;
+}
+.favor_button:hover{
+  cursor: pointer;
+  opacity: 0.9;
+  box-shadow: var(--shadow-l3);
+  transition: .3s ease;
+}
+
+.ReleaseBoxFavorBut{
+	display: inline-block;
+	position: relative;
+	width: 30px;
+	height: 22px;
+}
+.ReleaseFavorBut{
+	position: absolute;
+	top: 0px;
+	left: 0;
+	height: 34px;
+	width: 34px;
+	background: var(--ColorThemes2);
+	border-radius: var(--border-radius);
+	padding: 0;
+	transition: .3s ease;
+	transition: .3s ease;
+}
+.ReleaseFavorBut svg{
+	width: 22px;
+	padding: 6px;
+	fill: var(--ColorThemes3);
+	transition: .3s ease;
+}
+
+.release-player{
+  width: calc(100% - 40px);
+  max-width: 750px;
+  margin-top: 10px;
+}
+.player_select {
+	margin: 10px 0;
+	background: var(--ColorThemes1);
+	padding: 5px 0 10px 0;
+	border-radius: 15px;
+}
+.player_select a{
+  background:var(--PrimaryColor);
+  color:var(--PrimaryColorText)!important;
+  display: inline-block;
+}
+@media (max-width: 1000px){
+	.ReleaseBlock {
+    margin: 10px;
+	}
+	.player_s {
+    margin: 0 10px;
+	}
+}
+
+
+
+
+
+/* Стили для Блока Сортировки */
+.SortingBlock{
+	position: relative;
+	animation: show 0.5s;
+	border-radius: 10px;
+	max-width: 1500px;
+	transition: .3s ease;
+	padding: 10px 0 10px 0;
+	margin-top: 10px;
+}
+.SortingBlockForm{
+	display: flex;
+}
+.SortingChosen {
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 400;
+	width: 150px;
+	height: 30px;
+	color: var(--ColorThemes3);
+	padding: 2px 10px;
+	margin-right: 10px;
+	background: var(--ColorThemes2);
+	border-radius: 15px;
+	opacity: 0.8;
+}
+.SortingContainer{
+	background: var(--ColorThemes0);
+	padding: 2px 5px 4px 5px;
+	margin-top: -4px;
+	border-radius: 18px;
+}
+.SortingCheckboxContainer {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.SortingCheckboxContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.SortingCheckmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background: var(--card-background-2);
+  border-radius: var(--border-radius);
+  padding: 0;
+	transition: .3s ease;
+}
+.SortingCheckmark svg{
+	width: 18px;
+	padding: 4px;
+	fill: var(--ColorThemes3);
+	opacity: 0.8;
+}
+.SortingCheckboxContainer:hover input ~ .SortingCheckmark1 {
+  background: var(--card-background-4);
+  padding: 0;
+}
+.SortingCheckboxContainer input:checked ~ .SortingCheckmark {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+	transition: .3s ease;
+}
+.SortingButton {
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 400;
+	height: 30px;
+	color: var(--PrimaryColorText);
+	padding: 2px 10px;
+	background: var(--PrimaryColor);
+	border-radius: 15px;
+	opacity: 1;
+	text-align: center;
+	transition: opacity 0.3s ease, box-shadow 0.3s ease;
+	display: flex;
+	align-items: center;
+	margin-left: 10px;
+}
+.SortingButton svg{
+	width: 25px;
+	fill: var(--PrimaryColorText);
+	margin-right: 5px;
+}
+.SortingButton:hover {
+	cursor: pointer;
+	opacity: 0.9;
+	transition: opacity 0.3s ease, box-shadow 0.3s ease;
+	box-shadow: var(--shadow-l1);
+}
+input[type="file"] {
+  display: none;
+}
+.SortingBlockFile {
+  text-decoration: none;
+	font-size: 15px;
+	font-weight: 400;
+	height: 30px;
+	color: var(--PrimaryColorText);
+	padding: 0 10px;
+	background: var(--PrimaryColor);
+	border-radius: 15px;
+	opacity: 1;
+	text-align: center;
+	transition: opacity 0.3s ease, box-shadow 0.3s ease;
+	display: flex;
+	align-items: center;
+	margin-left: 10px;
+}
+.SortingBlockFile svg{
+	width: 25px;
+	fill: var(--PrimaryColorText);
+	margin-right: 5px;
+}
+.SortingBlockFile:hover {
+	cursor: pointer;
+	opacity: 0.9;
+	transition: opacity 0.3s ease, box-shadow 0.3s ease;
+	box-shadow: var(--shadow-l1);
+}
+@media (max-width: 1000px){
+	.SortingBlock{
+		margin: 0 10px;
+	}
+	.SortingBlockForm{
+		display: grid;
+	}
+	.SortingChosen {
+		width: 100%;
+		margin-bottom: 10px;
+		margin-right: 0px;
+	}
+	.SortingContainer{
+		margin-right: 0;
+    margin-top: 0;
+    padding: 5px;
+		border-radius: 18px;
+	}
+	#SortingOrderBy{
+		width: calc(100% - 45px);
+    margin-right: 10px;
+		margin-bottom: 2px;
+	}
+	.SortingButton{
+		width: 100%;
+    margin-top: 10px;
+		margin-left: 0px;
+	}
+
+	.SortingBlockFile{
+    margin-top: 10px;
+		margin-left: 0px;
+	}
+}
+
+
+/* Стили для Кнопок */
+.ButtonHovers{
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 400;
+	height: 32px;
+	color: var(--PrimaryColorText);
+	padding: 2px 10px;
+	background: var(--PrimaryColor);
+	border-radius: 15px;
+	opacity: 1;
+	transition: opacity 0.3s ease, box-shadow 0.3s ease;
+}
+.ButtonHovers:hover {
+	cursor: pointer;
+	opacity: 0.9;
+	transition: opacity 0.3s ease, box-shadow 0.3s ease;
+	box-shadow: var(--shadow-l3);
 }

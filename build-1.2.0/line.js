@@ -1,8 +1,6 @@
 function page_line() {
   document.getElementById('app').innerHTML = `
 	<div class="LineBlock">
-
-		<br>
 		<!-- Блок Последние обновления -->
 		<div class="LineList-Updates">
 			<h1>Последние обновления</h1>
@@ -13,8 +11,7 @@ function page_line() {
 
 			<!-- Анимация загрузки -->
 			<div id="LoadAnimUpdates" style="display:none;">
-				<br /><br />
-				<img src="img/load.svg" style="max-width: 45px;">
+				<svg style="padding: 50px;width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg>
 			</div>	
 		</div>
 
@@ -50,8 +47,7 @@ function page_line() {
 
 					<!-- Анимация загрузки -->
 					<div id="LoadAnimGenres" style="display:none;">
-						<br /><br />
-						<img src="img/load.svg" style="max-width: 45px;">
+						<svg style="padding: 50px;width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg>
 					</div>
 				</div>
 
@@ -70,8 +66,7 @@ function page_line() {
 					</div>
 					<!-- Анимация загрузки -->
 					<div id="LoadAnimSchedule" style="display:none;">
-						<br /><br />
-						<img src="img/load.svg" style="max-width: 45px;">
+						<svg style="padding: 50px;width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg>
 					</div>	
 				</div>
 
@@ -112,8 +107,7 @@ function page_line() {
 
 					<!-- Анимация загрузки -->
 					<div id="LoadAnimVideo" style="display:none;">
-						<br /><br />
-						<img src="img/load.svg" style="max-width: 45px;">
+						<svg style="padding: 50px;width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg>
 					</div>	
 				</div>
 
@@ -129,14 +123,13 @@ function page_line() {
 					</div>
 					<!-- Анимация загрузки -->
 					<div id="LoadAnimRecomend" style="display:none;">
-						<br /><br />
-						<img src="img/load.svg" style="max-width: 45px;">
+						<svg style="padding: 50px;width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg>
 					</div>	
 				</div>
 
 			</div>
 
-			<div class="RightBlock">
+			<div class="RightBlock" id="RightBlockSize">
 
 				<br>
 				<!-- Блок История просмотров  -->
@@ -157,41 +150,13 @@ function page_line() {
 					</div>
 					<!-- Анимация загрузки -->
 					<div id="LoadAnimHistory" style="display:none;">
-						<br /><br />
-						<img src="img/load.svg" style="max-width: 45px;">
+						<svg style="padding: 50px;width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg>
 					</div>	
 				</div>
 			</div>
 		</div>
   </div>
 	`;
-
-	// <!-- Блок Каталог	 -->
-	// 	<div class="LineList-Schedule">
-	// 		<h1>Каталог</h1>
-	// 		<div class="LineGenerator-MediumHovers" id="LineGenerator-Catalog">
-	// 			<!-- Карточки с контентом -->
-
-	// 			<div class="LineCard-MediumHovers">
-	// 				<div class="LineCard-TextSerie">Серия 7/12</div>
-	// 				<img src="https://tb2og.anilib.top/media/releases/posters/9170/qOMX8o58joDfsKAG.jpg" alt="">
-	// 				<a class="LineCard-Hover" onclick="edit_href('/release', 'id', 9170)">
-	// 					<p class="LineCard-Hover-Name">Мир отомэ-игр — это тяжёлый мир для мобов</p>
-	// 					<p class="LineCard-Hover-Genres">Романтика | Фэнтези | Школа</p>
-	// 					<p class="LineCard-Hover-Description">Главный герой Леон проживал серую и угнетающую душу жизнь и не жаловался. Молодой человек не гнался за высотами успеха, не обладал какими то уникальными лидерскими качествами и уж тем более, он не был ловеласом. Откровенно говоря, девушки его порой пугали и раздражали. Виной этому его маленькая и вредная сестричка, которая помыкала братом как хотела. Однажды, она даже заставила его пройти отомэ-игру для девочек. Леон потратил на прохождение два мучительных дня. Утомившийся от игры, он упал с лестницы и помер. Думаете, что хуже и быть не могло? Могло! После смерти он переродился в мире той самой злосчастной игры. Правда и это не самая плохая новость. Оказалось, что в этом мире всем правят женщины. Они угнетают мужчин и относятся к ним как к питомцам. И теперь парню нужно как-то выживать в этих диких условиях. Но как вы уже знаете, у него есть преимущество! Он уже прошел игру и знает весь сюжет этого мирка.</p>
-	// 				</a>
-	// 			</div>
-
-	// 		</div>
-
-	// 		<!-- Анимация загрузки -->
-	// 		<div id="LoadAnimCatalog" style="display:none;">
-	// 			<br /><br />
-	// 			<img src="img/load.svg" style="max-width: 45px;">
-	// 		</div>	
-
-			
-	// 	</div>
 
 
 	LoadApiUpdates()
@@ -204,6 +169,8 @@ function page_line() {
 	GeneratorHistory()
 
 	preloader_none();
+
+	Scroll_to_top();
 }
 
 
@@ -446,6 +413,20 @@ function LoadApiNEWS() {
 		NEWSList = data;
 		GeneratorTrailer();
 		GeneratorSelectRecommend();
+
+		if(NEWSList.blockSelectRecommend.Visible == true && NEWSList.blockNewTrailer.Visible == true){
+			document.getElementById("RightBlockSize").setAttribute("style", `height: 1358px`);
+			document.getElementById("LineGenerator-History").setAttribute("style", `height: 1318px`);
+		} else if (NEWSList.blockSelectRecommend.Visible == false && NEWSList.blockNewTrailer.Visible == true) {
+			document.getElementById("RightBlockSize").setAttribute("style", `height: 1108px`);
+			document.getElementById("LineGenerator-History").setAttribute("style", `height: 1067px`);
+		} else if (NEWSList.blockSelectRecommend.Visible == true && NEWSList.blockNewTrailer.Visible == false) {
+			document.getElementById("RightBlockSize").setAttribute("style", `height: 1108px`);
+			document.getElementById("LineGenerator-History").setAttribute("style", `height: 1067px`);
+		} else {
+			document.getElementById("RightBlockSize").setAttribute("style", `height: 855px`);
+			document.getElementById("LineGenerator-History").setAttribute("style", `height: 815px`);
+		}
   })
   .catch(function (error) {
     console.log('error', error)
@@ -469,6 +450,7 @@ function GeneratorUpdates() {
 		document.getElementById('LineGenerator-Updates').appendChild(div);
 		div.className = 'LineCard-BigHovers';
 		div.innerHTML += `
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["CustomPosters"]}/anilibria_bot/getThumbnail/${UpdatesList[i].id}/${UpdatesList[i].player.series.last}" alt="">
 			<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${UpdatesList[i].id})">
 				<p class="LineCard-Hover-Name">${UpdatesList[i].names.ru}</p>
@@ -476,16 +458,6 @@ function GeneratorUpdates() {
 				<p class="LineCard-Hover-Description">${UpdatesList[i].description}</p>
 			</a>
 		`;
-	}
-}
-
-function GeneratorNEWS() {
-	document.getElementById('LineGenerator-Updates').innerHTML = "";
-	for (let i = 0; NEWSList.length > i; i++) {
-		var div = document.createElement('div');
-		document.getElementById('LineGenerator-Genres').appendChild(div);
-		div.className = 'LineCard-Genres';
-		div.innerHTML += `<p>${NEWSList[i]}</p>`;
 	}
 }
 
@@ -504,13 +476,19 @@ function GeneratorGenres() {
 function GeneratorSchedule() {
 	document.getElementById('LineGenerator-Schedule').innerHTML = "";
 	for (let i = 0; ScheduleList[0].list.length > i; i++) {
+		var seriesSH = "";
+		if(ScheduleList[0].list[i].player.series.last != null && ScheduleList[0].list[i].player.series.last != undefined && ScheduleList[0].list[i].player.series.last != ""){
+			seriesSH = ScheduleList[0].list[i].player.series.last;
+		}
+
 		var div = document.createElement('div');
 		document.getElementById('LineGenerator-Schedule').appendChild(div);
 		div.className = 'LineCard-SmallHovers';
 		div.innerHTML += `
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${ScheduleList[0].list[i].posters.medium.url}" alt="">
 			<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${ScheduleList[0].list[i].id})">
-				<p class="LineCard-Hover-Serie">Серия ${ScheduleList[0].list[i].player.series.last}</p>
+				<p class="LineCard-Hover-Serie">Серия ${seriesSH}</p>
 			</a>
 		`;
 	}
@@ -523,6 +501,7 @@ function GeneratorVideo() {
 		document.getElementById('LineGenerator-Video').appendChild(div);
 		div.className = 'LineCard-BigHovers';
 		div.innerHTML += `
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${VideoList[i].image}" alt="">
 			<a class="LineCard-Hover" href="https://www.youtube.com/watch?v=${VideoList[i].youtube_id}" target="_blank">
 				<p class="LineCard-Hover-Name">${VideoList[i].title}</p>
@@ -538,6 +517,7 @@ function GeneratorRecomend() {
 		document.getElementById('LineGenerator-Recomend').appendChild(div);
 		div.className = 'LineCard-SmallHovers';
 		div.innerHTML += `
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${RecomendList[i].posters.medium.url}" alt="">
 			<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${RecomendList[i].id})">
 				<p class="LineCard-Hover-Serie">Серия ${RecomendList[i].player.series.last}</p>
@@ -659,7 +639,7 @@ function GeneratorHistory() {
     if (pljsplayfrom == "pljsplayfrom") {
 			document.getElementById("HistoryNone").style.display = "none";
 			titleNum = titleNum + 1; 
-			if(titleNum < 8) {
+			if(titleNum < 12) {
 				var url = config["titels_api"]+'getTitle?id='+GetPlayerStorage("id")+'&filter=id,posters.small,names';
 				var div = document.createElement('div');
 				document.getElementById('LineGenerator-History').appendChild(div);

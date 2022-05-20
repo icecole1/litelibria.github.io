@@ -6,5 +6,6 @@ https://litelibria.github.io/?/favorites
 https://litelibria.github.io/?/myHistory
 https://litelibria.github.io/?/schedule
 https://litelibria.github.io/?/search
-https://litelibria.github.io/?/settings
+https://litelibria.github.io/?/options
 https://litelibria.github.io/game.html
+https://litelibria.github.io/buildHistory.html
