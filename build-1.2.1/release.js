@@ -229,8 +229,8 @@ function GeneratorRelise(data){
 
 	if(data.genres.length > 0){
 		for(var i=0; data.genres.length > i; i++){
-			if(genres == null) genres = `<a onclick="edit_href('/season', '', '', '${data["genres"][0]}')" style="text-decoration: none;">${data["genres"][0]}</a>`;
-			else genres = genres + ", " + `<a onclick="edit_href('/season', '', '', '${data["genres"][0]}')" style="text-decoration: none;">${data["genres"][0]}</a>`;
+			if(genres == null) genres = `<a onclick="edit_href('/season', '', '', '${data["genres"][i]}')" style="text-decoration: none;">${data["genres"][i]}</a>`;
+			else genres = genres + ", " + `<a onclick="edit_href('/season', '', '', '${data["genres"][i]}')" style="text-decoration: none;">${data["genres"][i]}</a>`;
 		}
 	}
 

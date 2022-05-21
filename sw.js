@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Satera';
-var CACHE_VERSION = '1.2.0';
+var CACHE_VERSION = '1.2.1';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
@@ -24,22 +24,21 @@ const assetUrls = [
   '/img/1.gif',
 	'/img/load.svg',
 
-  '/css/main.css',
+  '/css/style.css',
   '/css/auto.css',
   '/css/theme2.css',
   '/css/theme1.css',
 
   '/js/jquery-3.1.1.min.js',
 
-  '/build-'+CACHE_VERSION+'/theme.js',
   '/build-'+CACHE_VERSION+'/playerjs.js',
   '/build-'+CACHE_VERSION+'/script.js',
   '/build-'+CACHE_VERSION+'/release.js',
-  '/build-'+CACHE_VERSION+'/home.js',
+  '/build-'+CACHE_VERSION+'/line.js',
   '/build-'+CACHE_VERSION+'/favorites.js',
   '/build-'+CACHE_VERSION+'/app.js',
   '/build-'+CACHE_VERSION+'/myHistory.js',
-  '/build-'+CACHE_VERSION+'/settings.js',
+  '/build-'+CACHE_VERSION+'/option.js',
   '/build-'+CACHE_VERSION+'/schedule.js',
   '/build-'+CACHE_VERSION+'/search.js',
   '/build-'+CACHE_VERSION+'/catalog.js',

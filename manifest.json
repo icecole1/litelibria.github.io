@@ -7,8 +7,8 @@
   "scope": "/",
   "background_color": "#21221d",
   "theme_color": "#21221d",
-  "version": "1.2.0",
-  "version_name": "Satera-1.2.0",
+  "version": "1.2.1",
+  "version_name": "Satera-1.2.1",
   "icons": [
         { "src": "img/icon/web/favicon.ico", "type": "image/x-icon", "sizes": "32x32" },
         { "src": "img/icon/web/icon-192.png", "type": "image/png", "sizes": "192x192" },
@@ -20,25 +20,25 @@
     {
       "name": "Избранное",
       "short_name": "Избранное",
-      "url": "/favorites",
+      "url": "/#/favorites",
       "icons": [{ "src": "img/icon/shortcuts/1.png", "sizes": "192x192" }]
     },
     {
       "name": "История Просмотров",
       "short_name": "История",
-      "url": "/myHistory",
+      "url": "/#/myHistory",
       "icons": [{ "src": "img/icon/shortcuts/2.png", "sizes": "192x192" }]
     },
     {
       "name": "Каталог",
       "short_name": "Каталог",
-      "url": "/catalog",
+      "url": "/#/catalog",
       "icons": [{ "src": "img/icon/shortcuts/3.png", "sizes": "192x192" }]
     },
     {
       "name": "Случайный релиз",
       "short_name": "Случайный релиз",
-      "url": "/random",
+      "url": "/#/random",
       "icons": [{ "src": "img/icon/shortcuts/4.png", "sizes": "192x192" }]
     }
   ]
