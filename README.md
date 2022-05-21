@@ -14,19 +14,17 @@ LiteLibria - PWA приложение разработанное на основ
 - [x] Авторизация
 - [x] Добавление и удаление избранного
 - [x] Ручная и автоматическая смена темы
-- [x] Фильтр жанров
 - [x] Поиск
-- [x] Настройка домашней страницы (выбор отображения: популярное на AniLibria или ожидаемое сегодня)
 - [x] Кэширование данных о тайтлах
 - [x] Выбор сервера с которого смотреть
-- [ ] Показ уведомлений
 
 
 ## Скриншоты:
 
-![3 5](https://user-images.githubusercontent.com/13519959/152617831-15bc73a0-ab53-4691-b19f-e3ce53979bea.png)
-![3 6](https://user-images.githubusercontent.com/13519959/152617840-16bd395d-a49d-44cf-b13b-3e6689d75906.png)
-![1_1](https://user-images.githubusercontent.com/13519959/152618001-69dbae4d-3ce2-45fd-ae3d-672bec30d069.png)
-![2_2](https://user-images.githubusercontent.com/13519959/152618015-f208ecf9-1615-42fb-99d6-ce498ff7365d.png)
-![1_3](https://user-images.githubusercontent.com/13519959/152618019-3b9359ef-5689-4536-8ab1-76ba161bbe4f.png)
-![2_4](https://user-images.githubusercontent.com/13519959/152618023-69622f77-4d83-4456-ba42-2a11ac6a777d.png)
+
+![1](https://user-images.githubusercontent.com/13519959/169647002-9a89e0eb-8f4a-4d9e-977d-89f1b2815f63.png)
+![2](https://user-images.githubusercontent.com/13519959/169647005-55ec4fcc-30a3-4857-bf47-fdba8c5589ed.png)
+![3](https://user-images.githubusercontent.com/13519959/169647008-f1f00e50-3c4d-434e-b327-c4c787101409.png)
+![4](https://user-images.githubusercontent.com/13519959/169647013-ecd62eae-2995-4c9d-9dc8-03ab79412f9a.png)
+![5](https://user-images.githubusercontent.com/13519959/169647017-8a038bb7-4c31-4c45-9230-affd58494df8.png)
+![6](https://user-images.githubusercontent.com/13519959/169647022-b630b71e-6fda-48f9-bc4c-5d4c478c8cde.png)
