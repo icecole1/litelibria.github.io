@@ -189,7 +189,7 @@ function SortingTitlesFavorites(){
 // Функции запросов к Api
 function LoadApiFavorites() {
 	// Запрос к Api 
-	var url = config["titels_api"]+"getFavorites?session="+MySessID+"&remove=torrents,player.playlist&limit=-1";
+	var url = config["titels_api"]+"getFavorites?session="+MySessID+"&remove=torrents,torrents.playlist&limit=-1";
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -227,8 +227,8 @@ function GeneratorFavorites() {
 			if(genres == '') genres = FavoritesList[i].genres[g];
 			else genres = genres + ', ' +FavoritesList[i].genres[g];
 		}
-		if(FavoritesList[i].player.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${FavoritesList[i].player.series.last}</div>`;
+		if(FavoritesList[i].torrents.series.last != null){
+			TextSerie = `<div class="LineCard-TextSerie">Серия ${FavoritesList[i].torrents.series.last}</div>`;
 		}
 
 		if(styleFavorites == 0){

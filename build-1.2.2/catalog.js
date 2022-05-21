@@ -213,7 +213,7 @@ function LoadApiCatalog() {
 	document.getElementById("LoadAnimCatalog").style.display = "block";
 
 	// Запрос к Api 
-	var url = urlGenerate + "filter=id,names.ru,posters.medium,player.series,description,genres&limit="+num+"&after="+after;
+	var url = urlGenerate + "filter=id,names.ru,posters.medium,torrents.series,description,genres&limit="+num+"&after="+after;
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -302,8 +302,8 @@ function GeneratorCatalog() {
 			if(genres == '') genres = CatalogList[i].genres[g];
 			else genres = genres + ', ' +CatalogList[i].genres[g];
 		}
-		if(CatalogList[i].player.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${CatalogList[i].player.series.last}</div>`;
+		if(CatalogList[i].torrents.series.last != null){
+			TextSerie = `<div class="LineCard-TextSerie">Серия ${CatalogList[i].torrents.series.last}</div>`;
 		}
 
 		if(styleCatalog == 0){
