@@ -311,8 +311,8 @@ function GeneratorSchedule_1() {
 			if(genres == '') genres = DayList[i].genres[g];
 			else genres = genres + ', ' +DayList[i].genres[g];
 		}
-		if(DayList[i].player.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+		if(DayList[i].torrents.series.last != null){
+			TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].torrents.series.last}</div>`;
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
