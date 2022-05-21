@@ -1146,12 +1146,20 @@ details span {
 	justify-content: space-between;
 	border-radius: 10px 10px 0 0;
 }
-@media (max-width: 1000px){
+@media (min-width: 800px) and (max-width: 1000px){
 	.LineList-Trailer-BG{
-    border-radius: 0px;
+		border-radius: 15px;
 	}
 	.LineList-Trailer-BG-Gradien{
-    border-radius: 0px;
+    border-radius: 15px;
+	}
+}
+@media (max-width: 799px){
+	.LineList-Trailer-BG{
+    border-radius: 0;
+	}
+	.LineList-Trailer-BG-Gradien{
+    border-radius: 0;
 	}
 }
 .LineList-Trailer-Text{
@@ -1205,6 +1213,23 @@ details span {
 	transition: .3s ease;
 	padding-bottom: 10px;
 }
+@media (min-width: 800px) and (max-width: 1000px){
+	.LineList-SelectRecommend-BG{
+		border-radius: 15px;
+	}
+	.LineList-SelectRecommend-BG-Gradien{
+    border-radius: 15px;
+	}
+}
+@media (max-width: 799px){
+	.LineList-SelectRecommend-BG{
+    border-radius: 0;
+	}
+	.LineList-SelectRecommend-BG-Gradien{
+    border-radius: 0;
+	}
+}
+
 .LineList-SelectRecommend h1 {
 	font-weight: 400;
 	text-align: left;

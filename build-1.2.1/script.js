@@ -106,7 +106,7 @@ function preloader_none() {
 		clearInterval(intervalTimer);
 		intervalTimer = 0;
 		mess_update();
-	},1000);
+	},200);
 };
 
 
