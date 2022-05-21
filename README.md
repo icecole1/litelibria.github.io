@@ -25,6 +25,5 @@ LiteLibria - PWA приложение разработанное на основ
 ![1](https://user-images.githubusercontent.com/13519959/169647002-9a89e0eb-8f4a-4d9e-977d-89f1b2815f63.png)
 ![2](https://user-images.githubusercontent.com/13519959/169647005-55ec4fcc-30a3-4857-bf47-fdba8c5589ed.png)
 ![3](https://user-images.githubusercontent.com/13519959/169647008-f1f00e50-3c4d-434e-b327-c4c787101409.png)
-![4](https://user-images.githubusercontent.com/13519959/169647013-ecd62eae-2995-4c9d-9dc8-03ab79412f9a.png)
-![5](https://user-images.githubusercontent.com/13519959/169647017-8a038bb7-4c31-4c45-9230-affd58494df8.png)
-![6](https://user-images.githubusercontent.com/13519959/169647022-b630b71e-6fda-48f9-bc4c-5d4c478c8cde.png)
+![4](https://user-images.githubusercontent.com/13519959/169647313-f3d50bfe-4791-4796-aad5-acabddd6a0f9.png)
+
