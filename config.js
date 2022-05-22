@@ -10,7 +10,7 @@ let config;
 if(localStorage.getItem("GetMirror") == "true"){
 	config = {
 		'cache_prefix': 'Satera',
-		'cache_version': '1.2.2',
+		'cache_version': '1.2.3',
 		'g_apiKey': 'AIzaSyDnCKI8zpxJ5Iwpa7xpXx1jkKZY0Gr9yqo',
 		'g_clientId': '116898535578-na8fsq2p1igt77ve615sa444ur2l1bvv.apps.googleusercontent.com',
 		'domains': 'litelibria.github.io',
@@ -21,7 +21,7 @@ if(localStorage.getItem("GetMirror") == "true"){
 } else {
 	config = {
 		'cache_prefix': 'Satera',
-		'cache_version': '1.2.2',
+		'cache_version': '1.2.3',
 		'g_apiKey': 'AIzaSyDnCKI8zpxJ5Iwpa7xpXx1jkKZY0Gr9yqo',
 		'g_clientId': '116898535578-na8fsq2p1igt77ve615sa444ur2l1bvv.apps.googleusercontent.com',
 		'domains': 'litelibria.github.io',

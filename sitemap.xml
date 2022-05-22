@@ -5,62 +5,62 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
-  <loc>https://litelibria.github.io</loc>
+  <loc>https://litelibria.com/</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://litelibria.github.io/#/search</loc>
+  <loc>https://litelibria.com/#/search</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://litelibria.github.io/#/schedule</loc>
+  <loc>https://litelibria.com/#/schedule</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://litelibria.github.io/#/myHistory</loc>
+  <loc>https://litelibria.com/#/myHistory</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://litelibria.github.io/#/favorites</loc>
+  <loc>https://litelibria.com/#/favorites</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://litelibria.github.io/#/season</loc>
+  <loc>https://litelibria.com/#/season</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://litelibria.github.io/#/release</loc>
+  <loc>https://litelibria.com/#/release</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://litelibria.github.io/#/random</loc>
+  <loc>https://litelibria.com/#/random</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://litelibria.github.io/#/catalog</loc>
+  <loc>https://litelibria.com/#/catalog</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://litelibria.github.io/#/options</loc>
+  <loc>https://litelibria.com/#/options</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://litelibria.github.io/game.html</loc>
+  <loc>https://litelibria.com/game.html</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://litelibria.github.io/buildHistory.html</loc>
+  <loc>https://litelibria.com/buildHistory.html</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
