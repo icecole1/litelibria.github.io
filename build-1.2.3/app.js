@@ -7,8 +7,6 @@ window.addEventListener('popstate', (event) => {
 
 
 function load_href() {
-	editDomainHistory();
-
 	if(window.location.pathname != "/"){
 		var href = window.location.pathname;
 		if(document.location.search){
@@ -133,6 +131,8 @@ function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
     page_catalog();
 
   } else if (href == '/release') {
+		editDomainHistory();
+
     var width = document.documentElement.clientWidth;
 
     localStorage.setItem('my_scroll', window.pageYOffset);
@@ -203,6 +203,8 @@ function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
     page_favorites();
 
   } else if (href == '/myHistory') {
+		editDomainHistory();
+
     new_url = '/myHistory';
     editPushState(new_url);
     page_myHistory();
