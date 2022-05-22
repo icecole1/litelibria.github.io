@@ -103,13 +103,15 @@ function update_his(input) {
      var key_name = 'pljsplayfrom_'+config['domains']+str_playlist[i]["key"];
      localStorage.setItem(key_name, str_playlist[i]["Item"]);
    }
+
+
  }
 
 function dynamic_text_his() {
   let keys2 = Object.keys(localStorage);
   var json = '';
   for(let key2 of keys2) {
-    var pljsplayfrom = key2.substr(0, 12);
+    var pljsplayfrom = key2.substring(0, 12);
     if (pljsplayfrom == "pljsplayfrom") {
 
       var text_ed1 = key2.replace(/pljsplayfrom_/gi, '');
@@ -164,7 +166,7 @@ function del_his() {
   var conf_edit2 = JSON.parse(conf_edit);
   var keys_d2 = keys_d.filter(item => !conf_edit2.some(name => item.includes(name)))
   for(let key_d of keys_d2) {
-    var pljsplayfrom = key_d.substr(0, 12);
+    var pljsplayfrom = key_d.substring(0, 12);
     if (pljsplayfrom == "pljsplayfrom") {
       localStorage.removeItem(key_d);
     }

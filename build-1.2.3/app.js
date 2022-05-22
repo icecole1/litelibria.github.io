@@ -7,6 +7,7 @@ window.addEventListener('popstate', (event) => {
 
 
 function load_href() {
+	editDomainHistory();
 
 	if(window.location.pathname != "/"){
 		var href = window.location.pathname;

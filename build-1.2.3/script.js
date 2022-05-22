@@ -8,6 +8,21 @@ if ('serviceWorker' in navigator) {
 		.catch((err) => console.log(err));
 }
 
+function editDomainHistory(){
+	let keys2 = Object.keys(localStorage);
+  for(let key2 of keys2) {
+    var pljsplayfrom = key2.substring(0, 12);
+    if (pljsplayfrom == "pljsplayfrom") {
+			var oldDomains = key2.substring(0, 33);
+			if(oldDomains == "pljsplayfrom_litelibria.github.io"){
+				var text_ed1 = key2.replace(/pljsplayfrom_litelibria.github.io/gi, '');
+				localStorage.setItem(`pljsplayfrom_${config['domains']}${text_ed1}`, localStorage.getItem(key2));
+				localStorage.removeItem(key2);
+			}
+    }
+  }
+}
+
 window.onload = function() {
   // if (!window.matchMedia('(display-mode: standalone)').matches) {
   //   if (localStorage.getItem('start_mess') != '1') {
