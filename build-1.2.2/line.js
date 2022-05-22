@@ -305,7 +305,14 @@ function LoadApiSchedule() {
 	document.getElementById("LoadAnimSchedule").style.display = "";
 
 	var d = new Date();
-	var n = d.getDay() - 1;
+	var n;
+	if(d.getDay()==0)n=6;
+        else if(d.getDay()==1)n=0;
+        else if(d.getDay()==2)n=1; 
+        else if(d.getDay()==3)n=2; 
+        else if(d.getDay()==4)n=3; 
+        else if(d.getDay()==5)n=4;
+        else n=5;
 
 	// Запрос к Api 
   var url = config["titels_api"]+"getSchedule?filter=id,names.ru,posters.medium,torrents.series&days="+n;
