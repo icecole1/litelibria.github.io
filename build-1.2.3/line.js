@@ -405,7 +405,7 @@ function LoadApiRecomend() {
 
 function LoadApiNEWS() {
 	// Запрос к Api 
-  var url = "http://litelibria.com/news.json";
+  var url = "https://litelibria.com/news.json";
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
