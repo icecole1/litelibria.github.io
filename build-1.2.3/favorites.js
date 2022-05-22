@@ -189,7 +189,7 @@ function SortingTitlesFavorites(){
 // Функции запросов к Api
 function LoadApiFavorites() {
 	// Запрос к Api 
-	var url = config["titels_api"]+"getFavorites?session="+MySessID+"&remove=torrents,torrents.playlist&limit=-1";
+	var url = config["titels_api"]+"getFavorites?session="+MySessID+"&limit=-1";
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
