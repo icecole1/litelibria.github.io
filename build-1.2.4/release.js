@@ -371,6 +371,7 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
   for (let i = 0; i < dataPlayerSerie; i++) {
     var poster_preview
     var i2 = i+1;
+		var PlayerHost;
 
     var remove = "";
     if (dataPlayer["playlist"][i2]["skips"]["opening"][0] && dataPlayer["playlist"][i2]["skips"]["opening"][1]) {
@@ -381,18 +382,29 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 			}
     }
 
+
+		if(localStorage.getItem('my_server')){
+			if(localStorage.getItem('my_server') == "auto"){
+				PlayerHost = dataPlayer["host"];
+			} else {
+				PlayerHost = localStorage.getItem('my_server');
+			}
+		} else {
+			PlayerHost = dataPlayer["host"];
+		}
+
     var url_relise_480 = "";
     var url_relise_720 = "";
     var url_relise_1080 = "";
     if (dataPlayer["playlist"][i2]) {
       if (dataPlayer["playlist"][i2]["hls"]["sd"]) {
-        url_relise_480 = "[480p]https://"+dataPlayer["host"]+dataPlayer["playlist"][i2]["hls"]["sd"];
+        url_relise_480 = "[480p]https://"+PlayerHost+dataPlayer["playlist"][i2]["hls"]["sd"];
       }
       if (dataPlayer["playlist"][i2]["hls"]["hd"]) {
-        url_relise_720 = "[720p]https://"+dataPlayer["host"]+dataPlayer["playlist"][i2]["hls"]["hd"];
+        url_relise_720 = "[720p]https://"+PlayerHost+dataPlayer["playlist"][i2]["hls"]["hd"];
       }
       if (dataPlayer["playlist"][i2]["hls"]["fhd"]) {
-        url_relise_1080 = ",[1080p]https://"+dataPlayer["host"]+dataPlayer["playlist"][i2]["hls"]["fhd"];
+        url_relise_1080 = ",[1080p]https://"+PlayerHost+dataPlayer["playlist"][i2]["hls"]["fhd"];
       }
       if (dataPlayer["playlist"][i2]["preview"]) {
         poster_preview = config["posters"]+''+dataPlayer["playlist"][i2]["preview"];
