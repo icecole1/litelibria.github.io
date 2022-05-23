@@ -181,6 +181,8 @@ function load_profile(sessionId) {
     var my_vk_id = data['vk_id'];
     var my_patreon_id = data['patreon_id'];
 
+		localStorage.setItem('myLogin', my_login);
+
     if (my_login) {document.getElementById('my_login').innerHTML = my_login;}
     if (my_nickname) {document.getElementById('my_nickname').innerHTML = my_nickname;}
     if (my_email) {document.getElementById('my_email').innerHTML = my_email;}

@@ -1,5 +1,7 @@
 var MySessID;
 var player;
+let graph;
+var engine;
 var dataPlayer,
     dataPlayerSerie,
     cookie = localStorage.getItem('PHPSESSID');
@@ -21,12 +23,28 @@ function page_release(s1) {
 			<div id="player_bas" class="player_s">
 				<div id="player"></div>
 			</div>
+
+			<details class="but_Hotkeys">
+				<summary>Информация о вашем подключении.</summary>
+				
+				<div id="chart_container">
+					<div id="legend"></div>
+					<div id="legend-totals"></div>
+					<div id="y_axis"></div>
+					<div id="chart"></div>
+				</div>
+				<div id="graph"></div>
+				<p style="font-size: 16px;margin: 5px 20px;">Трекеры:</p>
+				<p style="font-size: 14px;" id="trackerAnnounce"></p>
+			</details>
+
 			<div class="but_Hotkeys">
 				<p><span>Клавиша F</span><span>Полноэкранный режим видео</span></p>
 				<p><span>Клавиша M</span><span>Включение / выключение звука</span></p>
 				<p><span>Пробел</span><span>Переключение пуск / пауза</span></p>
 				<p><span>Стрелки ← и →</span><span>Перемотка</span></p>
 			</div>
+
 			<div class="but_Hotkeys">
 				<center><p style="font-size: 17px;">Наш сайт использует P2P подключение!</p></center>
 				<p>Как это устроено? Очень просто. У нас 4 пользователя, которые хотят посмотреть новую серию любимого аниме.
@@ -51,12 +69,27 @@ function page_release(s1) {
 				<div class="player_select">
 					<a href="https://www.anilibria.tv/pages/donate.php" class="favor_button">Поддержать проект AniLibria</a>
 				</div>
+				
+				<details class="but_Hotkeys">
+				<summary>Информация о вашем подключении.</summary>
+				
+				<div id="chart_container">
+					<div id="legend"></div>
+					<div id="legend-totals"></div>
+					<div id="y_axis"></div>
+					<div id="chart"></div>
+				</div>
+				<div id="graph"></div>
+				<p style="font-size: 16px;margin: 5px 20px;">Трекеры:</p>
+				<p style="font-size: 14px;" id="trackerAnnounce"></p>
+			</details>
+
 				<div class="but_Hotkeys">
-					<center><p style="font-size: 17px;">Наш сайт использует P2P подключение!</p></center>
-					<p>Как это устроено? Очень просто. У нас 4 пользователя, которые хотят посмотреть новую серию любимого аниме.
-					Все 4 пользователя начали смотреть серию не одновременно, а с интервалом в 2-10 минут. Самый первый загрузит серию с сервера AniLibria.tv. Второй и последующие пользователи загрузят большую часть у тех пользователей, которые уже немного прогрузили серию и совсем немного с сервера AniLibria.tv.</p>
+					<center><p style="font-size: 16px;">Наш сайт использует P2P подключение!</p></center>
+					<p>Как это устроено? Очень просто. У нас 4 пользователя, которые хотят посмотреть новую серию любимого аниме. Все 4 пользователя начали смотреть серию не одновременно, а с интервалом в 2-10 минут. Самый первый загрузит серию с сервера AniLibria.tv. Второй и последующие пользователи загрузят большую часть у тех пользователей, которые уже немного прогрузили серию и совсем немного с сервера AniLibria.tv.</p>
 					<p>Зачем это нужно? Для того, чтоб сервера AniLibria.tv были менее загружены, и больше людей смогли посмотреть новую серию без проблем.</p>
 				</div>
+
 				<details id="servers" style="text-align: center;">
 					<summary>Если серия не грузит, то попробуйте поменять сервер.</summary>
 				</details>
@@ -65,6 +98,20 @@ function page_release(s1) {
 	}		
 
   document.getElementById('app_release').innerHTML = `
+	<style>
+	.text{
+		fill: var(--ColorThemes3);
+	}
+	.container{
+		width: 800px;
+	}
+	.container *, ::.container, ::.container {
+    box-sizing: border-box;
+	}
+	#graph {
+    overflow: hidden;
+	}
+</style>
   <div class="ReleaseBlock">
     <center>
       <div id="release_block">
@@ -422,10 +469,7 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
   }
   let str_playlist = JSON.parse('['+strPlayer+']');
 	if (p2pml.hlsjs.Engine.isSupported()) {
-		var engine = new p2pml.hlsjs.Engine();
-
-
-		var engine = new p2pml.hlsjs.Engine();
+		engine = new p2pml.hlsjs.Engine();
 		var player = new Playerjs({
 				id:"player",
 				poster:"img/pleer.png",
@@ -438,6 +482,8 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 				}
 		});
 		p2pml.hlsjs.initHlsJsPlayer(player.api('hls'));
+		onPeerAdd();
+
 	} else {
 		console.log("P2P не поддерживается в вашем браузере :(");
 
@@ -459,6 +505,39 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
     }
   } else {
 		player.api("update:nativefullios",0);
+	}
+}
+
+function onPeerAdd(){
+	engine.on(p2pml.core.Events.PeerConnect, this.onPeerConnect.bind(this));
+	engine.on(p2pml.core.Events.PeerClose, this.onPeerClose.bind(this));
+
+	var trackerAnnounce = engine.getSettings().loader.trackerAnnounce;
+	if (Array.isArray(trackerAnnounce)) {
+		for(var i=0; trackerAnnounce.length > i; i++){
+			document.getElementById("trackerAnnounce").innerHTML += `<span>${trackerAnnounce[i]}</span><br /><br />`;
+		}
+	}
+
+	var myLogin = localStorage.getItem('myLogin');
+
+	graph = new window.P2PGraph('#graph')
+	graph.add({
+		id: 'You',
+		me: true,
+		name: myLogin || 'Я'
+	})
+}
+function onPeerConnect(peer) {
+	if (!graph.hasPeer(peer.id)) {
+		graph.add({id: peer.id, name: 'Либрийц'});
+		graph.connect("You", peer.id);
+	}
+}
+function onPeerClose(id) {
+	if (graph.hasPeer(id)) {
+		graph.disconnect("You", id);
+		graph.remove(id);
 	}
 }
 
