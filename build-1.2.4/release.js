@@ -27,6 +27,13 @@ function page_release(s1) {
 				<p><span>Пробел</span><span>Переключение пуск / пауза</span></p>
 				<p><span>Стрелки ← и →</span><span>Перемотка</span></p>
 			</div>
+			<div class="but_Hotkeys">
+				<center><p style="font-size: 17px;">Наш сайт использует P2P подключение!</p></center>
+				<p>Как это устроено? Очень просто. У нас 4 пользователя, которые хотят посмотреть новую серию любимого аниме.
+				Все 4 пользователя начали смотреть серию не одновременно, а с интервалом в 2-10 минут. Самый первый загрузит серию с сервера AniLibria.tv. Второй и последующие пользователи загрузят большую часть у тех пользователей, которые уже немного прогрузили серию и совсем с сервера AniLibria.tv.</p>
+				<p>Зачем это нужно? Для того, чтоб сервера AniLibria.tv были менее загружены, и больше людей смогли посмотреть новую серию без проблем.</p>
+			</div>
+
 			<details id="servers" style="text-align: center;">
 				<summary>Если серия не грузит, то попробуйте поменять сервер.</summary>
 			</details>
@@ -43,6 +50,12 @@ function page_release(s1) {
 			<div class="release-player">
 				<div class="player_select">
 					<a href="https://www.anilibria.tv/pages/donate.php" class="favor_button">Поддержать проект AniLibria</a>
+				</div>
+				<div class="but_Hotkeys">
+					<center><p style="font-size: 17px;">Наш сайт использует P2P подключение!</p></center>
+					<p>Как это устроено? Очень просто. У нас 4 пользователя, которые хотят посмотреть новую серию любимого аниме.
+					Все 4 пользователя начали смотреть серию не одновременно, а с интервалом в 2-10 минут. Самый первый загрузит серию с сервера AniLibria.tv. Второй и последующие пользователи загрузят большую часть у тех пользователей, которые уже немного прогрузили серию и совсем с сервера AniLibria.tv.</p>
+					<p>Зачем это нужно? Для того, чтоб сервера AniLibria.tv были менее загружены, и больше людей смогли посмотреть новую серию без проблем.</p>
 				</div>
 				<details id="servers" style="text-align: center;">
 					<summary>Если серия не грузит, то попробуйте поменять сервер.</summary>
@@ -396,13 +409,34 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
     }
   }
   let str_playlist = JSON.parse('['+strPlayer+']');
-  player = new Playerjs({
-    id:"player",
-    poster:"img/pleer.png",
-    file:"",
-    cuid: id_t,
-		bgcolor: 'var(--card-background-2)'
-  });
+	if (p2pml.hlsjs.Engine.isSupported()) {
+		var engine = new p2pml.hlsjs.Engine();
+
+
+		var engine = new p2pml.hlsjs.Engine();
+		var player = new Playerjs({
+				id:"player",
+				poster:"img/pleer.png",
+				file:"",
+				cuid: id_t,
+				bgcolor: 'var(--card-background-2)',
+				hlsconfig:{
+						liveSyncDurationCount: 7,
+						loader: engine.createLoaderClass()
+				}
+		});
+		p2pml.hlsjs.initHlsJsPlayer(player.api('hls'));
+	} else {
+		console.log("P2P не поддерживается в вашем браузере :(");
+
+		player = new Playerjs({
+			id:"player",
+			poster:"img/pleer.png",
+			file:"",
+			cuid: id_t,
+			bgcolor: 'var(--card-background-2)'
+		});
+	}
   player.api("file", str_playlist);
   if (localStorage.getItem('my_player_style')) {
     var style = localStorage.getItem('my_player_style');

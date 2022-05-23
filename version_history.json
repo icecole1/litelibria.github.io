@@ -1,6 +1,17 @@
 version_history = [
 	{
     "prefix":"Satera",
+    "version":"1.2.4",
+    "date":"23 May 2022",
+    "update":[
+			{
+        "type":"ADDED",
+        "text":"Була добавлена функция P2P подключения."
+      }
+    ]
+  },
+	{
+    "prefix":"Satera",
     "version":"1.2.3",
     "date":"22 May 2022",
     "update":[
