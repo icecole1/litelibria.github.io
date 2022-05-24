@@ -2,6 +2,7 @@ var MySessID;
 var player;
 let graph;
 var engine;
+var id_t;
 var dataPlayer,
     dataPlayerSerie,
     cookie = localStorage.getItem('PHPSESSID');
@@ -209,7 +210,7 @@ function LoadApiRelise(s1) {
     return response.json()
   })
   .then(function (data) {
-    var id_t = s1;
+    id_t = s1;
 
     GeneratorRelise(data);
 		preloader_none();
@@ -468,20 +469,34 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
     }
   }
   let str_playlist = JSON.parse('['+strPlayer+']');
+
+	var engineConfig  = {
+		loader: {
+			trackerAnnounce: [
+				"wss://tracker.sdev.xyz",
+				"wss://tracker.openwebtorrent.com"
+			]
+		}
+	};
+
 	if (p2pml.hlsjs.Engine.isSupported()) {
-		engine = new p2pml.hlsjs.Engine();
-		var player = new Playerjs({
-				id:"player",
-				poster:"img/pleer.png",
-				file:"",
-				cuid: id_t,
-				bgcolor: 'var(--card-background-2)',
-				hlsconfig:{
-						liveSyncDurationCount: 7,
-						loader: engine.createLoaderClass()
-				}
+		engine = new p2pml.hlsjs.Engine(engineConfig);
+		player = new Playerjs({
+			id:"player",
+			poster:"img/pleer.png",
+			file:"",
+			cuid: id_t,
+			bgcolor: 'var(--card-background-2)',
+			hlsconfig:{
+				liveSyncDurationCount: 7,
+				loader: engine.createLoaderClass()
+			}
 		});
+
 		p2pml.hlsjs.initHlsJsPlayer(player.api('hls'));
+
+		// engine.on("segment_loaded", (segment, peerId) => console.log("segment_loaded from", peerId ? `peer ${peerId}` : "HTTP", segment));
+
 		onPeerAdd();
 
 	} else {
@@ -495,7 +510,9 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 			bgcolor: 'var(--card-background-2)'
 		});
 	}
+
   player.api("file", str_playlist);
+
   if (localStorage.getItem('my_player_style')) {
     var style = localStorage.getItem('my_player_style');
     if (style == '1') {

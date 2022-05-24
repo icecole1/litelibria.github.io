@@ -1,6 +1,17 @@
 version_history = [
 	{
     "prefix":"Satera",
+    "version":"1.2.5",
+    "date":"24 May 2022",
+    "update":[
+			{
+        "type":"IMPROVED",
+        "text":"Объединены потоки всех серверов в один."
+      }
+    ]
+  },
+	{
+    "prefix":"Satera",
     "version":"1.2.4",
     "date":"23 May 2022",
     "update":[
