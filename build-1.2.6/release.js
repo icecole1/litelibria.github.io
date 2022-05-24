@@ -525,6 +525,10 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 	}
 }
 
+function onPeerLoader(){
+	engine.on("segment_loaded", (segment, peerId) => console.log("segment_loaded from", peerId ? `peer ${peerId}` : "HTTP", segment))
+}
+
 function onPeerAdd(){
 	engine.on(p2pml.core.Events.PeerConnect, this.onPeerConnect.bind(this));
 	engine.on(p2pml.core.Events.PeerClose, this.onPeerClose.bind(this));
