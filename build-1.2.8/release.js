@@ -530,9 +530,6 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 			httpDownloadMaxPriority: 9,
 			httpDownloadProbability: 0.06,
 			httpDownloadProbabilityInterval: 1000,
-			p2pDownloadMaxPriority: 50,
-			simultaneousP2PDownloads: 20,
-			simultaneousHttpDownloads: 3,
 		}
 	};
 
