@@ -519,6 +519,9 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
   let str_playlist = JSON.parse('['+strPlayer+']');
 
 	var engineConfig  = {
+		segments:{
+			forwardSegmentCount: 150,
+		},
 		loader: {
 			trackerAnnounce: [
 				"wss://tracker.sdev.xyz",
@@ -530,6 +533,7 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 			httpDownloadMaxPriority: 9,
 			httpDownloadProbability: 0.06,
 			httpDownloadProbabilityInterval: 1000,
+			p2pDownloadMaxPriority: 150,
 		}
 	};
 
