@@ -1,6 +1,17 @@
 version_history = [
 	{
     "prefix":"Satera",
+    "version":"1.2.9",
+    "date":"25 May 2022",
+    "update":[
+			{
+        "type":"IMPROVED",
+        "text":"Исправлена проблема с кэшированием в Service Worker фрагментов видео."
+      }
+    ]
+  },
+	{
+    "prefix":"Satera",
     "version":"1.2.8",
     "date":"25 May 2022",
     "update":[

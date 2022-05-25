@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Satera';
-var CACHE_VERSION = '1.2.8';
+var CACHE_VERSION = '1.2.9';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
@@ -86,8 +86,8 @@ async function networkFirst(request) {
   const cache = await caches.open(dynamicCacheName)
   try {
     const response = await fetch(request)
-    if (request.destination != 'image' && request.method != 'POST' && request.url != 'https://apis.google.com/js/api.js') await cache.put(request, response.clone())
-    return response
+    if (request.url.substr(-5) != '.m3u8' && request.url.substr(-3) != '.ts' && request.destination != 'image' && request.method != 'POST' && request.url != 'https://apis.google.com/js/api.js') await cache.put(request, response.clone())
+		return response
   } catch (e) {
     const cached = await cache.match(request)
     return cached ?? await caches.match('/offline.html')

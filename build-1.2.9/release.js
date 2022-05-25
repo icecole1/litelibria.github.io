@@ -517,7 +517,6 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
     }
   }
   let str_playlist = JSON.parse('['+strPlayer+']');
-
 	var engineConfig  = {
 		segments:{
 			forwardSegmentCount: 150,
