@@ -134,6 +134,7 @@ function page_release(s1) {
 		top: 0;
 		width: 40px;
 		left: -20px;
+		fill: var(--ColorThemes3);
 	}
 	#y_axis > svg {
 		overflow: visible;
@@ -522,7 +523,17 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 			trackerAnnounce: [
 				"wss://tracker.sdev.xyz",
 				"wss://tracker.openwebtorrent.com"
-			]
+			],
+			cachedSegmentExpiration: 86400000,
+			cachedSegmentsCount: 1000,
+			requiredSegmentsPriority: 1500,
+			httpDownloadMaxPriority: 9,
+			httpDownloadProbability: 0.06,
+			httpDownloadProbabilityInterval: 1000,
+			httpDownloadProbabilitySkipIfNoPeers: true,
+			p2pDownloadMaxPriority: 50,
+			simultaneousP2PDownloads: 20,
+			simultaneousHttpDownloads: 3,
 		}
 	};
 
@@ -535,7 +546,6 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 			cuid: id_t,
 			bgcolor: 'var(--card-background-2)',
 			hlsconfig:{
-				liveSyncDurationCount: 7,
 				loader: engine.createLoaderClass()
 			}
 		});
