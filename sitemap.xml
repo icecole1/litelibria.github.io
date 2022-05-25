@@ -20,27 +20,12 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://litelibria.com/#/myHistory</loc>
-  <lastmod>2022-04-13T12:43:00+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://litelibria.com/#/favorites</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://litelibria.com/#/season</loc>
-  <lastmod>2022-04-13T12:43:00+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://litelibria.com/#/release</loc>
-  <lastmod>2022-04-13T12:43:00+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://litelibria.com/#/random</loc>
   <lastmod>2022-04-13T12:43:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
