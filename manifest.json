@@ -7,8 +7,8 @@
   "scope": "/",
   "background_color": "#21221d",
   "theme_color": "#21221d",
-  "version": "1.2.6",
-  "version_name": "Satera-1.2.6",
+  "version": "1.2.7",
+  "version_name": "Satera-1.2.7",
   "icons": [
         { "src": "img/icon/web/favicon.ico", "type": "image/x-icon", "sizes": "32x32" },
         { "src": "img/icon/web/icon-192.png", "type": "image/png", "sizes": "192x192" },

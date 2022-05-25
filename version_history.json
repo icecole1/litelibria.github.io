@@ -1,6 +1,16 @@
 version_history = [
 	{
     "prefix":"Satera",
+    "version":"1.2.7",
+    "date":"25 May 2022",
+    "update":[
+			{
+        "type":"IMPROVED",
+        "text":"Добавлен график для отображения получаемых данных P2P."
+      }
+    ]
+  },{
+    "prefix":"Satera",
     "version":"1.2.6",
     "date":"24 May 2022",
     "update":[
