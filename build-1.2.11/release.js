@@ -517,6 +517,9 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
     }
   }
   let str_playlist = JSON.parse('['+strPlayer+']');
+
+
+
 	var engineConfig  = {
 		loader: {
 			trackerAnnounce: [
@@ -524,48 +527,36 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 				"wss://tracker.openwebtorrent.com"
 			],
 			cachedSegmentsCount: 30,
-			requiredSegmentsPriority: 30,
+			requiredSegmentsPriority: 3,
 			p2pDownloadMaxPriority: 150,
 			httpDownloadMaxPriority: 1500,
-
 			simultaneousHttpDownloads: 1,
 			simultaneousP2PDownloads: 10,
-			// httpDownloadProbabilitySkipIfNoPeers: true,
+			httpDownloadProbabilitySkipIfNoPeers: true,
 		}
 	};
-	if (p2pml.hlsjs.Engine.isSupported()) {
-		engine = new p2pml.hlsjs.Engine(engineConfig);
-		player = new Playerjs({
-			id:"player",
-			poster:"img/pleer.png",
-			file:"",
-			cuid: id_t,
-			bgcolor: 'var(--card-background-2)',
-			hlsconfig:{
-				liveSyncDurationCount: 7,
-				loader: engine.createLoaderClass()
-			}
-		});
 
-		p2pml.hlsjs.initHlsJsPlayer(player.api('hls'));
+	this.downloadStats = [];
+	this.downloadTotals = { http: 0, p2p: 0 };
+	this.uploadStats = [];
+	this.uploadTotal = 0;
+	this.loadSpeedTimespan = 10;
+	this.initChart();
 
-		this.loadSpeedTimespan = 10; // seconds
-		this.initChart();
-		onPeerAdd();
+	engine = new p2pml.hlsjs.Engine(engineConfig);
+	player = new Playerjs({
+		id:"player",
+		poster:"img/pleer.png",
+		file:"",
+		cuid: id_t,
+		bgcolor: 'var(--card-background-2)',
+		hlsconfig:{
+			liveSyncDurationCount: 7,
+			loader: engine.createLoaderClass()
+		}
+	});
 
-	} else {
-		console.log("P2P не поддерживается в вашем браузере :(");
 
-		player = new Playerjs({
-			id:"player",
-			poster:"img/pleer.png",
-			file:"",
-			cuid: id_t,
-			bgcolor: 'var(--card-background-2)'
-		});
-	}
-
-	
   player.api("file", str_playlist);
 
   if (localStorage.getItem('my_player_style')) {
@@ -578,35 +569,9 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
   } else {
 		player.api("update:nativefullios",0);
 	}
-}
 
-// Функции для P2P
-function onPeerLoader(){
-	engine.on("segment_loaded", (segment, peerId) => console.log("segment_loaded from", peerId ? `peer ${peerId}` : "HTTP", segment))
-}
-function onPeerAdd(){
-	if (p2pml.core.HybridLoader.isSupported()) {
-		engine.on(p2pml.core.Events.PieceBytesDownloaded, onBytesDownloaded.bind());
-		engine.on(p2pml.core.Events.PieceBytesUploaded, onBytesUploaded.bind());
-	}
-	this.downloadStats = [];
-	this.downloadTotals = { http: 0, p2p: 0 };
-	this.uploadStats = [];
-	this.uploadTotal = 0;
 	refreshChart();
-
-	engine.on(p2pml.core.Events.PeerConnect, this.onPeerConnect.bind(this));
-	engine.on(p2pml.core.Events.PeerClose, this.onPeerClose.bind(this));
-
-	var trackerAnnounce = engine.getSettings().loader.trackerAnnounce;
-	if (Array.isArray(trackerAnnounce)) {
-		for(var i=0; trackerAnnounce.length > i; i++){
-			document.getElementById("trackerAnnounce").innerHTML += `<span>${trackerAnnounce[i]}</span><br /><br />`;
-		}
-	}
-
 	var myLogin = localStorage.getItem('myLogin');
-
 	graph = new window.P2PGraph('#graph')
 	graph.add({
 		id: 'You',
@@ -614,6 +579,40 @@ function onPeerAdd(){
 		name: myLogin || 'Я'
 	})
 }
+
+function PlayerjsEvents(event,id,info){	
+	if(event=="init"){
+		if (p2pml.core.HybridLoader.isSupported()) {
+			p2pml.hlsjs.initHlsJsPlayer(player.api('hls'));
+			engine.on(p2pml.core.Events.PeerConnect, onPeerConnect.bind());
+			engine.on(p2pml.core.Events.PeerClose, onPeerClose.bind());
+			engine.on(p2pml.core.Events.PieceBytesDownloaded, onBytesDownloaded.bind());
+			engine.on(p2pml.core.Events.PieceBytesUploaded, onBytesUploaded.bind());
+			var trackerAnnounce = engine.getSettings().loader.trackerAnnounce;
+			if (Array.isArray(trackerAnnounce)) {
+				document.getElementById("announce").innerHTML = trackerAnnounce.join("<br />");
+			}
+		}
+	}
+
+	if(event=="play"){
+		mobile_play_fullscreen();
+	}
+
+	if(event=="pause"){
+		saveConfig(dynamic_text_his())
+	}
+
+	if(event=="fullscreen"){
+		player_navigation('none');
+	}
+
+	if(event=="exitfullscreen"){
+		player_navigation('flex');
+	}
+}
+
+// Функции для P2P
 function onPeerConnect(peer) {
 	if (!graph.hasPeer(peer.id)) {
 		graph.add({id: peer.id, name: 'Либрийц'});
@@ -825,24 +824,6 @@ function mobile_play_fullscreen(){
 	var width = document.documentElement.clientWidth;
 	if(width <= 800){
 		player.api("fullscreen");
-	}
-}
-
-function PlayerjsEvents(event,id,info){	
-	if(event=="play"){
-		mobile_play_fullscreen();
-  }
-
-	if(event=="pause"){
-    saveConfig(dynamic_text_his())
-  }
-
-	if(event=="fullscreen"){
-		player_navigation('none');
-	}
-
-	if(event=="exitfullscreen"){
-		player_navigation('flex');
 	}
 }
 
