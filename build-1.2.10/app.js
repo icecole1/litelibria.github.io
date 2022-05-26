@@ -1,12 +1,15 @@
 window.addEventListener('load', load_href);
 
-
 window.addEventListener('popstate', (event) => {
   load_href();
 });
 
 
 function load_href() {
+	setTimeout(function(){
+		localStorage.setItem('my_last_page', '');
+	},200)
+
 	if(window.location.pathname != "/"){
 		var href = window.location.pathname;
 		if(document.location.search){
@@ -107,13 +110,17 @@ function back_app() {
     editPushState(new_url);
     page_line();
   }
-
-	// Завершение P2P подгрузки
-	loadP2PEnd();
+	loadP2PEnd()
 }
 
-
 function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
+	setTimeout(function(){
+		if(localStorage.getItem('my_last_page') == '/release'){
+			window.location.reload()
+			console.log('tets');
+		}
+	},1)
+
   var last_href = window.location.pathname;
   localStorage.setItem('my_last_page', last_href);
 

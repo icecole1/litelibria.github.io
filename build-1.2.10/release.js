@@ -1,7 +1,7 @@
 var MySessID;
 var player;
 let graph;
-var engine;
+var engine = '';
 var id_t;
 var dataPlayer,
     dataPlayerSerie,
@@ -527,16 +527,16 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 				"wss://tracker.openwebtorrent.com"
 			],
 			simultaneousHttpDownloads: 1,
-			simultaneousP2PDownloads: 10,
+			simultaneousP2PDownloads: 20,
 
       httpFailedSegmentTimeout: 1000,
       cachedSegmentExpiration: 10 * 60 * 1000,
-      httpDownloadProbability: 0.10,
+      httpDownloadProbability: 0.06,
 			httpDownloadProbabilityInterval: 1000,
       httpDownloadProbabilitySkipIfNoPeers: false,
 			p2pSegmentDownloadTimeout: 1 * 60 * 1000,
 			cachedSegmentsCount: 10,
-			requiredSegmentsPriority: 15,
+			requiredSegmentsPriority: 3,
 			httpDownloadMaxPriority: 1500,
 			p2pDownloadMaxPriority: 1500,
 		},
@@ -591,11 +591,10 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 	}
 }
 
-// Аункции для P2P
+// Функции для P2P
 function loadP2PEnd(){
 	engine.destroy();
 }
-
 function onPeerLoader(){
 	engine.on("segment_loaded", (segment, peerId) => console.log("segment_loaded from", peerId ? `peer ${peerId}` : "HTTP", segment))
 }
