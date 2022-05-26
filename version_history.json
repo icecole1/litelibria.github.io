@@ -1,11 +1,22 @@
 version_history = [
 	{
     "prefix":"Satera",
+    "version":"1.2.11",
+    "date":"26 May 2022",
+    "update":[
+			{
+        "type":"FIXED",
+        "text":"Исправлена проблемы с P2P потоками."
+      }
+    ]
+  },
+	{
+    "prefix":"Satera",
     "version":"1.2.10",
     "date":"26 May 2022",
     "update":[
 			{
-        "type":"IMPROVED",
+        "type":"FIXED",
         "text":"Исправлена проблема с завершением подгрузки фрагмента видео при закрытии страницы релиза."
       }
     ]
@@ -16,7 +27,7 @@ version_history = [
     "date":"25 May 2022",
     "update":[
 			{
-        "type":"IMPROVED",
+        "type":"FIXED",
         "text":"Исправлена проблема с кэшированием в Service Worker фрагментов видео."
       }
     ]

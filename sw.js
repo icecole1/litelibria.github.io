@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Satera';
-var CACHE_VERSION = '1.2.10';
+var CACHE_VERSION = '1.2.11';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;

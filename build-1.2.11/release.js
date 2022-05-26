@@ -518,30 +518,19 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
   }
   let str_playlist = JSON.parse('['+strPlayer+']');
 	var engineConfig  = {
-		segments:{
-			forwardSegmentCount: 150,
-		},
 		loader: {
 			trackerAnnounce: [
 				"wss://tracker.sdev.xyz",
 				"wss://tracker.openwebtorrent.com"
 			],
-			simultaneousHttpDownloads: 1,
-			simultaneousP2PDownloads: 20,
-
-      httpFailedSegmentTimeout: 1000,
-      cachedSegmentExpiration: 10 * 60 * 1000,
-      httpDownloadProbability: 0.06,
-			httpDownloadProbabilityInterval: 1000,
-      httpDownloadProbabilitySkipIfNoPeers: false,
-			p2pSegmentDownloadTimeout: 1 * 60 * 1000,
-			cachedSegmentsCount: 10,
-			requiredSegmentsPriority: 3,
+			cachedSegmentsCount: 30,
+			requiredSegmentsPriority: 30,
+			p2pDownloadMaxPriority: 150,
 			httpDownloadMaxPriority: 1500,
-			p2pDownloadMaxPriority: 1500,
-		},
-		segments: {
-			forwardSegmentCount: 1500
+
+			simultaneousHttpDownloads: 1,
+			simultaneousP2PDownloads: 10,
+			// httpDownloadProbabilitySkipIfNoPeers: true,
 		}
 	};
 	if (p2pml.hlsjs.Engine.isSupported()) {
@@ -553,7 +542,7 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 			cuid: id_t,
 			bgcolor: 'var(--card-background-2)',
 			hlsconfig:{
-				liveSyncDurationCount: 10,
+				liveSyncDurationCount: 7,
 				loader: engine.createLoaderClass()
 			}
 		});
@@ -592,9 +581,6 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 }
 
 // Функции для P2P
-function loadP2PEnd(){
-	engine.destroy();
-}
 function onPeerLoader(){
 	engine.on("segment_loaded", (segment, peerId) => console.log("segment_loaded from", peerId ? `peer ${peerId}` : "HTTP", segment))
 }
