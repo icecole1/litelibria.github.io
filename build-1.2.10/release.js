@@ -532,7 +532,7 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
       httpFailedSegmentTimeout: 1000,
       cachedSegmentExpiration: 10 * 60 * 1000,
       httpDownloadProbability: 0.10,
-			httpDownloadProbabilityInterval: 500,
+			httpDownloadProbabilityInterval: 1000,
       httpDownloadProbabilitySkipIfNoPeers: false,
 			p2pSegmentDownloadTimeout: 1 * 60 * 1000,
 			cachedSegmentsCount: 10,
@@ -553,6 +553,7 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 			cuid: id_t,
 			bgcolor: 'var(--card-background-2)',
 			hlsconfig:{
+				liveSyncDurationCount: 10,
 				loader: engine.createLoaderClass()
 			}
 		});
