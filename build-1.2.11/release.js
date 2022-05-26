@@ -526,13 +526,14 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 				"wss://tracker.sdev.xyz",
 				"wss://tracker.openwebtorrent.com"
 			],
-			cachedSegmentsCount: 30,
-			requiredSegmentsPriority: 3,
-			p2pDownloadMaxPriority: 150,
-			httpDownloadMaxPriority: 1500,
-			simultaneousHttpDownloads: 1,
-			simultaneousP2PDownloads: 10,
-			httpDownloadProbabilitySkipIfNoPeers: true,
+			cachedSegmentsCount: 50, // Количество сегментов видео которое мы храним для раздачи p2p пирам
+			cachedSegmentExpiration: 15 * 60 * 1000, // Сколько времени будет хранится сегменты для раздачи p2p пирам
+			requiredSegmentsPriority: 9, // Количество сегментов видео которое нужно сразу подгрузить, нужно непрерывного стриминга
+			p2pDownloadMaxPriority: 150, // Количество сегментов видео которое мы можем скачать по p2p пирам
+			httpDownloadMaxPriority: 1500, // Количество сегментов видео которое мы можем скачать по http
+			simultaneousHttpDownloads: 1, // Максимальное количество одновременных загрузок из HTTP-источника
+			simultaneousP2PDownloads: 10, // Максимальное количество одновременных загрузок по p2p пирам
+			httpDownloadProbabilitySkipIfNoPeers: true, // Не загружать сегменты по HTTP случайным образом, когда нет p2p пиров
 		}
 	};
 
