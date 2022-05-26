@@ -526,16 +526,24 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 				"wss://tracker.sdev.xyz",
 				"wss://tracker.openwebtorrent.com"
 			],
-			cachedSegmentExpiration: 86400000,
-			cachedSegmentsCount: 1000,
-			requiredSegmentsPriority: 1500,
-			httpDownloadMaxPriority: 9,
-			httpDownloadProbability: 0.06,
-			httpDownloadProbabilityInterval: 1000,
-			p2pDownloadMaxPriority: 150,
+			simultaneousHttpDownloads: 1,
+			simultaneousP2PDownloads: 10,
+
+      httpFailedSegmentTimeout: 1000,
+      cachedSegmentExpiration: 10 * 60 * 1000,
+      httpDownloadProbability: 0.10,
+			httpDownloadProbabilityInterval: 500,
+      httpDownloadProbabilitySkipIfNoPeers: false,
+			p2pSegmentDownloadTimeout: 1 * 60 * 1000,
+			cachedSegmentsCount: 10,
+			requiredSegmentsPriority: 15,
+			httpDownloadMaxPriority: 1500,
+			p2pDownloadMaxPriority: 1500,
+		},
+		segments: {
+			forwardSegmentCount: 1500
 		}
 	};
-
 	if (p2pml.hlsjs.Engine.isSupported()) {
 		engine = new p2pml.hlsjs.Engine(engineConfig);
 		player = new Playerjs({
@@ -567,6 +575,7 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 		});
 	}
 
+	
   player.api("file", str_playlist);
 
   if (localStorage.getItem('my_player_style')) {
@@ -582,6 +591,10 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 }
 
 // Аункции для P2P
+function loadP2PEnd(){
+	engine.destroy();
+}
+
 function onPeerLoader(){
 	engine.on("segment_loaded", (segment, peerId) => console.log("segment_loaded from", peerId ? `peer ${peerId}` : "HTTP", segment))
 }

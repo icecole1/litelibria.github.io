@@ -107,6 +107,9 @@ function back_app() {
     editPushState(new_url);
     page_line();
   }
+
+	// Завершение P2P подгрузки
+	loadP2PEnd();
 }
 
 
