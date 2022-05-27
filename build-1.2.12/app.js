@@ -109,6 +109,9 @@ function back_app() {
 }
 
 function edit_href(href, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
+
+	if(player) player.api("stop"); // Остановка плеера при смене локации.
+
   var last_href = window.location.pathname;
   localStorage.setItem('my_last_page', last_href);
 

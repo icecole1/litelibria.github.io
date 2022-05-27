@@ -1,6 +1,17 @@
 version_history = [
 	{
     "prefix":"Satera",
+    "version":"1.2.12",
+    "date":"27 May 2022",
+    "update":[
+			{
+        "type":"FIXED",
+        "text":"Исправлена проблемы с P2P потоками."
+      }
+    ]
+  },
+	{
+    "prefix":"Satera",
     "version":"1.2.11",
     "date":"26 May 2022",
     "update":[
