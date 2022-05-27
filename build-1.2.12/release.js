@@ -577,9 +577,6 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 }
 
 function PlayerjsEvents(event,id,info){	
-
-	console.log(event);
-
 	if(event=="stop"){
 		engine.destroy(); // Разрываем P2P раздачу
 	}
