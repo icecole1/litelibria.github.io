@@ -70,7 +70,7 @@ function page_release(s1) {
 
 	} else {
 		elementDisplays1 = `
-			<img id="rel_posters_medium_url" src="img/poster.webp" alt="" style="display:none"/>
+			<img id="rel_posters_medium_url" src="img/poster.png" alt="" style="display:none"/>
 			<div id="player_bas" class="player_s">
 				<div id="player"></div>
 			</div>
