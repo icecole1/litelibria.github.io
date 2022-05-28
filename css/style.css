@@ -1765,6 +1765,7 @@ details span {
   height: 400px;
   border-radius: var(--card-border-radius);
   margin-top: 10px;
+	background: var(--ColorThemes1);
 }
 .release-det{
   text-align: left;

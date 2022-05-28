@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Satera';
-var CACHE_VERSION = '1.2.12';
+var CACHE_VERSION = '1.2.13';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
@@ -8,21 +8,16 @@ const assetUrls = [
 	'/',
 
 	'meeting_tips.json',
-	'version_history.json',
 
   'config.js',
 
   'offline.html',
   '/404.html',
 
-	'/img/icons/20_W.png',
-	'/img/icons/19_W.png',
-  '/img/pleer.png',
-  '/img/poster_mobile.png',
-  '/img/poster.png',
+  '/img/pleer.webp',
+  '/img/poster.webp',
   '/img/2.gif',
   '/img/1.gif',
-	'/img/load.svg',
 
   '/css/style.css',
   '/css/auto.css',

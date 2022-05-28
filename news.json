@@ -2,8 +2,8 @@
 	"blockNewTrailer": {
 		"Visible": true,
 		"Colors" : "Color(0xff000000)",
-		"ImageBG": "https://litelibria.com/img/NEWS/Dungeon_ni_Deai_wo_Motomeru_no_wa_Machigatteiru_Darou_ka_IV_BG.jpg",
-		"Poster": "https://litelibria.com/img/NEWS/Dungeon_ni_Deai_wo_Motomeru_no_wa_Machigatteiru_Darou_ka_IV.jpg",
+		"ImageBG": "https://litelibria.com/img/NEWS/Dungeon_ni_Deai_wo_Motomeru_no_wa_Machigatteiru_Darou_ka_IV_BG.webp",
+		"Poster": "https://litelibria.com/img/NEWS/Dungeon_ni_Deai_wo_Motomeru_no_wa_Machigatteiru_Darou_ka_IV.webp",
 		"TextBig": "Новый трейлер",
 		"TextMedium": "Может, я встречу\nтебя в подземелье? IV",
 		"TextSmall": "Показ начнётся в июле 2022 года.",
@@ -12,7 +12,7 @@
 	"blockSelectRecommend": {
 		"Visible": true,
 		"Colors" : "Color(0xff000000)",
-		"ImageBG": "https://litelibria.com/img/NEWS/bg1.jpg",
+		"ImageBG": "https://litelibria.com/img/NEWS/bg1.webp",
 		"TextBig": "Рекомендуем",
 		"TextMedium": "Подборка хороших тайтлов\nс прошлого аниме сезона",
 		"TextSmall": "*По мнению LiteLibria",
@@ -20,23 +20,23 @@
 		"titels": {
 			"1": {
 				"id": 9131,
-				"Poster": "/storage/releases/posters/9131/7qNpuFDMgbPUGHRY.jpg"
+				"Poster": "https://litelibria.com/img/NEWS/1.webp"
 			},
 			"2": {
 				"id": 9121,
-				"Poster": "/storage/releases/posters/9121/z5HMxGKy9XpSWPBn.jpg"
+				"Poster": "https://litelibria.com/img/NEWS/2.webp"
 			},
 			"3": {
 				"id": 9122,
-				"Poster": "/storage/releases/posters/9122/hHCYXEEYVtTsALwi.jpg"
+				"Poster": "https://litelibria.com/img/NEWS/3.webp"
 			},
 			"4": {
 				"id": 9118,
-				"Poster": "/storage/releases/posters/9118/EyBtr8DOSoaWzG8c.jpg"
+				"Poster": "https://litelibria.com/img/NEWS/4.webp"
 			},
 			"5": {
 				"id": 9137,
-				"Poster": "/storage/releases/posters/9137/WD0vESWfoh9tcu5v.jpg"
+				"Poster": "https://litelibria.com/img/NEWS/5.webp"
 			}
 		}
 	}
