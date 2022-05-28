@@ -14,7 +14,7 @@ const assetUrls = [
   'offline.html',
   '/404.html',
 
-  '/img/pleer.webp',
+  '/img/player.webp',
   '/img/poster.webp',
   '/img/2.gif',
   '/img/1.gif',
