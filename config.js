@@ -1,5 +1,5 @@
 if(!localStorage.getItem("GetMirror")) localStorage.setItem("GetMirror", "true");
-if(!localStorage.getItem("GetMirrorTitels")) localStorage.setItem("GetMirrorTitels", "https://api.sdev.xyz/v2/");
+if(!localStorage.getItem("GetMirrorTitels")) localStorage.setItem("GetMirrorTitels", "https://api.sdev.xyz/v2.13/");
 if(!localStorage.getItem("GetMirrorPosters")) localStorage.setItem("GetMirrorPosters", "https://tb2og.anilib.top");
 
 mirror = localStorage.getItem("GetMirror");
@@ -26,7 +26,7 @@ if(localStorage.getItem("GetMirror") == "true"){
 		'g_clientId': '116898535578-na8fsq2p1igt77ve615sa444ur2l1bvv.apps.googleusercontent.com',
 		'domains': 'litelibria.com',
 		'CustomPosters':'https://api.7o7.co',
-		'titels_api':'https://api.anilibria.tv/v2/',
+		'titels_api':'https://api.anilibria.tv/v2.13/',
 		'posters':'https://anilibria.tv',
 	}
 }
