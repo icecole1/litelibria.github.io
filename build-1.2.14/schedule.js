@@ -22,7 +22,7 @@ function page_schedule() {
 			<!-- Картинка в случае отсутствия ответа  -->
 			<div id="FilterNone-0" style="display:none;">
 				<br /><br />
-				<img src="img/libriatyan/4.png" style="width: 145px;">
+				<img src="img/libriatyan/4.webp" style="width: 145px;">
 				<br /><br />
 				<p style="color: var(--ColorThemes3);">Ничего не найдено...</p>
 				<br /><br />
@@ -48,7 +48,7 @@ function page_schedule() {
 			<!-- Картинка в случае отсутствия ответа  -->
 			<div id="FilterNone-1" style="display:none;">
 				<br /><br />
-				<img src="img/libriatyan/4.png" style="width: 145px;">
+				<img src="img/libriatyan/4.webp" style="width: 145px;">
 				<br /><br />
 				<p style="color: var(--ColorThemes3);">Ничего не найдено...</p>
 				<br /><br />
@@ -74,7 +74,7 @@ function page_schedule() {
 			<!-- Картинка в случае отсутствия ответа  -->
 			<div id="FilterNone-2" style="display:none;">
 				<br /><br />
-				<img src="img/libriatyan/4.png" style="width: 145px;">
+				<img src="img/libriatyan/4.webp" style="width: 145px;">
 				<br /><br />
 				<p style="color: var(--ColorThemes3);">Ничего не найдено...</p>
 				<br /><br />
@@ -100,7 +100,7 @@ function page_schedule() {
 			<!-- Картинка в случае отсутствия ответа  -->
 			<div id="FilterNone-3" style="display:none;">
 				<br /><br />
-				<img src="img/libriatyan/4.png" style="width: 145px;">
+				<img src="img/libriatyan/4.webp" style="width: 145px;">
 				<br /><br />
 				<p style="color: var(--ColorThemes3);">Ничего не найдено...</p>
 				<br /><br />
@@ -126,7 +126,7 @@ function page_schedule() {
 			<!-- Картинка в случае отсутствия ответа  -->
 			<div id="FilterNone-4" style="display:none;">
 				<br /><br />
-				<img src="img/libriatyan/4.png" style="width: 145px;">
+				<img src="img/libriatyan/4.webp" style="width: 145px;">
 				<br /><br />
 				<p style="color: var(--ColorThemes3);">Ничего не найдено...</p>
 				<br /><br />
@@ -152,7 +152,7 @@ function page_schedule() {
 			<!-- Картинка в случае отсутствия ответа  -->
 			<div id="FilterNone-5" style="display:none;">
 				<br /><br />
-				<img src="img/libriatyan/4.png" style="width: 145px;">
+				<img src="img/libriatyan/4.webp" style="width: 145px;">
 				<br /><br />
 				<p style="color: var(--ColorThemes3);">Ничего не найдено...</p>
 				<br /><br />
@@ -178,7 +178,7 @@ function page_schedule() {
 			<!-- Картинка в случае отсутствия ответа  -->
 			<div id="FilterNone-6" style="display:none;">
 				<br /><br />
-				<img src="img/libriatyan/4.png" style="width: 145px;">
+				<img src="img/libriatyan/4.webp" style="width: 145px;">
 				<br /><br />
 				<p style="color: var(--ColorThemes3);">Ничего не найдено...</p>
 				<br /><br />

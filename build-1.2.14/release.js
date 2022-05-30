@@ -9,6 +9,7 @@ var dataPlayer,
 
 let graph;
 var engine,
+		trackerAnnounce,
 		downloadStats = [],
 		downloadTotals = { http: 0, p2p: 0 },
 		uploadStats = [],
@@ -588,6 +589,14 @@ function PlayerjsEvents(event,id,info){
 
 	if(event=="init"){
 		refreshChart(); // Обновление графика Rickshaw
+		
+		// Отобразить название трекеров
+		trackerAnnounce = engine.getSettings().loader.trackerAnnounce;
+		if (Array.isArray(trackerAnnounce)) {
+			for(var i=0; trackerAnnounce.length > i; i++){
+				document.getElementById("trackerAnnounce").innerHTML += `<span>${trackerAnnounce[i]}</span><br /><br />`;
+			}
+		}
 	}
 
 	if(event=="new"){
@@ -613,12 +622,6 @@ function PlayerjsEvents(event,id,info){
 
 			// Вывод в консоль отладочных P2P сообшений
 			// engine.on("segment_loaded", (segment, peerId) => console.log("segment_loaded from", peerId ? `peer ${peerId}` : "HTTP", segment));
-
-			// Отобразить название трекеров
-			var trackerAnnounce = engine.getSettings().loader.trackerAnnounce;
-			if (Array.isArray(trackerAnnounce)) {
-				document.getElementById("announce").innerHTML = trackerAnnounce.join("<br />");
-			}
 		}
 
 		mobile_play_fullscreen();
