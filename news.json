@@ -2,12 +2,12 @@
 	"blockNewTrailer": {
 		"Visible": true,
 		"Colors" : "Color(0xff000000)",
-		"ImageBG": "https://litelibria.com/img/NEWS/Dungeon_ni_Deai_wo_Motomeru_no_wa_Machigatteiru_Darou_ka_IV_BG.webp",
-		"Poster": "https://litelibria.com/img/NEWS/Dungeon_ni_Deai_wo_Motomeru_no_wa_Machigatteiru_Darou_ka_IV.webp",
+		"ImageBG": "https://litelibria.com/img/NEWS/ShadowsHouseSeason2BG.webp",
+		"Poster": "https://litelibria.com/img/NEWS/ShadowsHouseSeason2.webp",
 		"TextBig": "Новый трейлер",
-		"TextMedium": "Может, я встречу\nтебя в подземелье? IV",
-		"TextSmall": "Показ начнётся в июле 2022 года.",
-		"YouTubeID": "RglcGT_IoX0"
+		"TextMedium": "Дом теней 2",
+		"TextSmall": "Показ начнётся 8 июля 2022 года.",
+		"YouTubeID": "7uJikCGzm9I"
 	},
 	"blockSelectRecommend": {
 		"Visible": true,
