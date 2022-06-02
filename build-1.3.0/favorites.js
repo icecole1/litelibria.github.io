@@ -1,11 +1,8 @@
-var FavoritesList;
 var styleFavorites = 1;
 
 var MySessID;
 
-function page_favorites() {
-	FavoritesList = null;
-	
+function page_favorites() {	
   document.getElementById('app').innerHTML = `
 	
 	<!-- Блок Сортировки	 -->
@@ -57,7 +54,7 @@ function page_favorites() {
 				<img src="img/libriatyan/4.webp" style="width: 145px;">
 				<br /><br />
 				<p style="color: var(--ColorThemes3);">Вы не авторизованы</p>
-        <Button class="ButtonHovers" onclick="edit_href('/options')" style="margin: 10px 0 0 0;">Авторизоваться</Button>
+        <Button class="ButtonHovers" onclick="goRoute('/options')" style="margin: 10px 0 0 0;">Авторизоваться</Button>
 				<br /><br />
 			</div>
 
@@ -101,9 +98,6 @@ function getFavoritesStyle(){
 	}
 }
 function setFavoritesStyle(){
-	num = 24;
-	after = 0;
-	// CatalogList = null;
 	if(styleFavorites == 1){
 		styleFavorites = 0;
 		localStorage.setItem('styleCatalog', '0');
@@ -128,9 +122,9 @@ function LoadPHPSESSID(){
     preloader_none();
   } else {
 		// Запуск анимации загрузки контента
-		document.getElementById("LoadAnimFavorites").style.display = "block";
 		document.getElementById("PHPSESSIDNone").style.display = "none";
-		LoadApiFavorites();
+
+		if(FavoritesList == null) {LoadApiFavorites();document.getElementById("LoadAnimFavorites").style.display = "block";} else GeneratorFavorites();
   }
 }
 
@@ -239,17 +233,17 @@ function GeneratorFavorites() {
 				${TextSerie}
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 				<img src="${config["posters"]}${FavoritesList[i].posters.medium.url}" alt="">
-				<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${FavoritesList[i].id})">
+				<div class="LineCard-Hover" onclick="goRoute('/release', {id:${FavoritesList[i].id}})">
 					<p class="LineCard-Hover-Name">${FavoritesList[i].names.ru}</p>
 					<p class="LineCard-Hover-Genres">${genres}</p>
 					<p class="LineCard-Hover-Description">${FavoritesList[i].description}</p>
-				</a>
+				</div>
 			`;
 		} else {
-			var div = document.createElement('a');
+			var div = document.createElement('div');
 			document.getElementById('LineGenerator-Favorites').appendChild(div);
 			div.className = 'LineCard-Long';
-			div.setAttribute("onclick", `edit_href('/release', 'id', ${FavoritesList[i].id})`);
+			div.setAttribute("onclick", `goRoute('/release', {id:${FavoritesList[i].id}})`);
 			div.innerHTML += `
 				<div class="LineCard-Long-Left">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"></path></svg>

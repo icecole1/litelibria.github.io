@@ -68,9 +68,7 @@ function page_options() {
 				</div>
 				<p class="settings_filter_p">*Нажмите для выбора</p>
 			</div>
-		</div>
 
-		<div class="OptionsBlockCard">
 			<div class="OptionsCard">
 				<h3>Настройки зеркал</h3>
 				<p class="settings_filter_p">Режим</p>

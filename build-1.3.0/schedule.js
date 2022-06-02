@@ -1,9 +1,6 @@
-var ScheduleList;
 var styleCatalog = 1;
 
 function page_schedule() {
-	ScheduleList = null;
-
   document.getElementById('app').innerHTML = `
 	
 	<!-- Блок Расписание	 -->
@@ -194,7 +191,18 @@ function page_schedule() {
 	</div>
   `;
 
-	LoadApiSchedules();
+	if(ScheduleList == null){
+		LoadApiSchedules();
+	} else {
+		GeneratorSchedule_0();
+		GeneratorSchedule_1();
+		GeneratorSchedule_2();
+		GeneratorSchedule_3();
+		GeneratorSchedule_4();
+		GeneratorSchedule_5();
+		GeneratorSchedule_6();
+	}
+
 
   Scroll_to_top();
 }
@@ -202,10 +210,6 @@ function page_schedule() {
 
 // Функции запросов к Api
 function LoadApiSchedules() {
-	if(ScheduleList != null){
-		after = after + num;	
-	}
-
 	// Запуск анимации загрузки контента
 	document.getElementById("LoadAnimSchedule-0").style.display = "block";
 	document.getElementById("LoadAnimSchedule-1").style.display = "block";
@@ -291,7 +295,7 @@ function GeneratorSchedule_0() {
 			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
-			<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${DayList[i].id})">
+			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
 				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
 				<p class="LineCard-Hover-Genres">${genres}</p>
 				<p class="LineCard-Hover-Description">${DayList[i].description}</p>
@@ -321,7 +325,7 @@ function GeneratorSchedule_1() {
 			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
-			<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${DayList[i].id})">
+			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
 				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
 				<p class="LineCard-Hover-Genres">${genres}</p>
 				<p class="LineCard-Hover-Description">${DayList[i].description}</p>
@@ -351,7 +355,7 @@ function GeneratorSchedule_2() {
 			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
-			<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${DayList[i].id})">
+			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
 				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
 				<p class="LineCard-Hover-Genres">${genres}</p>
 				<p class="LineCard-Hover-Description">${DayList[i].description}</p>
@@ -381,7 +385,7 @@ function GeneratorSchedule_3() {
 			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
-			<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${DayList[i].id})">
+			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
 				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
 				<p class="LineCard-Hover-Genres">${genres}</p>
 				<p class="LineCard-Hover-Description">${DayList[i].description}</p>
@@ -411,7 +415,7 @@ function GeneratorSchedule_4() {
 			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
-			<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${DayList[i].id})">
+			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
 				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
 				<p class="LineCard-Hover-Genres">${genres}</p>
 				<p class="LineCard-Hover-Description">${DayList[i].description}</p>
@@ -441,7 +445,7 @@ function GeneratorSchedule_5() {
 			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
-			<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${DayList[i].id})">
+			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
 				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
 				<p class="LineCard-Hover-Genres">${genres}</p>
 				<p class="LineCard-Hover-Description">${DayList[i].description}</p>
@@ -471,7 +475,7 @@ function GeneratorSchedule_6() {
 			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
-			<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${DayList[i].id})">
+			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
 				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
 				<p class="LineCard-Hover-Genres">${genres}</p>
 				<p class="LineCard-Hover-Description">${DayList[i].description}</p>

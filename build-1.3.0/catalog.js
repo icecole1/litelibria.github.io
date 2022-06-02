@@ -1,16 +1,12 @@
-var CatalogList;
 var styleCatalog = 1;
-
+var urlGenerate = config["titels_api"]+"getUpdates?";
 var num = 24;
 var after = 0;
-var urlGenerate = config["titels_api"]+"getUpdates?";
 
 function page_catalog() {
-	CatalogList = null;
 	after = 0;
 
   document.getElementById('app').innerHTML = `
-	
 	<!-- Блок Сортировки	 -->
 	<div class="SortingBlock">
 		<div class="SortingBlockForm">
@@ -61,7 +57,7 @@ function page_catalog() {
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 226 226"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,226v-226h226v226z" fill="none"></path><g fill="var(--ColorThemes3)"><path d="M47.08333,28.25c-10.38658,0 -18.83333,8.44675 -18.83333,18.83333v37.66667c0,10.38658 8.44675,18.83333 18.83333,18.83333h37.66667c10.38658,0 18.83333,-8.44675 18.83333,-18.83333v-37.66667c0,-10.38658 -8.44675,-18.83333 -18.83333,-18.83333zM141.25,28.25c-10.38658,0 -18.83333,8.44675 -18.83333,18.83333v37.66667c0,10.38658 8.44675,18.83333 18.83333,18.83333h37.66667c10.38658,0 18.83333,-8.44675 18.83333,-18.83333v-37.66667c0,-10.38658 -8.44675,-18.83333 -18.83333,-18.83333zM47.08333,122.41667c-10.38658,0 -18.83333,8.44675 -18.83333,18.83333v37.66667c0,10.38658 8.44675,18.83333 18.83333,18.83333h37.66667c10.38658,0 18.83333,-8.44675 18.83333,-18.83333v-37.66667c0,-10.38658 -8.44675,-18.83333 -18.83333,-18.83333zM141.25,122.41667c-10.38658,0 -18.83333,8.44675 -18.83333,18.83333v37.66667c0,10.38658 8.44675,18.83333 18.83333,18.83333h37.66667c10.38658,0 18.83333,-8.44675 18.83333,-18.83333v-37.66667c0,-10.38658 -8.44675,-18.83333 -18.83333,-18.83333z"></path></g></g></svg>
 				</div>
 			</div>
-			<div id="LineGenerator-Catalog">
+			<div id="LineGeneratorCatalog">
 				<!-- Карточки с контентом -->
 
 
@@ -82,8 +78,7 @@ function page_catalog() {
 			</div>	
 
 			<!-- Кнопка включения автодобавления тайтлов  -->
-			<button id="LoadApiCatalogButton" class="LoadApiButton" onclick="LoadApiCatalog();autoScroller()" style="display:none">Показать ещё</button>
-			<span id="LoadApiCatalog"></span>
+			<button id="LoadApiCatalogButton" class="LoadApiButton" onclick="LoadApiCatalog()">Показать ещё</button>
 		</div>
 	</div>
   `;
@@ -93,26 +88,9 @@ function page_catalog() {
 	LoadApiGenresCatalog();
 	LoadApiYearsCatalog();
 
-	LoadApiCatalog();
+	if(CatalogsList == null) LoadApiCatalog(); else GeneratorCatalog();
+
   Scroll_to_top();
-}
-
-
-// Функция автодобавления тайтлов
-function autoScroller(){
-	function onEntry(entry) {
-		entry.forEach(change => {
-			if (change.isIntersecting) {
-				LoadApiCatalog();
-			}
-		});
-	}
-	let options = { threshold: [0.5] };
-	let observer = new IntersectionObserver(onEntry, options);
-	let elements = document.querySelectorAll('#LoadApiCatalog');
-	for (let elm of elements) {
-		observer.observe(elm);
-	}
 }
 
 
@@ -133,9 +111,6 @@ function getCatalogStyle(){
 	}
 }
 function setCatalogStyle(){
-	num = 24;
-	after = 0;
-	// CatalogList = null;
 	if(styleCatalog == 1){
 		styleCatalog = 0;
 		localStorage.setItem('styleCatalog', '0');
@@ -147,7 +122,7 @@ function setCatalogStyle(){
 		document.getElementById('CatalogGrid').style.display = "";
 		document.getElementById('CatalogList').style.display = "none";
 	}
-	document.getElementById('LineGenerator-Catalog').innerHTML = "";
+	document.getElementById('LineGeneratorCatalog').innerHTML = "";
 	GeneratorCatalog();
 }
 
@@ -156,7 +131,7 @@ function setCatalogStyle(){
 function SortingTitles(){
 	num = 24;
 	after = 0;
-	CatalogList = null;
+	CatalogsList = null;
 
   var genres_sort = document.getElementById("SortingGenres").value;
   var years_sort = document.getElementById("SortingYears").value;
@@ -198,15 +173,15 @@ function SortingTitles(){
 		urlGenerate = config["titels_api"]+'advancedSearch?query='+ query_1 + genres + and_1 + years + and_2 + season + orderBy_sort +'&sort_direction='+checkbox_sorting+'&';
   }
 
-	document.getElementById('LineGenerator-Catalog').innerHTML = "";
+	document.getElementById('LineGeneratorCatalog').innerHTML = "";
 	LoadApiCatalog()
 }
 
 
 // Функции запросов к Api
 function LoadApiCatalog() {
-	if(CatalogList != null){
-		after = after + num;	
+	if(CatalogsList != null){
+		after = CatalogsList.length;	
 	}
 
 	// Запуск анимации загрузки контента
@@ -233,7 +208,10 @@ function LoadApiCatalog() {
 			document.getElementById("FilterNone").style.display = "none";
 			document.getElementById("LoadApiCatalogButton").style.display = "";
 		}
-		CatalogList = data;
+
+		if(CatalogsList == null) CatalogsList = data;
+		else Array.prototype.push.apply(CatalogsList, data);
+
 		GeneratorCatalog();
 		preloader_none();
   })
@@ -295,45 +273,45 @@ function LoadApiYearsCatalog() {
 
 // Функции заполнения контента
 function GeneratorCatalog() {
-	for (let i = 0; CatalogList.length > i; i++) {
+	for (let i = after; CatalogsList.length > i; i++) {
 		var genres = '';
 		var TextSerie = '';
-		for(let g = 0; CatalogList[i].genres.length > g; g++){
-			if(genres == '') genres = CatalogList[i].genres[g];
-			else genres = genres + ', ' +CatalogList[i].genres[g];
+		for(let g = 0; CatalogsList[i].genres.length > g; g++){
+			if(genres == '') genres = CatalogsList[i].genres[g];
+			else genres = genres + ', ' +CatalogsList[i].genres[g];
 		}
-		if(CatalogList[i].torrents.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${CatalogList[i].torrents.series.last}</div>`;
+		if(CatalogsList[i].torrents.series.last != null){
+			TextSerie = `<div class="LineCard-TextSerie">Серия ${CatalogsList[i].torrents.series.last}</div>`;
 		}
 
 		if(styleCatalog == 0){
 			var div = document.createElement('div');
-			document.getElementById('LineGenerator-Catalog').appendChild(div);
+			document.getElementById('LineGeneratorCatalog').appendChild(div);
 			div.className = 'LineCard-MediumHovers';
 			div.innerHTML += `
 				${TextSerie}
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
-				<img src="${config["posters"]}${CatalogList[i].posters.medium.url}" alt="">
-				<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${CatalogList[i].id})">
-					<p class="LineCard-Hover-Name">${CatalogList[i].names.ru}</p>
+				<img src="${config["posters"]}${CatalogsList[i].posters.medium.url}" alt="">
+				<div class="LineCard-Hover" onclick="goRoute('/release', {id:${CatalogsList[i].id}})">
+					<p class="LineCard-Hover-Name">${CatalogsList[i].names.ru}</p>
 					<p class="LineCard-Hover-Genres">${genres}</p>
-					<p class="LineCard-Hover-Description">${CatalogList[i].description}</p>
-				</a>
+					<p class="LineCard-Hover-Description">${CatalogsList[i].description}</p>
+				</div>
 			`;
 		} else {
-			var div = document.createElement('a');
-			document.getElementById('LineGenerator-Catalog').appendChild(div);
+			var div = document.createElement('div');
+			document.getElementById('LineGeneratorCatalog').appendChild(div);
 			div.className = 'LineCard-Long';
-			div.setAttribute("onclick", `edit_href('/release', 'id', ${CatalogList[i].id})`);
+			div.setAttribute("onclick", `goRoute('/release', {id:${CatalogsList[i].id}})`);
 			div.innerHTML += `
 				<div class="LineCard-Long-Left">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"></path></svg>
-					<img src="${config["posters"]}${CatalogList[i].posters.medium.url}" alt="">
+					<img src="${config["posters"]}${CatalogsList[i].posters.medium.url}" alt="">
 				</div>
 				<div class="LineCard-Long-Right">
-					<p class="LineCard-Long-Name">${CatalogList[i].names.ru}</p>
+					<p class="LineCard-Long-Name">${CatalogsList[i].names.ru}</p>
 					<p class="LineCard-Long-Genres">${genres}</p>
-					<p class="LineCard-Long-Description">${CatalogList[i].description}</p>
+					<p class="LineCard-Long-Description">${CatalogsList[i].description}</p>
 				</div>
 		`;
 		}

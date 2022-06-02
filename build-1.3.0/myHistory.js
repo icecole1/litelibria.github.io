@@ -255,7 +255,7 @@ function load_his() {
 					<p class="HistoryCard-Title" id="names${GetPlayerStorage("id")}"></p>
 					<p class="HistoryCard-Text">Серия ${GetPlayerStorage("seria")}   Минута ${minutes_payer_release}</p>
 					<p class="HistoryCard-Text">Дата ${date_payer_release}</p>
-					<p class="HistoryCard-Open" onclick="edit_href('/release', 'id', ${GetPlayerStorage("id")})">Открыть</p>
+					<p class="HistoryCard-Open" onclick="goRoute('/release', {id:${GetPlayerStorage("id")}})">Открыть</p>
 					<p class="HistoryCard-Del" onclick="del_his_but('${key}', '${GetPlayerStorage("id")}')">Удалить</p>
 				</div>
 				`;

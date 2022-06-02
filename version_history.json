@@ -1,6 +1,23 @@
 version_history = [
 	{
     "prefix":"Satera",
+    "version":"1.3.0",
+    "date":"2 June 2022",
+    "update":[
+			{
+        "type":"IMPROVED",
+        "text":"Изменён роутер приложения."
+      },{
+        "type":"IMPROVED",
+        "text":"При навигации по страницам данные берутся из кеша, а не из повторного запроса к серверу."
+      },{
+        "type":"ADDED",
+        "text":"Добавлена ​​поддержка навигации по истории браузера с помощью свайпов и кнопок навигации браузера."
+      }
+    ]
+  },
+	{
+    "prefix":"Satera",
     "version":"1.2.14",
     "date":"30 May 2022",
     "update":[
@@ -16,7 +33,7 @@ version_history = [
     "date":"28 May 2022",
     "update":[
 			{
-        "type":"IMPROVED",
+        "type":"FIXED",
         "text":"Обновлены изображения."
       }
     ]

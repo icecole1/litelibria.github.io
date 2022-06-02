@@ -1,16 +1,20 @@
-var SearchList;
 var styleSearch = 1;
-
 var num = 24;
 var after = 0;
-var urlGenerate = config["titels_api"]+"getUpdates?";
+var searchQ;
 
 function page_search(s1) {
-	SearchList = null;
 	after = 0;
 
-  document.getElementById('app').innerHTML = `
+	if(searchQ == null){
+		searchQ = s1;
+	}
+	if(searchQ != s1){
+		SearchList = null;
+		searchQ = s1;
+	}
 
+  document.getElementById('app').innerHTML = `
 	<!-- Блок Поиск	 -->
 	<div class="CatalogBlock">
 		<div class="CatalogList">
@@ -44,7 +48,7 @@ function page_search(s1) {
 			</div>	
 
 			<!-- Кнопка включения автодобавления тайтлов  -->
-			<button id="LoadApiSearchButton" class="LoadApiButton" onclick="LoadApiSearch();autoScroller()" style="display:none">Показать ещё</button>
+			<button id="LoadApiSearchButton" class="LoadApiButton" onclick="LoadApiSearch();" style="display:none">Показать ещё</button>
 			<span id="LoadApiSearch"></span>
 		</div>
 	</div>
@@ -52,27 +56,11 @@ function page_search(s1) {
 
 	getSearchStyle();
 
-	LoadApiSearch(s1);
+	if(SearchList == null) LoadApiSearch(s1); else GeneratorSearch();
+
   Scroll_to_top();
 }
 
-
-// Функция автодобавления тайтлов
-function autoScroller(){
-	function onEntry(entry) {
-		entry.forEach(change => {
-			if (change.isIntersecting) {
-				LoadApiSearch();
-			}
-		});
-	}
-	let options = { threshold: [0.5] };
-	let observer = new IntersectionObserver(onEntry, options);
-	let elements = document.querySelectorAll('#LoadApiSearch');
-	for (let elm of elements) {
-		observer.observe(elm);
-	}
-}
 
 
 // Функция обновления стилизации
@@ -92,9 +80,6 @@ function getSearchStyle(){
 	}
 }
 function setSearchStyle(){
-	num = 24;
-	after = 0;
-	// CatalogList = null;
 	if(styleSearch == 1){
 		styleSearch = 0;
 		localStorage.setItem('styleCatalog', '0');
@@ -114,7 +99,7 @@ function setSearchStyle(){
 // Функции запросов к Api
 function LoadApiSearch(s1) {
 	if(SearchList != null){
-		after = after + num;	
+		after = SearchList.length;	
 	}
 
 	// Запуск анимации загрузки контента
@@ -141,7 +126,10 @@ function LoadApiSearch(s1) {
 			document.getElementById("FilterNone").style.display = "none";
 			document.getElementById("LoadApiSearchButton").style.display = "";
 		}
-		SearchList = data;
+
+		if(SearchList == null) SearchList = data;
+		else Array.prototype.push.apply(SearchList, data);
+
 		GeneratorSearch();
 		preloader_none();
   })
@@ -153,7 +141,7 @@ function LoadApiSearch(s1) {
 
 // Функции заполнения контента
 function GeneratorSearch() {
-	for (let i = 0; SearchList.length > i; i++) {
+	for (let i = after; SearchList.length > i; i++) {
 		var genres = '';
 		var TextSerie = '';
 		for(let g = 0; SearchList[i].genres.length > g; g++){
@@ -172,17 +160,17 @@ function GeneratorSearch() {
 				${TextSerie}
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 				<img src="${config["posters"]}${SearchList[i].posters.medium.url}" alt="">
-				<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${SearchList[i].id})">
+				<div class="LineCard-Hover" onclick="goRoute('/release', {id:${SearchList[i].id}})">
 					<p class="LineCard-Hover-Name">${SearchList[i].names.ru}</p>
 					<p class="LineCard-Hover-Genres">${genres}</p>
 					<p class="LineCard-Hover-Description">${SearchList[i].description}</p>
-				</a>
+				</div>
 			`;
 		} else {
-			var div = document.createElement('a');
+			var div = document.createElement('div');
 			document.getElementById('LineGenerator-Search').appendChild(div);
 			div.className = 'LineCard-Long';
-			div.setAttribute("onclick", `edit_href('/release', 'id', ${SearchList[i].id})`);
+			div.setAttribute("onclick", `goRoute('/release', {id:${SearchList[i].id}})`);
 			div.innerHTML += `
 				<div class="LineCard-Long-Left">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"></path></svg>

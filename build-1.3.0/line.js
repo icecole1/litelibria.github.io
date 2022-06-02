@@ -58,7 +58,7 @@ function page_line() {
 				<div class="LineList-Schedule">
 					<div style="display: flow-root;">
 						<h1 style="float: left;">Ожидается сегодня</h1>
-						<h1 style="float: right;"><a class="LineList-Button-All" onclick="edit_href('/schedule')">Расписание</a></h1>
+						<h1 style="float: right;"><a class="LineList-Button-All" onclick="goRoute('/schedule')">Расписание</a></h1>
 					</div>
 					<div class="LineGenerator-SmallHovers" id="LineGenerator-Schedule">
 						<!-- Карточки с контентом -->
@@ -84,11 +84,11 @@ function page_line() {
 									<p id="LineGenerator-SelectRecommend-4" class="LineList-SelectRecommend-Text-Small"></p>
 								</div>
 							</div>
-							<div id="LineGenerator-SelectRecommend-5" class="LineList-SelectRecommend-Poster" style="display: none"></div>
-							<div id="LineGenerator-SelectRecommend-6" class="LineList-SelectRecommend-Poster" style="display: none"></div>
-							<div id="LineGenerator-SelectRecommend-7" class="LineList-SelectRecommend-Poster" style="display: none"></div>
-							<div id="LineGenerator-SelectRecommend-8" class="LineList-SelectRecommend-Poster" style="display: none"></div>
-							<div id="LineGenerator-SelectRecommend-9" class="LineList-SelectRecommend-Poster" style="display: none"></div>
+							<a id="LineGenerator-SelectRecommend-5" class="LineList-SelectRecommend-Poster" style="display: none"></a>
+							<a id="LineGenerator-SelectRecommend-6" class="LineList-SelectRecommend-Poster" style="display: none"></a>
+							<a id="LineGenerator-SelectRecommend-7" class="LineList-SelectRecommend-Poster" style="display: none"></a>
+							<a id="LineGenerator-SelectRecommend-8" class="LineList-SelectRecommend-Poster" style="display: none"></a>
+							<a id="LineGenerator-SelectRecommend-9" class="LineList-SelectRecommend-Poster" style="display: none"></a>
 						</div>
 					</div>
 		
@@ -136,7 +136,7 @@ function page_line() {
 				<div class="LineList-History">
 					<div style="display: flow-root;">
 						<h1 style="float: left;">История просмотров</h1>
-						<h1 style="float: right;"><a class="LineList-Button-All" onclick="edit_href('/myHistory')">Ещё...</a></h1>
+						<h1 style="float: right;"><a class="LineList-Button-All" onclick="goRoute('/myHistory')">Ещё...</a></h1>
 					</div>
 					<div class="LineGenerator-History" id="LineGenerator-History">
 						<!-- Карточки с контентом -->
@@ -158,91 +158,19 @@ function page_line() {
   </div>
 	`;
 
+	if(UpdatesList == null) LoadApiUpdates(); else GeneratorUpdates();
+	if(GenresList == null) LoadApiGenres(); else GeneratorGenres();
+	if(ScheduleList == null) LoadApiSchedule(); else GeneratorSchedule();
+	if(VideoList == null) LoadApiVideo(); else GeneratorVideo();
+	if(RecomendList == null) LoadApiRecomend(); else GeneratorRecomend();
+	if(NEWSList == null) LoadApiNEWS(); else {GeneratorTrailer(); GeneratorSelectRecommend();}
 
-	LoadApiUpdates()
-	LoadApiGenres()
-	LoadApiSchedule()
-	LoadApiVideo()
-	LoadApiRecomend()
-
-	LoadApiNEWS()
 	GeneratorHistory()
 
 	preloader_none();
 
 	Scroll_to_top();
 }
-
-
-	var UpdatesList = [];
-	var NEWSList = [];
-	var ScheduleList = [];
-	var VideoList = [];
-	var RecomendList = [];
-	var HistoryList = [];
-
-	var GenresList = [
-		"Боевые искусства",
-		"Вампиры",
-		"Демоны",
-		"Детектив",
-		"Драма",
-		"Игры",
-		"Исторический",
-		"Комедия",
-		"Магия",
-		"Меха",
-		"Мистика",
-		"Музыка",
-		"Повседневность",
-		"Приключения",
-		"Психологическое",
-		"Романтика",
-		"Сверхъестественное",
-		"Сёдзе",
-		"Сейнен",
-		"Сёнен",
-		"Спорт",
-		"Супер сила",
-		"Триллер",
-		"Ужасы",
-		"Фантастика",
-		"Фэнтези",
-		"Школа",
-		"Экшен",
-		"Этти"
-	];
-	var ColorGenresList = [
-    "A83845",
-    "2E708A",
-    "2D8653",
-    "2A417E",
-    "A953C6",
-    "4BC3B5",
-    "CCC966",
-    "A3D175",
-    "2A4C7E",
-    "592E8A",
-    "A471D0",
-    "90A0DA",
-    "90A0DA",
-    "90A0DA",
-    "6CBF40",
-    "97C247",
-    "75D1A0",
-    "6E91CF",
-    "6272CB",
-    "34819D",
-    "1D5849",
-    "CABAE8",
-    "BEA7E2",
-    "321C54",
-    "522163",
-    "8A2E8A",
-    "A838A5",
-    "795EC9",
-    "CF6E81",
-  ];
 
 
 
@@ -304,18 +232,8 @@ function LoadApiSchedule() {
 	// Запуск анимации загрузки контента
 	document.getElementById("LoadAnimSchedule").style.display = "";
 
-	var d = new Date();
-	var n;
-	if(d.getDay()==0)n=6;
-        else if(d.getDay()==1)n=0;
-        else if(d.getDay()==2)n=1; 
-        else if(d.getDay()==3)n=2; 
-        else if(d.getDay()==4)n=3; 
-        else if(d.getDay()==5)n=4;
-        else n=5;
-
 	// Запрос к Api 
-  var url = config["titels_api"]+"getSchedule?filter=id,names.ru,posters.medium,torrents.series&days="+n;
+  var url = config["titels_api"]+"getSchedule?filter=id,names.ru,posters.medium,torrents.series,description,genres";
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -459,11 +377,11 @@ function GeneratorUpdates() {
 		div.innerHTML += `
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["CustomPosters"]}/anilibria_bot/getThumbnail/${UpdatesList[i].id}/${UpdatesList[i].torrents.series.last}/1" alt="">
-			<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${UpdatesList[i].id})">
+			<div class="LineCard-Hover" onclick="goRoute('/release', {id:${UpdatesList[i].id}})">
 				<p class="LineCard-Hover-Name">${UpdatesList[i].names.ru}</p>
 				<p class="LineCard-Hover-Genres">${genres}</p>
 				<p class="LineCard-Hover-Description">${UpdatesList[i].description}</p>
-			</a>
+			</div>
 		`;
 	}
 }
@@ -475,17 +393,27 @@ function GeneratorGenres() {
 		document.getElementById('LineGenerator-Genres').appendChild(div);
 		div.className = 'LineCard-Genres';
 		div.setAttribute("style", `color: #${ColorGenresList[i]};`);
-		div.setAttribute("onclick", `edit_href('/season', '', '', '${GenresList[i]}')`);
+		div.setAttribute("onclick", `goRoute('/season', {genres: "${GenresList[i]}"})`);
 		div.innerHTML += `<p>${GenresList[i]}</p>`;
 	}
 }
 
 function GeneratorSchedule() {
+	var d = new Date();
+	var n;
+	if(d.getDay()==0)n=6;
+        else if(d.getDay()==1)n=0;
+        else if(d.getDay()==2)n=1; 
+        else if(d.getDay()==3)n=2; 
+        else if(d.getDay()==4)n=3; 
+        else if(d.getDay()==5)n=4;
+        else n=5;
+
 	document.getElementById('LineGenerator-Schedule').innerHTML = "";
-	for (let i = 0; ScheduleList[0].list.length > i; i++) {
+	for (let i = 0; ScheduleList[n].list.length > i; i++) {
 		var seriesSH = "";
-		if(ScheduleList[0].list[i].torrents.series.last != null && ScheduleList[0].list[i].torrents.series.last != undefined && ScheduleList[0].list[i].torrents.series.last != ""){
-			seriesSH = ScheduleList[0].list[i].torrents.series.last;
+		if(ScheduleList[n].list[i].torrents.series.last != null && ScheduleList[n].list[i].torrents.series.last != undefined && ScheduleList[n].list[i].torrents.series.last != ""){
+			seriesSH = ScheduleList[n].list[i].torrents.series.last;
 		}
 
 		var div = document.createElement('div');
@@ -493,8 +421,8 @@ function GeneratorSchedule() {
 		div.className = 'LineCard-SmallHovers';
 		div.innerHTML += `
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
-			<img src="${config["posters"]}${ScheduleList[0].list[i].posters.medium.url}" alt="">
-			<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${ScheduleList[0].list[i].id})">
+			<img src="${config["posters"]}${ScheduleList[n].list[i].posters.medium.url}" alt="">
+			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${ScheduleList[n].list[i].id}})">
 				<p class="LineCard-Hover-Serie">Серия ${seriesSH}</p>
 			</a>
 		`;
@@ -526,7 +454,7 @@ function GeneratorRecomend() {
 		div.innerHTML += `
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${RecomendList[i].posters.medium.url}" alt="">
-			<a class="LineCard-Hover" onclick="edit_href('/release', 'id', ${RecomendList[i].id})">
+			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${RecomendList[i].id}})">
 				<p class="LineCard-Hover-Serie">Серия ${RecomendList[i].torrents.series.last}</p>
 			</a>
 		`;
@@ -556,31 +484,28 @@ function GeneratorSelectRecommend() {
 	
 		if(NEWSList.blockSelectRecommend.titelsLeight >= 1){
 			document.getElementById("LineGenerator-SelectRecommend-5").setAttribute("style", `background-image: url(${NEWSList.blockSelectRecommend.titels[1].Poster})`);
-			document.getElementById("LineGenerator-SelectRecommend-5").setAttribute("onclick", `edit_href('/release', 'id', ${NEWSList.blockSelectRecommend.titels[1].id})`);
+			document.getElementById("LineGenerator-SelectRecommend-5").setAttribute("onclick", `goRoute('/release', {id:${NEWSList.blockSelectRecommend.titels[1].id}})`);
 		}
 		if(NEWSList.blockSelectRecommend.titelsLeight >= 2){
 			document.getElementById("LineGenerator-SelectRecommend-6").setAttribute("style", `background-image: url(${NEWSList.blockSelectRecommend.titels[2].Poster})`);
-			document.getElementById("LineGenerator-SelectRecommend-6").setAttribute("onclick", `edit_href('/release', 'id', ${NEWSList.blockSelectRecommend.titels[2].id})`);
+			document.getElementById("LineGenerator-SelectRecommend-6").setAttribute("onclick", `goRoute('/release', {id:${NEWSList.blockSelectRecommend.titels[2].id}})`);
 		}
 		if(NEWSList.blockSelectRecommend.titelsLeight >= 3){
 			document.getElementById("LineGenerator-SelectRecommend-7").setAttribute("style", `background-image: url(${NEWSList.blockSelectRecommend.titels[3].Poster})`);
-			document.getElementById("LineGenerator-SelectRecommend-7").setAttribute("onclick", `edit_href('/release', 'id', ${NEWSList.blockSelectRecommend.titels[3].id})`);
+			document.getElementById("LineGenerator-SelectRecommend-7").setAttribute("onclick", `goRoute('/release', {id:${NEWSList.blockSelectRecommend.titels[3].id}})`);
 		}
 		if(NEWSList.blockSelectRecommend.titelsLeight >= 4){
 			document.getElementById("LineGenerator-SelectRecommend-8").setAttribute("style", `background-image: url(${NEWSList.blockSelectRecommend.titels[4].Poster})`);
-			document.getElementById("LineGenerator-SelectRecommend-8").setAttribute("onclick", `edit_href('/release', 'id', ${NEWSList.blockSelectRecommend.titels[4].id})`);
+			document.getElementById("LineGenerator-SelectRecommend-8").setAttribute("onclick", `goRoute('/release', {id:${NEWSList.blockSelectRecommend.titels[4].id}})`);
 		}
 		if(NEWSList.blockSelectRecommend.titelsLeight >= 5){
 			document.getElementById("LineGenerator-SelectRecommend-9").setAttribute("style", `background-image: url(${NEWSList.blockSelectRecommend.titels[5].Poster})`);
-			document.getElementById("LineGenerator-SelectRecommend-9").setAttribute("onclick", `edit_href('/release', 'id', ${NEWSList.blockSelectRecommend.titels[5].id})`);
+			document.getElementById("LineGenerator-SelectRecommend-9").setAttribute("onclick", `goRoute('/release', {id:${NEWSList.blockSelectRecommend.titels[5].id}})`);
 		}
 	}
 }
 
 function GeneratorHistory() {
-	// Запуск анимации загрузки контента
-	document.getElementById("LoadAnimRecomend").style.display = "";
-
 	let keys = Object.keys(localStorage);
 	var titleNum = 0;
 
@@ -651,7 +576,7 @@ function GeneratorHistory() {
 				var div = document.createElement('div');
 				document.getElementById('LineGenerator-History').appendChild(div);
 				div.className = 'LineCard-History';
-				div.setAttribute("onclick", `edit_href('/release', 'id', ${GetPlayerStorage("id")})`);
+				div.setAttribute("onclick", `goRoute('/release', {id:${GetPlayerStorage("id")}})`);
 				div.id = 'article_history'+GetPlayerStorage("id");
 				div.innerHTML = `
 					<img id="img${GetPlayerStorage("id")}" src="./img/poster.png" alt="">

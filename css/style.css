@@ -723,6 +723,7 @@ details span {
 	display: inline-block;
 	transition: .3s ease;
 	opacity: 1;
+	cursor: pointer;
 }
 .LineCard-BigHovers:hover .LineCard-TextSerie{
 	opacity:0;

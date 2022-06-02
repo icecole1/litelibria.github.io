@@ -185,13 +185,13 @@ function page_release(s1) {
             <p class="release-description" id="rel_genres"></p>
             <center>
               <div class="week_block" id="rel_week_day_text_none">
-                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_1">Пн</a>
-                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_2">Вт</a>
-                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_3">Ср</a>
-                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_4">Чт</a>
-                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_5">Пт</a>
-                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_6">Сб</a>
-                <a class="release-href release-href_hov week_block_a" href="schedule" target="_self" id="rel_week_day_text_style_7">Вс</a>
+                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_1">Пн</a>
+                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_2">Вт</a>
+                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_3">Ср</a>
+                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_4">Чт</a>
+                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_5">Пт</a>
+                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_6">Сб</a>
+                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_7">Вс</a>
               </div>
             </center>
 
@@ -352,8 +352,8 @@ function GeneratorRelise(data){
 
 	if(data.genres.length > 0){
 		for(var i=0; data.genres.length > i; i++){
-			if(genres == null) genres = `<a onclick="edit_href('/season', '', '', '${data["genres"][i]}')" style="text-decoration: none;">${data["genres"][i]}</a>`;
-			else genres = genres + ", " + `<a onclick="edit_href('/season', '', '', '${data["genres"][i]}')" style="text-decoration: none;">${data["genres"][i]}</a>`;
+			if(genres == null) genres =   `<a onclick="goRoute('/season', {genres:'${data["genres"][i]}'})" style="text-decoration: none;">${data["genres"][i]}</a>`;
+			else genres = genres + ", " + `<a onclick="goRoute('/season', {genres:'${data["genres"][i]}'})" style="text-decoration: none;">${data["genres"][i]}</a>`;
 		}
 	}
 
@@ -373,8 +373,8 @@ function GeneratorRelise(data){
 
 	if (data.team.voice.length > 0) {
     for(let i = 0; data.team.voice.length > i; i++) {
-      if (voice == null) voice = `<a onclick="edit_href('/season', '', '', '', '${data.team.voice[i]}')">${data.team.voice[i]}</a>`;
-			else voice = voice + ", " + `<a onclick="edit_href('/season', '', '', '', '${data.team.voice[i]}')">${data.team.voice[i]}</a>`;
+      if (voice == null) voice =  `<a onclick="goRoute('/season', {voice: '${data.team.voice[i]}'})">${data.team.voice[i]}</a>`;
+			else voice = voice + ", " + `<a onclick="goRoute('/season', {voice: '${data.team.voice[i]}'})">${data.team.voice[i]}</a>`;
     }
 		voice = "Озвучка: " + voice;
   } else {
@@ -383,8 +383,8 @@ function GeneratorRelise(data){
 
 	if (data.team.timing.length > 0) {
     for(let i = 0; data.team.timing.length > i; i++) {
-      if (timing == null) timing = `<a onclick="edit_href('/season', '', '', '', '', '${data.team.timing[i]}')">${data.team.timing[i]}</a>`;
-			else timing = timing + ", " + `<a onclick="edit_href('/season', '', '', '', '', '${data.team.timing[i]}')">${data.team.timing[i]}</a>`;
+      if (timing == null) timing =  `<a onclick="goRoute('/season', {timing: '${data.team.timing[i]}'})">${data.team.timing[i]}</a>`;
+			else timing = timing + ", " + `<a onclick="goRoute('/season', {timing: '${data.team.timing[i]}'})">${data.team.timing[i]}</a>`;
     }
 		timing = "Тайминг: " + timing;
   } else {
@@ -393,8 +393,8 @@ function GeneratorRelise(data){
 
 	if (data.team.translator.length > 0) {
     for(let i = 0; data.team.translator.length > i; i++) {
-      if (translator == null) translator = `<a onclick="edit_href('/season', '', '', '', '', '', '${data.team.translator[i]}')">${data.team.translator[i]}</a>`;
-			else translator = translator + ", " + `<a onclick="edit_href('/season', '', '', '', '', '', '${data.team.translator[i]}')">${data.team.translator[i]}</a>`;
+			if (translator == null) translator =  `<a onclick="goRoute('/season', {translator: '${data.team.translator[i]}'})">${data.team.translator[i]}</a>`;
+			else translator = translator + ", " + `<a onclick="goRoute('/season', {translator: '${data.team.translator[i]}'})">${data.team.translator[i]}</a>`;
     }
 		translator = "Перевод: " + translator;
   } else {
@@ -403,8 +403,8 @@ function GeneratorRelise(data){
 
 	if (data.team.editing.length > 0) {
     for(let i = 0; data.team.editing.length > i; i++) {
-      if (editing == null) editing = `<a onclick="edit_href('/season', '', '', '', '', '', '', '${data.team.editing[i]}')">${data.team.editing[i]}</a>`;
-			else editing = editing + ", " + `<a onclick="edit_href('/season', '', '', '', '', '', '', '${data.team.editing[i]}')">${data.team.editing[i]}</a>`;
+      if (editing == null) editing =  `<a onclick="goRoute('/season', {editing: '${data.team.editing[i]}'})">${data.team.editing[i]}</a>`;
+			else editing = editing + ", " + `<a onclick="goRoute('/season', {editing: '${data.team.editing[i]}'})">${data.team.editing[i]}</a>`;
     }
 		editing = "Редактура: " + editing;
   } else {
@@ -413,8 +413,8 @@ function GeneratorRelise(data){
 
 	if (data.team.decor.length > 0) {
     for(let i = 0; data.team.decor.length > i; i++) {
-      if (decor == null) decor = `<a onclick="edit_href('/season', '', '', '', '', '', '', '', '${data.team.decor[i]}')">${data.team.decor[i]}</a>`;
-			else decor = decor + ", " + `<a onclick="edit_href('/season', '', '', '', '', '', '', '', '${data.team.decor[i]}')">${data.team.decor[i]}</a>`;
+      if (decor == null) decor =  `<a onclick="goRoute('/season', {decor: '${data.team.decor[i]}'})">${data.team.decor[i]}</a>`;
+			else decor = decor + ", " + `<a onclick="goRoute('/season', {decor: '${data.team.decor[i]}'})">${data.team.decor[i]}</a>`;
     }
 		decor = "Оформление: " + decor;
   } else {
@@ -428,15 +428,15 @@ function GeneratorRelise(data){
 	}
 
 	if (data["season"]["year"] && data["season"]["string"]){
-    var atribute = `edit_href('/season', '${data["season"]["year"]}', '${data["season"]["code"]}')`;
+    var atribute = `goRoute('/season', {year: '${data["season"]["year"]}', code: '${data["season"]["code"]}'})`;
     document.getElementById('rel_seasonANDyear').setAttribute("onclick", atribute);
     var seasonANDyear_text = `${data["season"]["year"]} ${data["season"]["string"]}`;
   } else if (data["season"]["year"]){
-    var atribute = `edit_href('/season', '${data["season"]["year"]}')`;
+		var atribute = `goRoute('/season', {year: '${data["season"]["year"]}'})`;
     document.getElementById('rel_seasonANDyear').setAttribute("onclick", atribute);
     var seasonANDyear_text = `${data["season"]["year"]}`;
   } else if (data["season"]["string"]){
-    var atribute = `edit_href('/season', '', '${data["season"]["code"]}')`;
+		var atribute = `goRoute('/season', {code: '${data["season"]["code"]}'})`;
     document.getElementById('rel_seasonANDyear').setAttribute("onclick", atribute);
     var seasonANDyear_text = `${data["season"]["string"]}`;
   }
@@ -458,7 +458,7 @@ function GeneratorRelise(data){
   document.getElementById('delFavorite_rel').setAttribute("onclick", atribute_del);
   document.getElementById('addFavorite_rel').setAttribute("onclick", atribute_add);
 
-  var atribute_type_code = `edit_href('/season', '', '', '', '', '', '', '', '', '${data["type"]["code"]}')`;
+	var atribute_type_code = `goRoute('/season', {type: '${data["type"]["code"]}'})`;
   document.getElementById('rel_type_code').setAttribute("onclick", atribute_type_code);
   document.getElementById('rel_type_code').innerHTML = `${season_full_string}`;
   document.getElementById('rel_announce').innerHTML = `${announce}`;
@@ -589,7 +589,7 @@ function PlayerjsEvents(event,id,info){
 
 	if(event=="init"){
 		refreshChart(); // Обновление графика Rickshaw
-		
+
 		// Отобразить название трекеров
 		trackerAnnounce = engine.getSettings().loader.trackerAnnounce;
 		if (Array.isArray(trackerAnnounce)) {
