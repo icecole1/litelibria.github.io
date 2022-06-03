@@ -588,8 +588,6 @@ function PlayerjsEvents(event,id,info){
 	}
 
 	if(event=="init"){
-		refreshChart(); // Обновление графика Rickshaw
-
 		// Отобразить название трекеров
 		trackerAnnounce = engine.getSettings().loader.trackerAnnounce;
 		if (Array.isArray(trackerAnnounce)) {
@@ -604,6 +602,7 @@ function PlayerjsEvents(event,id,info){
 	}
 
 	if(event=="play"){
+		refreshChart(); // Обновление графика Rickshaw
 		if (p2pml.core.HybridLoader.isSupported()) {
 			// Запуск P2P раздачи
 			p2pml.hlsjs.initHlsJsPlayer(player.api('hls'));
