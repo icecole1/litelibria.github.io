@@ -204,6 +204,7 @@ function page_schedule() {
 	}
 
 
+	appWidth();
   Scroll_to_top();
 }
 

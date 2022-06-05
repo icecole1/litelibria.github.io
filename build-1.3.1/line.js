@@ -168,6 +168,7 @@ function page_line() {
 	GeneratorHistory()
 
 	preloader_none();
+	appWidth();
 
 	Scroll_to_top();
 }

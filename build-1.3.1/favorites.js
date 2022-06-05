@@ -78,6 +78,7 @@ function page_favorites() {
 	getFavoritesStyle();
 	LoadPHPSESSID();
 
+	appWidth();
   Scroll_to_top();
 }
 

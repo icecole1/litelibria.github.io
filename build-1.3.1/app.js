@@ -76,9 +76,6 @@ function paramsRoute(){
 	if(player) player.api("stop");
 
 	document.title = 'LiteLibria';
-
-	document.getElementById('content_release').setAttribute("style", "display: none;");
-	document.getElementById('content_all').setAttribute("style", "display: block;");
 }
 
 function pageColor(){
@@ -95,8 +92,6 @@ function switchRoute(page, query){
 
 	switch (page) {
 		case '/release':
-			document.getElementById('content_release').setAttribute("style", "display: block;");
-			document.getElementById('content_all').setAttribute("style", "display: none;");
 			page_release(query.id);
 			break;
 
@@ -204,4 +199,51 @@ function goRoute(namePage, query) {
 function search_b() {
   var search_q = document.getElementById("search_q").value;
 	goRoute('/search', {search: `${search_q}`})
+}
+
+// Проверка того, что наш браузер поддерживает Service Worker API.
+if ('serviceWorker' in navigator) {
+	// Отображать уведомление, когда доступно новое обновление
+	var presentUpdateAvailable = serviceWorker => {
+		document.getElementById('update-banner').dataset.state = 'updateavailable';
+		document.querySelector('#update-banner .headline').innerHTML = 'Доступно обновление';
+		document.querySelector('#update-banner .subhead').innerHTML = 'Нажмите, чтобы обновить приложение до последней версии!';
+		document.getElementById('update-banner').addEventListener('click', clickEvent => {
+				serviceWorker.postMessage('skipWaiting');
+		});
+	}
+
+	// Регистрация Service Worker
+	navigator.serviceWorker.register('./sw.js')
+	.then(registration => {
+
+		// Отображение уведомления, если обновление ожидает установки
+		if (registration.waiting) presentUpdateAvailable(registration.waiting);
+
+		// Мы ждем UpdateFoundEvent, который запускается каждый раз, когда приобретается новый Service Worker.
+		registration.onupdatefound = updatefoundevent => {
+			// Игнорировать событие, если это наш первый Service Worker и, следовательно, не обновление.
+			if (!registration.active) return;
+
+			// Слушаем любые изменения состояния нового воркера.
+			registration.installing.addEventListener('statechange', statechangeevent => {
+					if (statechangeevent.target.state !== 'installed') return;
+					presentUpdateAvailable(registration.waiting);
+			});
+		};
+
+			// Мы ждем ControllerEvent, который запускается, когда документ получает новый Service Worker.
+			navigator.serviceWorker.addEventListener('controllerchange', controllerchangeevent => {
+
+					// Ждём новый Service Worker
+					controllerchangeevent.target.ready.then(registration => {
+							// Перезагружаем страницу
+							if (!window.isReloading) {
+									window.isReloading = true;
+									window.location.reload();
+							}
+							
+					});
+			});
+	});
 }

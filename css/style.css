@@ -229,17 +229,17 @@ details span {
 /* Стили для основного меню */
 /* Начало */
 .navigation_c{
-	background: var(--card-background-6);
+	background: var(--ColorThemes0);
 }
 .navigation{
   height: 55px;
   position: relative;
   display: flex;
-  justify-content: flex-start;
-  padding-left: 20px;
+	justify-content: space-between;
+	padding: 0 20px;
   align-items: center;
 	max-width: 1500px;
-	background: var(--card-background-6);
+	background: var(--ColorThemes0);
 }
 .navigation ul {
   display: flex;
@@ -263,7 +263,7 @@ details span {
   cursor: pointer;
 }
 .navigation ul li a .icon_m {
-  color: var(--card-text-color);
+  color: var(--ColorThemes3);
   font-size: 24px;
   position: relative;
   display: block;
@@ -280,7 +280,7 @@ details span {
 .navigation ul li a .text_m{
   font-size: 0.85em;
   font-weight: 400;
-  color: var(--card-text-color);
+  color: var(--ColorThemes3);
   position: absolute;
   letter-spacing: 0.05em;
   transition: 0.5s;
@@ -308,10 +308,10 @@ details span {
   font-weight: 400;
   height: 30px;
   width: 35px;
-  color: var(--card-text-color);
+  color: var(--ColorThemes3);
   border: 0;
-  background: var(--card-background);
-  border-radius: 0px var(--border-radius) var(--border-radius) 0px;
+  background: var(--ColorThemes1);
+  border-radius: 0px 15px 15px 0px;
   transition: .3s ease;
   float: left;
   cursor: pointer;
@@ -327,11 +327,35 @@ details span {
   font-weight: 400;
   height: 30px;
   width: 190px;
-  color: var(--card-text-color);
+  color: var(--ColorThemes3);
   padding: 0px 10px;
-  background: var(--card-background);
-  border-radius: var(--border-radius) 0px 0px var(--border-radius);
+  background: var(--ColorThemes1);
+  border-radius: 15px 0px 0px 15px;
   float: left;
+}
+
+#update-banner {
+	height: 55px;
+	transition: .3s ease;
+}
+#update-banner .content {
+	margin: 0 auto;
+	max-width: 300px;
+	padding: 4px 10px;
+}
+#update-banner .headline {
+	font-weight: 800;
+	font-size: 15px;
+}
+#update-banner .subhead {
+	font-size: 13px;
+}
+#update-banner[data-state="updateavailable"] {
+	cursor: pointer;
+	background: #26AE60;
+	color: #fff;
+	transition: .3s ease;
+	opacity: 0.95;
 }
 
 @media (max-width: 800px){
@@ -344,9 +368,9 @@ details span {
 		width: 100%;
 		height: 50px;
 		margin: -1px 0;
-		border-radius: var(--border-radius-2) var(--border-radius-2) 0 0;
+		border-radius: 15px 15px 0 0;
 		justify-content: center;
-		padding-left: 0px;
+		padding: 0px;
 	}
 	.small_bac {
     width: calc(100% - 20px);
@@ -359,6 +383,16 @@ details span {
     display: inline-flex;
     margin: 5px 0 0 0;
   }
+	#update-banner{
+		position: fixed;
+    top: 0;
+    width: 100%;
+	}
+}
+@media (max-width: 380px){
+	.navigation ul li {
+    width: 60px;
+}
 }
 /* Конец */
 /* Стили для основного меню */
@@ -402,14 +436,11 @@ details span {
 	right: 0;
 	z-index: 15;
 }
-#app_release {
-	margin-bottom: 45px;
-}
 #app {
 	margin-bottom: 45px;
 }
 @keyframes show {
-	from {opacity: 0;}
+	from {opacity: 0.5;}
 	to {opacity: 1;}
 }
 @media (max-width: 800px){

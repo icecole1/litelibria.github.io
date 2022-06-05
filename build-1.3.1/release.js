@@ -116,7 +116,7 @@ function page_release(s1) {
 		`;
 	}		
 
-  document.getElementById('app_release').innerHTML = `
+  document.getElementById('app').innerHTML = `
 	<style>
 	.text{
 		fill: var(--ColorThemes3);
@@ -244,12 +244,8 @@ function page_release(s1) {
   LoadApiRelise(s1);
 	LoadApiServer();
 
+	appWidth();
 }
-
-function ReleaseContent(){
-
-}
-
 
 // Функция получения PHPSESSID из локального хранилища
 function LoadRelisePHPSESSID(){
@@ -650,17 +646,26 @@ function mobile_play_fullscreen(){
 
 function player_navigation(display){
 	if(display == "none"){
+		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#000000");
+		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#000000");
 		document.getElementById('navi').setAttribute("style", "display:none;");
 		document.getElementById('back_to_top').setAttribute("style", "display:none;");
 		document.body.setAttribute("style", "touch-action: none;-ms-touch-action: none;");
 	}
 	if(display == "flex"){
+		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#fbfbfb");
+		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#1c1c19");
+		
 		document.getElementById('navi').setAttribute("style", "display:flex;");
 		document.getElementById('back_to_top').setAttribute("style", "");
 		document.body.setAttribute("style", "");
 	}
 }
-
+window.matchMedia("(prefers-color-scheme: dark)")
+window.addEventListener("change", function (e) {
+	const colorScheme = e.matches ? "dark" : "light";
+	console.log(colorScheme);
+});
 function load_relise_Fav(id_t) {
   var cookie = localStorage.getItem('PHPSESSID');
   var url_ses = config["titels_api"]+"getFavorites?session="+cookie+"&filter=id&limit=4000";

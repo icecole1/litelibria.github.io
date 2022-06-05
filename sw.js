@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Satera';
-var CACHE_VERSION = '1.3.0';
+var CACHE_VERSION = '1.3.1';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
@@ -44,7 +44,6 @@ const assetUrls = [
 ]
 
 self.addEventListener('install', async event => {
-  self.skipWaiting();
   const cache = await caches.open(staticCacheName)
   await cache.addAll(assetUrls)
 })
@@ -69,6 +68,10 @@ self.addEventListener('fetch', event => {
     event.respondWith(networkFirst(request))
   }
 })
+
+self.addEventListener('message', event => {
+	if (event.data === 'skipWaiting') return skipWaiting();
+});
 
 
 async function cacheFirst(request) {

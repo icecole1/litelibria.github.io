@@ -90,6 +90,7 @@ function page_catalog() {
 
 	if(CatalogsList == null) LoadApiCatalog(); else GeneratorCatalog();
 
+	appWidth();
   Scroll_to_top();
 }
 

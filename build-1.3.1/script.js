@@ -1,13 +1,3 @@
-// Проверка того, что наш браузер поддерживает Service Worker API.
-if ('serviceWorker' in navigator) {
-	// Весь код регистрации у нас асинхронный.
-	navigator.serviceWorker.register('./sw.js')
-		.then(() => navigator.serviceWorker.ready.then((worker) => {
-			worker.sync.register('syncdata');
-		}))
-		.catch((err) => console.log(err));
-}
-
 function editDomainHistory(){
 	let keys2 = Object.keys(localStorage);
   for(let key2 of keys2) {
@@ -38,29 +28,18 @@ window.onload = function() {
   //     }
   //   }
   // }
+};
 
-  if (localStorage.getItem('my_theme') == 'auto') {
-    $('link[href="css/auto.css"]').attr('href', 'css/auto.css');
-  } else if (localStorage.getItem('my_theme') == 'theme1') {
-    $('link[href="css/auto.css"]').attr('href', 'css/theme1.css');
-  } else if (localStorage.getItem('my_theme') == 'theme2') {
-    $('link[href="css/auto.css"]').attr('href', 'css/theme2.css');
-  } else {
-    localStorage.setItem('my_theme', 'auto');
-    $('link[href="css/auto.css"]').attr('href', 'css/auto.css');
-  }
-
-  var width = document.documentElement.clientWidth;
+function appWidth() {
+	var width = document.documentElement.clientWidth;
   var tallage = 95;
   var result = width / 100 * tallage; //вычисление процентов
   if (width <= 800) {
     document.getElementById('app').style.width = "100%";
-    document.getElementById('app_release').style.width = "100%";
   } else {
     document.getElementById('app').style.width = result+"px";
-    document.getElementById('app_release').style.width = result+"px";
   }
-};
+}
 
 function detectOS() {
 	const platform = navigator.platform.toLowerCase(),
@@ -132,10 +111,8 @@ window.addEventListener("resize", function() {
   var result = width / 100 * tallage; //вычисление процентов
   if (width <= 800) {
     document.getElementById('app').style.width = "100%";
-    document.getElementById('app_release').style.width = "100%";
   } else {
     document.getElementById('app').style.width = result+"px";
-    document.getElementById('app_release').style.width = result+"px";
   }
 }, false);
 

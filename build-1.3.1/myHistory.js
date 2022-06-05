@@ -62,6 +62,7 @@ function page_myHistory() {
   },1000)
 
   preloader_none();
+	appWidth();
   Scroll_to_top();
 
   setTimeout(function(){

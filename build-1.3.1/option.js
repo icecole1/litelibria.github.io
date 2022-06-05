@@ -138,6 +138,7 @@ function page_options() {
 	GetPlayer_style();
 
 
+	appWidth();
   Scroll_to_top();
 }
 
