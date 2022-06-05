@@ -44,6 +44,7 @@ const assetUrls = [
 ]
 
 self.addEventListener('install', async event => {
+	self.skipWaiting()
   const cache = await caches.open(staticCacheName)
   await cache.addAll(assetUrls)
 })
