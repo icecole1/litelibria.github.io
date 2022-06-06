@@ -413,8 +413,10 @@ function GeneratorSchedule() {
 	document.getElementById('LineGenerator-Schedule').innerHTML = "";
 	for (let i = 0; ScheduleList[n].list.length > i; i++) {
 		var seriesSH = "";
-		if(ScheduleList[n].list[i].torrents.series.last != null && ScheduleList[n].list[i].torrents.series.last != undefined && ScheduleList[n].list[i].torrents.series.last != ""){
-			seriesSH = ScheduleList[n].list[i].torrents.series.last;
+		if(ScheduleList[n].list[i].torrents != null && ScheduleList[n].list[i].torrents != {}){
+			if(ScheduleList[n].list[i].torrents.series.last != null && ScheduleList[n].list[i].torrents.series.last != undefined && ScheduleList[n].list[i].torrents.series.last != ""){
+				seriesSH = ScheduleList[n].list[i].torrents.series.last;
+			}
 		}
 
 		var div = document.createElement('div');

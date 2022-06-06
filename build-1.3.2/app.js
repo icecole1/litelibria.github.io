@@ -139,7 +139,10 @@ function replaceRoute(state){
 	parseURL();
 	paramsRoute();
 	switchRoute(href, query);
-	window.scroll(0, state.position);
+
+	setTimeout(function(){
+		window.scroll(0, state.position);
+	}, 2)
 }
 
 // Функция роутера управляемая приложением и адресной строкой

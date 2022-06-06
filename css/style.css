@@ -436,6 +436,9 @@ details span {
 	right: 0;
 	z-index: 15;
 }
+#app_release {
+	margin-bottom: 45px;
+}
 #app {
 	margin-bottom: 45px;
 }
