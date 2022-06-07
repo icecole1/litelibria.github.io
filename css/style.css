@@ -1936,6 +1936,8 @@ details span {
 }
 .DetailFavoriteBlockButton svg{
 	padding: 5px;
+	width: 24px;
+	height: 24px;
 }
 .DetailFavoriteBlockButton[data-state="Dell"] {
 	background:var(--PrimaryColor);
