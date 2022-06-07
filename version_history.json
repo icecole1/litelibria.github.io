@@ -1,6 +1,25 @@
 version_history = [
 	{
     "prefix":"Satera",
+    "version":"1.3.3",
+    "date":"7 June 2022",
+    "update":[
+			{
+        "type":"FIXED",
+        "text":"Исправлены ошибки"
+      },{
+        "type":"IMPROVED",
+        "text":"Обновлен дизайн страницы релиза."
+      },{
+        "type":"IMPROVED",
+        "text":"Обновлен дизайн истории на главной странице."
+      },{
+        "type":"ADDED",
+        "text":"Добавлены кнопки доната"
+      }
+    ]
+  },{
+    "prefix":"Satera",
     "version":"1.3.2",
     "date":"5 June 2022",
     "update":[
@@ -9,8 +28,7 @@ version_history = [
         "text":"Исправлены ошибки"
       }
     ]
-  },
-	{
+  },{
     "prefix":"Satera",
     "version":"1.3.1",
     "date":"5 June 2022",

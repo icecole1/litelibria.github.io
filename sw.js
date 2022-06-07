@@ -1,11 +1,13 @@
 var CACHE_PREFIX = 'Satera';
-var CACHE_VERSION = '1.3.2';
+var CACHE_VERSION = '1.3.3';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 
 const assetUrls = [
 	'/',
+
+	'/index.html',
 
 	'meeting_tips.json',
 
@@ -44,7 +46,6 @@ const assetUrls = [
 ]
 
 self.addEventListener('install', async event => {
-	// self.skipWaiting()
   const cache = await caches.open(staticCacheName)
   await cache.addAll(assetUrls)
 })
