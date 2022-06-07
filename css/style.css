@@ -2157,13 +2157,18 @@ details span {
 }
 
 .TextLoad{
-	background: var(--ColorThemes2);
+	background: var(--ColorThemes1);
 	border-radius: 15px;
 	margin: 1px 2px;
 	padding: 0 120px;
 	border: 0 !important;
 	display: inline-block;
 	height: 30px;
+}
+@media (max-width: 800px){
+	.TextLoad{
+		background: var(--ColorThemes2);
+	}
 }
 .TextLoadW{
 	background: var(--ColorThemes1);
