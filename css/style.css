@@ -1995,6 +1995,7 @@ details span {
 	margin-bottom: 15px;
 }
 .posterSerie{
+	height: 75px;
 	aspect-ratio: 16/9;
 	margin: 0 10px 10px;
 	cursor: pointer;
