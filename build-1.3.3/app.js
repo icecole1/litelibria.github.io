@@ -145,12 +145,13 @@ function replaceRoute(state){
 }
 
 // Функция роутера управляемая приложением и адресной строкой
-function goRoute(namePage, query) {
+function goRoute(namePage, querys) {
 	// Изменяет историю текущей страницы
 	// Добавляем позицию скролла 
 	history.replaceState({'position': window.pageYOffset}, null);
 	paramsRoute();
 	href = namePage;
+	query = querys;
 	switchRoute(namePage, query);
 
 	var url = namePage;
