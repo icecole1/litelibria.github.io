@@ -197,7 +197,7 @@ function LoadApiUpdates() {
 	document.getElementById("LoadAnimUpdates").style.display = "";
 
 	// Запрос к Api 
-  var url = config["titels_api"]+"getUpdates?filter=id,names.ru,posters.medium,torrents.series,description,genres&limit=15";
+  var url = config["titels_api"]+"getUpdates?filter=id,names.ru,posters.medium,player.series,description,genres&limit=15";
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -249,7 +249,7 @@ function LoadApiSchedule() {
 	document.getElementById("LoadAnimSchedule").style.display = "";
 
 	// Запрос к Api 
-  var url = config["titels_api"]+"getSchedule?filter=id,names.ru,posters.medium,torrents.series,description,genres";
+  var url = config["titels_api"]+"getSchedule?filter=id,names.ru,posters.medium,player.series,description,genres";
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -316,7 +316,7 @@ function LoadApiRecomend() {
 		RecomendSeason = 4;
 
 	// Запрос к Api 
-  var url = config["titels_api"]+"advancedSearch?query={season.code} == "+RecomendSeason+" and {season.year} == "+year+"&filter=id,names.ru,posters.medium,torrents.series&order_by=in_favorites&sort_direction=1&limit=15";
+  var url = config["titels_api"]+"advancedSearch?query={season.code} == "+RecomendSeason+" and {season.year} == "+year+"&filter=id,names.ru,posters.medium,player.series&order_by=in_favorites&sort_direction=1&limit=15";
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -378,7 +378,7 @@ function GeneratorUpdates() {
 		div.className = 'LineCard-BigHovers';
 		div.innerHTML += `
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
-			<img src="${config["CustomPosters"]}/anilibria_bot/getThumbnail/${UpdatesList[i].id}/${UpdatesList[i].torrents.series.last}/1.jpg" alt="">
+			<img src="${config["CustomPosters"]}/anilibria_bot/getThumbnail/${UpdatesList[i].id}/${UpdatesList[i].player.series.last}/1.jpg" alt="">
 			<div class="LineCard-Hover" onclick="goRoute('/release', {id:${UpdatesList[i].id}})">
 				<p class="LineCard-Hover-Name">${UpdatesList[i].names.ru}</p>
 				<p class="LineCard-Hover-Genres">${genres}</p>
@@ -413,10 +413,10 @@ function GeneratorSchedule() {
 
 	document.getElementById('LineGenerator-Schedule').innerHTML = "";
 	for (let i = 0; ScheduleList[n].list.length > i; i++) {
-		var seriesSH = "";
-		if(ScheduleList[n].list[i].torrents != null && ScheduleList[n].list[i].torrents != {}){
-			if(ScheduleList[n].list[i].torrents.series.last != null && ScheduleList[n].list[i].torrents.series.last != undefined && ScheduleList[n].list[i].torrents.series.last != ""){
-				seriesSH = ScheduleList[n].list[i].torrents.series.last;
+		var seriesSH = "Нэма...";
+		if(ScheduleList[n].list[i].player.series != null){
+			if(ScheduleList[n].list[i].player.series.last != null){
+				seriesSH = ScheduleList[n].list[i].player.series.last;
 			}
 		}
 
@@ -452,6 +452,13 @@ function GeneratorVideo() {
 function GeneratorRecomend() {
 	document.getElementById('LineGenerator-Recomend').innerHTML = "";
 	for (let i = 0; RecomendList.length > i; i++) {
+		var seriesSH = "Нэма...";
+		if(RecomendList[i].player.series != null){
+			if(RecomendList[i].player.series.last != null){
+				seriesSH = RecomendList[i].player.series.last;
+			}
+		}
+
 		var div = document.createElement('div');
 		document.getElementById('LineGenerator-Recomend').appendChild(div);
 		div.className = 'LineCard-SmallHovers';
@@ -459,7 +466,7 @@ function GeneratorRecomend() {
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${RecomendList[i].posters.medium.url}" alt="">
 			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${RecomendList[i].id}})">
-				<p class="LineCard-Hover-Serie">Серия ${RecomendList[i].torrents.series.last}</p>
+				<p class="LineCard-Hover-Serie">Серия ${seriesSH}</p>
 			</a>
 		`;
 	}

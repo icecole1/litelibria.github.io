@@ -828,8 +828,6 @@ details span {
 }
 .LineCard-Hover-Serie{
 	font-size: 15px;
-	padding-top: calc(50% + 20px);
-	width: 70px;
 	display: block !important;
 	text-align: center;
 	font-weight: 600;
@@ -928,6 +926,10 @@ details span {
 	display: inline-block;
 	transition: .3s ease;
 	opacity: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
 }
 .LineCard-SmallHovers:hover .LineCard-TextSerie{
 	opacity:0;
