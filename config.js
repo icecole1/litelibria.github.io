@@ -1,6 +1,6 @@
 if(!localStorage.getItem("GetMirror")) localStorage.setItem("GetMirror", "true");
 if(!localStorage.getItem("GetMirrorTitels")) localStorage.setItem("GetMirrorTitels", "https://api.sdev.xyz/v2.13/");
-if(!localStorage.getItem("GetMirrorPosters")) localStorage.setItem("GetMirrorPosters", "https://tb2og.anilib.top");
+if(!localStorage.getItem("GetMirrorPosters")) localStorage.setItem("GetMirrorPosters", "https://static-libria.iss.bond");
 
 mirror = localStorage.getItem("GetMirror");
 mirror_titels_api = localStorage.getItem("GetMirrorTitels")
