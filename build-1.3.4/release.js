@@ -20,26 +20,152 @@ var elementDisplays = "";
 
 var width = document.documentElement.clientWidth;
 
-function page_release(s1) {
+function page_release(id) {
+  document.getElementById('app').innerHTML = `
+	<style>
+		.text{
+			fill: var(--ColorThemes3);
+		}
+		.container{
+			width: 800px;
+		}
+		.container *, ::.container, ::.container {
+			box-sizing: border-box;
+		}
+		#graph {
+			overflow: hidden;
+			background: var(--ColorThemes2);
+			border-radius: 15px;
+			margin: 2em auto;
+		}
 
-	if (width > 800) {
-		elementDisplays1 = `
-		<div class="release-list-Poster">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"></path></svg>
-			<img id="rel_posters_medium_url" src="" alt=""/>
+		#chart_containerPad {
+			background: var(--ColorThemes2);
+			border-radius: 15px;
+			padding: 20px 10px;
+		}
+		#chart_container {
+			position: relative;
+			padding-left: 20px;
+			width: 100%;
+		}
+		#chart svg{
+			max-height: 250px;
+			width: calc(100% - 20px);
+		}
+		#y_axis {
+			position: absolute;
+			top: 0;
+			width: 40px;
+			left: -20px;
+			fill: var(--ColorThemes3);
+		}
+		#y_axis > svg {
+			overflow: visible;
+		}
+		#legend {
+			position: absolute;
+			top: 20px;
+			left: 40px;
+			z-index: 1;
+			color: var(--ColorThemes1);
+			background: var(--ColorThemes3);
+			border-radius: 10px;
+		}
+		#legend-totals {
+			position: absolute;
+			bottom: 20px;
+			left: 40px;
+			z-index: 1;
+			color: var(--ColorThemes1);
+			background: var(--ColorThemes3);
+			border-radius: 10px;
+		}
+		#main-view .hide {
+			display: none;
+		}
+	</style>
+
+	<div class="ReleaseBlock">
+		<div class="ReleaseBlockReverse">
+			<div class="ReleaseBlockAbout">
+				<div class="ReleaseBlockAbout-Poster">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"></path></svg>
+					<img id="rel_posters_1_url" src="" alt=""/>
+				</div>
+
+				<div class="ReleaseBlockAbout-Detail">
+					<p class="ReleaseBlockAbout-Detail-Name" id="rel_names_ru"><span class="TextLoad TextLoadW"></p>
+					<p class="ReleaseBlockAbout-Detail-Genres" id="rel_genres"><span class="TextLoad TextLoadW" data="TextLoad1"></span><span class="TextLoad TextLoadW" data="TextLoad1"></span><span class="TextLoad TextLoadW" data="TextLoad1"></span></p>
+			
+					<div style="display: none;" class="ReleaseBlockAbout-Detail-Block" data-state="Week" id="rel_week_day_text_none">
+						<a onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_1">Пн</a>
+						<a onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_2">Вт</a>
+						<a onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_3">Ср</a>
+						<a onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_4">Чт</a>
+						<a onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_5">Пт</a>
+						<a onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_6">Сб</a>
+						<a onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_7">Вс</a>
+					</div>
+
+					<div class="ReleaseBlockAbout-Detail-Block" data-state="Favorite">
+						<p id="rel_in_favorites"><span class="TextLoad TextLoadB" data="TextLoad3"></span></p>
+						<div style="display:none;" class="DetailFavoriteBlockButton" title="Удалить из избранное" id="delFavorite_rel" onclick="delFavorite(id_t)" data-state="Dell"><svg version="1.1" style="fill: var(--PrimaryColorText);" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 172 172"><path d="M86,129.65217l35.61117,21.49283c5.61867,3.38983 12.54883,-1.64833 11.05817,-8.03383l-9.45283,-40.51317l31.46883,-27.262c4.95933,-4.29283 2.30767,-12.44133 -4.22833,-12.99317l-41.42333,-3.51167l-16.20383,-38.23417c-2.5585,-6.02717 -11.10117,-6.02717 -13.65967,0l-16.20383,38.23417l-41.42333,3.51167c-6.536,0.55183 -9.18767,8.70033 -4.22833,12.99317l31.46883,27.262l-9.45283,40.51317c-1.49067,6.3855 5.4395,11.42367 11.05817,8.03383z"></path></svg></div>
+						<div style="display:none;" class="DetailFavoriteBlockButton" title="Добавить в избранное" id="addFavorite_rel" onclick="addFavorite(id_t)"><svg version="1.1" style="fill: var(--ColorThemes3);" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 172 172"><path d="M86,129.65217l35.61117,21.49283c5.61867,3.38983 12.54883,-1.64833 11.05817,-8.03383l-9.45283,-40.51317l31.46883,-27.262c4.95933,-4.29283 2.30767,-12.44133 -4.22833,-12.99317l-41.42333,-3.51167l-16.20383,-38.23417c-2.5585,-6.02717 -11.10117,-6.02717 -13.65967,0l-16.20383,38.23417l-41.42333,3.51167c-6.536,0.55183 -9.18767,8.70033 -4.22833,12.99317l31.46883,27.262l-9.45283,40.51317c-1.49067,6.3855 5.4395,11.42367 11.05817,8.03383z"></path></svg></div>
+					</div>
+
+					<div class="ReleaseBlockAbout-Detail-Block" data-state="TypeCode">
+						<a id="rel_seasonANDyear"><span class="TextLoad TextLoadR" data="TextLoad2"></span></a>
+						<a id="rel_type_code"><span class="TextLoad TextLoadR" data="TextLoad3"></span></a>
+					</div>
+
+					<div class="ReleaseBlockAbout-Detail-ContainerText">
+						<p class="ReleaseBlockAbout-Detail-Text" id="rel_announce"><span class="TextLoad" data="TextLoad4"></span></p>
+
+						<p class="ReleaseBlockAbout-Detail-Text" id="release_description_text"><span class="TextLoad" data="TextLoad1"></span><span class="TextLoad" data="TextLoad3"></span><span class="TextLoad" data="TextLoad1"></span><span class="TextLoad" data="TextLoad2"></span><span class="TextLoad" data="TextLoad1"></span><span class="TextLoad" data="TextLoad2"></span><span class="TextLoad" data="TextLoad1"></span><span class="TextLoad" data="TextLoad3"></span><span class="TextLoad" data="TextLoad2"></span><span class="TextLoad" data="TextLoad1"></span><span class="TextLoad" data="TextLoad2"></span><span class="TextLoad" data="TextLoad1"></span><span class="TextLoad" data="TextLoad1"></span><span class="TextLoad" data="TextLoad3"></span><span class="TextLoad" data="TextLoad1"></span><span class="TextLoad" data="TextLoad1"></span><span class="TextLoad" data="TextLoad3"></span><span class="TextLoad" data="TextLoad2"></span><span class="TextLoad" data="TextLoad2"></span><span class="TextLoad" data="TextLoad2"></span><span class="TextLoad" data="TextLoad2"></span><span class="TextLoad" data="TextLoad3"></span></p>
+
+						<div id="hidden2" style="display: none;">
+							<br />
+							<p class="ReleaseBlockAbout-Detail-Text" id="rel_status_string">Статус: </p>
+							<p class="ReleaseBlockAbout-Detail-Text" id="rel_voice_html">Озвучка: </p>
+							<p class="ReleaseBlockAbout-Detail-Text" id="rel_timing_html">Тайминг: </p>
+							<p class="ReleaseBlockAbout-Detail-Text" id="rel_translator_html">Перевод: </p>
+							<p class="ReleaseBlockAbout-Detail-Text" id="rel_editing_html">Редактура: </p>
+							<p class="ReleaseBlockAbout-Detail-Text" id="rel_decor_html">Оформление: </p>
+							<br />
+							<p class="ReleaseBlockAbout-Detail-Text" id="rel_names_en">Навзание EN: </p>
+							<br />
+							<p class="ReleaseBlockAbout-Detail-Text"><a id="rel_SHIKIMORI" href="https://shikimori.one/animes?search=" target="_blank">Поиск SHIKIMORI</a></p>
+							<br />
+							<img class="ReleaseBlockAbout-Detail-Image" id="rel_posters_2_url" src="" alt=""/>
+						</div>
+
+						<br>
+
+						<p class="ReleaseBlockAbout-Detail-Text"><a onclick="view('hidden1', 'hidden2', 'hidden3'); return false" style="font-weight: 600;" id="allViewBut">Подробнее...</a></p>
+					</div>
+					
+				</div>
+			</div>
+		
+			<div class="ReleaseBlockPlayer">
+				<div class="ReleaseBlockPlayerLeft">
+					<div id="player"></div>
+				</div>
+				<div class="ReleaseBlockPlayerRight" id="PlaySerie">
+					<div class="posterSerie"></div>
+					<div class="posterSerie"></div>
+					<div class="posterSerie"></div>
+					<div class="posterSerie"></div>
+					<div class="posterSerie"></div>
+					<div class="posterSerie"></div>
+				</div>
+			</div>
+
 		</div>
-		`;
-		elementDisplays2 = `
-		<div class="release-player">
-			<div class="player_select">
-				<a href="https://www.anilibria.tv/pages/donate.php" class="favor_button">Поддержать проект AniLibria</a>
-			</div>
 
-			<div id="player_bas" class="player_s">
-				<div id="player"></div>
-			</div>
-
-			<details class="but_Hotkeys">
+		<div class="ReleaseBlockSliders">	
+			<details class="ReleaseBlockSlidersDetails">
 				<summary>Информация о вашем подключении.</summary>
 				
 				<div id="chart_containerPad">
@@ -53,195 +179,33 @@ function page_release(s1) {
 				<div id="graph"></div>
 				<p style="font-size: 16px;margin: 5px 20px;">Трекеры:</p>
 				<p style="font-size: 14px;" id="trackerAnnounce"></p>
+
+				<details class="DetailsServers" id="servers">
+					<summary>Если серия не грузит, то попробуйте поменять сервер.</summary>
+				</details>
 			</details>
 
-			<div class="but_Hotkeys">
+			<div class="ReleaseBlockSlidersDetails" id="PlayerKeys">
 				<p><span>Клавиша F</span><span>Полноэкранный режим видео</span></p>
 				<p><span>Клавиша M</span><span>Включение / выключение звука</span></p>
 				<p><span>Пробел</span><span>Переключение пуск / пауза</span></p>
 				<p><span>Стрелки ← и →</span><span>Перемотка</span></p>
 			</div>
 
-			<div class="but_Hotkeys">
+			<div class="ReleaseBlockSlidersDetails">
 				<center><p style="font-size: 17px;">Наш сайт использует P2P подключение!</p></center>
 				<p>Как это устроено? Очень просто. У нас 4 пользователя, которые хотят посмотреть новую серию любимого аниме.
 				Все 4 пользователя начали смотреть серию не одновременно, а с интервалом в 2-10 минут. Самый первый загрузит серию с сервера AniLibria.tv. Второй и последующие пользователи загрузят большую часть у тех пользователей, которые уже немного прогрузили серию и совсем немного с сервера AniLibria.tv.</p>
 				<p>Зачем это нужно? Для того, чтоб сервера AniLibria.tv были менее загружены, и больше людей смогли посмотреть новую серию без проблем.</p>
 			</div>
 
-			<details id="servers" style="text-align: center;">
-				<summary>Если серия не грузит, то попробуйте поменять сервер.</summary>
-			</details>
-		</div>`;
+		</div>
 
-	} else {
-		elementDisplays1 = `
-			<img id="rel_posters_medium_url" src="img/poster.webp" alt="" style="display:none"/>
-			<div id="player_bas" class="player_s">
-				<div id="player"></div>
-			</div>
-		`;
-		elementDisplays2 = `
-			<div class="release-player">
-				<div class="player_select">
-					<a href="https://www.anilibria.tv/pages/donate.php" class="favor_button">Поддержать проект AniLibria</a>
-				</div>
-				
-				<details class="but_Hotkeys">
-				<summary>Информация о вашем подключении.</summary>
-				
-				<div id="chart_containerPad">
-					<div id="chart_container">
-						<div id="legend"></div>
-						<div id="legend-totals"></div>
-						<div id="y_axis"></div>
-						<div id="chart"></div>
-					</div>
-				</div>
-				<div id="graph"></div>
-				<p style="font-size: 16px;margin: 5px 20px;">Трекеры:</p>
-				<p style="font-size: 14px;" id="trackerAnnounce"></p>
-			</details>
-
-				<div class="but_Hotkeys">
-					<center><p style="font-size: 16px;">Наш сайт использует P2P подключение!</p></center>
-					<p>Как это устроено? Очень просто. У нас 4 пользователя, которые хотят посмотреть новую серию любимого аниме. Все 4 пользователя начали смотреть серию не одновременно, а с интервалом в 2-10 минут. Самый первый загрузит серию с сервера AniLibria.tv. Второй и последующие пользователи загрузят большую часть у тех пользователей, которые уже немного прогрузили серию и совсем немного с сервера AniLibria.tv.</p>
-					<p>Зачем это нужно? Для того, чтоб сервера AniLibria.tv были менее загружены, и больше людей смогли посмотреть новую серию без проблем.</p>
-				</div>
-
-				<details id="servers" style="text-align: center;">
-					<summary>Если серия не грузит, то попробуйте поменять сервер.</summary>
-				</details>
-			</div>
-		`;
-	}		
-
-  document.getElementById('app').innerHTML = `
-	<style>
-	.text{
-		fill: var(--ColorThemes3);
-	}
-	.container{
-		width: 800px;
-	}
-	.container *, ::.container, ::.container {
-    box-sizing: border-box;
-	}
-	#graph {
-    overflow: hidden;
-		background: var(--ColorThemes2);
-    border-radius: 15px;
-    margin: 2em auto;
-	}
-	#chart_containerPad {
-		background: var(--ColorThemes2);
-    border-radius: 15px;
-		padding: 20px 10px;
-	}
-	#chart_container {
-		position: relative;
-		padding-left: 20px;
-		max-width: 100%;
-	}
-	#y_axis {
-		position: absolute;
-		top: 0;
-		width: 40px;
-		left: -20px;
-		fill: var(--ColorThemes3);
-	}
-	#y_axis > svg {
-		overflow: visible;
-	}
-	#legend {
-		position: absolute;
-		top: 20px;
-		left: 40px;
-		z-index: 1;
-		color: var(--ColorThemes1);
-    background: var(--ColorThemes3);
-    border-radius: 10px;
-	}
-	#legend-totals {
-		position: absolute;
-		bottom: 20px;
-		left: 40px;
-		z-index: 1;
-		color: var(--ColorThemes1);
-    background: var(--ColorThemes3);
-    border-radius: 10px;
-	}
-	#main-view .hide {
-		display: none;
-	}
-</style>
-  <div class="ReleaseBlock">
-    <center>
-      <div id="release_block">
-        <div class="release-list">
-					`+ elementDisplays1 +`
-          <div class="release-det">
-            <p class="release-name" id="rel_names_ru">Тайтл</p>
-            <p class="release-description" id="rel_genres"></p>
-            <center>
-              <div class="week_block" id="rel_week_day_text_none">
-                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_1">Пн</a>
-                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_2">Вт</a>
-                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_3">Ср</a>
-                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_4">Чт</a>
-                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_5">Пт</a>
-                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_6">Сб</a>
-                <a class="release-href release-href_hov week_block_a" onclick="goRoute('/schedule')" target="_self" id="rel_week_day_text_style_7">Вс</a>
-              </div>
-            </center>
-
-						<center>
-              <div class="week_block">
-                <p style="color: var(--ColorThemes3) !important; padding: 8px 0;" id="rel_in_favorites">В избранном у 0</p>
-              </div>
-            </center>
-
-            <center>
-              <div class="week_block">
-                <a id="rel_seasonANDyear" class="release-href favor_button_a release-href_hov" style="padding: 8px !important;">2022</a>
-                <a id="rel_type_code" class="release-href favor_button_a release-href_hov" style="padding: 8px !important;margin: 0px !important;">ТВ (12 эп.), 24 мин.</a>
-                <div class="ReleaseBoxFavorBut">
-									<a class="ReleaseFavorBut" title="Удалить из избранное" id="delFavorite_rel" onclick="delFavorite(id_t)" style="display:none;background:var(--PrimaryColor);"><svg version="1.1" style="fill: var(--PrimaryColorText);" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 172 172"><path d="M86,129.65217l35.61117,21.49283c5.61867,3.38983 12.54883,-1.64833 11.05817,-8.03383l-9.45283,-40.51317l31.46883,-27.262c4.95933,-4.29283 2.30767,-12.44133 -4.22833,-12.99317l-41.42333,-3.51167l-16.20383,-38.23417c-2.5585,-6.02717 -11.10117,-6.02717 -13.65967,0l-16.20383,38.23417l-41.42333,3.51167c-6.536,0.55183 -9.18767,8.70033 -4.22833,12.99317l31.46883,27.262l-9.45283,40.51317c-1.49067,6.3855 5.4395,11.42367 11.05817,8.03383z"></path></svg></a>
-                	<a class="ReleaseFavorBut" title="Добавить в избранное" id="addFavorite_rel" onclick="addFavorite(id_t)" style="display:none;"><svg version="1.1" style="fill: var(--ColorThemes3);" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 172 172"><path d="M86,129.65217l35.61117,21.49283c5.61867,3.38983 12.54883,-1.64833 11.05817,-8.03383l-9.45283,-40.51317l31.46883,-27.262c4.95933,-4.29283 2.30767,-12.44133 -4.22833,-12.99317l-41.42333,-3.51167l-16.20383,-38.23417c-2.5585,-6.02717 -11.10117,-6.02717 -13.65967,0l-16.20383,38.23417l-41.42333,3.51167c-6.536,0.55183 -9.18767,8.70033 -4.22833,12.99317l31.46883,27.262l-9.45283,40.51317c-1.49067,6.3855 5.4395,11.42367 11.05817,8.03383z"></path></svg></a>
-								</div>
-							</div>
-            </center>
-						
-
-            <p class="release-description" id="rel_announce"></p><br />
-
-            <p class="release-description" id="release_description_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <div id="hidden2" style="display: none;">
-              <br />
-              <p class="release-description" id="rel_status_string" >Статус: </p>
-              <p class="release-description" id="rel_voice_html" >Озвучка: </p>
-              <p class="release-description" id="rel_timing_html" >Тайминг: </p>
-              <p class="release-description" id="rel_translator_html" >Перевод: </p>
-              <p class="release-description" id="rel_editing_html" >Редактура: </p>
-              <p class="release-description" id="rel_decor_html" >Оформление: </p>
-              <br />
-              <p class="release-description" id="rel_names_en">Навзание EN: </p>
-              <br />
-              <p class="release-description"><a id="rel_SHIKIMORI" href="https://shikimori.one/animes?search=" target="_blank">Поиск SHIKIMORI</a></p>
-              <br />
-            </div>
-            <p style="cursor:pointer;margin-top:10px; margin-bottom: 5px;"><a onclick="view('hidden1', 'hidden2', 'hidden3'); return false" style="color: var(--card-text-color-3);border-bottom: 1px solid var(--card-background-5);">Подробнее...</a></p>
-          </div>
-        </div>
-      </div>
-
-      `+ elementDisplays2 +`
-    </center>
   </div>
   `;
 
 	LoadRelisePHPSESSID();
-  LoadApiRelise(s1);
+	LoadApiRelise(id);
 	LoadApiServer();
 
 	appWidth();
@@ -254,8 +218,8 @@ function LoadRelisePHPSESSID(){
 
 
 // Функции запросов к Api
-function LoadApiRelise(s1) {
-  url = config["titels_api"]+'getTitle?id='+s1+'&description_type=plain&remove=posters.small,posters.original,torrents';
+function LoadApiRelise(id) {
+  url = config["titels_api"]+'getTitle?id='+id+'&description_type=plain&remove=torrents';
 
   fetch(url)
   .then(function (response) {
@@ -268,23 +232,45 @@ function LoadApiRelise(s1) {
     return response.json()
   })
   .then(function (data) {
-    id_t = s1;
+		GeneratorRelise(data);
+		GeneratorPlaySerie(data, id);
 
-    GeneratorRelise(data);
-		preloader_none();
-
-    dataPlayer = data["player"];
-    dataPlayerSerie = data["player"]["series"]["last"];
-    playerPlaylist(id_t, dataPlayer, dataPlayerSerie);
-    if (MySessID) {
-      load_relise_Fav(id_t);
+		if (MySessID) {
+      LoadApiReliseFav(id);
     }
+		dataPlayer = data["player"];
+    dataPlayerSerie = data["player"]["series"]["last"];
+    playerPlaylist(id, dataPlayer, dataPlayerSerie);
+
+		preloader_none();
   })
   .catch(function (error) {
     console.log('error', error)
   })
 }
-
+function LoadApiReliseFav(id_t) {
+  var cookie = localStorage.getItem('PHPSESSID');
+  var url_ses = config["titels_api"]+"getFavorites?session="+cookie+"&filter=id&limit=-1";
+  fetch(url_ses)
+  .then(function (response) {
+    return Promise.resolve(response)
+  })
+  .then(function (response) {
+    return response.json()
+  })
+  .then(function (data) {
+    for (let i = 0; data[i]; i++) {
+      if (id_t == data[i]["id"]) {
+				document.getElementById('delFavorite_rel').style.display = "";
+  			document.getElementById('addFavorite_rel').style.display = "none";
+         return;
+      }else {
+				document.getElementById('delFavorite_rel').style.display = "none";
+  			document.getElementById('addFavorite_rel').style.display = "";
+      }
+    }
+  })
+}
 function LoadApiServer(){
 	var my_server = localStorage.getItem('my_server');
 
@@ -300,40 +286,50 @@ function LoadApiServer(){
     return response.json()
   })
   .then(function (data) {
+		document.getElementById('servers').innerHTML = '<summary>Если серия не грузит, то попробуйте поменять сервер.</summary>';
     for (var i = 0; i < data.length; i++) {
-
       if (!my_server) {
-        var style_server = "background: var(--card-background-2);color: var(--card-text-color)!important;cursor:pointer;";
+        var style_server = "";
         var title_server = "Сменить сервер";
       } else if (my_server == 'auto') {
-        var style_server = "background: var(--card-background-2);color: var(--card-text-color)!important;cursor:pointer;";
+        var style_server = "";
         var title_server = "Сменить сервер";
       }else{
         if (my_server == data[i]) {
-          var style_server = "color: var(--card-text-color-2)!important;background: var(--card-background-3)!important;cursor:pointer;";
+          var style_server = "background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;";
           var title_server = "Выбранный сервер";
         } else {
-          var style_server = "background: var(--card-background-2);color: var(--card-text-color)!important;cursor:pointer;";
+          var style_server = "";
           var title_server = "Сменить сервер";
         }
       }
-
-      var div = document.createElement('span');
+      var div = document.createElement('div');
       document.getElementById('servers').appendChild(div);
-      div.innerHTML += `<a title="${title_server}" onclick="release_server('${data[i]}')" class="release-href release-href_hov" style="margin: 5px !important;width: 100px;${style_server}">Сервер ${data[i]}</a>`;
+			div.setAttribute('onclick', `release_server('${data[i]}')`)
+			div.setAttribute('style', style_server);
+			div.setAttribute('title', title_server);
+			div.className = 'ServersButton';
+      div.innerHTML += `Сервер ${data[i]}`;
     }
-    var div = document.createElement('span');
+
+    var div = document.createElement('div');
     document.getElementById('servers').appendChild(div);
+		div.className = 'ServersButton';
+		div.setAttribute('onclick', `release_server(\'auto\')`);
     if (!my_server) {
-      div.innerHTML += `<a title="Выбранный сервер" onclick="release_server(\'auto\')" class="release-href release-href_hov" style="cursor:pointer;margin: 5px !important;width: 100px;color: var(--card-text-color-2)!important;background: var(--card-background-3)!important;">Сервер авто выбор</a>`;
+			div.setAttribute('style', `background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;`);
+			div.setAttribute('title', 'Выбранный сервер');
+      div.innerHTML += `Сервер авто выбор`;
     } else if (my_server == 'auto') {
-      div.innerHTML += `<a title="Выбранный сервер" onclick="release_server(\'auto\')" class="release-href release-href_hov" style="cursor:pointer;margin: 5px !important;width: 100px;color: var(--card-text-color-2)!important;background: var(--card-background-3)!important;">Сервер авто выбор</a>`;
+			div.setAttribute('style', `background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;`);
+			div.setAttribute('title', 'Выбранный сервер');
+      div.innerHTML += `Сервер авто выбор`;
     } else {
-      div.innerHTML += `<a title="Сменить сервер" onclick="release_server(\'auto\')" class="release-href release-href_hov" style="cursor:pointer;margin: 5px !important;width: 100px;background: var(--card-background-2);color: var(--card-text-color)!important;">Сервер авто выбор</a>`;
+			div.setAttribute('title', 'Сменить сервер');
+      div.innerHTML += `Сервер авто выбор`;
     }
   })
 }
-
 
 // Функции заполнения контента
 function GeneratorRelise(data){
@@ -344,7 +340,6 @@ function GeneratorRelise(data){
       editing,
       decor,
 			announce;
-
 
 	if(data.genres.length > 0){
 		for(var i=0; data.genres.length > i; i++){
@@ -363,9 +358,8 @@ function GeneratorRelise(data){
     if (week_day == '4') {document.getElementById('rel_week_day_text_style_5').setAttribute("style", "background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;");}
     if (week_day == '5') {document.getElementById('rel_week_day_text_style_6').setAttribute("style", "background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;");}
     if (week_day == '6') {document.getElementById('rel_week_day_text_style_7').setAttribute("style", "background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;");}
-  } else {
-    document.getElementById('rel_week_day_text_none').setAttribute("style", "display:none;");
-  }
+		document.getElementById('rel_week_day_text_none').setAttribute("style", "display: flex;");
+	}
 
 	if (data.team.voice.length > 0) {
     for(let i = 0; data.team.voice.length > i; i++) {
@@ -445,7 +439,9 @@ function GeneratorRelise(data){
 	document.title = data["names"]["ru"];
 
   document.getElementById('rel_in_favorites').innerHTML = `В избранном у  ${data["in_favorites"]}`;
-  document.getElementById('rel_posters_medium_url').src = config["posters"]+''+data["posters"]["medium"]["url"];
+  document.getElementById('rel_posters_1_url').src = config["posters"]+data["posters"]["medium"]["url"];
+	document.getElementById('rel_posters_2_url').src = config["posters"]+data["posters"]["medium"]["url"];
+
   document.getElementById('rel_names_ru').innerHTML = `${data["names"]["ru"]}`;
   document.getElementById('rel_genres').innerHTML = `${genres}`;
   document.getElementById('rel_seasonANDyear').innerHTML = `${seasonANDyear_text}`;
@@ -470,6 +466,27 @@ function GeneratorRelise(data){
   document.getElementById('rel_SHIKIMORI').href = `https://shikimori.one/animes?search=${data["names"]["en"]}`;
 
 
+}
+function GeneratorPlaySerie(data, id){
+	document.getElementById('PlaySerie').innerHTML = '';
+
+	for(let j = 0; data.player.series.last > j; j++) {
+		i = j+1;
+		poster = null;
+		if(data["player"]["playlist"][i]["preview"] == null){
+			poster = config["CustomPosters"] + "/anilibria_bot/getThumbnail/" + id + "/" + i + "/1.jpg";
+		} else {
+			poster = config["posters"] + data["player"]["playlist"][i]["preview"];
+		}
+		var div = document.createElement('div');
+		document.getElementById('PlaySerie').appendChild(div);
+		div.setAttribute('onclick', `player.api("play", "id:${id}s${i}")`)
+		div.className = 'posterSerie';
+		div.innerHTML += `
+			<div class="posterSerieNum">Серия ${i}</div>
+			<img src="${poster}">
+		`;
+	}
 }
 function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
   var strPlayer = '';
@@ -515,14 +532,15 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
       if (dataPlayer["playlist"][i2]["preview"]) {
         poster_preview = config["posters"]+''+dataPlayer["playlist"][i2]["preview"];
       } else {
-        poster_preview = "img/player.webp";
+        // poster_preview = "img/player.webp";
         // poster_preview = "https://api.7o7.co/anilibria_bot/getPoster/"+id_t;
+				poster_preview = config["CustomPosters"] + "/anilibria_bot/getThumbnail/" + id_t + "/" + i2 + "/1.jpg";
       }
       var url_relise_comma = " ";
       if (i2 != dataPlayerSerie) {
         url_relise_comma = ", ";
       }
-      var str_m_Player = '{"title":"Серия '+i2+'","poster":"'+poster_preview+'", '+remove+' "id": "'+id_t+'s'+i2+'", "file":"'+url_relise_480+', '+url_relise_720+' '+url_relise_1080+'"}'+url_relise_comma;
+      var str_m_Player = `{"title":"Серия ${i2}","poster":"${poster_preview}", ${remove} "id": "${id_t}s${i2}", "file":"${url_relise_480}, ${url_relise_720} ${url_relise_1080}"}`+url_relise_comma;
       strPlayer += str_m_Player;
     }
   }
@@ -577,7 +595,6 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 		player.api("update:nativefullios",0);
 	}
 }
-
 function PlayerjsEvents(event,id,info){	
 	if(event=="stop"){
 		engine.destroy(); // Разрываем P2P раздачу
@@ -634,16 +651,12 @@ function PlayerjsEvents(event,id,info){
 		player_navigation('flex');
 	}
 }
-
-
-
 function mobile_play_fullscreen(){
 	var width = document.documentElement.clientWidth;
 	if(width <= 800){
 		player.api("fullscreen");
 	}
 }
-
 function player_navigation(display){
 	if(display == "none"){
 		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#000000");
@@ -661,35 +674,8 @@ function player_navigation(display){
 		document.body.setAttribute("style", "");
 	}
 }
-window.matchMedia("(prefers-color-scheme: dark)")
-window.addEventListener("change", function (e) {
-	const colorScheme = e.matches ? "dark" : "light";
-	console.log(colorScheme);
-});
-function load_relise_Fav(id_t) {
-  var cookie = localStorage.getItem('PHPSESSID');
-  var url_ses = config["titels_api"]+"getFavorites?session="+cookie+"&filter=id&limit=4000";
-  fetch(url_ses)
-  .then(function (response) {
-    return Promise.resolve(response)
-  })
-  .then(function (response) {
-    return response.json()
-  })
-  .then(function (data) {
-    for (let i = 0; data[i]; i++) {
-      if (id_t == data[i]["id"]) {
-				document.getElementById('delFavorite_rel').style.display = "";
-  			document.getElementById('addFavorite_rel').style.display = "none";
-         return;
-      }else {
-				document.getElementById('delFavorite_rel').style.display = "none";
-  			document.getElementById('addFavorite_rel').style.display = "";
-      }
-    }
-  })
-}
 
+// Функция раскрытия блока Подробнее...
 function view(n, n2, n3) {
   style = document.getElementById(n).style;
   style.display = (style.display == 'contents') ? 'none' : 'contents';
@@ -697,13 +683,18 @@ function view(n, n2, n3) {
   style2.display = (style2.display == 'block') ? 'none' : 'block';
   style3 = document.getElementById(n3).style;
   style3.display = (style3.display == 'none') ? 'contents' : 'none';
+	text1 = document.getElementById('allViewBut');
+
+	text1.innerHTML = (style3.display == 'none') ? 'Скрыть...' : 'Подробнее...';
 }
 
+// Функция изменения предпочитаемого сервера
 function release_server(name) {
   localStorage.setItem('my_server', name);
   location.reload();
 }
 
+// Функция удаления из избранного
 function delFavorite(id_t) {
   var url = config["titels_api"]+"delFavorite?session="+cookie+"&title_id="+id_t;
 
@@ -721,6 +712,8 @@ function delFavorite(id_t) {
   document.getElementById('delFavorite_rel').style.display = "none";
   document.getElementById('addFavorite_rel').style.display = "";
 }
+
+// Функция добавления в избранное
 function addFavorite(id_t) {
   var url = config["titels_api"]+"addFavorite?session="+cookie+"&title_id="+id_t;
 

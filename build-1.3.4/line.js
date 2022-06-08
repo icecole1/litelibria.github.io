@@ -130,24 +130,39 @@ function page_line() {
 			</div>
 
 			<div class="RightBlock" id="RightBlockSize">
+				<!-- Блок История просмотров  -->
+				<div class="LineCard-Donate">
+					<a href="https://www.anilibria.tv/pages/donate.php">
+						<div class="LineCard-Donate-Card">
+							<img src="img/libriatyan/0.webp">
+							<p>Поддержать проект AniLibria через их сайт!</p>
+						</div>
+					</a>
+					<a href="https://rozenrod.com/#donation">
+						<div class="LineCard-Donate-Card">
+							<img src="img/libriatyan/6.webp">
+							<p>Поддержать разработчика приложения на его сайте!</p>
+						</div>
+					</a>
+				</div>
 
-				<br>
 				<!-- Блок История просмотров  -->
 				<div class="LineList-History">
 					<div style="display: flow-root;">
 						<h1 style="float: left;">История просмотров</h1>
 						<h1 style="float: right;"><a class="LineList-Button-All" onclick="goRoute('/myHistory')">Ещё...</a></h1>
 					</div>
-					<div class="LineGenerator-History" id="LineGenerator-History">
-						<!-- Карточки с контентом -->
-						<div id="HistoryNone">
-							<br /><br />
-							<img src="img/libriatyan/4.webp" style="max-width: 145px;">
-							<br /><br />
-							<p style="color: var(--ColorThemes3);">Пока пусто...</p>
+					<div class="LineGenerator-HistorySlider">
+						<div class="LineGenerator-History" id="LineGenerator-History">
+							<!-- Карточки с контентом -->
+							<div id="HistoryNone">
+								<br /><br />
+								<img src="img/libriatyan/4.webp" style="max-width: 145px;">
+								<br /><br />
+								<p style="color: var(--ColorThemes3);">Пока пусто...</p>
+							</div>	
 						</div>	
-
-					</div>
+						</div>
 					<!-- Анимация загрузки -->
 					<div id="LoadAnimHistory" style="display:none;">
 						<svg style="padding: 50px;width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg>
@@ -339,20 +354,6 @@ function LoadApiNEWS() {
 		NEWSList = data;
 		GeneratorTrailer();
 		GeneratorSelectRecommend();
-
-		if(NEWSList.blockSelectRecommend.Visible == true && NEWSList.blockNewTrailer.Visible == true){
-			document.getElementById("RightBlockSize").setAttribute("style", `height: 1358px`);
-			document.getElementById("LineGenerator-History").setAttribute("style", `height: 1318px`);
-		} else if (NEWSList.blockSelectRecommend.Visible == false && NEWSList.blockNewTrailer.Visible == true) {
-			document.getElementById("RightBlockSize").setAttribute("style", `height: 1108px`);
-			document.getElementById("LineGenerator-History").setAttribute("style", `height: 1067px`);
-		} else if (NEWSList.blockSelectRecommend.Visible == true && NEWSList.blockNewTrailer.Visible == false) {
-			document.getElementById("RightBlockSize").setAttribute("style", `height: 1108px`);
-			document.getElementById("LineGenerator-History").setAttribute("style", `height: 1067px`);
-		} else {
-			document.getElementById("RightBlockSize").setAttribute("style", `height: 855px`);
-			document.getElementById("LineGenerator-History").setAttribute("style", `height: 815px`);
-		}
   })
   .catch(function (error) {
     console.log('error', error)

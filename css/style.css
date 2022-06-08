@@ -371,6 +371,7 @@ details span {
 	color: #fff;
 	transition: .3s ease;
 	opacity: 0.95;
+	z-index: 9999;
 }
 
 @media (max-width: 800px){
@@ -406,7 +407,6 @@ details span {
 		position: fixed;
     width: 100%;
     top: 0;
-    z-index: 9999;
     height: 60px;
 	}
 }
@@ -1872,8 +1872,8 @@ details span {
 
 .ReleaseBlockAbout-Detail{
 	text-align: left;
-	max-width: 450px;
-	margin: 10px 5px;
+	max-width: 440px;
+	margin: 10px 5px 10px 15px;
 }
 
 .ReleaseBlockAbout-Detail-Name{
@@ -1997,7 +1997,7 @@ details span {
 .posterSerie{
 	height: 75px;
 	aspect-ratio: 16/9;
-	margin: 0 10px 10px;
+	margin: 0 0 10px 5px;
 	cursor: pointer;
 	transition: .3s ease;
 	display: flex;

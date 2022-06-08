@@ -139,19 +139,19 @@ function replaceRoute(state){
 	parseURL();
 	paramsRoute();
 	switchRoute(href, query);
-
 	setTimeout(function(){
 		window.scroll(0, state.position);
 	}, 2)
 }
 
 // Функция роутера управляемая приложением и адресной строкой
-function goRoute(namePage, query) {
+function goRoute(namePage, querys) {
 	// Изменяет историю текущей страницы
 	// Добавляем позицию скролла 
 	history.replaceState({'position': window.pageYOffset}, null);
 	paramsRoute();
-
+	href = namePage;
+	query = querys;
 	switchRoute(namePage, query);
 
 	var url = namePage;
@@ -198,20 +198,44 @@ function goRoute(namePage, query) {
 	window.scroll(0, 0);
 }
 
-// Функция обрваботки кнопки поиска
+// Функция обработки кнопки поиска
 function search_b() {
   var search_q = document.getElementById("search_q").value;
 	goRoute('/search', {search: `${search_q}`})
+}
+
+// Функция обработки кнопки обновить
+function appReloadApi(){
+	// Переменные запросов API
+	UpdatesList = null;
+	NEWSList = null;
+	ScheduleList = null;
+	VideoList = null;
+	RecomendList = null;
+	CatalogsList = null;
+	FavoritesList = null;
+	SearchList = null;
+	SeasonList = null;		
+
+	paramsRoute();
+	switchRoute(href, query);
 }
 
 // Проверка того, что наш браузер поддерживает Service Worker API.
 if ('serviceWorker' in navigator) {
 	// Отображать уведомление, когда доступно новое обновление
 	var presentUpdateAvailable = serviceWorker => {
-		document.getElementById('update-banner').dataset.state = 'updateavailable';
-		document.querySelector('#update-banner .headline').innerHTML = 'Доступно обновление';
-		document.querySelector('#update-banner .subhead').innerHTML = 'Нажмите, чтобы обновить приложение до последней версии!';
-		document.getElementById('update-banner').addEventListener('click', clickEvent => {
+		document.getElementById('update-banner-1').dataset.state = 'updateavailable';
+		document.querySelector('#update-banner-1 .headline').innerHTML = 'Доступно обновление';
+		document.querySelector('#update-banner-1 .subhead').innerHTML = 'Нажмите, чтобы обновить приложение до последней версии!';
+		document.getElementById('update-banner-1').addEventListener('click', clickEvent => {
+				serviceWorker.postMessage('skipWaiting');
+		});
+
+		document.getElementById('update-banner-2').dataset.state = 'updateavailable';
+		document.querySelector('#update-banner-2 .headline').innerHTML = 'Доступно обновление';
+		document.querySelector('#update-banner-2 .subhead').innerHTML = 'Нажмите, чтобы обновить приложение до последней версии!';
+		document.getElementById('update-banner-2').addEventListener('click', clickEvent => {
 				serviceWorker.postMessage('skipWaiting');
 		});
 	}
