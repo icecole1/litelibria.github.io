@@ -75,20 +75,22 @@
 	<script src="js/rickshaw.min.js"></script>
 	<link href="js/rickshaw.min.css" rel="stylesheet">
 
+	<!--  -->
+	<script src="js/history.js"></script>
+	<script src="js/historySync.js"></script>
 
   <!-- Загрузка страниц -->
-	<script src="build-1.3.5/line.js"></script>
-	<script src="build-1.3.5/catalog.js"></script>
-	<script src="build-1.3.5/favorites.js"></script>
-	<script src="build-1.3.5/season.js"></script>
-	<script src="build-1.3.5/search.js"></script>
-	<script src="build-1.3.5/schedule.js"></script>
-	<script src="build-1.3.5/myHistory.js"></script>
-	<script src="build-1.3.5/option.js"></script>
-	<script src="build-1.3.5/Sync_G.js"></script>
-	<script src="build-1.3.5/release.js"></script>	
-	<script src="build-1.3.5/script.js"></script>
-	<script src="build-1.3.5/app.js" defer></script>
+	<script src="build-1.3.6/line.js"></script>
+	<script src="build-1.3.6/catalog.js"></script>
+	<script src="build-1.3.6/favorites.js"></script>
+	<script src="build-1.3.6/season.js"></script>
+	<script src="build-1.3.6/search.js"></script>
+	<script src="build-1.3.6/schedule.js"></script>
+	<script src="build-1.3.6/myHistory.js"></script>
+	<script src="build-1.3.6/option.js"></script>
+	<script src="build-1.3.6/release.js"></script>	
+	<script src="build-1.3.6/script.js"></script>
+	<script src="build-1.3.6/app.js" defer></script>
   <!-- Загрузка страниц -->
 
 	<script>
@@ -104,10 +106,12 @@
 		}
 	</script>
 
-  <script src="https://apis.google.com/js/api.js"
-    onload="this.onload=function(){}; gapi.load('client:auth2', initClient)"
-    onreadystatechange="if (this.readyState === 'complete') this.onload()">
-  </script>
+
+	<script src="https://apis.google.com/js/api.js"
+		onload="this.onload=function(){}; gapi.load('client:auth2', initClient)"
+		onreadystatechange="if (this.readyState === 'complete') this.onload()">
+	</script>
+	
 </head>
 <body>
 	<meta name="theme-color" content="#fbfbfb" media="(prefers-color-scheme: light)"> 
@@ -115,7 +119,7 @@
 	
   <!-- <style media="screen" data-nosnippet> .add_app{ display: block; position: fixed; z-index: 99999; top: 0; left: 0; width: 100%; height: 100%; min-width: 1000px; background-color: #21221d; } .add_app_center{ display: block; position: fixed; z-index: 99999; top: 0; left: 0; top: 50%; left: 50%; width: 300px; height: 400px; margin-top: -200px; margin-left: -150px; background: #2e2e2e; border-radius: var(--border-radius); } .add_app_center p{ color: #efefef; text-align: center; font-size: 18px; padding: 5px; margin: 5px 5px 5px 5px; font-weight: 400; border-radius: var(--border-radius); } .app_t{ color: #efefef; font-size: 18px; padding: 5px; margin: 5px; background: #21221d; font-weight: 400; display: inline-flex; border-radius: var(--border-radius); } .text_img{ width: 42px; height: 42px; padding: 10px; } .text_img img{ width: 40px; height: 40px; } .text_t{ padding: 5px 0px; } .text_t span{ font-size: 14px; float: left; font-weight: 300; } .add_app_close{ width: calc(100% - 10px); background: var(--card-background-3); color: #efefef; text-align: center; font-size: 18px; padding: 5px; margin: 5px 5px 5px 5px; font-weight: 400; border-radius: var(--border-radius); } .browser_text{font-size: 12px !important;margin: -10px 0 5px 55px !important;padding: 0 !important;font-weight: 300 !important;text-align: left !important;} </style> <div class="add_app" id="start_mess" style="display: none"> <div class="add_app_center"> <p>Настройка приожения</p> <div id="ios_app" style="display: none"> <p class="browser_text">*Актуально для Safary</p> <div class="app_t"> <div class="text_img"> <img src="img/icons/2_W.png" /> </div> <div class="text_t"> <span>Шаг 1.</span> <span>Нажмите кнопку «Общий доступ» на панели инструментов.</span> </div> </div> <div class="app_t"> <div class="text_img"> <img src="img/icons/1_W.png" /> </div> <div class="text_t"> <span>Шаг 2.</span> <span>Выберите «Добавить на главный экран» в меню.</span> </div> </div> <div class="app_t"> <div class="text_img"> <img src="img/icon/web/ios.png" /> </div> <div class="text_t"> <span>Шаг 3.</span> <span>Запустите LiteLibria на главном экране.</span> </div> </div> </div> <div id="android_app" style="display: none"> <p class="browser_text">*Актуально для Chrome</p> <div class="app_t"> <div class="text_img"> <img src="img/icons/17_W.png" /> </div> <div class="text_t"> <span>Шаг 1.</span> <span>Нажмите кнопку «Меню» на панели инструментов.</span> </div> </div> <div class="app_t"> <div class="text_img"> <img src="img/icons/18_W.png" /> </div> <div class="text_t"> <span>Шаг 2.</span> <span>Выберите «Добавить на гл. экран» в меню.</span> </div> </div> <div class="app_t"> <div class="text_img"> <img src="img/icon/web/Android.png" /> </div> <div class="text_t"> <span>Шаг 3.</span> <span>Запустите LiteLibria на главном экране.</span> </div> </div> </div> <p>ИЛИ</p> <button class="add_app_close" onclick="start_mess_close()">Открыть сайт</button> </div> </div> -->
 
-  <style media="screen" data-nosnippet> .history_app{ display: block; position: fixed; z-index: 99999; top: 0; left: 0; width: 100%; height: 100%; min-width: 1000px; background-color: #21221d; } .add_history_center{ display: block; position: fixed; z-index: 99999; top: 0; left: 0; top: 50%; left: 50%; width: 300px; height: 230px; margin-top: -115px; margin-left: -150px; background: #2e2e2e; border-radius: var(--border-radius); } .add_history_center p{ color: #efefef; text-align: center; font-size: 18px; padding: 5px; margin: 10px 5px 5px 5px; font-weight: 400; border-radius: var(--border-radius); } .history_t{ color: #efefef; font-size: 18px; padding: 5px; margin: 5px; background: #21221d; font-weight: 400; display: inline-flex; border-radius: var(--border-radius); } .text_t{ padding: 5px 0px; font-size: 14px; float: left; font-weight: 300; margin: 0 0 0 5px; } .history_button{ background: var(--card-background-3); color: #efefef; text-align: center; font-size: 14px; padding: 5px 10px; margin: 0 0 0 5px; font-weight: 400; border-radius: var(--border-radius); } </style> <div class="history_app" id="history_mess" style="display: none;"> <div class="add_history_center"> <p>В приложении уже есть история!</p> <div class="history_t"> <div class="text_t">Использовать историю приложения</div> <button class="history_button" onclick="history_from_app()">Выбрать</button> </div> <div class="history_t"> <div class="text_t">Использовать историю Google Drive</div> <button class="history_button" onclick="history_from_google()">Выбрать</button> </div> <div class="text_t" style="padding: 5px;">*После выбора истории приложения и Google Drive будут синхронизированы!</div> </div> </div>
+  <style media="screen" data-nosnippet> .history_app{ display: block; position: fixed; z-index: 99999; top: 0; left: 0; width: 100%; height: 100%; min-width: 1000px; background-color: #21221d; } .add_history_center{ display: block; position: fixed; z-index: 99999; top: 0; left: 0; top: 50%; left: 50%; width: 300px; height: 230px; margin-top: -115px; margin-left: -150px; background: #2e2e2e; border-radius: var(--border-radius); } .add_history_center p{ color: #efefef; text-align: center; font-size: 18px; padding: 5px; margin: 10px 5px 5px 5px; font-weight: 400; border-radius: var(--border-radius); } .history_t{ color: #efefef; font-size: 18px; padding: 5px; margin: 5px; background: #21221d; font-weight: 400; display: inline-flex; border-radius: var(--border-radius); } .text_t{ padding: 5px 0px; font-size: 14px; float: left; font-weight: 300; margin: 0 0 0 5px; } .history_button{ background: var(--card-background-3); color: #efefef; text-align: center; font-size: 14px; padding: 5px 10px; margin: 0 0 0 5px; font-weight: 400; border-radius: var(--border-radius); } </style> <div class="history_app" id="history_mess" style="display: none;"> <div class="add_history_center"> <p>В приложении уже есть история!</p> <div class="history_t"> <div class="text_t">Использовать историю приложения</div> <button class="history_button" onclick="questionConfigUpload(false)">Выбрать</button> </div> <div class="history_t"> <div class="text_t">Использовать историю Google Drive</div> <button class="history_button" onclick="questionConfigUpload(true)">Выбрать</button> </div> <div class="text_t" style="padding: 5px;">*После выбора истории приложения и Google Drive будут синхронизированы!</div> </div> </div>
 
 
   <div id="block_notif" data-nosnippet></div>

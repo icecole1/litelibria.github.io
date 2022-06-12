@@ -221,7 +221,7 @@ function LoadApiSchedules() {
 	document.getElementById("LoadAnimSchedule-6").style.display = "block";
 
 	// Запрос к Api 
-	var url = config["titels_api"]+"getSchedule?filter=id,names.ru,posters.medium,torrents.series,description,genres";
+	var url = config["titels_api"]+"getSchedule?filter=id,names.ru,posters.medium,player.series,description,genres";
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -286,8 +286,10 @@ function GeneratorSchedule_0() {
 			if(genres == '') genres = DayList[i].genres[g];
 			else genres = genres + ', ' +DayList[i].genres[g];
 		}
-		if(DayList[i].torrents.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].torrents.series.last}</div>`;
+		if(DayList[i].player.series != null){
+			if(DayList[i].player.series.last != null){
+				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
@@ -316,8 +318,10 @@ function GeneratorSchedule_1() {
 			if(genres == '') genres = DayList[i].genres[g];
 			else genres = genres + ', ' +DayList[i].genres[g];
 		}
-		if(DayList[i].torrents.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].torrents.series.last}</div>`;
+		if(DayList[i].player.series != null){
+			if(DayList[i].player.series.last != null){
+				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
@@ -346,8 +350,10 @@ function GeneratorSchedule_2() {
 			if(genres == '') genres = DayList[i].genres[g];
 			else genres = genres + ', ' +DayList[i].genres[g];
 		}
-		if(DayList[i].torrents.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].torrents.series.last}</div>`;
+		if(DayList[i].player.series != null){
+			if(DayList[i].player.series.last != null){
+				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
@@ -376,8 +382,10 @@ function GeneratorSchedule_3() {
 			if(genres == '') genres = DayList[i].genres[g];
 			else genres = genres + ', ' +DayList[i].genres[g];
 		}
-		if(DayList[i].torrents.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].torrents.series.last}</div>`;
+		if(DayList[i].player.series != null){
+			if(DayList[i].player.series.last != null){
+				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
@@ -406,8 +414,10 @@ function GeneratorSchedule_4() {
 			if(genres == '') genres = DayList[i].genres[g];
 			else genres = genres + ', ' +DayList[i].genres[g];
 		}
-		if(DayList[i].torrents.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].torrents.series.last}</div>`;
+		if(DayList[i].player.series != null){
+			if(DayList[i].player.series.last != null){
+				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
@@ -436,8 +446,10 @@ function GeneratorSchedule_5() {
 			if(genres == '') genres = DayList[i].genres[g];
 			else genres = genres + ', ' +DayList[i].genres[g];
 		}
-		if(DayList[i].torrents.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].torrents.series.last}</div>`;
+		if(DayList[i].player.series != null){
+			if(DayList[i].player.series.last != null){
+				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
@@ -466,8 +478,10 @@ function GeneratorSchedule_6() {
 			if(genres == '') genres = DayList[i].genres[g];
 			else genres = genres + ', ' +DayList[i].genres[g];
 		}
-		if(DayList[i].torrents.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].torrents.series.last}</div>`;
+		if(DayList[i].player.series != null){
+			if(DayList[i].player.series.last != null){
+				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);

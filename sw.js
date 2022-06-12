@@ -1,5 +1,5 @@
 var CACHE_PREFIX = 'Satera';
-var CACHE_VERSION = '1.3.5';
+var CACHE_VERSION = '1.3.6';
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
 const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
@@ -37,7 +37,6 @@ const assetUrls = [
   '/build-'+CACHE_VERSION+'/schedule.js',
   '/build-'+CACHE_VERSION+'/search.js',
   '/build-'+CACHE_VERSION+'/catalog.js',
-  '/build-'+CACHE_VERSION+'/Sync_G.js',
   '/build-'+CACHE_VERSION+'/season.js',
 
   'game.html',

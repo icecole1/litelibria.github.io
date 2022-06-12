@@ -155,18 +155,14 @@ function page_line() {
 					<div class="LineGenerator-HistorySlider">
 						<div class="LineGenerator-History" id="LineGenerator-History">
 							<!-- Карточки с контентом -->
-							<div id="HistoryNone">
+							<div id="HistoryNoneLine">
 								<br /><br />
 								<img src="img/libriatyan/4.webp" style="max-width: 145px;">
 								<br /><br />
 								<p style="color: var(--ColorThemes3);">Пока пусто...</p>
 							</div>	
 						</div>	
-						</div>
-					<!-- Анимация загрузки -->
-					<div id="LoadAnimHistory" style="display:none;">
-						<svg style="padding: 50px;width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg>
-					</div>	
+					</div>
 				</div>
 			</div>
 		</div>
@@ -180,7 +176,7 @@ function page_line() {
 	if(RecomendList == null) LoadApiRecomend(); else GeneratorRecomend();
 	if(NEWSList == null) LoadApiNEWS(); else {GeneratorTrailer(); GeneratorSelectRecommend();}
 
-	GeneratorHistory()
+	GeneratorHistoryLine()
 
 	preloader_none();
 	appWidth();
@@ -516,95 +512,56 @@ function GeneratorSelectRecommend() {
 	}
 }
 
-function GeneratorHistory() {
-	let keys = Object.keys(localStorage);
-	var titleNum = 0;
+function GeneratorHistoryLine() {
+	HistoryList = getUniqueElems(historyGet());
+	HistoryList.sort(function(a, b) {
+		if (a.date > b.date)
+				return -1;
+		if (a.date < b.date) 
+				return 1;     
+		return 0;
+	});
 
-	for(var i=0; keys.length > i; i++) {
-		key = keys[i]
-		var x = localStorage.getItem(key);
-		var	v = '';
+	if(HistoryList.length > 0){
+		document.getElementById("HistoryNoneLine").style.display = "none";
+		var idH = [];
 
-		function GetPlayerStorage(comand) {
-			var x_seria_bit = '';
-			var x_id = '';
-			var x_seria = '';
-			var x_time = 0;
-			var x_time_old = 0;
-			var x_date = 0;
-			if (x.indexOf("{") == 0) {
-				v = x.substr(1, x.indexOf("}") - 1)
-				x = x.substr(x.indexOf("}") + 1);
-			}
-			if (v) {
-				if (v.indexOf("-") > 0) {
-					var q = v.split("-");
-					var qs = v.split("s");
-					x_seria_bit = parseFloat(q[1]);
-					x_id = parseFloat(q[2]);
-					x_seria = parseFloat(qs[1]);
-				}
-			}
-			if (x) {
-					if (x.indexOf("--") > 0) {
-							var y = x.split("--");
-							x_time = parseFloat(y[0]);
-							x_time_old = parseFloat(y[1]);
-							x_date = parseFloat(y[2]);
-					}
-			}
-			switch (comand) {
-				case "seria_bit":
-					return x_seria_bit;
-					break;
-				case "id":
-					return x_id;
-					break;
-				case "seria":
-					return x_seria;
-					break;
-				case "time":
-					return x_time;
-					break;
-				case "time_old":
-					return x_time_old;
-					break;
-				case "date":
-					return x_date;
-					break;
-			}
-		}
-    var pljsplayfrom = key.substr(0, 12);
-		var minutes_payer_release = (GetPlayerStorage("time") / 60).toFixed(2).replace(".", ":");
-		var dateObject_payer_release = new Date(GetPlayerStorage("date"));
-    var date_payer_release = dateObject_payer_release.toLocaleString()
-
-    if (pljsplayfrom == "pljsplayfrom") {
-			document.getElementById("HistoryNone").style.display = "none";
-			titleNum = titleNum + 1; 
-			if(titleNum < 12) {
-				var url = config["titels_api"]+'getTitle?id='+GetPlayerStorage("id")+'&filter=id,posters.small,names';
+		for (let i = 0; i < HistoryList.length; i++) {
+			if(i <= 10){
+				idH.push(HistoryList[i].id);
+				var minutes = (HistoryList[i].time[0] / 60).toFixed(2).replace(".", ":");
+				var dateObject = new Date(HistoryList[i].date);
+				var date = dateObject.toLocaleString()
 				var div = document.createElement('div');
 				document.getElementById('LineGenerator-History').appendChild(div);
 				div.className = 'LineCard-History';
-				div.setAttribute("onclick", `goRoute('/release', {id:${GetPlayerStorage("id")}})`);
-				div.id = 'article_history'+GetPlayerStorage("id");
+				div.setAttribute("onclick", `goRoute('/release', {id:${HistoryList[i].id}})`);
+				div.id = 'article_history'+HistoryList[i].id;
 				div.innerHTML = `
-					<img id="img${GetPlayerStorage("id")}" src="./img/poster.png" alt="">
+					<img class="img${HistoryList[i].id}" src="./img/poster.png" alt="">
 					<div class="LineCard-History-BlockText">
-						<p class="LineCard-History-Title" id="names${GetPlayerStorage("id")}"></p>
-						<p class="LineCard-History-Text">Серия ${GetPlayerStorage("seria")}   Минута ${minutes_payer_release}</p>
-						<p class="LineCard-History-Text">Дата ${date_payer_release}</p>
+						<p class="LineCard-History-Title names${HistoryList[i].id}"></p>
+						<p class="LineCard-History-Text">Серия ${HistoryList[i].serie}   Минута ${minutes}</p>
+						<p class="LineCard-History-Text">Дата ${date}</p>
 					</div>
 					`;
-
-				var page_content;
-				$.get(url, function(data){
-						page_content = data;
-						document.getElementById("img"+data["id"]).src = config["posters"]+""+data["posters"]["small"]["url"];
-						document.getElementById("names"+data["id"]).innerHTML = data["names"]["ru"];
-				});
 			}
-    }
-  }
+		}
+		b = idH.filter(function(element, index, array) {
+			if (array.lastIndexOf(element) == index) return element
+		})
+		var url = config["titels_api"]+'getTitles?id_list='+b+'&filter=id,posters.small,names.ru';
+		$.get(url, function(data){
+			for (let t = 0; t < data.length; t++) {
+				var elemIMG = document.getElementsByClassName("img"+data[t]["id"])
+				for (let i = 0; i < elemIMG.length; i++) {
+					elemIMG[i].src = config["posters"]+data[t]["posters"]["small"]["url"];
+				}
+				var elemNAME = document.getElementsByClassName("names"+data[t]["id"])
+				for (let j = 0; j < elemNAME.length; j++) {
+					elemNAME[j].innerHTML = data[t]["names"]["ru"];
+				}
+			}
+		});
+	}
 }

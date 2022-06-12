@@ -60,16 +60,18 @@ function parseURL(){
 }
 
 // Функция загрузки приложения 
-// 1. Получаем адрес страницы и запросы query
-// 2. Запуск функции загрузки нужной страницы
+// 1. Конвертация истории PlayerJS в историю Приложения
+// 2. Получаем адрес страницы и запросы query
+// 3. Запуск функции загрузки нужной страницы
 function initApp() {
+	historyLoad();
 	parseURL();
 	goRoute(href, query);
 }
 
-initApp.onload = function() {
-  goRoute(href, query);
-};
+// initApp.onload = function() {
+//   goRoute(href, query);
+// };
 
 // Обязательные функции, запросы и т.д.
 function paramsRoute(){
@@ -89,7 +91,7 @@ function pageColor(){
 // Функция запроса нужного контента
 function switchRoute(page, query){
 	pageColor()
-
+	
 	switch (page) {
 		case '/release':
 			page_release(query.id);
@@ -215,7 +217,7 @@ function appReloadApi(){
 	CatalogsList = null;
 	FavoritesList = null;
 	SearchList = null;
-	SeasonList = null;		
+	SeasonList = null;
 
 	paramsRoute();
 	switchRoute(href, query);

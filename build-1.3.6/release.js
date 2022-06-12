@@ -1,7 +1,8 @@
 var MySessID;
 var player;
 
-var id_t;
+var id_t,
+		name_t;
 var dataPlayer,
     dataPlayerSerie,
     cookie = localStorage.getItem('PHPSESSID');
@@ -331,8 +332,10 @@ function LoadApiServer(){
   })
 }
 
-// Функции заполнения контента
+
+// Функции заполнения контента релиза
 function GeneratorRelise(data){
+	name_t = data.names.ru;
 	var genres,
 		  voice,
       timing,
@@ -467,11 +470,25 @@ function GeneratorRelise(data){
 
 
 }
+
+// Функции заполнения контента плейлиста
 function GeneratorPlaySerie(data, id){
 	document.getElementById('PlaySerie').innerHTML = '';
 
 	for(let j = 0; data.player.series.last > j; j++) {
 		i = j+1;
+
+		minutes = "";
+		posterPercent = 0;
+
+		if(historyGet().length != 0){
+			if(historyGet('titel', id, i) != -1){
+				time = historyGet('titel', id, i).time[0]
+				minutes = "<br><span>" + (time / 60).toFixed(2).replace(".", ":") + "</span>";
+				posterPercent = historyGet('titel', id, i).time[0] / ( historyGet('titel', id, i).time[1] / 100)
+			}
+		}
+
 		poster = null;
 		if(data["player"]["playlist"][i]["preview"] == null){
 			poster = config["CustomPosters"] + "/anilibria_bot/getThumbnail/" + id + "/" + i + "/1.jpg";
@@ -480,14 +497,19 @@ function GeneratorPlaySerie(data, id){
 		}
 		var div = document.createElement('div');
 		document.getElementById('PlaySerie').appendChild(div);
-		div.setAttribute('onclick', `player.api("play", "id:${id}s${i}")`)
+		div.setAttribute('onclick', `releaseHistoryPlay("${id}", "${i}")`)
 		div.className = 'posterSerie';
 		div.innerHTML += `
-			<div class="posterSerieNum">Серия ${i}</div>
-			<img src="${poster}">
+			<div class="SerieBlock">
+				<div class="posterPercent" style="width: ${posterPercent}%"></div>
+				<div class="posterSerieNum">Серия ${i}${minutes}</div>
+				<img src="${poster}">
+			</div>
 		`;
 	}
 }
+
+// Функция подключения и настройки плеера
 function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
   var strPlayer = '';
   var my_skips_opening = localStorage.getItem('my_skips_opening');
@@ -595,6 +617,8 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
 		player.api("update:nativefullios",0);
 	}
 }
+
+// Функции отслеживания событий плеера
 function PlayerjsEvents(event,id,info){	
 	if(event=="stop"){
 		engine.destroy(); // Разрываем P2P раздачу
@@ -640,7 +664,7 @@ function PlayerjsEvents(event,id,info){
 	}
 
 	if(event=="pause"){
-		saveConfig(dynamic_text_his())
+		releaseHistorySave();
 	}
 
 	if(event=="fullscreen"){
@@ -650,13 +674,27 @@ function PlayerjsEvents(event,id,info){
 	if(event=="exitfullscreen"){
 		player_navigation('flex');
 	}
+
+	if(event=="seek"){
+		releaseHistorySave();
+	}
+
+	if(event=="time"){
+		if(Math.round(info) % 10 === 0){
+			releaseHistorySave();
+		}
+	}
 }
+
+// Функция открытия полноэкранного режима в мобильной версии
 function mobile_play_fullscreen(){
 	var width = document.documentElement.clientWidth;
 	if(width <= 800){
 		player.api("fullscreen");
 	}
 }
+
+// Функция скрытия элементов интерфейса в полноэкранном режиме
 function player_navigation(display){
 	if(display == "none"){
 		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#000000");
@@ -669,7 +707,7 @@ function player_navigation(display){
 		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#fbfbfb");
 		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#1c1c19");
 		
-		document.getElementById('navi').setAttribute("style", "display:flex;");
+		document.getElementById('navi').setAttribute("style", "");
 		document.getElementById('back_to_top').setAttribute("style", "");
 		document.body.setAttribute("style", "");
 	}
@@ -730,4 +768,27 @@ function addFavorite(id_t) {
   xhr.send();
   document.getElementById('delFavorite_rel').style.display = "";
   document.getElementById('addFavorite_rel').style.display = "none";
+}
+
+// Функция сохранения истории Приложения
+function releaseHistorySave(){
+	var playlistID = player.api("playlist_id").split('s');
+
+	var titel = playlistID[0];
+	var serie = playlistID[1];
+	var time = player.api("time");
+	var duration = player.api("duration");
+	var date = Date.now();
+	historySave(titel, serie, time, duration, date, name_t)
+}
+function releaseHistoryPlay(titel, serie){
+	playerID = "id:"+titel+"s"+serie;
+
+	if(historyGet().length != 0){
+		if(historyGet('titel', titel, serie) != -1){
+			time = historyGet('titel', titel, serie).time[0]
+			playerID = "id:"+titel+"s"+serie+"[seek:"+time+"]";
+		}
+	}
+	player.api("play", playerID)
 }
