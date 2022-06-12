@@ -485,7 +485,7 @@ function GeneratorPlaySerie(data, id){
 			if(historyGet('titel', id, i) != -1){
 				time = historyGet('titel', id, i).time[0]
 				minutes = "<br><span>" + (time / 60).toFixed(2).replace(".", ":") + "</span>";
-				posterPercent = historyGet('titel', id, i).time[0] / ( historyGet('titel', id, i).time[1] / 100)
+				posterPercent = "calc(" + historyGet('titel', id, i).time[0] / ( historyGet('titel', id, i).time[1] / 100) + "% - 20px)"
 			}
 		}
 
@@ -501,7 +501,7 @@ function GeneratorPlaySerie(data, id){
 		div.className = 'posterSerie';
 		div.innerHTML += `
 			<div class="SerieBlock">
-				<div class="posterPercent" style="width: ${posterPercent}%"></div>
+				<div class="posterPercent" style="width: ${posterPercent}"></div>
 				<div class="posterSerieNum">Серия ${i}${minutes}</div>
 				<img src="${poster}">
 			</div>

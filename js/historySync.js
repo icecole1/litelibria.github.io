@@ -186,10 +186,8 @@ async function questionConfigUpload(n){
 		var remoteConfig = await download(configFileId)
 		if(n == true){
 			localStorage.setItem('history', JSON.stringify(remoteConfig))
-			window.location.reload();
 		} else {
 			upload(configFileId, getConfig())
-			window.location.reload();
 		}
 	} catch(e) {
 		if (e.status === 404) {
