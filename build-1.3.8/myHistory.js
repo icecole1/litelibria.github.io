@@ -49,8 +49,7 @@ function page_myHistory() {
 }
 
 function onSignInHistory() {
-	if (isLoggedIn()) {
-		scheduleConfigSync(0);
+	if (googleLogIn) {
 		document.getElementById('signout-button').style.display = '';
 		document.getElementById('authorize-button').style.display = 'none';
 	} else {

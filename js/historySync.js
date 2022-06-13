@@ -8,55 +8,55 @@ var scopes = 'https://www.googleapis.com/auth/drive.appdata';
 var DEFAULT_CONFIG = []
 let configSyncTimeoutId
 
+let tokenClient;
+let gapiInited = false;
+let gisInited = false;
+let googleLogIn = false;
 
-function initClient() {
-	gapi.client.init({
-			apiKey: apiKey,
-			discoveryDocs: discoveryDocs,
-			clientId: clientId,
-			scope: scopes
-	}).then(() => {
-		gapi.auth2.getAuthInstance().isSignedIn.listen(onSignIn);
-	}, error => {
-		console.log('Failed to init GAPI client', error)
-		initHistory('Failed')
-})
+function gapiLoaded() {
+	gapi.load('client', intializeGapiClient);
 }
-
-function isGapiLoaded() {
-	return gapi && gapi.auth2
+async function intializeGapiClient() {
+	await gapi.client.init({
+		apiKey: apiKey,
+		discoveryDocs: discoveryDocs,
+	});
+	gapiInited = true;
+}
+function gisLoaded() {
+	tokenClient = google.accounts.oauth2.initTokenClient({
+		client_id: clientId,
+		scope: scopes,
+		callback: '', // defined later
+	});
+	gisInited = true;
 }
 
 function logIn() {
-	if (isGapiLoaded()) {
-		gapi.auth2.getAuthInstance().signIn();
+	tokenClient.callback = async (resp) => {
+		if (resp.error !== undefined) {
+			throw (resp);
+		}
 		document.getElementById('signout-button').style.display = '';
 		document.getElementById('authorize-button').style.display = 'none';
-		questionConfig();
+		initHistory();
+		googleLogIn = true;
+	};
+	if (gapi.client.getToken() === null) {
+		tokenClient.requestAccessToken({prompt: 'consent'});
+	} else {
+		tokenClient.requestAccessToken({prompt: ''});
 	}
 }
-
 function logOut() {
-	if (isGapiLoaded()) {
-		gapi.auth2.getAuthInstance().signOut();
+	const token = gapi.client.getToken();
+	if (token !== null) {
+		google.accounts.oauth2.revoke(token.access_token);
+		gapi.client.setToken('');
 		document.getElementById('signout-button').style.display = 'none';
 		document.getElementById('authorize-button').style.display = '';
 	}
 }
-
-function isLoggedIn() {
-	return isGapiLoaded() && gapi.auth2.getAuthInstance().isSignedIn.get()
-}
-
-async function onSignIn() {
-	// обработчик события логина/логаута (см. выше)
-	if (isLoggedIn()) {
-			initHistory();
-	} else {
-			localStorage.removeItem('configFileId');
-	}
-}
-
 
 function prom(gapiCall, argObj) {
 	return new Promise((resolve, reject) => {
@@ -137,7 +137,7 @@ function getConfig() {
 }
 
 async function saveConfig(newConfig) {
-	if (isLoggedIn()) {
+	if (googleLogIn) {
 		const configFileId = await getConfigFileId()
 		upload(configFileId, newConfig)
 	}
@@ -211,7 +211,7 @@ function scheduleConfigSync(delay) {
 }
 
 function initHistory(){
-	if (isLoggedIn()) {
+	if (gapiInited && gisInited) {
 		questionConfig()
     scheduleConfigSync()
   }

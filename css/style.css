@@ -2064,6 +2064,69 @@ details span {
 	display: flex;
 	flex-direction: column;
 }
+.ReleaseBlockRecomend{
+	height: auto;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 40px;
+	text-align: left;
+	margin-bottom: 10px;
+	background: var(--ColorThemes1);
+	border-radius: 15px;
+	max-width: calc(800px - 10px);
+}
+@media (max-width: 800px){
+	.ReleaseBlockRecomend{
+		margin: 20px 10px 10px 10px;
+	}
+}
+.ReleaseBlockRecomend p{
+	font-size: 17px;
+	margin: 10px 0 0 10px;
+	color: var(--ColorThemes3);
+}
+.ReleaseBlockRecomendSlider{
+	overflow-x: auto;
+	white-space: nowrap;
+	align-items: start;
+	display: -webkit-box;
+	padding: 10px 0;
+}
+.RecomendSliderCard{
+	width: 120px;
+	aspect-ratio: 7 / 10;
+	border-radius: 15px;
+	background: var(--ColorThemes2);
+	margin: 5px 8px 5px 0;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: .3s ease;
+}
+.RecomendSliderCard:hover{
+	cursor: pointer;
+	box-shadow: var(--shadow-l3);
+	transition: .3s ease;
+	-webkit-transform: scale(1.02) translateY(0);
+	-o-transform: scale(1.02) translateY(0);
+	transform: scale(1.02) translateY(0);
+}
+.RecomendSliderCard svg {
+	fill: var(--ColorThemes1);
+	width: 75px;
+	z-index: 1;
+	position: absolute;
+}
+.RecomendSliderCard img{
+	border-radius: 15px;
+	z-index: 5;
+	width: 121px;
+	aspect-ratio: 7 / 10;
+	position: relative;
+}
+
 .ReleaseBlockSlidersDetails{
 	height: auto;
 	position: relative;

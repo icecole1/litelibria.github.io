@@ -166,6 +166,14 @@ function page_release(id) {
 		</div>
 
 		<div class="ReleaseBlockSliders">	
+			<div class="ReleaseBlockRecomend" id="ReleaseRecomendDisplay" style="display:none">
+				<p>Связанные релизы</p>
+				<div class="ReleaseBlockRecomendSlider" id="ReleaseRecomend">
+					<div style="width:8px;"></div>
+					
+				</div>
+			</div>
+
 			<details class="ReleaseBlockSlidersDetails">
 				<summary>Информация о вашем подключении.</summary>
 				
@@ -207,6 +215,7 @@ function page_release(id) {
 
 	LoadRelisePHPSESSID();
 	LoadApiRelise(id);
+	LoadApiReliseRecomend(id);
 	LoadApiServer();
 
 	appWidth();
@@ -270,6 +279,22 @@ function LoadApiReliseFav(id_t) {
   			document.getElementById('addFavorite_rel').style.display = "";
       }
     }
+  })
+}
+function LoadApiReliseRecomend(id){
+	url = 'https://' + config["domains"]+'/RR/RelatedReleases.json';
+	fetch(url)
+  .then(function (response) {
+    if (response.status !== 200) {
+      return Promise.reject(new Error(response.statusText))
+    }
+    return Promise.resolve(response)
+  })
+  .then(function (response) {
+    return response.json()
+  })
+  .then(function (data) {
+		GeneratorReliseRecomend(data, id);
   })
 }
 function LoadApiServer(){
@@ -507,6 +532,39 @@ function GeneratorPlaySerie(data, id){
 			</div>
 		`;
 	}
+}
+
+// Функции заполнения контента связаных релизов
+function GeneratorReliseRecomend(data, id){
+	FilterTitel = data.filter(function(items){
+		return items.find(function(element){
+			return element == id;
+		})
+	});
+
+	if(FilterTitel.length > 0){
+		document.getElementById('ReleaseRecomendDisplay').style.display = '';
+
+		for (let j = 0; FilterTitel[0].length > j; j++) {
+			var div = document.createElement('div');
+			document.getElementById('ReleaseRecomend').appendChild(div);
+			div.className = 'RecomendSliderCard'
+			div.setAttribute("onclick", `goRoute('/release', {id:${FilterTitel[0][j]}})`)
+			div.innerHTML += `
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"></path></svg>
+				<img src="" alt="" id="recomendPoster${FilterTitel[0][j]}">
+			`;
+		}
+
+		var url = config["titels_api"]+'getTitles?id_list='+FilterTitel[0]+'&filter=id,posters.small,names.ru';
+		console.log(url);
+		$.get(url, function(data){
+			for (let t = 0; t < data.length; t++) {
+				document.getElementById("recomendPoster"+data[t]["id"]).src = config["posters"]+data[t]["posters"]["small"]["url"];
+			}
+		});
+	}
+
 }
 
 // Функция подключения и настройки плеера

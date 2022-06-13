@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Related Releases</title>
+</head>
+<body>
+	<style>		
+		table{
+			border: 1px solid #333;
+			width: 100%;
+		}
+		td {
+			border: 1px solid #333;
+			min-width: 40px;
+		}
+
+		thead,
+		tfoot {
+			background-color: #333;
+			color: #fff;
+		}
+		.num{
+			width: 40px;
+			text-align: center;
+		}
+		.blockCard{
+			width: 100%;
+		}
+		.card{
+			float: left;
+    	margin: 5px;
+			display: flex;
+			width: 150px;
+			height: 139px;
+			flex-direction: column;
+			align-items: center;
+			background: #e7e7e7;
+			color: #545454;
+			border-radius: 15px;
+			overflow: hidden;
+			padding: 10px;
+			justify-content: space-between;
+		}
+		.card img{
+			width: 100%;
+			border-radius: 15px;
+		}
+		.BlockLR{
+			display: flex;
+			width: 100%;
+			align-items: center;
+			justify-content: space-evenly;
+			height: 20px;
+			flex-direction: row;
+		}
+		.BlockLR button{
+			width: 25px;
+    	height: 20px;
+		}
+		.BlockLR p{
+			width: 100px;
+   		text-align: center;
+		}
+	</style>
+	<input type="file" onchange="showFile(this)">
+	<br>
+	<br>
+	<input type="text" id="qReleases" placeholder="ID искомого релиза">
+	<input type="text" id="NewID" placeholder="ID нового релиза">
+	<button onclick="addReleases()">Добавить</button>
+	<br>
+	<br>
+	<button onclick="downloadFile()">Скачать</button>
+	<a id="downloadAnchorElem" style="display:none"></a>
+	<br>
+	<br>
+	<input type="text" id="IDReleases" placeholder="ID релиза">
+	<button onclick="searchReleases()">Найти</button>
+
+	<br><br>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th colspan="2">Релизы</th>
+				</tr>
+				<tr>
+					<th>№</th>
+					<th>ID</th>
+				</tr>
+			</thead>
+			<tbody id="content">
+
+			</tbody>
+		</table>
+	</div>
+<script>
+	var LocalReleases;
+	
+	function showFile(input) {
+		let file = input.files[0];
+		let reader = new FileReader();
+		reader.readAsText(file);
+		reader.onload = function() {
+			LocalReleases = JSON.parse(reader.result);
+			GeneratorContent();
+		};
+		reader.onerror = function() {
+			console.log(reader.error);
+		};
+	}
+
+	function downloadFile() {
+		var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(LocalReleases));
+		var dlAnchorElem = document.getElementById('downloadAnchorElem');
+		dlAnchorElem.setAttribute("href",     dataStr     );
+		dlAnchorElem.setAttribute("download", "RelatedReleases.json");
+		dlAnchorElem.click();
+	}
+
+	function addReleases(){
+		qReleases = document.getElementById('qReleases').value;
+		NewID = document.getElementById('NewID').value;
+		FilterTitel = LocalReleases.filter(function(items){
+			return items.find(function(element){
+				return element == qReleases;
+			})
+		});
+		FilterTitelNewID = LocalReleases.filter(function(items){
+			return items.find(function(element){
+				return element == NewID;
+			})
+		});
+
+		if(FilterTitel.length == 0){
+			if(FilterTitelNewID.length == 0){
+				LocalReleases.unshift([parseInt(qReleases), parseInt(NewID)]);
+			} else {
+				LocalReleases.unshift([parseInt(qReleases)]);
+			}
+		} else {
+			qNewID = LocalReleases.filter(function(items){
+				return items.find(function(element){
+					return element == NewID;
+				})
+			});
+			if(qNewID.length == 0){
+				FilterTitel[0].push(parseInt(NewID));
+			} else {
+				console.log("Error: This release has already been added");
+			}
+		}
+
+		console.log(LocalReleases);
+		GeneratorContent()
+	}
+
+	function searchReleases(){
+		IDReleases = document.getElementById('IDReleases').value;
+		FilterTitel = LocalReleases.filter(function(items){
+			return items.find(function(element){
+				return element == IDReleases;
+			})
+		});
+		GeneratorContent(FilterTitel)
+	}
+
+	function ReleaseLR(id, LR){
+		a = LocalReleases.filter(function(items){
+			return items.find(function(element){
+				return element == id;
+			})
+		})
+		b = a[0]
+		index = b.indexOf(id)
+
+		if(LR == 'L'){
+			if(b.indexOf(id) != 0){
+				newIndex = b.indexOf(id) - 1
+			} else {
+				newIndex = 0
+			}
+		} else {
+			newIndex = b.indexOf(id) + 1
+		}
+
+		b.splice(index, 1)
+		b.splice(newIndex, 0, id)
+		GeneratorContent()
+	}
+
+	function GeneratorContent(arr = null) {
+		document.getElementById('content').innerHTML = "";
+		if(arr == null){
+			arrReleases = LocalReleases
+		} else {
+			arrReleases = arr
+		}
+
+		for (let i = 0; arrReleases.length > i; i++) {
+			var tr = document.createElement('tr');
+			document.getElementById('content').appendChild(tr);
+			tr.innerHTML += `
+				<td><div class="num">${i}</div></td>
+				<td><div id="BlockReleases${i}" class="blockCard"></div></td>
+			`;
+
+			for (let j = 0; arrReleases[i].length > j; j++) {
+				var div = document.createElement('div');
+				document.getElementById('BlockReleases' + i).appendChild(div);
+				div.className = 'card'
+				div.innerHTML += `
+					<img src="https://api.7o7.co/anilibria_bot/getPoster/${arrReleases[i][j]}">
+					<div class="BlockLR">
+						<button onclick="ReleaseLR(${arrReleases[i][j]}, 'L')"><</button>
+						<p>${arrReleases[i][j]}</p>
+						<button onclick="ReleaseLR(${arrReleases[i][j]}, 'R')">></button>
+					<div>
+				`;
+			}
+		}
+	}
+</script>
+</body>
+</html>
