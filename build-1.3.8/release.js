@@ -250,7 +250,8 @@ function LoadApiRelise(id) {
     }
 		dataPlayer = data["player"];
     dataPlayerSerie = data["player"]["series"]["last"];
-    playerPlaylist(id, dataPlayer, dataPlayerSerie);
+		dataPlayerFirst = data["player"]["series"]["first"]-1
+    playerPlaylist(id, dataPlayer, dataPlayerSerie, dataPlayerFirst);
 
 		preloader_none();
   })
@@ -499,8 +500,8 @@ function GeneratorRelise(data){
 // Функции заполнения контента плейлиста
 function GeneratorPlaySerie(data, id){
 	document.getElementById('PlaySerie').innerHTML = '';
-
-	for(let j = 0; data.player.series.last > j; j++) {
+	for(let j = data.player.series.first-1; data.player.series.last > j; j++) {
+		console.log(data.player.series.last);
 		i = j+1;
 
 		minutes = "";
@@ -568,10 +569,10 @@ function GeneratorReliseRecomend(data, id){
 }
 
 // Функция подключения и настройки плеера
-function playerPlaylist(id_t, dataPlayer, dataPlayerSerie) {
+function playerPlaylist(id_t, dataPlayer, dataPlayerSerie, dataPlayerFirst) {
   var strPlayer = '';
   var my_skips_opening = localStorage.getItem('my_skips_opening');
-  for (let i = 0; i < dataPlayerSerie; i++) {
+  for (let i = dataPlayerFirst; i < dataPlayerSerie; i++) {
     var poster_preview
     var i2 = i+1;
 		var PlayerHost;
