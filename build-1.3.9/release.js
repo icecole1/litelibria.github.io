@@ -501,7 +501,6 @@ function GeneratorRelise(data){
 function GeneratorPlaySerie(data, id){
 	document.getElementById('PlaySerie').innerHTML = '';
 	for(let j = data.player.series.first-1; data.player.series.last > j; j++) {
-		console.log(data.player.series.last);
 		i = j+1;
 
 		minutes = "";
@@ -511,7 +510,7 @@ function GeneratorPlaySerie(data, id){
 			if(historyGet('titel', id, i) != -1){
 				time = historyGet('titel', id, i).time[0]
 				minutes = "<br><span>" + (time / 60).toFixed(2).replace(".", ":") + "</span>";
-				posterPercent = "calc(" + historyGet('titel', id, i).time[0] / ( historyGet('titel', id, i).time[1] / 100) + "% - 20px)"
+				posterPercent = historyGet('titel', id, i).time[0] / ( historyGet('titel', id, i).time[1] / 100) + "%"
 			}
 		}
 
@@ -527,7 +526,7 @@ function GeneratorPlaySerie(data, id){
 		div.className = 'posterSerie';
 		div.innerHTML += `
 			<div class="SerieBlock">
-				<div class="posterPercent" style="width: ${posterPercent}"></div>
+				<div class="posterPercentBlock"><span class="posterPercent" style="width: ${posterPercent}"></span></div>
 				<div class="posterSerieNum">Серия ${i}${minutes}</div>
 				<img src="${poster}">
 			</div>
@@ -558,7 +557,6 @@ function GeneratorReliseRecomend(data, id){
 		}
 
 		var url = config["titels_api"]+'getTitles?id_list='+FilterTitel[0]+'&filter=id,posters.small,names.ru';
-		console.log(url);
 		$.get(url, function(data){
 			for (let t = 0; t < data.length; t++) {
 				document.getElementById("recomendPoster"+data[t]["id"]).src = config["posters"]+data[t]["posters"]["small"]["url"];

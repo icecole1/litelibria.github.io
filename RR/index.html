@@ -34,7 +34,7 @@
     	margin: 5px;
 			display: flex;
 			width: 150px;
-			height: 139px;
+			height: 160px;
 			flex-direction: column;
 			align-items: center;
 			background: #e7e7e7;
@@ -61,10 +61,18 @@
     	height: 20px;
 		}
 		.BlockLR p{
-			width: 100px;
    		text-align: center;
 		}
+		.BlockDP{
+			display: flex;
+			width: 100%;
+			align-items: center;
+			justify-content: space-evenly;
+			height: 20px;
+			flex-direction: row;
+		}
 	</style>
+	<span>Вставьте готовый файл RelatedReleases.json если он у вас есть.</span>
 	<input type="file" onchange="showFile(this)">
 	<br>
 	<br>
@@ -79,8 +87,15 @@
 	<br>
 	<input type="text" id="IDReleases" placeholder="ID релиза">
 	<button onclick="searchReleases()">Найти</button>
+	<br>
+	<br>
+	<span>Вставьте готовый файл <a href="binding.html">binding.json</a></span>
+	<input type="file" onchange="showFile2(this)">
 
-	<br><br>
+	<p id="mess" style="color: green;display:none;">Подождите немного</p>
+
+	<br>
+	<br>
 	<div>
 		<table>
 			<thead>
@@ -98,8 +113,8 @@
 		</table>
 	</div>
 <script>
-	var LocalReleases;
-	
+	var LocalReleases = [];
+	var LocalReleasesSearch = [];
 	function showFile(input) {
 		let file = input.files[0];
 		let reader = new FileReader();
@@ -107,6 +122,21 @@
 		reader.onload = function() {
 			LocalReleases = JSON.parse(reader.result);
 			GeneratorContent();
+		};
+		reader.onerror = function() {
+			console.log(reader.error);
+		};
+	}
+	function showFile2(input) {
+		let file = input.files[0];
+		let reader = new FileReader();
+		reader.readAsText(file);
+		reader.onload = function() {
+			document.getElementById('mess').style.display = "block";
+			LocalReleasesSearch = JSON.parse(reader.result);
+			setTimeout(function(){
+				GeneratorSearch();
+			}, 200)
 		};
 		reader.onerror = function() {
 			console.log(reader.error);
@@ -121,9 +151,19 @@
 		dlAnchorElem.click();
 	}
 
-	function addReleases(){
-		qReleases = document.getElementById('qReleases').value;
-		NewID = document.getElementById('NewID').value;
+	function addReleases(id1, id2){
+		console.log(id1, id2);
+		if(id1 == null){
+			qReleases = document.getElementById('qReleases').value;
+		} else {
+			qReleases = id1;
+		}
+		if(id2 == null){
+			NewID = document.getElementById('NewID').value;
+		} else {
+			NewID = id2;
+		}
+
 		FilterTitel = LocalReleases.filter(function(items){
 			return items.find(function(element){
 				return element == qReleases;
@@ -168,7 +208,7 @@
 		GeneratorContent(FilterTitel)
 	}
 
-	function ReleaseLR(id, LR){
+	function ReleaseLRDP(id, LR, dell, transfer){
 		a = LocalReleases.filter(function(items){
 			return items.find(function(element){
 				return element == id;
@@ -177,29 +217,49 @@
 		b = a[0]
 		index = b.indexOf(id)
 
-		if(LR == 'L'){
-			if(b.indexOf(id) != 0){
-				newIndex = b.indexOf(id) - 1
-			} else {
-				newIndex = 0
-			}
-		} else {
-			newIndex = b.indexOf(id) + 1
-		}
+		if(dell == true){
+			b.splice(index, 1)
 
-		b.splice(index, 1)
-		b.splice(newIndex, 0, id)
+		} else if(transfer == true){
+			let transferID = prompt("ID искомого релиза", b[0]);
+			if (transferID == null || transferID == "") {
+				console.log('The release ID you are looking for was not specified.');
+			} else {
+				b.splice(index, 1)
+				addReleases(transferID, id)
+			}
+
+		} else {
+			if(LR == 'L'){
+				if(b.indexOf(id) != 0){
+					newIndex = b.indexOf(id) - 1
+				} else {
+					newIndex = 0
+				}
+			} else {
+				newIndex = b.indexOf(id) + 1
+			}
+			b.splice(index, 1)
+			b.splice(newIndex, 0, id)
+		}
 		GeneratorContent()
 	}
 
 	function GeneratorContent(arr = null) {
+		document.getElementById('mess').style.display = "none";
+
 		document.getElementById('content').innerHTML = "";
 		if(arr == null){
 			arrReleases = LocalReleases
 		} else {
 			arrReleases = arr
 		}
-
+		arrReleases.filter(element => element !== null)
+		for (let j = 0; j < arrReleases.length; j++) {
+			if(arrReleases[j].length == 0){
+				arrReleases.splice(j, 1)
+			}
+		}
 		for (let i = 0; arrReleases.length > i; i++) {
 			var tr = document.createElement('tr');
 			document.getElementById('content').appendChild(tr);
@@ -215,13 +275,27 @@
 				div.innerHTML += `
 					<img src="https://api.7o7.co/anilibria_bot/getPoster/${arrReleases[i][j]}">
 					<div class="BlockLR">
-						<button onclick="ReleaseLR(${arrReleases[i][j]}, 'L')"><</button>
+						<button onclick="ReleaseLRDP(${arrReleases[i][j]}, 'L', false, false)"><</button>
 						<p>${arrReleases[i][j]}</p>
-						<button onclick="ReleaseLR(${arrReleases[i][j]}, 'R')">></button>
-					<div>
+						<button onclick="ReleaseLRDP(${arrReleases[i][j]}, 'R', false, false)">></button>
+					</div>
+					<div class="BlockDP">
+						<button onclick="ReleaseLRDP(${arrReleases[i][j]}, '', true, false)" style="color: red;">Удалить</button>
+						<button onclick="ReleaseLRDP(${arrReleases[i][j]}, '', false, true)">Перенести</button>
+					</div>
 				`;
 			}
 		}
+	}
+
+	function GeneratorSearch(){
+		for (let i = 0; i < LocalReleasesSearch.length; i++) {
+			for (let j = 0; j < LocalReleasesSearch[i][1].length; j++) {
+				addReleases(LocalReleasesSearch[i][0], LocalReleasesSearch[i][1][j])
+			}
+		}
+		console.log(LocalReleases);
+
 	}
 </script>
 </body>

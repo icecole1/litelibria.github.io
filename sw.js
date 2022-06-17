@@ -1,8 +1,13 @@
 var CACHE_PREFIX = 'Satera';
-var CACHE_VERSION = '1.3.8';
+
+var CACHE_VERSION_MAJOR = 1;
+var CACHE_VERSION_MINOR = 3;
+var CACHE_VERSION_PATCH = 9;
+
+var CACHE_VERSION = CACHE_VERSION_MAJOR+'.'+CACHE_VERSION_MINOR+'.'+CACHE_VERSION_PATCH;
 
 const staticCacheName = 's-'+CACHE_PREFIX+'-'+CACHE_VERSION;
-const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION;
+const dynamicCacheName = 'd-'+CACHE_PREFIX+'-'+CACHE_VERSION_MAJOR+'.'+CACHE_VERSION_MINOR;
 
 const assetUrls = [
 	'/',
