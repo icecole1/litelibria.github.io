@@ -43,7 +43,8 @@ function logIn() {
 		googleLogIn = true;
 	};
 	if (gapi.client.getToken() === null) {
-		tokenClient.requestAccessToken({prompt: 'consent'});
+		// tokenClient.requestAccessToken({prompt: 'consent'});
+		tokenClient.requestAccessToken({prompt: ''});
 	} else {
 		tokenClient.requestAccessToken({prompt: ''});
 	}
@@ -186,8 +187,19 @@ async function questionConfigUpload(n){
 	try {
 		var remoteConfig = await download(configFileId)
 		if(n == true){
+			
 			localStorage.setItem('history', JSON.stringify(remoteConfig))
 			historyConvert();
+			setTimeout(function (){
+				document.getElementById('HistoryGenerator').innerHTML = `
+				<div id="HistoryNone">
+					<br /><br />
+					<img src="img/libriatyan/4.webp" style="max-width: 145px;">
+					<br /><br />
+					<p style="color: var(--ColorThemes3);">Пока пусто...</p>
+				</div>`;
+				GeneratorHistory();
+			}, 500)
 		} else {
 			upload(configFileId, getConfig())
 		}
