@@ -25,20 +25,25 @@ function page_options() {
 		</div>
 
 		<!-- Блок Авторизации	 -->
-		<div id="logout_profile">
-      <div class="OptionsAuth">
-				<form method="post" name="form_login" id="form_login">
+		<div class="OptionsBlockCard" id="logout_profile">
+			<div class="OptionsCard">
+				<h3>Авторизация</h3>
+				<br>
+				<form method="post" name="form_login" id="form_login" class="formMirror">
 					<p id="error_mes" style="display: none">Неверный логин или пароль!</p><br />
-					<div style="width: 220px;">
-						<label>Логин</label><input required type="text" name="mail" class="loginsBox" style="margin-left: 23px;">
-						<label>Пароль</label><input required type="password" name="passwd" class="loginsBox"><br />
-						<input type="submit" class="OptionsButtom" id="submit" value="Вход">
+					<div class="blockMirror">
+						<label>Логин</label><input required type="text" name="mail" class="MirrorBox">
 					</div>
 					<br>
-					<p class="OptionsAuthText">*LiteLibria не собирает никаких личных данных о вас, они хранятся только на вашем устройстве!</p>
-					<p class="OptionsAuthText">*Регистрация доступна на сайте <a href="https://www.anilibria.tv/">AniLibria.TV</a>!</p>
+					<div class="blockMirror">
+						<label>Пароль</label><input required type="password" name="passwd" class="MirrorBox">
+					</div>
+					<br>
+					<input type="submit" class="OptionsCardButton" id="submit" value="Вход" data-state="Select">
 				</form>
-      </div>
+				<p class="settings_filter_p">*LiteLibria не собирает никаких личных данных о вас, они хранятся только на вашем устройстве!</p>
+				<p class="settings_filter_p">*Регистрация доступна на сайте <a href="https://www.anilibria.tv/">AniLibria.TV</a>!</p>
+			</div>
     </div>
 
 		<div class="OptionsBlockCard">
@@ -47,13 +52,13 @@ function page_options() {
 				<p class="settings_filter_p">Пропуск опенинга</p>
 				<div id="settings_home_block_style" style="margin-bottom: 15px;">
 					<button id="opening1_style" class="OptionsCardButton" title="Выбрать" onclick="SetOpening_style('1')">Автоматически</button>
-					<button id="opening2_style" class="OptionsCardButton" title="Выбрать" onclick="SetOpening_style('0')" style="background: var(--ColorThemes2);color: var(--ColorThemes3) !important;">Отключить</button>
+					<button id="opening2_style" class="OptionsCardButton" title="Выбрать" onclick="SetOpening_style('0')">Отключить</button>
 				</div>
-				<hr style="border: 1px solid var(--ColorThemes2);"/>
+				<hr>
 				<p class="settings_filter_p">Нативный плеер iOS</p>
 				<div id="settings_home_block_style" style="margin-bottom: 15px;">
 					<button id="Player1_style" class="OptionsCardButton" title="Выбрать" onclick="SetPlayer_style('1')">Включить</button>
-					<button id="Player2_style" class="OptionsCardButton" title="Выбрать" onclick="SetPlayer_style('2')" style="background: var(--ColorThemes2);color: var(--ColorThemes3) !important;">Отключить</button>
+					<button id="Player2_style" class="OptionsCardButton" title="Выбрать" onclick="SetPlayer_style('2')">Отключить</button>
 				</div>
 				<p class="settings_filter_p">*Нажмите для выбора</p>
 			</div>
@@ -63,8 +68,8 @@ function page_options() {
 				<p class="settings_filter_p">Тема</p>
 				<div id="settings_home_block_style" style="margin-bottom: 15px;">
 					<button id="Theme1_style" class="OptionsCardButton" title="Выбрать" onclick="SetThemeEditStyle('auto')">Автоматическая</button>
-					<button id="Theme2_style" class="OptionsCardButton" title="Выбрать" onclick="SetThemeEditStyle('theme1')" style="background: var(--ColorThemes2);color: var(--ColorThemes3) !important;">Светлая</button>
-					<button id="Theme3_style" class="OptionsCardButton" title="Выбрать" onclick="SetThemeEditStyle('theme2')" style="background: var(--ColorThemes2);color: var(--ColorThemes3) !important;">Темная</button>
+					<button id="Theme2_style" class="OptionsCardButton" title="Выбрать" onclick="SetThemeEditStyle('theme1')">Светлая</button>
+					<button id="Theme3_style" class="OptionsCardButton" title="Выбрать" onclick="SetThemeEditStyle('theme2')">Темная</button>
 				</div>
 				<p class="settings_filter_p">*Нажмите для выбора</p>
 			</div>
@@ -74,30 +79,44 @@ function page_options() {
 				<p class="settings_filter_p">Режим</p>
 				<div id="settings_home_block_style" style="margin-bottom: 15px;">
 					<button id="MirrorModeOff" class="OptionsCardButton" title="Выбрать" onclick="SetMirrorMode('false')">Отключено</button>
-					<button id="MirrorModeOn" class="OptionsCardButton" title="Выбрать" onclick="SetMirrorMode('true')" style="background: var(--ColorThemes2);color: var(--ColorThemes3) !important;">Включено</button>
+					<button id="MirrorModeOn" class="OptionsCardButton" title="Выбрать" onclick="SetMirrorMode('true')">Включено</button>
 				</div>
-				<hr style="border: 1px solid var(--ColorThemes2);"/>
+				<hr>
 				<p class="settings_filter_p">Своё зеркало</p>
 				<br>
-				<center>
-					<form name="formMirror" class="formMirror">
-						<div class="blockMirror">
-							<label>API</label><input required type="text" name="MirrorTitels" id="MirrorTitels" class="MirrorBox" placeholder="https://api.sdev.xyz/v2/">
-						</div>
-						<br>
-						<div class="blockMirror">
-							<label>Постеры</label><input required type="text" name="MirrorPosters" id="MirrorPosters" class="MirrorBox" placeholder="https://tb2og.anilib.top">
-						</div>
-						<br>
-						<button class="OptionsCardButton" title="Выбрать" onclick="SetMirrorString()">Сохранить</button>
-					</form>
-				</center>
+				<form name="formMirror" class="formMirror">
+					<div class="blockMirror">
+						<label>API</label><input required type="text" name="MirrorTitels" id="MirrorTitels" class="MirrorBox" placeholder="https://api.sdev.xyz/v2/">
+					</div>
+					<br>
+					<div class="blockMirror">
+						<label>Постеры</label><input required type="text" name="MirrorPosters" id="MirrorPosters" class="MirrorBox" placeholder="https://tb2og.anilib.top">
+					</div>
+					<br>
+					<button class="OptionsCardButton" title="Выбрать" onclick="SetMirrorString()" data-state="Select">Сохранить</button>
+				</form>
+				<p class="settings_filter_p">*Нажмите для выбора</p>
+			</div>
+
+			<div class="OptionsCard">
+				<h3>Полезное</h3>
+				<p class="settings_filter_p">Ссылки</p>
+				<div id="settings_home_block_style" style="margin: 15px 0;">
+					<a href="https://rozenrod.com" class="OptionsCardButton">Разработчик</a>
+					<a href="game.html" class="OptionsCardButton">Встроенная игра</a>
+				</div>
+				<hr>
+				<p class="settings_filter_p">Версия приложения</p>
+				<div id="settings_home_block_style" style="margin: 15px 0;">
+					<a href="buildHistory.html" class="OptionsCardButton"><span id="app_version" title="Код обновления">app version</span></a>
+				</div>
 				<p class="settings_filter_p">*Нажмите для выбора</p>
 			</div>
 		</div>
 
 	</div>
   `;
+	document.getElementById('app_version').innerHTML = `${config["cache_prefix"]}-${config["cache_version"]}`;
 
 
 	const form_login = document.querySelector('#form_login');
@@ -218,43 +237,43 @@ function GetThemeEditStyle(){
 	theme = localStorage.getItem('my_theme');
 
 	if (theme == 'auto') {
-  	document.getElementById('Theme1_style').setAttribute("style", "");
- 		document.getElementById('Theme2_style').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
-  	document.getElementById('Theme3_style').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
+  	document.getElementById('Theme1_style').dataset.state = 'Select';
+ 		document.getElementById('Theme2_style').dataset.state = '';
+  	document.getElementById('Theme3_style').dataset.state = '';
 		$('link[href="css/theme2.css"]').attr('href', 'css/auto.css');
 	} else if (theme == 'theme1') {
-  	document.getElementById('Theme1_style').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
- 		document.getElementById('Theme2_style').setAttribute("style", "");
-  	document.getElementById('Theme3_style').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
+  	document.getElementById('Theme1_style').dataset.state = '';
+ 		document.getElementById('Theme2_style').dataset.state = 'Select';
+  	document.getElementById('Theme3_style').dataset.state = '';
 		$('link[href="css/theme2.css"]').attr('href', 'css/theme1.css');
 	} else if (theme == 'theme2') {
-  	document.getElementById('Theme1_style').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
- 		document.getElementById('Theme2_style').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
-  	document.getElementById('Theme3_style').setAttribute("style", "");
+  	document.getElementById('Theme1_style').dataset.state = '';
+ 		document.getElementById('Theme2_style').dataset.state = '';
+  	document.getElementById('Theme3_style').dataset.state = 'Select';
 		$('link[href="css/theme2.css"]').attr('href', 'css/theme2.css');
 	}
 }
 function SetThemeEditStyle(theme){
 	if (theme == 'auto') {
 		localStorage.setItem('my_theme', 'auto');
-  	document.getElementById('Theme1_style').setAttribute("style", "");
- 		document.getElementById('Theme2_style').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
-  	document.getElementById('Theme3_style').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
+  	document.getElementById('Theme1_style').dataset.state = 'Select';
+ 		document.getElementById('Theme2_style').dataset.state = '';
+  	document.getElementById('Theme3_style').dataset.state = '';
 		$('link[href="css/theme1.css"]').attr('href', 'css/auto.css');
 		$('link[href="css/theme2.css"]').attr('href', 'css/auto.css');
 
 	} else if (theme == 'theme1') {
 		localStorage.setItem('my_theme', 'theme1');
-  	document.getElementById('Theme1_style').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
- 		document.getElementById('Theme2_style').setAttribute("style", "");
-  	document.getElementById('Theme3_style').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
+  	document.getElementById('Theme1_style').dataset.state = '';
+ 		document.getElementById('Theme2_style').dataset.state = 'Select';
+  	document.getElementById('Theme3_style').dataset.state = '';
 		$('link[href="css/auto.css"]').attr('href', 'css/theme1.css');
 		$('link[href="css/theme2.css"]').attr('href', 'css/theme1.css');
 	} else if (theme == 'theme2') {
 		localStorage.setItem('my_theme', 'theme2');
-  	document.getElementById('Theme1_style').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
- 		document.getElementById('Theme2_style').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
-  	document.getElementById('Theme3_style').setAttribute("style", "");
+  	document.getElementById('Theme1_style').dataset.state = '';
+ 		document.getElementById('Theme2_style').dataset.state = '';
+  	document.getElementById('Theme3_style').dataset.state = 'Select';
 		$('link[href="css/auto.css"]').attr('href', 'css/theme2.css');
 		$('link[href="css/theme1.css"]').attr('href', 'css/theme2.css');
 	}
@@ -266,23 +285,23 @@ function GetMirrorMode(){
 
 	if(mode == 'false'){
 		localStorage.setItem('GetMirror', 'false');
-		document.getElementById('MirrorModeOff').setAttribute("style", "");
-		document.getElementById('MirrorModeOn').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
+		document.getElementById('MirrorModeOff').dataset.state = 'Select';
+		document.getElementById('MirrorModeOn').dataset.state = '';
 	} else if(mode == 'true'){
 		localStorage.setItem('GetMirror', 'true');
-		document.getElementById('MirrorModeOff').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
-		document.getElementById('MirrorModeOn').setAttribute("style", "");
+		document.getElementById('MirrorModeOff').dataset.state = '';
+		document.getElementById('MirrorModeOn').dataset.state = 'Select';
 	}
 }
 function SetMirrorMode(mode){
 	if(mode == 'false'){
 		localStorage.setItem('GetMirror', 'false');
-		document.getElementById('MirrorModeOff').setAttribute("style", "");
-		document.getElementById('MirrorModeOn').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
+		document.getElementById('MirrorModeOff').dataset.state = 'Select';
+		document.getElementById('MirrorModeOn').dataset.state = '';
 	} else if(mode == 'true'){
 		localStorage.setItem('GetMirror', 'true');
-		document.getElementById('MirrorModeOff').setAttribute("style", "background: var(--ColorThemes2);color: var(--ColorThemes3) !important;");
-		document.getElementById('MirrorModeOn').setAttribute("style", "");
+		document.getElementById('MirrorModeOff').dataset.state = '';
+		document.getElementById('MirrorModeOn').dataset.state = 'Select';
 	}
 	location.reload();
 }
@@ -307,27 +326,27 @@ function GetOpening_style(){
 	var my_player_style = localStorage.getItem('my_player_style');
   if (!my_player_style) {
     localStorage.setItem('my_player_style', '2');
-    document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
-    document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+    document.getElementById('Player2_style').dataset.state = 'Select';
+    document.getElementById('Player1_style').dataset.state = '';
   } else {
     if (my_player_style == "1") {
-      document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
-      document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+      document.getElementById('Player1_style').dataset.state = 'Select';
+      document.getElementById('Player2_style').dataset.state = '';
     } else if (my_player_style == "2") {
-      document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
-      document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+      document.getElementById('Player1_style').dataset.state = '';
+      document.getElementById('Player2_style').dataset.state = 'Select';
     }
   }
 }
 function SetOpening_style(style) {
   if (style == "1") {
     localStorage.setItem('my_skips_opening', '1');
-    document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
-    document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+    document.getElementById('opening1_style').dataset.state = 'Select';
+    document.getElementById('opening2_style').dataset.state = '';
   } else if (style == "0") {
     localStorage.setItem('my_skips_opening', '0');
-    document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
-    document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+    document.getElementById('opening1_style').dataset.state = '';
+    document.getElementById('opening2_style').dataset.state = 'Select';
   }
 }
 
@@ -337,26 +356,26 @@ function GetPlayer_style(){
 	var my_skips_opening = localStorage.getItem('my_skips_opening');
   if (!my_skips_opening) {
     localStorage.setItem('my_skips_opening', '0');
-    document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
-    document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+    document.getElementById('opening2_style').dataset.state = 'Select';
+    document.getElementById('opening1_style').dataset.state = '';
   } else {
     if (my_skips_opening == "1") {
-      document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
-      document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+      document.getElementById('opening1_style').dataset.state = 'Select';
+      document.getElementById('opening2_style').dataset.state = '';
     } else {
-      document.getElementById('opening1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
-      document.getElementById('opening2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+      document.getElementById('opening1_style').dataset.state = '';
+      document.getElementById('opening2_style').dataset.state = 'Select';
     }
   }
 }
 function SetPlayer_style(style) {
   if (style == "1") {
     localStorage.setItem('my_player_style', '1');
-    document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
-    document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
+    document.getElementById('Player1_style').dataset.state = 'Select';
+    document.getElementById('Player2_style').dataset.state = '';
   } else if (style == "2") {
     localStorage.setItem('my_player_style', '2');
-    document.getElementById('Player1_style').setAttribute("style", "background: var(--card-background-2);color: var(--card-text-color) !important;");
-    document.getElementById('Player2_style').setAttribute("style", "background: var(--card-background-3);color: var(--card-text-color-2) !important;");
+    document.getElementById('Player1_style').dataset.state = '';
+    document.getElementById('Player2_style').dataset.state = 'Select';
   }
 }

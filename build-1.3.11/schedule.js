@@ -4,10 +4,10 @@ function page_schedule() {
   document.getElementById('app').innerHTML = `
 	
 	<!-- Блок Расписание	 -->
-	<div class="CatalogBlock">
+	<div class="ScheduleBlock">
 		
 		<!-- Понедельник	 -->
-		<div class="CatalogList">
+		<div class="ScheduleList">
 			<div style="display: flow-root;">
 				<h1 style="float: left;">Понедельник</h1>
 			</div>
@@ -33,7 +33,7 @@ function page_schedule() {
 
 
 		<!-- Вторник	 -->
-		<div class="CatalogList">
+		<div class="ScheduleList">
 			<div style="display: flow-root;">
 				<h1 style="float: left;">Вторник</h1>
 			</div>
@@ -59,7 +59,7 @@ function page_schedule() {
 
 
 		<!-- Среда	 -->
-		<div class="CatalogList">
+		<div class="ScheduleList">
 			<div style="display: flow-root;">
 				<h1 style="float: left;">Среда</h1>
 			</div>
@@ -85,7 +85,7 @@ function page_schedule() {
 
 
 		<!-- Четверг	 -->
-		<div class="CatalogList">
+		<div class="ScheduleList">
 			<div style="display: flow-root;">
 				<h1 style="float: left;">Четверг</h1>
 			</div>
@@ -111,7 +111,7 @@ function page_schedule() {
 
 
 		<!-- Пятница	 -->
-		<div class="CatalogList">
+		<div class="ScheduleList">
 			<div style="display: flow-root;">
 				<h1 style="float: left;">Пятница</h1>
 			</div>
@@ -137,7 +137,7 @@ function page_schedule() {
 
 
 		<!-- Суббота	 -->
-		<div class="CatalogList">
+		<div class="ScheduleList">
 			<div style="display: flow-root;">
 				<h1 style="float: left;">Суббота</h1>
 			</div>
@@ -163,7 +163,7 @@ function page_schedule() {
 
 
 		<!-- Воскресенье	 -->
-		<div class="CatalogList">
+		<div class="ScheduleList">
 			<div style="display: flow-root;">
 				<h1 style="float: left;">Воскресенье</h1>
 			</div>
@@ -280,31 +280,22 @@ function GeneratorSchedule_0() {
 	var DayListID = 'LineGenerator-Schedule-0';
 
 	for (let i = 0; DayList.length > i; i++) {
-		var genres = '';
-		var TextSerie = '';
-		for(let g = 0; DayList[i].genres.length > g; g++){
-			if(genres == '') genres = DayList[i].genres[g];
-			else genres = genres + ', ' +DayList[i].genres[g];
-		}
+		var seriesSH = "Нэма...";
 		if(DayList[i].player.series != null){
 			if(DayList[i].player.series.last != null){
-				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+				seriesSH = DayList[i].player.series.last;
 			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
-		div.className = 'LineCard-MediumHovers';
+		div.className = 'LineCard-SmallHovers';
 		div.innerHTML += `
-			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
 			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
-				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
-				<p class="LineCard-Hover-Genres">${genres}</p>
-				<p class="LineCard-Hover-Description">${DayList[i].description}</p>
+				<p class="LineCard-Hover-Serie">Серия ${seriesSH}</p>
 			</a>
 		`;
-		
 	}
 }
 function GeneratorSchedule_1() {
@@ -312,31 +303,22 @@ function GeneratorSchedule_1() {
 	var DayListID = 'LineGenerator-Schedule-1';
 
 	for (let i = 0; DayList.length > i; i++) {
-		var genres = '';
-		var TextSerie = '';
-		for(let g = 0; DayList[i].genres.length > g; g++){
-			if(genres == '') genres = DayList[i].genres[g];
-			else genres = genres + ', ' +DayList[i].genres[g];
-		}
+		var seriesSH = "Нэма...";
 		if(DayList[i].player.series != null){
 			if(DayList[i].player.series.last != null){
-				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+				seriesSH = DayList[i].player.series.last;
 			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
-		div.className = 'LineCard-MediumHovers';
+		div.className = 'LineCard-SmallHovers';
 		div.innerHTML += `
-			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
 			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
-				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
-				<p class="LineCard-Hover-Genres">${genres}</p>
-				<p class="LineCard-Hover-Description">${DayList[i].description}</p>
+				<p class="LineCard-Hover-Serie">Серия ${seriesSH}</p>
 			</a>
 		`;
-		
 	}
 }
 function GeneratorSchedule_2() {
@@ -344,31 +326,22 @@ function GeneratorSchedule_2() {
 	var DayListID = 'LineGenerator-Schedule-2';
 
 	for (let i = 0; DayList.length > i; i++) {
-		var genres = '';
-		var TextSerie = '';
-		for(let g = 0; DayList[i].genres.length > g; g++){
-			if(genres == '') genres = DayList[i].genres[g];
-			else genres = genres + ', ' +DayList[i].genres[g];
-		}
+		var seriesSH = "Нэма...";
 		if(DayList[i].player.series != null){
 			if(DayList[i].player.series.last != null){
-				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+				seriesSH = DayList[i].player.series.last;
 			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
-		div.className = 'LineCard-MediumHovers';
+		div.className = 'LineCard-SmallHovers';
 		div.innerHTML += `
-			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
 			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
-				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
-				<p class="LineCard-Hover-Genres">${genres}</p>
-				<p class="LineCard-Hover-Description">${DayList[i].description}</p>
+				<p class="LineCard-Hover-Serie">Серия ${seriesSH}</p>
 			</a>
 		`;
-		
 	}
 }
 function GeneratorSchedule_3() {
@@ -376,31 +349,22 @@ function GeneratorSchedule_3() {
 	var DayListID = 'LineGenerator-Schedule-3';
 
 	for (let i = 0; DayList.length > i; i++) {
-		var genres = '';
-		var TextSerie = '';
-		for(let g = 0; DayList[i].genres.length > g; g++){
-			if(genres == '') genres = DayList[i].genres[g];
-			else genres = genres + ', ' +DayList[i].genres[g];
-		}
+		var seriesSH = "Нэма...";
 		if(DayList[i].player.series != null){
 			if(DayList[i].player.series.last != null){
-				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+				seriesSH = DayList[i].player.series.last;
 			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
-		div.className = 'LineCard-MediumHovers';
+		div.className = 'LineCard-SmallHovers';
 		div.innerHTML += `
-			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
 			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
-				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
-				<p class="LineCard-Hover-Genres">${genres}</p>
-				<p class="LineCard-Hover-Description">${DayList[i].description}</p>
+				<p class="LineCard-Hover-Serie">Серия ${seriesSH}</p>
 			</a>
 		`;
-		
 	}
 }
 function GeneratorSchedule_4() {
@@ -408,31 +372,22 @@ function GeneratorSchedule_4() {
 	var DayListID = 'LineGenerator-Schedule-4';
 
 	for (let i = 0; DayList.length > i; i++) {
-		var genres = '';
-		var TextSerie = '';
-		for(let g = 0; DayList[i].genres.length > g; g++){
-			if(genres == '') genres = DayList[i].genres[g];
-			else genres = genres + ', ' +DayList[i].genres[g];
-		}
+		var seriesSH = "Нэма...";
 		if(DayList[i].player.series != null){
 			if(DayList[i].player.series.last != null){
-				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+				seriesSH = DayList[i].player.series.last;
 			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
-		div.className = 'LineCard-MediumHovers';
+		div.className = 'LineCard-SmallHovers';
 		div.innerHTML += `
-			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
 			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
-				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
-				<p class="LineCard-Hover-Genres">${genres}</p>
-				<p class="LineCard-Hover-Description">${DayList[i].description}</p>
+				<p class="LineCard-Hover-Serie">Серия ${seriesSH}</p>
 			</a>
 		`;
-		
 	}
 }
 function GeneratorSchedule_5() {
@@ -440,31 +395,22 @@ function GeneratorSchedule_5() {
 	var DayListID = 'LineGenerator-Schedule-5';
 
 	for (let i = 0; DayList.length > i; i++) {
-		var genres = '';
-		var TextSerie = '';
-		for(let g = 0; DayList[i].genres.length > g; g++){
-			if(genres == '') genres = DayList[i].genres[g];
-			else genres = genres + ', ' +DayList[i].genres[g];
-		}
+		var seriesSH = "Нэма...";
 		if(DayList[i].player.series != null){
 			if(DayList[i].player.series.last != null){
-				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+				seriesSH = DayList[i].player.series.last;
 			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
-		div.className = 'LineCard-MediumHovers';
+		div.className = 'LineCard-SmallHovers';
 		div.innerHTML += `
-			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
 			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
-				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
-				<p class="LineCard-Hover-Genres">${genres}</p>
-				<p class="LineCard-Hover-Description">${DayList[i].description}</p>
+				<p class="LineCard-Hover-Serie">Серия ${seriesSH}</p>
 			</a>
 		`;
-		
 	}
 }
 function GeneratorSchedule_6() {
@@ -472,30 +418,21 @@ function GeneratorSchedule_6() {
 	var DayListID = 'LineGenerator-Schedule-6';
 
 	for (let i = 0; DayList.length > i; i++) {
-		var genres = '';
-		var TextSerie = '';
-		for(let g = 0; DayList[i].genres.length > g; g++){
-			if(genres == '') genres = DayList[i].genres[g];
-			else genres = genres + ', ' +DayList[i].genres[g];
-		}
+		var seriesSH = "Нэма...";
 		if(DayList[i].player.series != null){
 			if(DayList[i].player.series.last != null){
-				TextSerie = `<div class="LineCard-TextSerie">Серия ${DayList[i].player.series.last}</div>`;
+				seriesSH = DayList[i].player.series.last;
 			}
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
-		div.className = 'LineCard-MediumHovers';
+		div.className = 'LineCard-SmallHovers';
 		div.innerHTML += `
-			${TextSerie}
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
 			<img src="${config["posters"]}${DayList[i].posters.medium.url}" alt="">
 			<a class="LineCard-Hover" onclick="goRoute('/release', {id:${DayList[i].id}})">
-				<p class="LineCard-Hover-Name">${DayList[i].names.ru}</p>
-				<p class="LineCard-Hover-Genres">${genres}</p>
-				<p class="LineCard-Hover-Description">${DayList[i].description}</p>
+				<p class="LineCard-Hover-Serie">Серия ${seriesSH}</p>
 			</a>
 		`;
-		
 	}
 }

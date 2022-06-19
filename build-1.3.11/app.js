@@ -69,10 +69,6 @@ function initApp() {
 	goRoute(href, query);
 }
 
-// initApp.onload = function() {
-//   goRoute(href, query);
-// };
-
 // Обязательные функции, запросы и т.д.
 function paramsRoute(){
 	if(player) player.api("stop");
@@ -89,12 +85,12 @@ function pageColor(){
 }
 
 // Функция запроса нужного контента
-function switchRoute(page, query){
+function switchRoute(page, query, data){
 	pageColor()
 	
 	switch (page) {
 		case '/release':
-			page_release(query.id);
+			page_release(query.id, data)
 			break;
 
 		case '/catalog':
@@ -147,14 +143,14 @@ function replaceRoute(state){
 }
 
 // Функция роутера управляемая приложением и адресной строкой
-function goRoute(namePage, querys) {
+function goRoute(namePage, querys, data = null) {
 	// Изменяет историю текущей страницы
 	// Добавляем позицию скролла 
 	history.replaceState({'position': window.pageYOffset}, null);
 	paramsRoute();
 	href = namePage;
 	query = querys;
-	switchRoute(namePage, query);
+	switchRoute(namePage, query, data);
 
 	var url = namePage;
 	if (query != null) {
@@ -220,7 +216,7 @@ function appReloadApi(){
 	SeasonList = null;
 
 	paramsRoute();
-	switchRoute(href, query);
+	goRoute(href, query);
 }
 
 // Проверка того, что наш браузер поддерживает Service Worker API.

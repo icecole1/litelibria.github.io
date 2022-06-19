@@ -21,7 +21,7 @@ var elementDisplays = "";
 
 var width = document.documentElement.clientWidth;
 
-function page_release(id) {
+function page_release(id, data) {
   document.getElementById('app').innerHTML = `
 	<style>
 		.text{
@@ -84,6 +84,14 @@ function page_release(id) {
 		}
 		#main-view .hide {
 			display: none;
+		}
+		@media (max-width: 800px){
+			#chart_containerPad {
+				background: var(--ColorThemes1);
+			}
+			#graph {
+				background: var(--ColorThemes1);
+			}
 		}
 	</style>
 
@@ -167,7 +175,7 @@ function page_release(id) {
 
 		<div class="ReleaseBlockSliders">	
 			<div class="ReleaseBlockRecomend" id="ReleaseRecomendDisplay" style="display:none">
-				<p>Связанные релизы</p>
+				<h3>Связанные релизы</h3>
 				<div class="ReleaseBlockRecomendSlider" id="ReleaseRecomend">
 					<div style="width:8px;"></div>
 					
@@ -214,6 +222,9 @@ function page_release(id) {
   `;
 
 	LoadRelisePHPSESSID();
+	if(data != null) {
+		GeneratorRelise(data);
+	}
 	LoadApiRelise(id);
 	LoadApiReliseRecomend(id);
 	LoadApiServer();
@@ -229,7 +240,7 @@ function LoadRelisePHPSESSID(){
 
 // Функции запросов к Api
 function LoadApiRelise(id) {
-  url = config["titels_api"]+'getTitle?id='+id+'&description_type=plain&remove=torrents';
+  url = config["titels_api"]+'getTitle?id='+id+'&remove=torrents';
 
   fetch(url)
   .then(function (response) {
@@ -259,28 +270,31 @@ function LoadApiRelise(id) {
     console.log('error', error)
   })
 }
-function LoadApiReliseFav(id_t) {
-  var cookie = localStorage.getItem('PHPSESSID');
-  var url_ses = config["titels_api"]+"getFavorites?session="+cookie+"&filter=id&limit=-1";
-  fetch(url_ses)
-  .then(function (response) {
-    return Promise.resolve(response)
-  })
-  .then(function (response) {
-    return response.json()
-  })
-  .then(function (data) {
-    for (let i = 0; data[i]; i++) {
-      if (id_t == data[i]["id"]) {
-				document.getElementById('delFavorite_rel').style.display = "";
-  			document.getElementById('addFavorite_rel').style.display = "none";
-         return;
-      }else {
-				document.getElementById('delFavorite_rel').style.display = "none";
-  			document.getElementById('addFavorite_rel').style.display = "";
-      }
-    }
-  })
+function LoadApiReliseFav(id) {
+	if(FavoritesList == null) {
+		var cookie = localStorage.getItem('PHPSESSID');
+		var url = config["titels_api"]+"getFavorites?session="+cookie+"&limit=-1";
+		fetch(url)
+		.then(function (response) {
+			if (response.status !== 200) {
+				return Promise.reject(new Error(response.statusText))
+			}
+			return Promise.resolve(response)
+		})
+		.then(function (response) {
+			return response.json();
+		})
+		.then(function (data) {
+			data.reverse();
+			FavoritesList = data;
+			GeneratorReliseFavorites(id);
+		})
+		.catch(function (error) {
+			console.log('error', error)
+		})
+	} else {
+		GeneratorReliseFavorites(id);
+	}
 }
 function LoadApiReliseRecomend(id){
 	url = 'https://' + config["domains"]+'/RR/RelatedReleases.json';
@@ -544,26 +558,46 @@ function GeneratorReliseRecomend(data, id){
 
 	if(FilterTitel.length > 0){
 		document.getElementById('ReleaseRecomendDisplay').style.display = '';
-
-		for (let j = 0; FilterTitel[0].length > j; j++) {
+		for (let i = 0; FilterTitel[0].length > i; i++) {
 			var div = document.createElement('div');
 			document.getElementById('ReleaseRecomend').appendChild(div);
-			div.className = 'RecomendSliderCard'
-			div.setAttribute("onclick", `goRoute('/release', {id:${FilterTitel[0][j]}})`)
+			div.className = 'LineCard-SmallHovers';
 			div.innerHTML += `
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"></path></svg>
-				<img src="" alt="" id="recomendPoster${FilterTitel[0][j]}">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
+				<img src="" alt="" id="recomendPoster${FilterTitel[0][i]}">
+				<a class="LineCard-Hover" onclick="goRoute('/release', {id:${FilterTitel[0][i]}})">
+					<p class="LineCard-Hover-Serie" id="recomendSerie${FilterTitel[0][i]}">Нэма...</p>
+				</a>
 			`;
 		}
 
-		var url = config["titels_api"]+'getTitles?id_list='+FilterTitel[0]+'&filter=id,posters.small,names.ru';
+		var url = config["titels_api"]+'getTitles?id_list='+FilterTitel[0]+'&filter=id,posters.small,player.series';
 		$.get(url, function(data){
 			for (let t = 0; t < data.length; t++) {
 				document.getElementById("recomendPoster"+data[t]["id"]).src = config["posters"]+data[t]["posters"]["small"]["url"];
+				
+				if(data[t].player.series != null){
+					if(data[t].player.series.last != null){
+						document.getElementById("recomendSerie"+data[t]["id"]).innerHTML = "Серия "+data[t]["player"]["series"]["last"];
+					}
+				}
 			}
 		});
 	}
 
+}
+
+function GeneratorReliseFavorites(id){
+	var FilterTitel = FavoritesList.filter(function(items) {
+		return items.id == id;
+	});
+	if(FavoritesList.indexOf(FilterTitel[0]) > -1){
+		document.getElementById('delFavorite_rel').style.display = "";
+		document.getElementById('addFavorite_rel').style.display = "none";
+	} else {
+		document.getElementById('delFavorite_rel').style.display = "none";
+		document.getElementById('addFavorite_rel').style.display = "";
+	}
 }
 
 // Функция подключения и настройки плеера

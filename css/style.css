@@ -69,13 +69,12 @@ details span {
 /* Начало */
 #error_mes{
 	background: var(--PrimaryColor);
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 300;
 	color: var(--PrimaryColorText);
 	text-decoration: none;
 	padding: 4px 8px;
 	text-align: center;
-	margin-top: -30px;
 	border-radius: 15px;
 }
 #block_notif{
@@ -458,7 +457,7 @@ details span {
 	z-index: 15;
 }
 #app {
-	margin-bottom: 45px;
+	margin-bottom: 55px;
 }
 @keyframes show {
 	from {opacity: 0.5;}
@@ -624,24 +623,20 @@ details span {
 }
 .LineCard-TextSerie{
 	box-sizing: border-box;
-	text-align: center;
 	padding: 12px 4px;
 	width: 115px;
 	background: var(--PrimaryColor);
 	opacity: 0.9;
-	display: block;
 	cursor: pointer;
 	text-decoration: none;
-	float: left;
 	font-weight: 500;
 	color: var(--PrimaryColorText);
 	z-index: 3;
 	position: absolute;
-	margin-top: 0px;
-	margin-left: calc(50% - 115px / 2);
 	font-size: 14px;
 	border-radius: 0 0 var(--border-radius) var(--border-radius);
 	transition: .3s ease;
+	top: 0;
 }
 .LineCard-Hover{
   position: relative;
@@ -725,29 +720,30 @@ details span {
 	white-space: nowrap;
 	align-items: start;
   display: -webkit-box;
+	padding-bottom: 5px;
 }
 .LineCard-BigHovers{
-  height: 180px;
+	height: 180px;
 	aspect-ratio: 16 / 9;
-  position: relative;
-  display: inline-flex;
-  overflow: hidden;
-  flex-direction: row;
-  background-color: var(--ColorThemes0);
-  box-shadow: var(--shadow-l1);
-  border-radius: var(--card-border-radius);
-  margin-bottom: var(--section-separation);
-  transition: .3s ease;
-  margin: 6px;
-  color: #fff;
-  background-position: center;
-  background-size: cover;
+	position: relative;
+	display: flex;
+	overflow: hidden;
+	flex-direction: row;
+	background-color: var(--ColorThemes0);
+	box-shadow: var(--shadow-l1);
+	border-radius: 20px;
+	transition: .3s ease;
+	margin: 6px;
+	color: #fff;
+	background-position: center;
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
 }
 .LineCard-BigHovers svg{
 	fill: var(--ColorThemes2);
 	position: absolute;
-	width: 100px;
-	padding: 40px 110px;
+	width: 120px;
 	z-index: 1;
 }
 .LineCard-BigHovers img{
@@ -795,29 +791,39 @@ details span {
 	white-space: nowrap;
 	align-items: start;
   display: -webkit-box;
+	padding-bottom: 5px;
+}
+.LineGenerator{
+	display: flex;
+	position: relative;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
 }
 .LineCard-MediumHovers{
-  height: 320px;
-  aspect-ratio: 7 / 10;
-  position: relative;
-  display: inline-flex;
-  overflow: hidden;
-  flex-direction: row;
-  background-color: var(--ColorThemes0);
-  box-shadow: var(--shadow-l1);
-  border-radius: var(--card-border-radius);
-  margin-bottom: var(--section-separation);
-  transition: .3s ease;
-  margin: 6px;
-  color: #fff;
-  background-position: center;
-  background-size: cover;
+	height: 320px;
+	aspect-ratio: 7 / 10;
+	position: relative;
+	display: flex;
+	overflow: hidden;
+	flex-direction: row;
+	background-color: var(--ColorThemes0);
+	box-shadow: var(--shadow-l1);
+	border-radius: 20px;
+	transition: .3s ease;
+	margin: 6px;
+	color: #fff;
+	background-position: center;
+	background-size: cover;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
 }
 .LineCard-MediumHovers svg{
 	fill: var(--ColorThemes2);
 	position: absolute;
-	width: 100px;
-	padding: 110px 62px;
+	width: 120px;
 	z-index: 1;
 }
 .LineCard-MediumHovers img{
@@ -874,29 +880,30 @@ details span {
 	white-space: nowrap;
 	align-items: start;
   display: -webkit-box;
+	padding-bottom: 5px;
 }
 .LineCard-SmallHovers{
-  height: 200px;
-  aspect-ratio: 7 / 10;
-  position: relative;
-  display: inline-flex;
-  overflow: hidden;
-  flex-direction: row;
-  background-color: var(--ColorThemes0);
-  box-shadow: var(--shadow-l1);
-  border-radius: var(--card-border-radius);
-  margin-bottom: var(--section-separation);
-  transition: .3s ease;
-  margin: 6px;
-  color: #fff;
-  background-position: center;
-  background-size: cover;
+	height: 200px;
+	aspect-ratio: 7 / 10;
+	position: relative;
+	display: flex;
+	overflow: hidden;
+	flex-direction: row;
+	background-color: var(--ColorThemes0);
+	box-shadow: var(--shadow-l1);
+	border-radius: 20px;
+	transition: .3s ease;
+	margin: 6px;
+	color: #fff;
+	background-position: center;
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
 }
 .LineCard-SmallHovers svg{
 	fill: var(--ColorThemes2);
 	position: absolute;
-	width: 100px;
-	padding: 50px 20px;
+	width: 90px;
 	z-index: 1;
 }
 .LineCard-SmallHovers img{
@@ -1102,6 +1109,7 @@ details span {
 	white-space: nowrap;
 	align-items: start;
   display: -webkit-box;
+	padding-bottom: 5px;
 }
 .LineList-Genres h1 {
 	font-weight: 400;
@@ -1190,6 +1198,7 @@ details span {
 }
 @media (max-width: 1000px){
 	.LineCard-Donate{
+		background: var(--ColorThemes1);
 		margin: 10px 0;
 	}
 }
@@ -1223,6 +1232,7 @@ details span {
 	.LineList-History{
 		height: auto;
 		margin: 10px 0;
+		background: var(--ColorThemes1);
 	}
 	.LineGenerator-HistorySlider{
 		height: 130px;
@@ -1505,6 +1515,74 @@ details span {
 
 
 
+/* Стили для страницы Schedule */
+.ScheduleBlock {
+	position: relative;
+	animation: show 0.5s;
+	border-radius: 10px;
+	max-width: 1500px;
+	transition: .3s ease;
+	background: var(--ColorThemes2);
+	margin-top: 10px;
+}
+.ScheduleList {
+	padding: 10px 5px 0 5px;
+}
+.ScheduleList h1 {
+	font-weight: 400;
+	text-align: left;
+	color: var(--ColorThemes3);
+	padding: 0 10px;
+	font-size: 18px;
+}
+.ScheduleListButton {
+	float: right;
+	margin-right: 10px;
+}
+.ScheduleListButton svg {
+	width: 25px;
+}
+.ScheduleListButton svg:hover{
+	cursor: pointer;
+	box-shadow: var(--shadow-l3);
+	transition: .3s ease;
+	-webkit-transform: scale(1.02) translateY(0);
+	-o-transform: scale(1.02) translateY(0);
+	transform: scale(1.02) translateY(0);
+}
+
+.LoadApiButton{
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 400;
+	height: 35px;
+	width: 135px;
+	margin-top: 20px;
+	color: var(--PrimaryColorText);
+	padding: 2px 10px;
+	background: var(--PrimaryColor);
+	border-radius: 15px;
+	opacity: 1;
+	transition: opacity 0.3s ease, box-shadow 0.3s ease;
+}
+.LoadApiButton:hover {
+	cursor: pointer;
+	opacity: 0.9;
+	transition: opacity 0.3s ease, box-shadow 0.3s ease;
+	box-shadow: var(--shadow-l3);
+}
+
+@media (max-width: 1000px){
+	.ScheduleList {
+		transition: .3s ease;
+		background: var(--ColorThemes1);
+	}
+}
+
+
+
+
+
 /* Стили для страницы History */
 .HistoryBlock {
 	position: relative;
@@ -1596,8 +1674,10 @@ details span {
 	transform: scale(1.005) translateY(0);
 }
 @media (max-width: 1000px){
+	.HistoryList {
+		background: var(--ColorThemes1);
+	}
 	.HistoryCard{
-		width: calc(100% - 10px);
 		background: var(--ColorThemes0);
 	}
 }
@@ -1661,86 +1741,7 @@ details span {
 	margin-top: 4px;
 	font-weight: 300;
 }
-/* Стили для блока авторизации */
-.OptionsAuth{
-	background: var(--ColorThemes2);
-  border-radius: 10px;
-	padding: 20px;
-}
-.OptionsAuth form{
-	max-width: 420px;
-	background: var(--ColorThemes1);
-	position: relative;
-	display: block;
-	padding: 40px 10px;
-	margin: 40px 10px;
-	border-radius: 15px;
-}
-.OptionsAuth form p{
-  color: var(--card-text-color);
-}
-.OptionsAuth form label{
-  float: left;
-  color: var(--card-text-color);
-}
-.loginsBox{
-  float: right;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 400;
-  height: 30px;
-  width: 130px;
-  color: var(--ColorThemes3);
-  padding: 0px 10px;
-  margin-top: -4px;
-  margin-left: 10px;
-  background: var(--ColorThemes2);
-  border-radius: 20px;
-  -webkit-appearance: none;
-  margin-bottom: 20px;
-}
-.OptionsButtom{
-	text-decoration: none;
-	width: 100px;
-	-webkit-appearance: none;
-	font-size: 15px;
-	font-weight: 400;
-	height: 32px;
-	color: var(--PrimaryColorText);
-	padding: 2px 10px;
-	background: var(--PrimaryColor);
-	border-radius: 15px;
-	opacity: 1;
-	transition: opacity 0.3s ease, box-shadow 0.3s ease;
-}
-.OptionsButtom:hover {
-	cursor: pointer;
-	opacity: 0.9;
-	transition: opacity 0.3s ease, box-shadow 0.3s ease;
-	box-shadow: var(--shadow-l3);
-}
-.OptionsButtom:hover {
-	cursor: pointer;
-	opacity: 0.9;
-	transition: opacity 0.3s ease, box-shadow 0.3s ease;
-	box-shadow: var(--shadow-l3);
-}
-.OptionsAuthText{
-	text-align: left;
-	color: var(--ColorThemes3);
-	font-size: 14px;
-	margin-top: 4px;
-	font-weight: 400;
-}
-.OptionsAuthText a {
-	text-align: left;
-	color: var(--ColorThemes3);
-	font-size: 14px;
-	margin-top: 4px;
-	font-weight: 400;
-	border-bottom: 1px solid var(--PrimaryColor);
-	text-decoration: none;
-}
+
 .OptionsBlockCard{
 	background: var(--ColorThemes2);
 	border-radius: 15px;
@@ -1772,10 +1773,23 @@ details span {
 	margin-top: 4px;
 	font-weight: 400;
 }
+.OptionsCard hr{
+	border: 1px solid var(--ColorThemes2);
+	margin-bottom: 15px;
+}
+
 .settings_filter_p{
 	font-size: 13px !important;
-	margin-top: 25px !important;
+	margin-top: 5px !important;
 	opacity: 0.8 !important;
+}
+.settings_filter_p a{
+	font-size: 13px !important;
+	margin-top: 5px !important;
+	color: var(--ColorThemes3);
+	font-weight: 400;
+	border-bottom: 1px solid var(--PrimaryColor);
+	text-decoration: none;
 }
 
 .formMirror{
@@ -1787,6 +1801,7 @@ details span {
 	justify-content: center;
 	align-items: center;
 	justify-items: stretch;
+	width: calc(100% - 30px);
 }
 .blockMirror{
 	display: flex;
@@ -1810,19 +1825,42 @@ details span {
 }
 
 .OptionsCardButton {
-	background: var(--PrimaryColor);
+	background: var(--ColorThemes2);
+	color: var(--ColorThemes3);
 	margin-top: 8px;
 	font-size: 16px;
 	font-weight: 300;
-	color: var(--PrimaryColorText);
 	text-decoration: none;
 	padding: 4px 8px;
 	text-align: center;
 	border-radius: 15px;
-	margin-right: 8px;
 	transition: .3s ease;
 	cursor: pointer;
 }
+.OptionsCardButton[data-state="Select"]{
+	background: var(--PrimaryColor);
+	color: var(--PrimaryColorText);
+}
+
+
+@media (max-width: 800px){
+	.OptionsBlockCard {
+    background: var(--ColorThemes1);
+		padding: 0;
+	}
+	.OptionsCard {
+    background: var(--ColorThemes2);
+	}
+	.OptionsCard hr {
+		border: 1px solid var(--ColorThemes1);
+	}
+	.OptionsCardButton {
+		background: var(--ColorThemes1);
+		color: var(--ColorThemes3);
+	}
+}
+
+
 
 
 
@@ -1892,11 +1930,11 @@ details span {
 }
 
 .ReleaseBlockAbout-Detail-Block{
-	background: var(--card-background);
+	background: var(--ColorThemes1);
 	width: calc(100% - 10px);
 	padding: 10px 5px;
 	text-align: center;
-	border-radius: var(--border-radius);
+	border-radius: 15px;
 	margin: 10px 0 0 0;
 	transition: .3s ease;
 	min-height: 32px;
@@ -2015,6 +2053,7 @@ details span {
 	align-items: flex-end;
 	position: relative;
 	/* justify-content: center; */
+	background: var(--ColorThemes0);
 }
 .posterSerie img{
 	width: 100%;
@@ -2079,14 +2118,14 @@ details span {
 	margin-bottom: 10px;
 	background: var(--ColorThemes1);
 	border-radius: 15px;
-	max-width: calc(800px - 10px);
 }
 @media (max-width: 800px){
 	.ReleaseBlockRecomend{
 		margin: 20px 10px 10px 10px;
+		background: var(--ColorThemes2);
 	}
 }
-.ReleaseBlockRecomend p{
+.ReleaseBlockRecomend h3{
 	font-size: 17px;
 	margin: 10px 0 0 10px;
 	color: var(--ColorThemes3);
@@ -2191,6 +2230,7 @@ details span {
 
 @media (max-width: 800px){
 	.ReleaseBlock {
+		background: var(--ColorThemes1);
 		margin: -15px 0 0 0;
 		border-radius: 0;
 		padding: 10px 0;
@@ -2208,8 +2248,12 @@ details span {
     margin: 10px;
 		max-width: 100%;
 	}
+	.ReleaseBlockAbout-Detail-Block {
+    background: var(--ColorThemes2);
+	}
 	.ReleaseBlockAbout-Detail-Block a {
     margin: 0px 2px;
+		background: var(--ColorThemes1);
 	}
 	.ReleaseBlockAbout-Detail-Image{
 		display: block;
@@ -2218,7 +2262,7 @@ details span {
 		display: none;
 	}
 	.ReleaseBlockAbout-Detail-ContainerText {
-    background: var(--ColorThemes1);
+    background: var(--ColorThemes2);
     padding: 15px 10px;
     border-radius: 15px;
 	}
@@ -2240,14 +2284,28 @@ details span {
 		margin: 0 0 10px 10px;
 		height: 82px;
 	}
+	.SerieBlock {
+    background: var(--ColorThemes2);
+	}
 	.ReleaseBlockSliders {
     margin-top: 0px;
 	}
 	.ReleaseBlockSlidersDetails {
     margin: 20px 10px 10px 10px;
 		width: calc(100% - 40px);
+		background: var(--ColorThemes2);
 	}
-
+	.ReleaseBlockSlidersDetails span {
+    background: var(--ColorThemes1);
+    color: var(--ColorThemes3);
+	}
+	.DetailsServers {
+    background: var(--ColorThemes1);
+	}
+	.ServersButton {
+    background: var(--ColorThemes2);
+    color: var(--ColorThemes3);
+	}
 	#PlayerKeys{
 		display: none;
 	}

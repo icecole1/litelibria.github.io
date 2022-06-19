@@ -1,6 +1,19 @@
 version_history = [
 	{
     "prefix":"Satera",
+    "version":"1.3.11",
+    "date":"19 June 2022",
+    "update":[
+			{
+        "type":"FIXED",
+        "text":"Исправлены ошибки"
+      },{
+				"type":"IMPROVED",
+        "text":"Оптимизированы запросы к API"
+			}
+    ]
+  },{
+    "prefix":"Satera",
     "version":"1.3.10",
     "date":"18 June 2022",
     "update":[
