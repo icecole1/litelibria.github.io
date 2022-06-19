@@ -2,11 +2,11 @@
 	"blockNewTrailer": {
 		"Visible": true,
 		"Colors" : "Color(0xff000000)",
-		"ImageBG": "https://litelibria.com/img/NEWS/DungeonNiDeaiWoMotomeruNoWaMachigatteiruDarouka4BG.webp",
-		"Poster": "https://litelibria.com/img/NEWS/DungeonNiDeaiWoMotomeruNoWaMachigatteiruDarouka4.webp",
+		"ImageBG": "https://litelibria.com/img/NEWS/MyHeroAcademiaSeason6BG.webp",
+		"Poster": "https://litelibria.com/img/NEWS/MyHeroAcademiaSeason6.webp",
 		"TextBig": "Новый трейлер",
-		"TextMedium": "Может, я встречу\nтебя в подземелье? IV",
-		"TextSmall": "Показ начнётся в июле 2022 года.",
+		"TextMedium": "Моя геройская академия\n6 сезон",	
+		"TextSmall": "Показ ожидается в 2022 году.",
 		"YouTubeID": "1Z_0xP-bS4Y"
 	},
 	"blockSelectRecommend": {
