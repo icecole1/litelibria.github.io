@@ -723,10 +723,11 @@ details span {
 	padding-bottom: 5px;
 }
 .LineCard-BigHovers{
+	width: 320px;
 	height: 180px;
 	aspect-ratio: 16 / 9;
 	position: relative;
-	display: flex;
+	display: inline-flex;
 	overflow: hidden;
 	flex-direction: row;
 	background-color: var(--ColorThemes0);
@@ -886,7 +887,7 @@ details span {
 	height: 200px;
 	aspect-ratio: 7 / 10;
 	position: relative;
-	display: flex;
+	display: inline-flex;
 	overflow: hidden;
 	flex-direction: row;
 	background-color: var(--ColorThemes0);
