@@ -2256,6 +2256,9 @@ details span {
     margin: 0px 2px;
 		background: var(--ColorThemes1);
 	}
+	.DetailFavoriteBlockButton{
+		background: var(--ColorThemes1);
+	}
 	.ReleaseBlockAbout-Detail-Image{
 		display: block;
 	}
