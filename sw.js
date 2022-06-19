@@ -1,4 +1,4 @@
-var CACHE_PREFIX = 'Satera';
+var CACHE_PREFIX = 'Dafune';
 
 var CACHE_VERSION_MAJOR = 1;
 var CACHE_VERSION_MINOR = 3;

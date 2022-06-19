@@ -1,6 +1,6 @@
 version_history = [
 	{
-    "prefix":"Satera",
+    "prefix":"Dafune",
     "version":"1.3.12",
     "date":"19 June 2022",
     "update":[
@@ -13,7 +13,7 @@ version_history = [
 			}
     ]
   },{
-    "prefix":"Satera",
+    "prefix":"Dafune",
     "version":"1.3.11",
     "date":"19 June 2022",
     "update":[
@@ -26,7 +26,7 @@ version_history = [
 			}
     ]
   },{
-    "prefix":"Satera",
+    "prefix":"Dafune",
     "version":"1.3.10",
     "date":"18 June 2022",
     "update":[
@@ -36,7 +36,7 @@ version_history = [
       }
     ]
   },{
-    "prefix":"Satera",
+    "prefix":"Dafune",
     "version":"1.3.9",
     "date":"17 June 2022",
     "update":[
@@ -46,7 +46,7 @@ version_history = [
       }
     ]
   },{
-    "prefix":"Satera",
+    "prefix":"Dafune",
     "version":"1.3.8",
     "date":"13 June 2022",
     "update":[
@@ -56,7 +56,7 @@ version_history = [
       }
     ]
   },{
-    "prefix":"Satera",
+    "prefix":"Dafune",
     "version":"1.3.7",
     "date":"12 June 2022",
     "update":[
@@ -69,7 +69,7 @@ version_history = [
       }
     ]
   },{
-    "prefix":"Satera",
+    "prefix":"Dafune",
     "version":"1.3.6",
     "date":"12 June 2022",
     "update":[
@@ -82,7 +82,7 @@ version_history = [
       }
     ]
   },{
-    "prefix":"Satera",
+    "prefix":"Dafune",
     "version":"1.3.5",
     "date":"8 June 2022",
     "update":[
@@ -92,7 +92,7 @@ version_history = [
       }
     ]
   },{
-    "prefix":"Satera",
+    "prefix":"Dafune",
     "version":"1.3.4",
     "date":"8 June 2022",
     "update":[
@@ -102,7 +102,7 @@ version_history = [
       }
     ]
   },{
-    "prefix":"Satera",
+    "prefix":"Dafune",
     "version":"1.3.3",
     "date":"7 June 2022",
     "update":[
@@ -121,7 +121,7 @@ version_history = [
       }
     ]
   },{
-    "prefix":"Satera",
+    "prefix":"Dafune",
     "version":"1.3.2",
     "date":"5 June 2022",
     "update":[
@@ -131,7 +131,7 @@ version_history = [
       }
     ]
   },{
-    "prefix":"Satera",
+    "prefix":"Dafune",
     "version":"1.3.1",
     "date":"5 June 2022",
     "update":[
@@ -145,7 +145,7 @@ version_history = [
     ]
   },
 	{
-    "prefix":"Satera",
+    "prefix":"Dafune",
     "version":"1.3.0",
     "date":"2 June 2022",
     "update":[
