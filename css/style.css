@@ -583,10 +583,14 @@ details span {
 	.LineCard-History{
 		width: 310px;
 		background: var(--ColorThemes0);
-		border: 2px solid var(--ColorThemes2);
 	}
 	.LineCard-History-BlockText{
 		width: 215px;
+	}
+}
+@media (prefers-color-scheme: dark) {
+	.LineCard-History{
+		border: 2px solid var(--ColorThemes2);
 	}
 }
 
@@ -615,7 +619,7 @@ details span {
 	-o-transform: scale(1.02) translateY(0);
 	transform: scale(1.02) translateY(0);
 }
-@media (max-width: 1000px){
+@media (prefers-color-scheme: dark) {
 	.LineCard-Genres{
 		border: 2px solid var(--ColorThemes2);
 	}
@@ -1214,6 +1218,11 @@ details span {
 	}
 	.LineCard-Donate-Card{
 		background: var(--ColorThemes0);
+		width: calc(100% - 20px);
+	}
+}
+@media (prefers-color-scheme: dark) {
+	.LineCard-Donate-Card{
 		border: 2px solid var(--ColorThemes2);
 		width: calc(100% - 24px);
 	}
@@ -1223,15 +1232,13 @@ details span {
 /* Адаптация LineList под раздел Twitter */
 .LineList-Twitter{
 	margin: 10px 10px 0 10px;
-	width: calc(100% - 14px);
+	width: calc(100% - 10px);
 	border-radius: var(--border-radius-2);
 	background: var(--ColorThemes0);
-	border: 2px solid var(--ColorThemes2);
 	padding: 5px;
 }
 .LineList-Twitter a{
 	color: var(--ColorThemes3);
-	border-bottom: 1px solid var(--PrimaryColor);
 }
 .timeline-Tweet{
 	color: var(--ColorThemes3);
@@ -1239,7 +1246,12 @@ details span {
 @media (max-width: 1000px){
 	.LineList-Twitter{
 		box-shadow: var(--shadow-l1);
-		width: calc(100% - 34px);
+		width: calc(100% - 30px);
+	}
+}
+@media (prefers-color-scheme: dark) {
+	.LineList-Twitter{
+		border: 2px solid var(--ColorThemes2);
 	}
 }
 
@@ -1721,6 +1733,11 @@ details span {
 	}
 	.HistoryCard{
 		background: var(--ColorThemes0);
+	}
+}
+@media (prefers-color-scheme: dark) {
+	.HistoryCard{
+		border: 2px solid var(--ColorThemes2);
 	}
 }
 
@@ -2318,6 +2335,7 @@ details span {
 	}
 	.ReleaseBlockPlayerLeft{
 		width: calc(100% - 20px);
+		background: var(--ColorThemes2);
 	}
 	.ReleaseBlockPlayerRight{
     width: 100%;
@@ -2328,6 +2346,7 @@ details span {
 	.posterSerie{
 		margin: 0 0 10px 10px;
 		height: 82px;
+		background: var(--ColorThemes2);
 	}
 	.SerieBlock {
     background: var(--ColorThemes2);
@@ -2365,13 +2384,16 @@ details span {
 	display: inline-block;
 	height: 30px;
 }
-@media (max-width: 800px){
-	.TextLoad{
-		background: var(--ColorThemes2);
-	}
-}
 .TextLoadW{
 	background: var(--ColorThemes1);
+}
+@media (max-width: 800px){
+	.TextLoad{
+		background: var(--ColorThemes1);
+	}
+	.TextLoadW{
+		background: var(--ColorThemes2);
+	}
 }
 .TextLoadB{
 	background: var(--ColorThemes2);
@@ -2398,7 +2420,6 @@ details span {
 	height: 20px;
 	margin: 10px 0;
 }
-
 
 
 
