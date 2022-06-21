@@ -352,7 +352,10 @@ details span {
 #update-banner-2 .content {
 	margin: 0 auto;
 	max-width: 300px;
-	padding: 4px 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 #update-banner-1 .headline,
 #update-banner-2 .headline {
@@ -362,6 +365,7 @@ details span {
 #update-banner-1 .subhead,
 #update-banner-2 .subhead {
 	font-size: 13px;
+	text-align: center;
 }
 #update-banner-1[data-state="updateavailable"],
 #update-banner-2[data-state="updateavailable"] {
@@ -402,8 +406,8 @@ details span {
     display: none;
 	}
 	#update-banner-2{
-		display: block;
-		position: fixed;
+		display: flex;
+    position: fixed;
     width: 100%;
     top: 0;
     height: 60px;
@@ -498,7 +502,7 @@ details span {
 }
 /* Стили для правого столбика */
 .RightBlock{
-	height: 855px;
+	/* height: 855px; */
 	border-radius: 10px;
 	width: 30%;
 	margin-left: 10px;
@@ -578,6 +582,8 @@ details span {
 @media (max-width: 1000px){
 	.LineCard-History{
 		width: 310px;
+		background: var(--ColorThemes0);
+		border: 2px solid var(--ColorThemes2);
 	}
 	.LineCard-History-BlockText{
 		width: 215px;
@@ -608,6 +614,11 @@ details span {
 	-webkit-transform: scale(1.02) translateY(0);
 	-o-transform: scale(1.02) translateY(0);
 	transform: scale(1.02) translateY(0);
+}
+@media (max-width: 1000px){
+	.LineCard-Genres{
+		border: 2px solid var(--ColorThemes2);
+	}
 }
 
 /* Стили карточек Релизов и Видео*/
@@ -1187,7 +1198,6 @@ details span {
 	color: var(--ColorThemes3);
 	text-align: left;
 }
-
 .LineCard-Donate-Card:hover {
 	opacity: 0.8;
 	cursor: pointer;
@@ -1202,7 +1212,38 @@ details span {
 		background: var(--ColorThemes1);
 		margin: 10px 0;
 	}
+	.LineCard-Donate-Card{
+		background: var(--ColorThemes0);
+		border: 2px solid var(--ColorThemes2);
+		width: calc(100% - 24px);
+	}
 }
+
+
+/* Адаптация LineList под раздел Twitter */
+.LineList-Twitter{
+	margin: 10px 10px 0 10px;
+	width: calc(100% - 14px);
+	border-radius: var(--border-radius-2);
+	background: var(--ColorThemes0);
+	border: 2px solid var(--ColorThemes2);
+	padding: 5px;
+}
+.LineList-Twitter a{
+	color: var(--ColorThemes3);
+	border-bottom: 1px solid var(--PrimaryColor);
+}
+.timeline-Tweet{
+	color: var(--ColorThemes3);
+}
+@media (max-width: 1000px){
+	.LineList-Twitter{
+		box-shadow: var(--shadow-l1);
+		width: calc(100% - 34px);
+	}
+}
+
+
 
 /* Адаптация LineList под раздел History */
 .LineList-History{

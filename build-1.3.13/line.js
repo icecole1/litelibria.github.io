@@ -164,10 +164,33 @@ function page_line() {
 						</div>	
 					</div>
 				</div>
+
+				<!-- Блок Твиттера  -->
+				<div class="LineList-Twitter" id="TwitterBlock">
+					<a class="twitter-timeline" id="TwitterTheme"
+						data-chrome="noheader nofooter noborders transparent"
+						data-theme="dark"
+						data-tweet-limit="1"
+						href="https://twitter.com/rozenrod">
+					Твиты от @rozenrod
+					</a>
+				</div>
+
 			</div>
 		</div>
   </div>
 	`;
+	if (localStorage.getItem('my_theme') == 'theme1') {;
+		document.getElementById('TwitterTheme').setAttribute("data-theme", "");
+	} else if(localStorage.getItem('my_theme') == 'theme2') {
+		document.getElementById('TwitterTheme').setAttribute("data-theme", "dark");
+	} else {
+		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {;
+			document.getElementById('TwitterTheme').setAttribute("data-theme", "dark");
+		} else {
+			document.getElementById('TwitterTheme').setAttribute("data-theme", "");
+		}
+	}
 
 	if(UpdatesList == null) LoadApiUpdates(); else GeneratorUpdates();
 	if(GenresList == null) LoadApiGenres(); else GeneratorGenres();
@@ -182,10 +205,11 @@ function page_line() {
 	appWidth();
 
 	Scroll_to_top();
+
+	twttr.widgets.load(
+		document.getElementById("TwitterBlock")
+	);
 }
-
-
-
 
 // Функции запросов к Api
 function LoadApiUpdates() {

@@ -216,7 +216,7 @@ function appReloadApi(){
 	SeasonList = null;
 
 	paramsRoute();
-	goRoute(href, query);
+	switchRoute(href, query);
 }
 
 // Проверка того, что наш браузер поддерживает Service Worker API.
