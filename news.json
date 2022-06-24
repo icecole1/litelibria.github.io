@@ -2,12 +2,12 @@
 	"blockNewTrailer": {
 		"Visible": true,
 		"Colors" : "Color(0xff000000)",
-		"ImageBG": "https://litelibria.com/img/NEWS/MyHeroAcademiaSeason6BG.webp",
-		"Poster": "https://litelibria.com/img/NEWS/MyHeroAcademiaSeason6.webp",
-		"TextBig": "Новый трейлер",
-		"TextMedium": "Моя геройская академия\n6 сезон",	
-		"TextSmall": "Показ ожидается в 2022 году.",
-		"YouTubeID": "mezyq2OX6TM&t=1s"
+		"ImageBG": "https://litelibria.com/img/NEWS/DateALiveSeason5BG.webp",
+		"Poster": "https://litelibria.com/img/NEWS/DateALiveSeason5.webp",
+		"TextBig": "Анонс",
+		"TextMedium": "Рандеву с жизнью\n5 сезон",	
+		"TextSmall": "Даты выхода пока нет",
+		"YouTubeID": "QgwVyYoeQlM"
 	},
 	"blockSelectRecommend": {
 		"Visible": true,
