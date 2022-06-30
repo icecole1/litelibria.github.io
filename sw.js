@@ -2,7 +2,7 @@ var CACHE_PREFIX = 'Dafune';
 
 var CACHE_VERSION_MAJOR = 1;
 var CACHE_VERSION_MINOR = 3;
-var CACHE_VERSION_PATCH = 14;
+var CACHE_VERSION_PATCH = 15;
 
 var CACHE_VERSION = CACHE_VERSION_MAJOR+'.'+CACHE_VERSION_MINOR+'.'+CACHE_VERSION_PATCH;
 
@@ -52,6 +52,7 @@ const assetUrls = [
 self.addEventListener('install', async event => {
   const cache = await caches.open(staticCacheName)
   await cache.addAll(assetUrls)
+	skipWaiting()
 })
 
 self.addEventListener('activate', async event => {

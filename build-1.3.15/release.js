@@ -788,15 +788,22 @@ function mobile_play_fullscreen(){
 // Функция скрытия элементов интерфейса в полноэкранном режиме
 function player_navigation(display){
 	if(display == "none"){
-		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#000000");
-		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#000000");
+		document.querySelector('meta[name="theme-color"]').setAttribute("content", "#000000");
 		document.getElementById('navi').setAttribute("style", "display:none;");
 		document.getElementById('back_to_top').setAttribute("style", "display:none;");
 		document.body.setAttribute("style", "touch-action: none;-ms-touch-action: none;");
 	}
 	if(display == "flex"){
-		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#fbfbfb");
-		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#1c1c19");
+		if (localStorage.getItem('my_theme') == 'theme1') {
+			document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#fbfbfb");
+			document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#fbfbfb");
+		} else if(localStorage.getItem('my_theme') == 'theme2') {
+			document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#1c1c19");
+			document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#1c1c19");
+		} else {
+			document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#fbfbfb");
+			document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#1c1c19");
+		}
 		
 		document.getElementById('navi').setAttribute("style", "");
 		document.getElementById('back_to_top').setAttribute("style", "");

@@ -2,41 +2,41 @@
 	"blockNewTrailer": {
 		"Visible": true,
 		"Colors" : "Color(0xff000000)",
-		"ImageBG": "https://litelibria.com/img/NEWS/DateALiveSeason5BG.webp",
-		"Poster": "https://litelibria.com/img/NEWS/DateALiveSeason5.webp",
+		"ImageBG": "/img/NEWS/TR/DateALiveSeason5BG.webp",
+		"Poster": "/img/NEWS/TR/DateALiveSeason5.webp",
 		"TextBig": "Анонс",
 		"TextMedium": "Рандеву с жизнью\n5 сезон",	
-		"TextSmall": "Даты выхода пока нет",
+		"TextSmall": "Даты выхода пока нет.",
 		"YouTubeID": "QgwVyYoeQlM"
 	},
 	"blockSelectRecommend": {
 		"Visible": true,
 		"Colors" : "Color(0xff000000)",
-		"ImageBG": "https://litelibria.com/img/NEWS/bg1.webp",
+		"ImageBG": "/img/NEWS/SR/bg2.webp",
 		"TextBig": "Рекомендуем",
 		"TextMedium": "Подборка хороших тайтлов\nс прошлого аниме сезона",
 		"TextSmall": "*По мнению LiteLibria",
 		"titelsLeight": 5,
 		"titels": {
 			"1": {
-				"id": 9131,
-				"Poster": "https://litelibria.com/img/NEWS/1.webp"
+				"id": 9174,
+				"Poster": "/img/NEWS/SR/1.webp"
 			},
 			"2": {
-				"id": 9121,
-				"Poster": "https://litelibria.com/img/NEWS/2.webp"
+				"id": 9161,
+				"Poster": "/img/NEWS/SR/2.webp"
 			},
 			"3": {
-				"id": 9122,
-				"Poster": "https://litelibria.com/img/NEWS/3.webp"
+				"id": 9164,
+				"Poster": "/img/NEWS/SR/3.webp"
 			},
 			"4": {
-				"id": 9118,
-				"Poster": "https://litelibria.com/img/NEWS/4.webp"
+				"id": 9158,
+				"Poster": "/img/NEWS/SR/4.webp"
 			},
 			"5": {
-				"id": 9137,
-				"Poster": "https://litelibria.com/img/NEWS/5.webp"
+				"id": 9165,
+				"Poster": "/img/NEWS/SR/5.webp"
 			}
 		}
 	}

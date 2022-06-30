@@ -66,10 +66,23 @@ function parseURL(){
 function initApp() {
 	historyLoad();
 	parseURL();
+	paramsLoad();
 	goRoute(href, query);
 }
 
 // Обязательные функции, запросы и т.д.
+function paramsLoad(){
+	if (localStorage.getItem('my_theme') == 'theme1') {
+		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#fbfbfb");
+		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#fbfbfb");
+	} else if(localStorage.getItem('my_theme') == 'theme2') {
+		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#1c1c19");
+		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#1c1c19");
+	} else {
+		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#fbfbfb");
+		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#1c1c19");
+	}
+}
 function paramsRoute(){
 	if(player) player.api("stop");
 
