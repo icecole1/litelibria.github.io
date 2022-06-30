@@ -52,7 +52,6 @@ const assetUrls = [
 self.addEventListener('install', async event => {
   const cache = await caches.open(staticCacheName)
   await cache.addAll(assetUrls)
-	skipWaiting()
 })
 
 self.addEventListener('activate', async event => {
