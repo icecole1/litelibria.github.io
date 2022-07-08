@@ -1,6 +1,6 @@
 {
 	"blockNewTrailer": {
-		"Visible": true,
+		"Visible": false,
 		"Colors" : "Color(0xff000000)",
 		"ImageBG": "/img/NEWS/TR/DateALiveSeason5BG.webp",
 		"Poster": "/img/NEWS/TR/DateALiveSeason5.webp",

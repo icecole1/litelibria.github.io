@@ -847,6 +847,7 @@ function delFavorite(id_t) {
   xhr.send();
   document.getElementById('delFavorite_rel').style.display = "none";
   document.getElementById('addFavorite_rel').style.display = "";
+	FavoritesList = null;
 }
 
 // Функция добавления в избранное
@@ -866,6 +867,7 @@ function addFavorite(id_t) {
   xhr.send();
   document.getElementById('delFavorite_rel').style.display = "";
   document.getElementById('addFavorite_rel').style.display = "none";
+	FavoritesList = null;
 }
 
 // Функция сохранения истории Приложения
