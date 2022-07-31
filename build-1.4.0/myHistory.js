@@ -75,8 +75,15 @@ function GeneratorHistory() {
 			document.getElementById('HistoryGenerator').appendChild(div);
 			div.className = 'HistoryCard';
 			div.id = 'article_history'+HistoryList[i].id+"-"+HistoryList[i].serie;
+
+			if (localStorage.getItem('postersMode') == 'webp') {
+				var stylePoster = `<img src="${config["webpPosters"]}${HistoryList[i].id}.webp" alt="">`
+			} else {
+				var stylePoster = `<img class="img${HistoryList[i].id}" src="./img/poster.png" alt="">`
+			}
+
 			div.innerHTML = `
-				<img class="img${HistoryList[i].id}" src="./img/poster.png" alt="">
+				${stylePoster}
 				<div class="HistoryCard-BlockText">
 					<p class="HistoryCard-Title names${HistoryList[i].id}"></p>
 					<p class="HistoryCard-Text">Серия ${HistoryList[i].serie}   Минута ${minutes}</p>
@@ -93,9 +100,11 @@ function GeneratorHistory() {
 		var url = config["titels_api"]+'getTitles?id_list='+b+'&filter=id,posters.small,names.ru';
 		$.get(url, function(data){
 			for (let t = 0; t < data.length; t++) {
-				var elemIMG = document.getElementsByClassName("img"+data[t]["id"])
-				for (let i = 0; i < elemIMG.length; i++) {
-					elemIMG[i].src = config["posters"]+data[t]["posters"]["small"]["url"];
+				if (localStorage.getItem('postersMode') != 'webp') {
+					var elemIMG = document.getElementsByClassName("img"+data[t]["id"])
+					for (let i = 0; i < elemIMG.length; i++) {
+						elemIMG[i].src = config["posters"]+data[t]["posters"]["small"]["url"];
+					}
 				}
 				var elemNAME = document.getElementsByClassName("names"+data[t]["id"])
 				for (let j = 0; j < elemNAME.length; j++) {

@@ -13,7 +13,10 @@ var ColorGenresList = ["A83845", "2E708A", "2D8653", "2A417E", "A953C6", "4BC3B5
 var CatalogsList;
 var FavoritesList;
 var SearchList;
-var SeasonList;		
+var SeasonList;
+
+// Переменная для видимости фильтров
+styleFilter = 1;
 
 // Запуск функции initApp при первой загрузке страницы
 window.addEventListener('load', initApp());
@@ -68,6 +71,10 @@ function initApp() {
 	parseURL();
 	paramsLoad();
 	goRoute(href, query);
+
+	if(!localStorage.getItem('postersMode')){
+		localStorage.setItem('postersMode', 'webp')
+	}
 }
 
 // Обязательные функции, запросы и т.д.
@@ -99,6 +106,7 @@ function pageColor(){
 
 // Функция запроса нужного контента
 function switchRoute(page, query, data){
+	styleFilter = 1; // Сбросить видимости фильтров
 	pageColor()
 	
 	switch (page) {

@@ -156,8 +156,7 @@ function page_line() {
 						<div class="LineGenerator-History" id="LineGenerator-History">
 							<!-- Карточки с контентом -->
 							<div id="HistoryNoneLine">
-								<br /><br />
-								<img src="img/libriatyan/4.webp" style="max-width: 145px;">
+								<img src="img/libriatyan/4.webp">
 								<br /><br />
 								<p style="color: var(--ColorThemes3);">Пока пусто...</p>
 							</div>	
@@ -357,9 +356,13 @@ function LoadApiRecomend() {
   })
 }
 
-function LoadApiNEWS() {
+function LoadApiNEWS(urlR = null) {
 	// Запрос к Api 
-  var url = "https://"+config["domains"]+"/news.json";
+	if(urlR == 1){
+		var url = "https://"+config["domains"]+"/news.json";
+	} else {
+		var url = "https://api.litelibria.com/news.json";
+	}
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -376,7 +379,7 @@ function LoadApiNEWS() {
 		GeneratorSelectRecommend();
   })
   .catch(function (error) {
-    console.log('error', error)
+    LoadApiNEWS(1)
   })
 }
 
@@ -395,9 +398,16 @@ function GeneratorUpdates() {
 		var div = document.createElement('div');
 		document.getElementById('LineGenerator-Updates').appendChild(div);
 		div.className = 'LineCard-BigHovers';
+
+		if (localStorage.getItem('postersMode') == 'webp') {
+			var stylePoster = `<img src="${config["webpPreview"]}${UpdatesList[i].id}.webp" alt="">`
+		} else {
+			var stylePoster = `<img src="${config["CustomPosters"]}/anilibria_bot/getThumbnail/${UpdatesList[i].id}/${UpdatesList[i].player.series.last}/1.jpg" alt="">`
+		}
+
 		div.innerHTML += `
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
-			<img src="${config["CustomPosters"]}/anilibria_bot/getThumbnail/${UpdatesList[i].id}/${UpdatesList[i].player.series.last}/1.jpg" alt="">
+			${stylePoster}
 			<div class="LineCard-Hover" onclick='goRoute("/release", {id:${UpdatesList[i].id}})'>
 				<p class="LineCard-Hover-Name">${UpdatesList[i].names.ru}</p>
 				<p class="LineCard-Hover-Genres">${genres}</p>
@@ -443,9 +453,16 @@ function GeneratorSchedule() {
 		var div = document.createElement('div');
 		document.getElementById('LineGenerator-Schedule').appendChild(div);
 		div.className = 'LineCard-SmallHovers';
+		
+		if (localStorage.getItem('postersMode') == 'webp') {
+			var stylePoster = `<img src="${config["webpPosters"]}${ScheduleList[n].list[i].id}.webp" alt="">`
+		} else {
+			var stylePoster = `<img src="${config["posters"]}${ScheduleList[n].list[i].posters.medium.url}" alt="">`
+		}
+
 		div.innerHTML += `
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
-			<img src="${config["posters"]}${ScheduleList[n].list[i].posters.medium.url}" alt="">
+			${stylePoster}
 			<a class="LineCard-Hover" onclick='goRoute("/release", {id:${ScheduleList[n].list[i].id}})'>
 				<p class="LineCard-Hover-Serie">Серия ${seriesSH}</p>
 			</a>
@@ -461,7 +478,7 @@ function GeneratorVideo() {
 		div.className = 'LineCard-BigHovers';
 		div.innerHTML += `
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
-			<img src="${VideoList[i].image}" alt="">
+			<img src="https://img.youtube.com/vi_webp/hqhx34_XNXI/${VideoList[i].youtube_id}.webp" alt="">
 			<a class="LineCard-Hover" href="https://www.youtube.com/watch?v=${VideoList[i].youtube_id}" target="_blank">
 				<p class="LineCard-Hover-Name">${VideoList[i].title}</p>
 			</a>
@@ -482,9 +499,16 @@ function GeneratorRecomend() {
 		var div = document.createElement('div');
 		document.getElementById('LineGenerator-Recomend').appendChild(div);
 		div.className = 'LineCard-SmallHovers';
+
+		if (localStorage.getItem('postersMode') == 'webp') {
+			var stylePoster = `<img src="${config["webpPosters"]}${RecomendList[i].id}.webp" alt="">`
+		} else {
+			var stylePoster = `<img src="${config["posters"]}${RecomendList[i].posters.medium.url}" alt="">`
+		}
+
 		div.innerHTML += `
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
-			<img src="${config["posters"]}${RecomendList[i].posters.medium.url}" alt="">
+			${stylePoster}
 			<a class="LineCard-Hover" onclick='goRoute("/release", {id:${RecomendList[i].id}})'>
 				<p class="LineCard-Hover-Serie">Серия ${seriesSH}</p>
 			</a>
@@ -561,8 +585,15 @@ function GeneratorHistoryLine() {
 				div.className = 'LineCard-History';
 				div.setAttribute("onclick", `goRoute('/release', {id:${HistoryList[i].id}})`);
 				div.id = 'article_history'+HistoryList[i].id;
+
+				if (localStorage.getItem('postersMode') == 'webp') {
+					var stylePoster = `<img src="${config["webpPosters"]}${HistoryList[i].id}.webp" alt="">`
+				} else {
+					var stylePoster = `<img class="img${HistoryList[i].id}" src="./img/poster.png" alt="">`
+				}
+
 				div.innerHTML = `
-					<img class="img${HistoryList[i].id}" src="./img/poster.png" alt="">
+					${stylePoster}
 					<div class="LineCard-History-BlockText">
 						<p class="LineCard-History-Title names${HistoryList[i].id}"></p>
 						<p class="LineCard-History-Text">Серия ${HistoryList[i].serie}   Минута ${minutes}</p>
@@ -577,9 +608,11 @@ function GeneratorHistoryLine() {
 		var url = config["titels_api"]+'getTitles?id_list='+b+'&filter=id,posters.small,names.ru';
 		$.get(url, function(data){
 			for (let t = 0; t < data.length; t++) {
-				var elemIMG = document.getElementsByClassName("img"+data[t]["id"])
-				for (let i = 0; i < elemIMG.length; i++) {
-					elemIMG[i].src = config["posters"]+data[t]["posters"]["small"]["url"];
+				if (localStorage.getItem('postersMode') != 'webp') {
+					var elemIMG = document.getElementsByClassName("img"+data[t]["id"])
+					for (let i = 0; i < elemIMG.length; i++) {
+						elemIMG[i].src = config["posters"]+data[t]["posters"]["small"]["url"];
+					}
 				}
 				var elemNAME = document.getElementsByClassName("names"+data[t]["id"])
 				for (let j = 0; j < elemNAME.length; j++) {

@@ -71,6 +71,12 @@ function page_options() {
 					<button id="Theme2_style" class="OptionsCardButton" title="Выбрать" onclick="SetThemeEditStyle('theme1')">Светлая</button>
 					<button id="Theme3_style" class="OptionsCardButton" title="Выбрать" onclick="SetThemeEditStyle('theme2')">Темная</button>
 				</div>
+				<hr>
+				<p class="settings_filter_p">Загрузка постеров</p>
+				<div id="settings_home_block_style" style="margin-bottom: 15px;">
+					<button id="Posters1_style" class="OptionsCardButton" title="Выбрать" onclick="SetPostersStyle('original')">Оригинал</button>
+					<button id="Posters2_style" class="OptionsCardButton" title="Выбрать" onclick="SetPostersStyle('webp')">Оптимизированные (webP)</button>
+				</div>
 				<p class="settings_filter_p">*Нажмите для выбора</p>
 			</div>
 
@@ -155,6 +161,7 @@ function page_options() {
 	GetMirrorString();
 	GetOpening_style();
 	GetPlayer_style();
+	GetPostersStyle();
 
 
 	appWidth();
@@ -281,6 +288,29 @@ function SetThemeEditStyle(theme){
 		$('link[href="css/theme1.css"]').attr('href', 'css/theme2.css');
 		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#1c1c19");
 		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#1c1c19");
+	}
+}
+
+function GetPostersStyle(){
+	postersMode = localStorage.getItem('postersMode');
+
+	if (postersMode == 'webp') {
+  	document.getElementById('Posters1_style').dataset.state = '';
+ 		document.getElementById('Posters2_style').dataset.state = 'Select';
+	} else {
+  	document.getElementById('Posters1_style').dataset.state = 'Select';
+  	document.getElementById('Posters2_style').dataset.state = '';
+	}
+}
+function SetPostersStyle(mode){
+	if (mode == 'original') {
+		localStorage.setItem('postersMode', 'original');
+		document.getElementById('Posters1_style').dataset.state = 'Select';
+  	document.getElementById('Posters2_style').dataset.state = '';
+	} else if (mode == 'webp') {
+		localStorage.setItem('postersMode', 'webp');
+  	document.getElementById('Posters1_style').dataset.state = '';
+ 		document.getElementById('Posters2_style').dataset.state = 'Select';
 	}
 }
 

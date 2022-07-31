@@ -296,8 +296,12 @@ function LoadApiReliseFav(id) {
 		GeneratorReliseFavorites(id);
 	}
 }
-function LoadApiReliseRecomend(id){
-	url = 'https://' + config["domains"]+'/RR/RelatedReleases.json';
+function LoadApiReliseRecomend(id, urlR=null){
+	if(urlR == null){
+		url = 'https://api.litelibria.com/RelatedReleases.json';
+	} else {
+		url = 'https://' + config["domains"]+'/RR/RelatedReleases.json';
+	}
 	fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -311,6 +315,9 @@ function LoadApiReliseRecomend(id){
   .then(function (data) {
 		GeneratorReliseRecomend(data, id);
   })
+	.catch((error) => {
+		LoadApiReliseRecomend(id, 1)
+	});
 }
 function LoadApiServer(){
 	var my_server = localStorage.getItem('my_server');
@@ -482,8 +489,14 @@ function GeneratorRelise(data){
 	document.title = data["names"]["ru"];
 
   document.getElementById('rel_in_favorites').innerHTML = `В избранном у  ${data["in_favorites"]}`;
-  document.getElementById('rel_posters_1_url').src = config["posters"]+data["posters"]["medium"]["url"];
-	document.getElementById('rel_posters_2_url').src = config["posters"]+data["posters"]["medium"]["url"];
+
+	if (localStorage.getItem('postersMode') == 'webp') {
+  	document.getElementById('rel_posters_1_url').src = config["webpPosters"]+data["id"]+'.webp';
+		document.getElementById('rel_posters_2_url').src = config["webpPosters"]+data["id"]+'.webp';
+	} else {
+  	document.getElementById('rel_posters_1_url').src = config["posters"]+data["posters"]["medium"]["url"];
+		document.getElementById('rel_posters_2_url').src = config["posters"]+data["posters"]["medium"]["url"];
+	}
 
   document.getElementById('rel_names_ru').innerHTML = `${data["names"]["ru"]}`;
   document.getElementById('rel_genres').innerHTML = `${genres}`;
@@ -562,9 +575,16 @@ function GeneratorReliseRecomend(data, id){
 			var div = document.createElement('div');
 			document.getElementById('ReleaseRecomend').appendChild(div);
 			div.className = 'LineCard-SmallHovers';
+
+			if (localStorage.getItem('postersMode') == 'webp') {
+				var stylePoster = `<img src="${config["webpPosters"]}${FilterTitel[0][i]}.webp" alt="">`
+			} else {
+				var stylePoster = `<img src="" alt="" id="recomendPoster${FilterTitel[0][i]}">`
+			}
+
 			div.innerHTML += `
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg>
-				<img src="" alt="" id="recomendPoster${FilterTitel[0][i]}">
+				${stylePoster}
 				<a class="LineCard-Hover" onclick="goRoute('/release', {id:${FilterTitel[0][i]}})">
 					<p class="LineCard-Hover-Serie" id="recomendSerie${FilterTitel[0][i]}">Нэма...</p>
 				</a>
@@ -574,7 +594,9 @@ function GeneratorReliseRecomend(data, id){
 		var url = config["titels_api"]+'getTitles?id_list='+FilterTitel[0]+'&filter=id,posters.small,player.series';
 		$.get(url, function(data){
 			for (let t = 0; t < data.length; t++) {
-				document.getElementById("recomendPoster"+data[t]["id"]).src = config["posters"]+data[t]["posters"]["small"]["url"];
+				if (localStorage.getItem('postersMode') != 'webp') {
+					document.getElementById("recomendPoster"+data[t]["id"]).src = config["posters"]+data[t]["posters"]["small"]["url"];
+				}
 				
 				if(data[t].player.series != null){
 					if(data[t].player.series.last != null){

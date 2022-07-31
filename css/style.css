@@ -97,6 +97,21 @@ details span {
 /* Конец */
 /* Стили для всплывающий уведомлений */
 
+#HistoryNoneLine{
+	margin-top: 20px;
+}
+#HistoryNoneLine img{
+	max-width: 145px
+}
+@media (max-width: 1000px){
+	#HistoryNoneLine {
+		margin-top: 10px;
+	}
+	#HistoryNoneLine img{
+		max-width: 100px;
+	}
+}
+
 
 
 /* Стили для кнопки вверх */
@@ -907,7 +922,7 @@ details span {
 	flex-direction: row;
 	background-color: var(--ColorThemes0);
 	box-shadow: var(--shadow-l1);
-	border-radius: 20px;
+	border-radius: 15px;
 	transition: .3s ease;
 	margin: 6px;
 	color: #fff;
@@ -926,7 +941,7 @@ details span {
   height: 200px;
   aspect-ratio: 7 / 10;
 	z-index: 2;
-	border-radius: 20px;
+	border-radius: 15px;
 }
 .LineCard-SmallHovers > .LineCard-Hover{
   height: 200px;
@@ -1485,7 +1500,7 @@ details span {
 	display: block;
 	background-size: cover;
 	background-position: center;
-	border-radius: 10px;
+	border-radius: 15px;
 	transition: .3s ease;
 	transform: scale(1.00000000001);
 }
