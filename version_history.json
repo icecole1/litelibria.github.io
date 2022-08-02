@@ -1,6 +1,16 @@
 version_history = [
 	{
     "prefix":"Omega",
+    "version":"1.4.1",
+    "date":"2 August 2022",
+    "update":[
+			{
+				"type":"FIXED",
+        "text":"Исправленна ошибка отображения видео на каналах AniLibria.TV."
+			}
+    ]
+  },{
+    "prefix":"Omega",
     "version":"1.4.0",
     "date":"31 July 2022",
     "update":[
