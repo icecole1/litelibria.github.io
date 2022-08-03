@@ -1398,7 +1398,7 @@ details span {
 	height: 225px;
 	background: var(--ColorThemes0);
 	aspect-ratio: 7 / 10;
-	border-radius: 10px;
+	border-radius: 15px;
 	margin-right: 10px;
 	position: relative;
 	display: block;
