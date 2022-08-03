@@ -1236,7 +1236,7 @@ details span {
 	}
 	.LineCard-Donate-Card{
 		background: var(--ColorThemes0);
-		width: calc(100% - 20px);
+		width: calc(100% - 10px);
 	}
 }
 @media (prefers-color-scheme: dark) {
