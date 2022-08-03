@@ -510,7 +510,7 @@ details span {
 }
 /* Стили для левого столбика */
 .LeftBlock{
-	border-radius: 10px;
+	border-radius: 15px;
 	width: 70%;
 	min-height: 200px;
 	background: var(--ColorThemes2);
@@ -518,7 +518,7 @@ details span {
 /* Стили для правого столбика */
 .RightBlock{
 	/* height: 855px; */
-	border-radius: 10px;
+	border-radius: 15px;
 	width: 30%;
 	margin-left: 10px;
 	min-height: 200px;
@@ -1188,8 +1188,8 @@ details span {
 	margin: 0 10px 10px 10px;
 	width: 100%;
 	position: relative;
-	border-radius: var(--border-radius-2);
-	background: var(--ColorThemes2);
+	/* border-radius: var(--border-radius-2);
+	background: var(--ColorThemes2); */
 	display: flex;
 	justify-content: space-evenly;
 	flex-direction: column;
@@ -1199,7 +1199,8 @@ details span {
 	display: contents;
 }
 .LineCard-Donate-Card{
-	width: calc(100% - 20px);
+	/* width: calc(100% - 20px); */
+	width: 100%;
 	height: 90px;
 	background: var(--ColorThemes0);
 	display: flex;
@@ -1276,7 +1277,7 @@ details span {
 /* Адаптация LineList под раздел History */
 .LineList-History{
 	height: 855px;
-	border-radius: 10px;
+	border-radius: 15px;
 	width: 100%;
 	margin-left: 10px;
 	min-height: 150px;
@@ -1346,7 +1347,7 @@ details span {
 	display: block;
 	background-size: cover;
 	background-position: center;
-	border-radius: 10px 10px 0 0;
+	border-radius: 15px 15px 0 0;
 }
 .LineList-Trailer-BG-Gradien{
 	background: linear-gradient(90deg, #000000, #000000c2, #00000000);
@@ -1355,7 +1356,7 @@ details span {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	border-radius: 10px 10px 0 0;
+	border-radius: 15px 15px 0 0;
 }
 @media (min-width: 800px) and (max-width: 1000px){
 	.LineList-Trailer-BG{
@@ -1523,7 +1524,7 @@ details span {
 	animation: show 0.5s;
 }
 .CatalogList {
-	border-radius: 10px;
+	border-radius: 15px;
 	max-width: 1500px;
 	transition: .3s ease;
 	padding: 10px 0 10px 0;
@@ -1589,7 +1590,7 @@ details span {
 .ScheduleBlock {
 	position: relative;
 	animation: show 0.5s;
-	border-radius: 10px;
+	border-radius: 15px;
 	max-width: 1500px;
 	transition: .3s ease;
 	background: var(--ColorThemes2);
@@ -1659,7 +1660,7 @@ details span {
 	animation: show 0.5s;
 }
 .HistoryList {
-	border-radius: 10px;
+	border-radius: 15px;
 	max-width: 1500px;
 	transition: .3s ease;
 	padding: 10px 0 10px 0;
@@ -1764,7 +1765,7 @@ details span {
 .OptionsBlock{
 	position: relative;
 	animation: show 0.5s;
-	border-radius: 10px;
+	border-radius: 15px;
 	max-width: 1500px;
 	transition: .3s ease;
 	padding: 10px 0 10px 0;
