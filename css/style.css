@@ -1229,6 +1229,12 @@ details span {
 	-o-transform: scale(1.02) translateY(0);
 	transform: scale(1.02) translateY(0);
 }
+@media (prefers-color-scheme: dark) {
+	.LineCard-Donate-Card{
+		border: 2px solid var(--ColorThemes2);
+		width: calc(100% - 4px);
+	}
+}
 @media (max-width: 1000px){
 	.LineCard-Donate{
 		background: var(--ColorThemes1);
@@ -1238,11 +1244,11 @@ details span {
 		background: var(--ColorThemes0);
 		width: calc(100% - 10px);
 	}
-}
-@media (prefers-color-scheme: dark) {
-	.LineCard-Donate-Card{
-		border: 2px solid var(--ColorThemes2);
-		width: calc(100% - 24px);
+	@media (prefers-color-scheme: dark) {
+		.LineCard-Donate-Card{
+			border: 2px solid var(--ColorThemes2);
+			width: calc(100% - 14px);
+		}
 	}
 }
 
