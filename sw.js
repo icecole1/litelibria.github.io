@@ -2,7 +2,7 @@ var CACHE_PREFIX = 'Omega';
 
 var CACHE_VERSION_MAJOR = 1;
 var CACHE_VERSION_MINOR = 4;
-var CACHE_VERSION_PATCH = 1;
+var CACHE_VERSION_PATCH = 2;
 
 var CACHE_VERSION = CACHE_VERSION_MAJOR+'.'+CACHE_VERSION_MINOR+'.'+CACHE_VERSION_PATCH;
 
@@ -29,8 +29,6 @@ const assetUrls = [
   '/css/auto.css',
   '/css/theme2.css',
   '/css/theme1.css',
-
-  '/js/jquery-3.1.1.min.js',
 
   '/build-'+CACHE_VERSION+'/script.js',
   '/build-'+CACHE_VERSION+'/release.js',

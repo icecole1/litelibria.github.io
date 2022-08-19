@@ -1,6 +1,20 @@
 version_history = [
 	{
     "prefix":"Omega",
+    "version":"1.4.2",
+    "date":"19 August 2022",
+    "update":[
+			{
+				"type":"FIXED",
+        "text":"Удалены ненужные файлы."
+			},
+			{
+				"type":"ADDED",
+        "text":"Добавлен трекер P2P LiteLibria."
+			}
+    ]
+  },{
+    "prefix":"Omega",
     "version":"1.4.1",
     "date":"2 August 2022",
     "update":[

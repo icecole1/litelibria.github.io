@@ -35,7 +35,7 @@
 
   <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
   <link rel="manifest" href="manifest.json">
-  <script src="js/jquery-3.1.1.min.js"></script>
+  <!-- <script src="js/jquery-3.1.1.min.js"></script> -->
 
   <script>
       document.documentElement.setAttribute('class', 'ontouchend' in document ? 'touch' : 'no-touch');
@@ -59,6 +59,19 @@
   <!-- iPad -->
   <link rel="apple-touch-startup-image" href="../img/icon/web/apple-touch-icon.png">
 
+	<!-- Смена темы при загрузке -->
+	<script>
+		if (localStorage.getItem('my_theme') == 'auto') {
+			document.querySelector('link[href="css/auto.css"]').href = 'css/auto.css';
+		} else if (localStorage.getItem('my_theme') == 'theme1') {
+			document.querySelector('link[href="css/auto.css"]').href = 'css/theme1.css';
+		} else if (localStorage.getItem('my_theme') == 'theme2') {
+			document.querySelector('link[href="css/auto.css"]').href = 'css/theme2.css';
+		} else {
+			localStorage.setItem('my_theme', 'auto');
+			document.querySelector('link[href="css/auto.css"]').href = 'css/auto.css';
+		}
+	</script>
 
 	<!-- Подключенеие Twitter -->
 	<script src="https://platform.twitter.com/widgets.js"></script>
@@ -79,36 +92,22 @@
 	<script src="js/rickshaw.min.js"></script>
 	<link href="js/rickshaw.min.css" rel="stylesheet">
 
-	<!--  -->
+	<!-- Скрипты истории просмотров -->
 	<script src="js/history.js"></script>
 	<script src="js/historySync.js"></script>
 
   <!-- Загрузка страниц -->
-	<script src="build-1.4.1/line.js"></script>
-	<script src="build-1.4.1/catalog.js"></script>
-	<script src="build-1.4.1/favorites.js"></script>
-	<script src="build-1.4.1/season.js"></script>
-	<script src="build-1.4.1/search.js"></script>
-	<script src="build-1.4.1/schedule.js"></script>
-	<script src="build-1.4.1/myHistory.js"></script>
-	<script src="build-1.4.1/option.js"></script>
-	<script src="build-1.4.1/release.js"></script>	
-	<script src="build-1.4.1/script.js"></script>
-	<script src="build-1.4.1/app.js" defer></script>
-  <!-- Загрузка страниц -->
-
-	<script>
-		if (localStorage.getItem('my_theme') == 'auto') {
-			$('link[href="css/auto.css"]').attr('href', 'css/auto.css');
-		} else if (localStorage.getItem('my_theme') == 'theme1') {
-			$('link[href="css/auto.css"]').attr('href', 'css/theme1.css');
-		} else if (localStorage.getItem('my_theme') == 'theme2') {
-			$('link[href="css/auto.css"]').attr('href', 'css/theme2.css');
-		} else {
-			localStorage.setItem('my_theme', 'auto');
-			$('link[href="css/auto.css"]').attr('href', 'css/auto.css');
-		}
-	</script>
+	<script src="build-1.4.2/line.js"></script>
+	<script src="build-1.4.2/catalog.js"></script>
+	<script src="build-1.4.2/favorites.js"></script>
+	<script src="build-1.4.2/season.js"></script>
+	<script src="build-1.4.2/search.js"></script>
+	<script src="build-1.4.2/schedule.js"></script>
+	<script src="build-1.4.2/myHistory.js"></script>
+	<script src="build-1.4.2/option.js"></script>
+	<script src="build-1.4.2/release.js"></script>	
+	<script src="build-1.4.2/script.js"></script>
+	<script src="build-1.4.2/app.js" defer></script>
 
 	<!-- Подключенеие Google Service -->
 	<script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>

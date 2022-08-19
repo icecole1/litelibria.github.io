@@ -247,17 +247,14 @@ function GetThemeEditStyle(){
   	document.getElementById('Theme1_style').dataset.state = 'Select';
  		document.getElementById('Theme2_style').dataset.state = '';
   	document.getElementById('Theme3_style').dataset.state = '';
-		$('link[href="css/theme2.css"]').attr('href', 'css/auto.css');
 	} else if (theme == 'theme1') {
   	document.getElementById('Theme1_style').dataset.state = '';
  		document.getElementById('Theme2_style').dataset.state = 'Select';
   	document.getElementById('Theme3_style').dataset.state = '';
-		$('link[href="css/theme2.css"]').attr('href', 'css/theme1.css');
 	} else if (theme == 'theme2') {
   	document.getElementById('Theme1_style').dataset.state = '';
  		document.getElementById('Theme2_style').dataset.state = '';
   	document.getElementById('Theme3_style').dataset.state = 'Select';
-		$('link[href="css/theme2.css"]').attr('href', 'css/theme2.css');
 	}
 }
 function SetThemeEditStyle(theme){
@@ -266,8 +263,7 @@ function SetThemeEditStyle(theme){
   	document.getElementById('Theme1_style').dataset.state = 'Select';
  		document.getElementById('Theme2_style').dataset.state = '';
   	document.getElementById('Theme3_style').dataset.state = '';
-		$('link[href="css/theme1.css"]').attr('href', 'css/auto.css');
-		$('link[href="css/theme2.css"]').attr('href', 'css/auto.css');
+		themeSelector('css/auto.css')
 		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#fbfbfb");
 		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#1c1c19");
 	} else if (theme == 'theme1') {
@@ -275,8 +271,7 @@ function SetThemeEditStyle(theme){
   	document.getElementById('Theme1_style').dataset.state = '';
  		document.getElementById('Theme2_style').dataset.state = 'Select';
   	document.getElementById('Theme3_style').dataset.state = '';
-		$('link[href="css/auto.css"]').attr('href', 'css/theme1.css');
-		$('link[href="css/theme2.css"]').attr('href', 'css/theme1.css');
+		themeSelector('css/theme1.css')
 		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#fbfbfb");
 		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#fbfbfb");
 	} else if (theme == 'theme2') {
@@ -284,10 +279,19 @@ function SetThemeEditStyle(theme){
   	document.getElementById('Theme1_style').dataset.state = '';
  		document.getElementById('Theme2_style').dataset.state = '';
   	document.getElementById('Theme3_style').dataset.state = 'Select';
-		$('link[href="css/auto.css"]').attr('href', 'css/theme2.css');
-		$('link[href="css/theme1.css"]').attr('href', 'css/theme2.css');
+		themeSelector('css/theme2.css')
+
 		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#1c1c19");
 		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#1c1c19");
+	}
+}
+function themeSelector(themeHref){
+	if(document.querySelector('link[href="css/theme1.css"]') != null){
+		document.querySelector('link[href="css/theme1.css"]').href = themeHref;
+	} else if (document.querySelector('link[href="css/theme2.css"]') != null) {
+		document.querySelector('link[href="css/theme2.css"]').href = themeHref;
+	} else {
+		document.querySelector('link[href="css/auto.css"]').href = themeHref;
 	}
 }
 

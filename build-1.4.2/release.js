@@ -689,8 +689,9 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie, dataPlayerFirst) {
 	var engineConfig  = {
 		loader: {
 			trackerAnnounce: [
+				"wss://tracker.litelibria.com",
 				"wss://tracker.sdev.xyz",
-				"wss://tracker.openwebtorrent.com"
+				// "wss://tracker.openwebtorrent.com"
 			],
 			cachedSegmentsCount: 50, // Количество сегментов видео которое мы храним для раздачи p2p пирам
 			cachedSegmentExpiration: 15 * 60 * 1000, // Сколько времени будет хранится сегменты для раздачи p2p пирам
@@ -810,7 +811,9 @@ function mobile_play_fullscreen(){
 // Функция скрытия элементов интерфейса в полноэкранном режиме
 function player_navigation(display){
 	if(display == "none"){
-		document.querySelector('meta[name="theme-color"]').setAttribute("content", "#000000");
+		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').setAttribute("content", "#000000");
+		document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').setAttribute("content", "#000000");
+
 		document.getElementById('navi').setAttribute("style", "display:none;");
 		document.getElementById('back_to_top').setAttribute("style", "display:none;");
 		document.body.setAttribute("style", "touch-action: none;-ms-touch-action: none;");

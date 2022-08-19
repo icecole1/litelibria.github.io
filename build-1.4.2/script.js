@@ -58,13 +58,13 @@ function b_search() {
   document.getElementById('menu_n').setAttribute("style", "transform: translateY(-80px);opacity: 0;");
   document.getElementById('search_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
 }
-$(document).mouseup(function (e) {
-  var container = $("#search_n");
-  if (container.has(e.target).length === 0){
-    document.getElementById('menu_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
-    document.getElementById('search_n').setAttribute("style", "transform: translateY(-40px);opacity: 0;");
-  }
-});
+// $(document).mouseup(function (e) {
+//   var container = $("#search_n");
+//   if (container.has(e.target).length === 0){
+//     document.getElementById('menu_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
+//     document.getElementById('search_n').setAttribute("style", "transform: translateY(-40px);opacity: 0;");
+//   }
+// });
 function b_navigation() {
   document.getElementById('menu_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
   document.getElementById('search_n').setAttribute("style", "transform: translateY(-40px);opacity: 0;");
