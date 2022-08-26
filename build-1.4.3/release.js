@@ -571,7 +571,6 @@ function GeneratorReliseRecomend(data, id){
 
 	if(FilterTitel.length > 0){
 		document.getElementById('ReleaseRecomendDisplay').style.display = '';
-		console.log(FilterTitel[0].length);
 		for (let i = 0; FilterTitel[0].length > i; i++) {
 			var div = document.createElement('div');
 			document.getElementById('ReleaseRecomend').appendChild(div);
@@ -593,7 +592,6 @@ function GeneratorReliseRecomend(data, id){
 		}
 
 		var url = config["titels_api"]+'getTitles?id_list='+FilterTitel[0]+'&filter=id,posters.small,player.series';
-
 		fetch(url)
 		.then(function (response) {
 			if (response.status !== 200) {

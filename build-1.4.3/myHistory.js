@@ -31,7 +31,6 @@ function page_myHistory() {
 				<!-- Карточки с контентом -->
 
 				<div id="HistoryNone">
-					<br /><br />
 					<img src="img/libriatyan/4.webp" style="max-width: 145px;">
 					<br /><br />
 					<p style="color: var(--ColorThemes3);">Пока пусто...</p>
@@ -98,7 +97,17 @@ function GeneratorHistory() {
 			if (array.lastIndexOf(element) == index) return element
 		})
 		var url = config["titels_api"]+'getTitles?id_list='+b+'&filter=id,posters.small,names.ru';
-		$.get(url, function(data){
+		fetch(url)
+		.then(function (response) {
+			if (response.status !== 200) {
+				return Promise.reject(new Error(response.statusText))
+			}
+			return Promise.resolve(response)
+		})
+		.then(function (response) {
+			return response.json();
+		})
+		.then(function (data) {
 			for (let t = 0; t < data.length; t++) {
 				if (localStorage.getItem('postersMode') != 'webp') {
 					var elemIMG = document.getElementsByClassName("img"+data[t]["id"])
@@ -111,7 +120,10 @@ function GeneratorHistory() {
 					elemNAME[j].innerHTML = data[t]["names"]["ru"];
 				}
 			}
-		});
+		})
+		.catch(function (error) {
+			console.log('error', error)
+		})
 	}
 }
 

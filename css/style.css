@@ -112,6 +112,36 @@ details span {
 	}
 }
 
+/* Стили для анимации загрузки API */
+/* Начало */
+.LoadAnim {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+/* Конец */
+/* Стили для анимации загрузки API */
+
+
+
+
+/* Стили для посьб и сообщений libriatyan */
+/* Начало */
+#PHPSESSIDNone,
+#FilterNone,
+#HistoryNone,
+#FilterNone-2 {
+	position: absolute;
+	left: calc(50% - 82px);
+	top: calc(50% - 107px);
+	height: 215px;
+	width: 165px;
+}
+/* Конец */
+/* Стили для посьб и сообщений libriatyan */
+
+
+
 
 
 /* Стили для кнопки вверх */
@@ -507,6 +537,7 @@ details span {
 	transition: .3s ease;
 	padding: 10px 0 10px 0;
 	display: flex;
+	align-items: flex-start;
 }
 /* Стили для левого столбика */
 .LeftBlock{
@@ -1283,7 +1314,7 @@ details span {
 
 /* Адаптация LineList под раздел History */
 .LineList-History{
-	height: 855px;
+	/* height: 855px; */
 	border-radius: 15px;
 	width: 100%;
 	margin-left: 10px;
@@ -1296,7 +1327,7 @@ details span {
 	overflow-y: auto;
 	white-space: inherit;
 	align-items: start;
-	height: 833px;
+	/* height: 833px; */
 }
 .LineList-History h1 {
 	font-weight: 400;
@@ -1537,6 +1568,8 @@ details span {
 	padding: 10px 0 10px 0;
 	background: var(--ColorThemes2);
 	margin-top: 10px;
+
+	min-height: calc(100vh - 145px);
 }
 .CatalogList h1 {
 	font-weight: 400;
@@ -1673,6 +1706,7 @@ details span {
 	padding: 10px 0 10px 0;
 	background: var(--ColorThemes2);
 	margin-top: 10px;
+	min-height: calc(100vh - 210px);
 }
 .HistoryList h1 {
 	font-weight: 400;

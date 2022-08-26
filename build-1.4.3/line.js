@@ -146,7 +146,7 @@ function page_line() {
 					</a>
 				</div>
 
-				<!-- Блок История просмотров  -->
+				<!-- Блок История просмотров -->
 				<div class="LineList-History">
 					<div style="display: flow-root;">
 						<h1 style="float: left;">История просмотров</h1>
@@ -159,8 +159,9 @@ function page_line() {
 								<img src="img/libriatyan/4.webp">
 								<br /><br />
 								<p style="color: var(--ColorThemes3);">Пока пусто...</p>
-							</div>	
-						</div>	
+								<br /><br />
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -518,8 +519,10 @@ function GeneratorRecomend() {
 
 function GeneratorTrailer() {
 	if(NEWSList.blockNewTrailer.Visible){
+		urlVideo = NEWSList.blockNewTrailer.YouTubeID != false ? `https://www.youtube.com/watch?v=${NEWSList.blockNewTrailer.YouTubeID}` : ""
+
 		document.getElementById("LineGenerator-Trailer").style.display = "";
-		document.getElementById("LineGenerator-Trailer-1").setAttribute("href", `https://www.youtube.com/watch?v=${NEWSList.blockNewTrailer.YouTubeID}`);
+		document.getElementById("LineGenerator-Trailer-1").setAttribute("href", urlVideo);
 		document.getElementById("LineGenerator-Trailer-2").setAttribute("style", `background-image: url(${NEWSList.blockNewTrailer.ImageBG})`);
 		document.getElementById("LineGenerator-Trailer-3").innerHTML = NEWSList.blockNewTrailer.TextBig;
 		document.getElementById("LineGenerator-Trailer-4").innerHTML = NEWSList.blockNewTrailer.TextMedium;
@@ -574,33 +577,31 @@ function GeneratorHistoryLine() {
 		document.getElementById("HistoryNoneLine").style.display = "none";
 		var idH = [];
 
-		for (let i = 0; i < HistoryList.length; i++) {
-			if(i <= 10){
-				idH.push(HistoryList[i].id);
-				var minutes = (HistoryList[i].time[0] / 60).toFixed(2).replace(".", ":");
-				var dateObject = new Date(HistoryList[i].date);
-				var date = dateObject.toLocaleString()
-				var div = document.createElement('div');
-				document.getElementById('LineGenerator-History').appendChild(div);
-				div.className = 'LineCard-History';
-				div.setAttribute("onclick", `goRoute('/release', {id:${HistoryList[i].id}})`);
-				div.id = 'article_history'+HistoryList[i].id;
+		for (let i = 0; i < HistoryList.length && i < 6; i++) {
+			idH.push(HistoryList[i].id);
+			var minutes = (HistoryList[i].time[0] / 60).toFixed(2).replace(".", ":");
+			var dateObject = new Date(HistoryList[i].date);
+			var date = dateObject.toLocaleString()
+			var div = document.createElement('div');
+			document.getElementById('LineGenerator-History').appendChild(div);
+			div.className = 'LineCard-History';
+			div.setAttribute("onclick", `goRoute('/release', {id:${HistoryList[i].id}})`);
+			div.id = 'article_history'+HistoryList[i].id;
 
-				if (localStorage.getItem('postersMode') == 'webp') {
-					var stylePoster = `<img src="${config["webpPosters"]}${HistoryList[i].id}.webp" alt="">`
-				} else {
-					var stylePoster = `<img class="img${HistoryList[i].id}" src="./img/poster.png" alt="">`
-				}
-
-				div.innerHTML = `
-					${stylePoster}
-					<div class="LineCard-History-BlockText">
-						<p class="LineCard-History-Title names${HistoryList[i].id}"></p>
-						<p class="LineCard-History-Text">Серия ${HistoryList[i].serie}   Минута ${minutes}</p>
-						<p class="LineCard-History-Text">Дата ${date}</p>
-					</div>
-					`;
+			if (localStorage.getItem('postersMode') == 'webp') {
+				var stylePoster = `<img src="${config["webpPosters"]}${HistoryList[i].id}.webp" alt="">`
+			} else {
+				var stylePoster = `<img class="img${HistoryList[i].id}" src="./img/poster.png" alt="">`
 			}
+
+			div.innerHTML = `
+				${stylePoster}
+				<div class="LineCard-History-BlockText">
+					<p class="LineCard-History-Title names${HistoryList[i].id}"></p>
+					<p class="LineCard-History-Text">Серия ${HistoryList[i].serie}   Минута ${minutes}</p>
+					<p class="LineCard-History-Text">Дата ${date}</p>
+				</div>
+				`;
 		}
 		b = idH.filter(function(element, index, array) {
 			if (array.lastIndexOf(element) == index) return element

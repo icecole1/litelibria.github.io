@@ -1,6 +1,4 @@
 var styleSearch = 1;
-var num = 24;
-var after = 0;
 var searchQ;
 
 function page_search(s1) {
@@ -35,16 +33,14 @@ function page_search(s1) {
 
 			<!-- Картинка в случае отсутствия ответа  -->
 			<div id="FilterNone" style="display:none;">
-				<br /><br />
 				<img src="img/libriatyan/4.webp" style="width: 145px;">
 				<br /><br />
 				<p style="color: var(--ColorThemes3);">Ничего не найдено...</p>
-				<br /><br />
 			</div>
 
 			<!-- Анимация загрузки -->
-			<div id="LoadAnimSearch" style="display:none;">
-				<svg style="padding: 50px;width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg>
+			<div id="LoadAnimSearch" class="LoadAnim" style="display:none;">
+				<svg style="width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg>
 			</div>	
 
 			<!-- Кнопка включения автодобавления тайтлов  -->
@@ -99,15 +95,11 @@ function setSearchStyle(){
 
 // Функции запросов к Api
 function LoadApiSearch(s1) {
-	if(SearchList != null){
-		after = SearchList.length;	
-	}
-
 	// Запуск анимации загрузки контента
 	document.getElementById("LoadAnimSearch").style.display = "block";
 
 	// Запрос к Api 
-	var url = config["titels_api"]+"searchTitles?search="+s1+"&filter=id,names.ru,posters.medium,torrents.series,description,genres&limit="+num+"&after="+after;
+	var url = config["titels_api"]+"searchTitles?search="+s1+"&filter=id,names.ru,posters.medium,torrents.series,description,genres&limit=-1";
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -120,14 +112,6 @@ function LoadApiSearch(s1) {
     return response.json();
   })
   .then(function (data) {
-		if(data.length == 0) {
-			document.getElementById("FilterNone").style.display = "";
-			document.getElementById("LoadApiSearchButton").style.display = "none";
-		} else {
-			document.getElementById("FilterNone").style.display = "none";
-			document.getElementById("LoadApiSearchButton").style.display = "";
-		}
-
 		if(SearchList == null) SearchList = data;
 		else Array.prototype.push.apply(SearchList, data);
 

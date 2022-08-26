@@ -72,20 +72,18 @@ function page_catalog() {
 
 			<!-- Картинка в случае отсутствия ответа  -->
 			<div id="FilterNone" style="display:none;">
-				<br /><br />
 				<img src="img/libriatyan/4.webp" style="width: 145px;">
 				<br /><br />
 				<p style="color: var(--ColorThemes3);">Ничего не найдено...</p>
-				<br /><br />
 			</div>
 
 			<!-- Анимация загрузки -->
-			<div id="LoadAnimCatalog" style="display:none;">
-				<svg style="padding: 50px;width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg>
+			<div id="LoadAnimCatalog" class="LoadAnim" style="display:none;">
+				<svg style="width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg>
 			</div>	
 
 			<!-- Кнопка включения автодобавления тайтлов  -->
-			<button id="LoadApiCatalogButton" class="LoadApiButton" onclick="LoadApiCatalog()">Показать ещё</button>
+			<button id="LoadApiCatalogButton" class="LoadApiButton" onclick="LoadApiCatalog();FilterNoneTop();" style="display:none;">Показать ещё</button>
 		</div>
 	</div>
   `;
@@ -132,6 +130,10 @@ function setCatalogStyle(){
 	}
 	document.getElementById('LineGeneratorCatalog').innerHTML = "";
 	GeneratorCatalog();
+}
+
+function FilterNoneTop(){
+	document.getElementById('FilterNone').style.top = "auto";
 }
 
 // Функция для видимости фильтров
