@@ -699,8 +699,8 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie, dataPlayerFirst) {
 	var engineConfig  = {
 		loader: {
 			trackerAnnounce: [
-				"wss://tracker.litelibria.com",
 				"wss://tracker.sdev.xyz",
+				"wss://tracker.litelibria.com",
 				// "wss://tracker.openwebtorrent.com"
 			],
 			cachedSegmentsCount: 50, // Количество сегментов видео которое мы храним для раздачи p2p пирам
