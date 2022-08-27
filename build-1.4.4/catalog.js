@@ -97,6 +97,7 @@ function page_catalog() {
 		LoadApiCatalog();
 	} else {
 		GeneratorCatalog();
+		document.getElementById("LoadApiCatalogButton").style.display = "";
 	}
 
 	appWidth();
