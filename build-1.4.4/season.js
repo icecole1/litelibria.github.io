@@ -47,7 +47,11 @@ function page_season(query) {
 
 	getSeasonStyle();
 
-	if(SeasonList == null) LoadSortingSeason(query); else GeneratorSeason();
+	if(SeasonList == null) {
+		LoadSortingSeason(query);
+	} else {
+		GeneratorSeason();
+	}
 
 	appWidth();
   Scroll_to_top();
@@ -148,7 +152,7 @@ function LoadApiSeasons() {
 	document.getElementById("LoadAnimSeason").style.display = "block";
 
 	// Запрос к Api 
-	var url = urlGenerate + "filter=id,names.ru,posters.medium,torrents.series,description,genres&limit="+num+"&after="+after;
+	var url = urlGenerate + "filter=id,names.ru,posters.medium,player.series,description,genres,type&limit="+num+"&after="+after;
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -190,8 +194,20 @@ function GeneratorSeason() {
 			if(genres == '') genres = SeasonList[i].genres[g];
 			else genres = genres + ', ' +SeasonList[i].genres[g];
 		}
-		if(SeasonList[i].torrents.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${SeasonList[i].torrents.series.last}</div>`;
+		if(SeasonList[i].player.series.last != null){
+			if(SeasonList[i].type.code == 0){
+				SerieType = "Фильм"
+			} else if(SeasonList[i].type.code == 2){
+				SerieType = "OVA"
+			} else if(SeasonList[i].type.code == 3){
+				SerieType = "ONA"
+			} else if(SeasonList[i].type.code == 4){
+				SerieType = "Спешл"
+			} else {
+				SerieType = "Серия"
+			}
+
+			TextSerie = `<div class="LineCard-TextSerie">${SerieType} ${SeasonList[i].player.series.last}</div>`;
 		}
 
 		if (localStorage.getItem('postersMode') == 'webp') {

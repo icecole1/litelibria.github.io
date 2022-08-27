@@ -158,7 +158,7 @@ function page_release(id, data) {
 			</div>
 		
 			<div class="ReleaseBlockPlayer">
-				<div class="ReleaseBlockPlayerLeft">
+				<div class="ReleaseBlockPlayerLeft" id="ReleasePlayer">
 					<div id="player"></div>
 				</div>
 				<div class="ReleaseBlockPlayerRight" id="PlaySerie">
@@ -521,7 +521,10 @@ function GeneratorRelise(data){
   document.getElementById('rel_names_en').innerHTML = `Навзание EN: ${data["names"]["en"]}`;
   document.getElementById('rel_SHIKIMORI').href = `https://shikimori.one/animes?search=${data["names"]["en"]}`;
 
-
+	if(data.player.series.last == 1){
+		document.getElementById('PlaySerie').setAttribute("style", "display:none;");
+		document.getElementById('ReleasePlayer').dataset.state = 'SerieOne';
+	}
 }
 
 // Функции заполнения контента плейлиста
@@ -547,6 +550,19 @@ function GeneratorPlaySerie(data, id){
 		} else {
 			poster = config["posters"] + data["player"]["playlist"][i]["preview"];
 		}
+
+		if(data.type.code == 0){
+			SerieType = "Фильм"
+		} else if(data.type.code == 2){
+			SerieType = "OVA"
+		} else if(data.type.code == 3){
+			SerieType = "ONA"
+		} else if(data.type.code == 4){
+			SerieType = "Спешл"
+		} else {
+			SerieType = "Серия"
+		}
+
 		var div = document.createElement('div');
 		document.getElementById('PlaySerie').appendChild(div);
 		div.setAttribute('onclick', `releaseHistoryPlay("${id}", "${i}")`)
@@ -554,7 +570,7 @@ function GeneratorPlaySerie(data, id){
 		div.innerHTML += `
 			<div class="SerieBlock">
 				<div class="posterPercentBlock"><span class="posterPercent" style="width: ${posterPercent}"></span></div>
-				<div class="posterSerieNum">Серия ${i}${minutes}</div>
+				<div class="posterSerieNum">${SerieType} ${i}${minutes}</div>
 				<img src="${poster}">
 			</div>
 		`;

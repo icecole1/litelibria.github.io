@@ -143,7 +143,7 @@ function LoadPHPSESSID(){
 		// Запуск анимации загрузки контента
 		document.getElementById("PHPSESSIDNone").style.display = "none";
 
-		if(FavoritesList == null) {LoadApiFavorites();document.getElementById("LoadAnimFavorites").style.display = "block";} else GeneratorFavorites();
+		if(FavoritesList == null) {LoadApiFavorites();document.getElementById("LoadAnimFavorites").style.display = "block";} else {GeneratorFavorites();}
   }
 }
 
@@ -240,8 +240,20 @@ function GeneratorFavorites() {
 			if(genres == '') genres = FavoritesList[i].genres[g];
 			else genres = genres + ', ' +FavoritesList[i].genres[g];
 		}
-		if(FavoritesList[i].torrents.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${FavoritesList[i].torrents.series.last}</div>`;
+		if(FavoritesList[i].player.series.last != null){
+			if(FavoritesList[i].type.code == 0){
+				SerieType = "Фильм"
+			} else if(FavoritesList[i].type.code == 2){
+				SerieType = "OVA"
+			} else if(FavoritesList[i].type.code == 3){
+				SerieType = "ONA"
+			} else if(FavoritesList[i].type.code == 4){
+				SerieType = "Спешл"
+			} else {
+				SerieType = "Серия"
+			}
+
+			TextSerie = `<div class="LineCard-TextSerie">${SerieType} ${FavoritesList[i].player.series.last}</div>`;
 		}
 
 		if (localStorage.getItem('postersMode') == 'webp') {

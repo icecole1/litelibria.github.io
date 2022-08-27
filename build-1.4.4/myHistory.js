@@ -212,7 +212,17 @@ function SortingHistory(){
 			if (array.lastIndexOf(element) == index) return element
 		})
 		var url = config["titels_api"]+'getTitles?id_list='+b+'&filter=id,posters.small,names.ru';
-		$.get(url, function(data){
+		fetch(url)
+		.then(function (response) {
+			if (response.status !== 200) {
+				return Promise.reject(new Error(response.statusText))
+			}
+			return Promise.resolve(response)
+		})
+		.then(function (response) {
+			return response.json();
+		})
+		.then(function (data) {
 			for (let t = 0; t < data.length; t++) {
 				var elemIMG = document.getElementsByClassName("img"+data[t]["id"])
 				for (let i = 0; i < elemIMG.length; i++) {
@@ -223,7 +233,10 @@ function SortingHistory(){
 					elemNAME[j].innerHTML = data[t]["names"]["ru"];
 				}
 			}
-		});
+		})
+		.catch(function (error) {
+			console.log('error', error)
+		})
 	}
 }
 

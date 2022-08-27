@@ -1,6 +1,19 @@
 version_history = [
 	{
     "prefix":"Omega",
+    "version":"1.4.4",
+    "date":"27 August 2022",
+    "update":[
+			{
+				"type":"FIXED",
+        "text":"Подправлен дизайн."
+			},{
+				"type":"FIXED",
+        "text":"Исправленны мелкие ошибки."
+			},
+    ]
+  },{
+    "prefix":"Omega",
     "version":"1.4.3",
     "date":"26 August 2022",
     "update":[

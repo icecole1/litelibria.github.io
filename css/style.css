@@ -1877,12 +1877,6 @@ details span {
 	font-size: 16px;
 	display: block;
 }
-.OptionsCard h3 {
-	text-align: left;
-	font-size: 18px;
-	font-weight: 500;
-	color: var(--ColorThemes3);
-}
 .OptionsCard p {
 	text-align: left;
 	color: var(--ColorThemes3);
@@ -1893,6 +1887,23 @@ details span {
 .OptionsCard hr{
 	border: 1px solid var(--ColorThemes2);
 	margin-bottom: 15px;
+}
+
+.OptionsTitle {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.OptionsTitle svg {
+	width: 22px;
+	fill: var(--ColorThemes3);
+	margin-right: 5px;
+}
+.OptionsTitle h3 {
+	text-align: left;
+	font-size: 18px;
+	font-weight: 500;
+	color: var(--ColorThemes3);
 }
 
 .settings_filter_p{
@@ -2145,6 +2156,9 @@ details span {
 	background: var(--ColorThemes1);
 	border-radius: 15px;
 }
+#ReleasePlayer[data-state="SerieOne"]{
+	width: 100%;
+}
 .ReleaseBlockPlayerRight {
 	aspect-ratio: 200 / 450;
 	width: 20%;
@@ -2395,6 +2409,9 @@ details span {
 	.ReleaseBlockPlayerLeft{
 		width: calc(100% - 20px);
 		background: var(--ColorThemes2);
+	}
+	#ReleasePlayer[data-state="SerieOne"]{
+		width: calc(100% - 20px);
 	}
 	.ReleaseBlockPlayerRight{
     width: 100%;

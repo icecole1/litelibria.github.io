@@ -93,7 +93,11 @@ function page_catalog() {
 	LoadApiGenresCatalog();
 	LoadApiYearsCatalog();
 
-	if(CatalogsList == null) LoadApiCatalog(); else GeneratorCatalog();
+	if(CatalogsList == null) {
+		LoadApiCatalog();
+	} else {
+		GeneratorCatalog();
+	}
 
 	appWidth();
   Scroll_to_top();
@@ -212,7 +216,7 @@ function LoadApiCatalog() {
 	document.getElementById("LoadAnimCatalog").style.display = "block";
 
 	// Запрос к Api 
-	var url = urlGenerate + "filter=id,names,posters.medium,player.series,description,genres&limit="+num+"&after="+after;
+	var url = urlGenerate + "filter=id,names,posters.medium,player.series,description,genres,type&limit="+num+"&after="+after;
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -305,7 +309,19 @@ function GeneratorCatalog() {
 			else genres = genres + ', ' +CatalogsList[i].genres[g];
 		}
 		if(CatalogsList[i].player.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${CatalogsList[i].player.series.last}</div>`;
+			if(CatalogsList[i].type.code == 0){
+				SerieType = "Фильм"
+			} else if(CatalogsList[i].type.code == 2){
+				SerieType = "OVA"
+			} else if(CatalogsList[i].type.code == 3){
+				SerieType = "ONA"
+			} else if(CatalogsList[i].type.code == 4){
+				SerieType = "Спешл"
+			} else {
+				SerieType = "Серия"
+			}
+
+			TextSerie = `<div class="LineCard-TextSerie">${SerieType} ${CatalogsList[i].player.series.last}</div>`;
 		}
 
 		if (localStorage.getItem('postersMode') == 'webp') {

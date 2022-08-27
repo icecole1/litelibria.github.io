@@ -52,7 +52,11 @@ function page_search(s1) {
 
 	getSearchStyle();
 
-	if(SearchList == null) LoadApiSearch(s1); else GeneratorSearch();
+	if(SearchList == null) {
+		LoadApiSearch(s1);
+	} else {
+		GeneratorSearch();
+	}
 
 	appWidth();
   Scroll_to_top();
@@ -99,7 +103,7 @@ function LoadApiSearch(s1) {
 	document.getElementById("LoadAnimSearch").style.display = "block";
 
 	// Запрос к Api 
-	var url = config["titels_api"]+"searchTitles?search="+s1+"&filter=id,names.ru,posters.medium,torrents.series,description,genres&limit=-1";
+	var url = config["titels_api"]+"searchTitles?search="+s1+"&filter=id,names.ru,posters.medium,player.series,description,genres,type&limit=-1";
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -133,8 +137,20 @@ function GeneratorSearch() {
 			if(genres == '') genres = SearchList[i].genres[g];
 			else genres = genres + ', ' +SearchList[i].genres[g];
 		}
-		if(SearchList[i].torrents.series.last != null){
-			TextSerie = `<div class="LineCard-TextSerie">Серия ${SearchList[i].torrents.series.last}</div>`;
+		if(SearchList[i].player.series.last != null){
+			if(SearchList[i].type.code == 0){
+				SerieType = "Фильм"
+			} else if(SearchList[i].type.code == 2){
+				SerieType = "OVA"
+			} else if(SearchList[i].type.code == 3){
+				SerieType = "ONA"
+			} else if(SearchList[i].type.code == 4){
+				SerieType = "Спешл"
+			} else {
+				SerieType = "Серия"
+			}
+
+			TextSerie = `<div class="LineCard-TextSerie">${SerieType} ${SearchList[i].player.series.last}</div>`;
 		}
 
 		if (localStorage.getItem('postersMode') == 'webp') {
