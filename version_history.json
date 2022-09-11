@@ -8,7 +8,7 @@ version_history = [
 				"type":"FIXED",
         "text":"Исправленны мелкие ошибки."
 			},{
-				"type":"IMPROVED",
+				"type":"ADDED",
         "text":"Добавлен запрос поиска при нажатии на `Enter`."
 			},{
 				"type":"ADDED",
