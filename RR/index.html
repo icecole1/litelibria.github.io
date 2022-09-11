@@ -115,7 +115,32 @@
 <script>
 	var LocalReleases = [];
 	var LocalReleasesSearch = [];
+
+	preLoad()
+
+	function preLoad() {
+		var url = "https://api.litelibria.com/RelatedReleases.json";
+		fetch(url)
+		.then(function (response) {
+			if (response.status !== 200) {
+				return Promise.reject(new Error(response.statusText))
+			}
+			return Promise.resolve(response)
+		})
+		.then(function (response) {
+			return response.json();
+		})
+		.then(function (data) {
+			LocalReleases = data;
+			GeneratorContent();
+		})
+		.catch(function (error) {
+			console.log('error', error)
+		})
+	}
+
 	function showFile(input) {
+		LocalReleases = [];
 		let file = input.files[0];
 		let reader = new FileReader();
 		reader.readAsText(file);

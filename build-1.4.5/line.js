@@ -445,10 +445,8 @@ function GeneratorSchedule() {
 	for (let i = 0; ScheduleList[n].list.length > i; i++) {
 		
 		var seriesSH = "Нэма...";
-		if(ScheduleList[n].list[i].player.series != null){
-			if(ScheduleList[n].list[i].player.series.last != null){
-				seriesSH = ScheduleList[n].list[i].player.series.last;
-			}
+		if(Object.keys(ScheduleList[n].list[i].player).length != 0){
+			seriesSH = ScheduleList[n].list[i].player.series.last;
 		}
 
 		var div = document.createElement('div');

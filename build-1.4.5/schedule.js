@@ -279,10 +279,8 @@ function GeneratorSchedule_0() {
 
 	for (let i = 0; DayList.length > i; i++) {
 		var seriesSH = "Нэма...";
-		if(DayList[i].player.series != null){
-			if(DayList[i].player.series.last != null){
-				seriesSH = DayList[i].player.series.last;
-			}
+		if(Object.keys(DayList[i].player).length != 0){
+			seriesSH = DayList[i].player.series.last;
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
@@ -309,10 +307,8 @@ function GeneratorSchedule_1() {
 
 	for (let i = 0; DayList.length > i; i++) {
 		var seriesSH = "Нэма...";
-		if(DayList[i].player.series != null){
-			if(DayList[i].player.series.last != null){
-				seriesSH = DayList[i].player.series.last;
-			}
+		if(Object.keys(DayList[i].player).length != 0){
+			seriesSH = DayList[i].player.series.last;
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
@@ -339,10 +335,8 @@ function GeneratorSchedule_2() {
 
 	for (let i = 0; DayList.length > i; i++) {
 		var seriesSH = "Нэма...";
-		if(DayList[i].player.series != null){
-			if(DayList[i].player.series.last != null){
-				seriesSH = DayList[i].player.series.last;
-			}
+		if(Object.keys(DayList[i].player).length != 0){
+			seriesSH = DayList[i].player.series.last;
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
@@ -369,10 +363,8 @@ function GeneratorSchedule_3() {
 
 	for (let i = 0; DayList.length > i; i++) {
 		var seriesSH = "Нэма...";
-		if(DayList[i].player.series != null){
-			if(DayList[i].player.series.last != null){
-				seriesSH = DayList[i].player.series.last;
-			}
+		if(Object.keys(DayList[i].player).length != 0){
+			seriesSH = DayList[i].player.series.last;
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
@@ -399,10 +391,8 @@ function GeneratorSchedule_4() {
 
 	for (let i = 0; DayList.length > i; i++) {
 		var seriesSH = "Нэма...";
-		if(DayList[i].player.series != null){
-			if(DayList[i].player.series.last != null){
-				seriesSH = DayList[i].player.series.last;
-			}
+		if(Object.keys(DayList[i].player).length != 0){
+			seriesSH = DayList[i].player.series.last;
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
@@ -429,10 +419,8 @@ function GeneratorSchedule_5() {
 
 	for (let i = 0; DayList.length > i; i++) {
 		var seriesSH = "Нэма...";
-		if(DayList[i].player.series != null){
-			if(DayList[i].player.series.last != null){
-				seriesSH = DayList[i].player.series.last;
-			}
+		if(Object.keys(DayList[i].player).length != 0){
+			seriesSH = DayList[i].player.series.last;
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);
@@ -459,10 +447,8 @@ function GeneratorSchedule_6() {
 
 	for (let i = 0; DayList.length > i; i++) {
 		var seriesSH = "Нэма...";
-		if(DayList[i].player.series != null){
-			if(DayList[i].player.series.last != null){
-				seriesSH = DayList[i].player.series.last;
-			}
+		if(Object.keys(DayList[i].player).length != 0){
+			seriesSH = DayList[i].player.series.last;
 		}
 		var div = document.createElement('div');
 		document.getElementById(DayListID).appendChild(div);

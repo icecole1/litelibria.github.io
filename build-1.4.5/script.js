@@ -162,18 +162,17 @@ function mess_update(){
 
 // Функция прокрутки вверх
 function Scroll_to_top() {
-  'use strict';
-
   function trackScroll() {
     var scrolled = window.pageYOffset;
     var coords = document.documentElement.clientHeight;
 
-    if (scrolled > coords) {
-      goTopBtn.classList.add('back_to_top-show');
-    }
-    if (scrolled < coords) {
-      goTopBtn.classList.remove('back_to_top-show');
-    }
+		if (scrolled > coords && localStorage.getItem('backToTop') != 'false') {
+			goTopBtn.classList.add('back_to_top-show');
+		}
+		if (scrolled < coords) {
+			goTopBtn.classList.remove('back_to_top-show');
+		}
+		
   }
 
   function backToTop() {

@@ -67,6 +67,12 @@ function page_options() {
 					<button id="Posters1_style" class="OptionsCardButton" title="Выбрать" onclick="SetPostersStyle('original')">Оригинал</button>
 					<button id="Posters2_style" class="OptionsCardButton" title="Выбрать" onclick="SetPostersStyle('webp')">Оптимизированные (webP)</button>
 				</div>
+				<hr>
+				<p class="settings_filter_p">Отображение стрелки «Вверх»</p>
+				<div id="settings_home_block_style" style="margin-bottom: 15px;">
+					<button id="backToTop1_style" class="OptionsCardButton" title="Выбрать" onclick="SetBackToTopStyle('true')">Включить</button>
+					<button id="backToTop2_style" class="OptionsCardButton" title="Выбрать" onclick="SetBackToTopStyle('false')">Отключить</button>
+				</div>
 				<p class="settings_filter_p">*Нажмите для выбора</p>
 			</div>
 
@@ -183,6 +189,7 @@ function page_options() {
 	GetOpening_style();
 	GetPlayer_style();
 	GetPostersStyle();
+	GetBackToTopStyle();
 
 
 	appWidth();
@@ -339,6 +346,28 @@ function SetPostersStyle(mode){
 	}
 }
 
+function GetBackToTopStyle(){
+	backToTopMode = localStorage.getItem('backToTop');
+
+	if (backToTopMode == 'false') {
+		document.getElementById('backToTop1_style').dataset.state = '';
+		document.getElementById('backToTop2_style').dataset.state = 'Select';
+	} else {
+		document.getElementById('backToTop1_style').dataset.state = 'Select';
+		document.getElementById('backToTop2_style').dataset.state = '';
+	}
+}
+function SetBackToTopStyle(mode){
+	if (mode == 'true') {
+		localStorage.setItem('backToTop', 'true');
+		document.getElementById('backToTop1_style').dataset.state = 'Select';
+		document.getElementById('backToTop2_style').dataset.state = '';
+	} else if (mode == 'false') {
+		localStorage.setItem('backToTop', 'false');
+		document.getElementById('backToTop1_style').dataset.state = '';
+		document.getElementById('backToTop2_style').dataset.state = 'Select';
+	}
+}
 
 function GetMirrorMode(){
 	mode = localStorage.getItem('GetMirror');
@@ -409,8 +438,6 @@ function SetOpening_style(style) {
     document.getElementById('opening2_style').dataset.state = 'Select';
   }
 }
-
-
 
 function GetPlayer_style(){
 	var my_skips_opening = localStorage.getItem('my_skips_opening');

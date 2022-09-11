@@ -1,6 +1,28 @@
 version_history = [
 	{
     "prefix":"Omega",
+    "version":"1.4.5",
+    "date":"11 September 2022",
+    "update":[
+			{
+				"type":"FIXED",
+        "text":"Исправленны мелкие ошибки."
+			},{
+				"type":"IMPROVED",
+        "text":"Добавлен запрос поиска при нажатии на `Enter`."
+			},{
+				"type":"ADDED",
+        "text":"Добавлен плеер RuTube для специфичных релизов."
+			},{
+				"type":"ADDED",
+        "text":"При смене серии в плейлисте, обновляется и рекомендуемый сервер."
+			},{
+				"type":"ADDED",
+        "text":"На странице опций теперь можно отключить кнопку `Вверх`."
+			}
+    ]
+  },{
+    "prefix":"Omega",
     "version":"1.4.4",
     "date":"27 August 2022",
     "update":[

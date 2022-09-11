@@ -2,9 +2,9 @@ var MySessID;
 var player;
 
 var id_t,
-		name_t;
-var dataPlayer,
-    dataPlayerSerie,
+		name_t,
+		series_t,
+		dataPlayer,
     cookie = localStorage.getItem('PHPSESSID');
 		myLogin = localStorage.getItem('myLogin');
 
@@ -156,8 +156,21 @@ function page_release(id, data) {
 					
 				</div>
 			</div>
-		
-			<div class="ReleaseBlockPlayer">
+
+			<div class="ReleaseBlockPlayer" id="ReleaseBlockPlayerRuTube">
+				<div class="ReleaseBlockPlayerLeft" id="ReleasePlayerRuTube">
+				</div>
+				<div class="ReleaseBlockPlayerRight" id="PlaySerieRuTube">
+					<div class="posterSerie"></div>
+					<div class="posterSerie"></div>
+					<div class="posterSerie"></div>
+					<div class="posterSerie"></div>
+					<div class="posterSerie"></div>
+					<div class="posterSerie"></div>
+				</div>
+			</div>
+
+			<div class="ReleaseBlockPlayer" id="ReleaseBlockPlayer">
 				<div class="ReleaseBlockPlayerLeft" id="ReleasePlayer">
 					<div id="player"></div>
 				</div>
@@ -173,7 +186,7 @@ function page_release(id, data) {
 
 		</div>
 
-		<div class="ReleaseBlockSliders">	
+		<div class="ReleaseBlockSliders" id="ReleaseBlockSliders">
 			<div class="ReleaseBlockRecomend" id="ReleaseRecomendDisplay" style="display:none">
 				<h3>Связанные релизы</h3>
 				<div class="ReleaseBlockRecomendSlider" id="ReleaseRecomend">
@@ -240,6 +253,7 @@ function LoadRelisePHPSESSID(){
 
 // Функции запросов к Api
 function LoadApiRelise(id) {
+	id_t = id;
   url = config["titels_api"]+'getTitle?id='+id+'&remove=torrents';
 
   fetch(url)
@@ -254,15 +268,25 @@ function LoadApiRelise(id) {
   })
   .then(function (data) {
 		GeneratorRelise(data);
-		GeneratorPlaySerie(data, id);
+		if(Object.keys(data['player']['playlist']).length != 0){
+			GeneratorPlaySerie(data, id);
+			dataPlayer = data["player"];
+			series_t = data["player"]["series"]["last"];
+			dataPlayerFirst = data["player"]["series"]["first"]-1
+			playerLoad(id);
+		} else {
+			document.getElementById('ReleaseBlockPlayer').style.display = 'none';
+			document.getElementById('ReleaseBlockSliders').style.display = 'none';
+			if(Object.keys(data['player']['rutube_playlist']).length != 0){
+				document.getElementById('ReleaseBlockPlayerRuTube').style.display = 'flex';
+				document.getElementById('ReleasePlayerRuTube').innerHTML= `<iframe id="PlayerRuTube" src="https://rutube.ru/play/embed/${data['player']['rutube_playlist']['1']['rutube_id']}?skinColor=d53c3c" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowfullscreen></iframe>`
+				GeneratorRuTubeSerie(data['player']['series']['last'], data['player']['rutube_playlist'])
+			}
+		}
 
 		if (MySessID) {
       LoadApiReliseFav(id);
     }
-		dataPlayer = data["player"];
-    dataPlayerSerie = data["player"]["series"]["last"];
-		dataPlayerFirst = data["player"]["series"]["first"]-1
-    playerPlaylist(id, dataPlayer, dataPlayerSerie, dataPlayerFirst);
 
 		preloader_none();
   })
@@ -320,8 +344,6 @@ function LoadApiReliseRecomend(id, urlR=null){
 	});
 }
 function LoadApiServer(){
-	var my_server = localStorage.getItem('my_server');
-
   var url = config["titels_api"]+"getCachingNodes";
   fetch(url)
   .then(function (response) {
@@ -334,50 +356,57 @@ function LoadApiServer(){
     return response.json()
   })
   .then(function (data) {
-		document.getElementById('servers').innerHTML = '<summary>Если серия не грузит, то попробуйте поменять сервер.</summary>';
-    for (var i = 0; i < data.length; i++) {
-      if (!my_server) {
-        var style_server = "";
-        var title_server = "Сменить сервер";
-      } else if (my_server == 'auto') {
-        var style_server = "";
-        var title_server = "Сменить сервер";
-      }else{
-        if (my_server == data[i]) {
-          var style_server = "background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;";
-          var title_server = "Выбранный сервер";
-        } else {
-          var style_server = "";
-          var title_server = "Сменить сервер";
-        }
-      }
-      var div = document.createElement('div');
-      document.getElementById('servers').appendChild(div);
-			div.setAttribute('onclick', `release_server('${data[i]}')`)
-			div.setAttribute('style', style_server);
-			div.setAttribute('title', title_server);
-			div.className = 'ServersButton';
-      div.innerHTML += `Сервер ${data[i]}`;
-    }
-
-    var div = document.createElement('div');
-    document.getElementById('servers').appendChild(div);
-		div.className = 'ServersButton';
-		div.setAttribute('onclick', `release_server(\'auto\')`);
-    if (!my_server) {
-			div.setAttribute('style', `background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;`);
-			div.setAttribute('title', 'Выбранный сервер');
-      div.innerHTML += `Сервер авто выбор`;
-    } else if (my_server == 'auto') {
-			div.setAttribute('style', `background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;`);
-			div.setAttribute('title', 'Выбранный сервер');
-      div.innerHTML += `Сервер авто выбор`;
-    } else {
-			div.setAttribute('title', 'Сменить сервер');
-      div.innerHTML += `Сервер авто выбор`;
-    }
+		GeneratorServer(data)
   })
 }
+
+
+function GeneratorServer(data){
+	var my_server = localStorage.getItem('my_server');
+	document.getElementById('servers').innerHTML = '<summary>Если серия не грузит, то попробуйте поменять сервер.</summary>';
+	for (var i = 0; i < data.length; i++) {
+		if (!my_server) {
+			var style_server = "";
+			var title_server = "Сменить сервер";
+		} else if (my_server == 'auto') {
+			var style_server = "";
+			var title_server = "Сменить сервер";
+		}else{
+			if (my_server == data[i]) {
+				var style_server = "background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;";
+				var title_server = "Выбранный сервер";
+			} else {
+				var style_server = "";
+				var title_server = "Сменить сервер";
+			}
+		}
+		var div = document.createElement('div');
+		document.getElementById('servers').appendChild(div);
+		div.setAttribute('onclick', `release_server('${data[i]}')`)
+		div.setAttribute('style', style_server);
+		div.setAttribute('title', title_server);
+		div.className = 'ServersButton';
+		div.innerHTML += `Сервер ${data[i]}`;
+	}
+
+	var div = document.createElement('div');
+	document.getElementById('servers').appendChild(div);
+	div.className = 'ServersButton';
+	div.setAttribute('onclick', `release_server(\'auto\')`);
+	if (!my_server) {
+		div.setAttribute('style', `background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;`);
+		div.setAttribute('title', 'Выбранный сервер');
+		div.innerHTML += `Сервер авто выбор`;
+	} else if (my_server == 'auto') {
+		div.setAttribute('style', `background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;`);
+		div.setAttribute('title', 'Выбранный сервер');
+		div.innerHTML += `Сервер авто выбор`;
+	} else {
+		div.setAttribute('title', 'Сменить сервер');
+		div.innerHTML += `Сервер авто выбор`;
+	}
+}
+
 
 
 // Функции заполнения контента релиза
@@ -648,11 +677,11 @@ function GeneratorReliseFavorites(id){
 	}
 }
 
-// Функция подключения и настройки плеера
-function playerPlaylist(id_t, dataPlayer, dataPlayerSerie, dataPlayerFirst) {
-  var strPlayer = '';
+// Функция генерирования плейлиста
+function playerPlaylistGenerator(id_t, dataPlayer, series_t, dataPlayerFirst, server=dataPlayer["host"]) {
+	var strPlayer = '';
   var my_skips_opening = localStorage.getItem('my_skips_opening');
-  for (let i = dataPlayerFirst; i < dataPlayerSerie; i++) {
+  for (let i = dataPlayerFirst; i < series_t; i++) {
     var poster_preview
     var i2 = i+1;
 		var PlayerHost;
@@ -669,12 +698,12 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie, dataPlayerFirst) {
 
 		if(localStorage.getItem('my_server')){
 			if(localStorage.getItem('my_server') == "auto"){
-				PlayerHost = dataPlayer["host"];
+				PlayerHost = server;
 			} else {
 				PlayerHost = localStorage.getItem('my_server');
 			}
 		} else {
-			PlayerHost = dataPlayer["host"];
+			PlayerHost = server;
 		}
 
     var url_relise_480 = "";
@@ -698,20 +727,19 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie, dataPlayerFirst) {
 				poster_preview = config["CustomPosters"] + "/anilibria_bot/getThumbnail/" + id_t + "/" + i2 + "/1.jpg";
       }
       var url_relise_comma = " ";
-      if (i2 != dataPlayerSerie) {
+      if (i2 != series_t) {
         url_relise_comma = ", ";
       }
       var str_m_Player = `{"title":"Серия ${i2}","poster":"${poster_preview}", ${remove} "id": "${id_t}s${i2}", "file":"${url_relise_480}, ${url_relise_720} ${url_relise_1080}"}`+url_relise_comma;
       strPlayer += str_m_Player;
     }
   }
-  let str_playlist = JSON.parse('['+strPlayer+']');
+  
+	return str_playlist = JSON.parse('['+strPlayer+']');
+}
 
-
-
-	initChart(); // Запуск Rickshaw
-	initGraph(); // Запуск p2p-graph
-
+// Функция подключения и настройки плеера
+function playerLoad(id_t) {
 	var engineConfig  = {
 		loader: {
 			trackerAnnounce: [
@@ -739,23 +767,27 @@ function playerPlaylist(id_t, dataPlayer, dataPlayerSerie, dataPlayerFirst) {
 		bgcolor: 'var(--card-background-2)',
 		hlsconfig:{
 			liveSyncDurationCount: 7,
-			loader: engine.createLoaderClass()
+			loader: engine.createLoaderClass(),
+			startPosition: 15, // Временное исправление проблемы загрузки на ios 16
 		}
 	});
 
 
-  player.api("file", str_playlist);
+  player.api("file", playerPlaylistGenerator(id_t, dataPlayer, series_t, dataPlayerFirst));
 
-  if (localStorage.getItem('my_player_style')) {
-    var style = localStorage.getItem('my_player_style');
-    if (style == '1') {
-      player.api("update:nativefullios",1);
-    } else if (style == '2') {
-      player.api("update:nativefullios",0);
-    }
-  } else {
+	if (localStorage.getItem('my_player_style')) {
+		var style = localStorage.getItem('my_player_style');
+		if (style == '1') {
+			player.api("update:nativefullios",1);
+		} else if (style == '2') {
+			player.api("update:nativefullios",0);
+		}
+	} else {
 		player.api("update:nativefullios",0);
 	}
+
+	initChart(); // Запуск Rickshaw
+	initGraph(); // Запуск p2p-graph
 }
 
 // Функции отслеживания событий плеера
@@ -775,11 +807,11 @@ function PlayerjsEvents(event,id,info){
 	}
 
 	if(event=="new"){
-		engine.destroy(); // Разрываем P2P раздачу для прошлого файла 
+		engine.destroy(); // Разрываем P2P раздачу для прошлого файла
+		refreshChart(); // Обновление графика Rickshaw
 	}
 
 	if(event=="play"){
-		refreshChart(); // Обновление графика Rickshaw
 		if (p2pml.core.HybridLoader.isSupported()) {
 			// Запуск P2P раздачи
 			p2pml.hlsjs.initHlsJsPlayer(player.api('hls'));
@@ -932,14 +964,115 @@ function releaseHistorySave(){
 	var date = Date.now();
 	historySave(titel, serie, time, duration, date, name_t)
 }
+
+// Функция смены серии плейлиста
 function releaseHistoryPlay(titel, serie){
 	playerID = "id:"+titel+"s"+serie;
+	playerTime = '';
 
 	if(historyGet().length != 0){
 		if(historyGet('titel', titel, serie) != -1){
 			time = historyGet('titel', titel, serie).time[0]
-			playerID = "id:"+titel+"s"+serie+"[seek:"+time+"]";
+			playerTime = "[seek:"+time+"]";
 		}
 	}
-	player.api("play", playerID)
+	var url = config["titels_api"]+"getCachingNodes";
+		fetch(url)
+		.then(function (response) {
+			if (response.status !== 200) {
+				return Promise.reject(new Error(response.statusText))
+			}
+			return Promise.resolve(response)
+		})
+		.then(function (response) {
+			return response.json()
+		})
+		.then(function (data) {
+			player.api("file", playerPlaylistGenerator(id_t, dataPlayer, series_t, dataPlayerFirst, data[0]));
+			player.api("play", playerID+playerTime)
+
+			console.log("Сервер обновлён, новый сервер - "+data[0]);
+		})
+}
+
+// Функциb смены серии плейлиста из плеера
+function PlayerJSPrev(file){
+	numSeriePlayer = file.split('/')[7]
+	if(numSeriePlayer > 1){
+		var url = config["titels_api"]+"getCachingNodes";
+		fetch(url)
+		.then(function (response) {
+			if (response.status !== 200) {
+				return Promise.reject(new Error(response.statusText))
+			}
+			return Promise.resolve(response)
+		})
+		.then(function (response) {
+			return response.json()
+		})
+		.then(function (data) {
+			player.api("file", playerPlaylistGenerator(id_t, dataPlayer, series_t, dataPlayerFirst, data[0]));
+			newSeriePlayer = parseInt(numSeriePlayer) - 1
+			playerID = "id:"+id_t+"s"+ newSeriePlayer
+			player.api("play", playerID)
+
+			console.log("Сервер обновлён, новый сервер - "+data[0]);
+		})
+	}
+}
+function PlayerJSNext(file){
+	numSeriePlayer = file.split('/')[7]
+	if(numSeriePlayer < series_t){
+		var url = config["titels_api"]+"getCachingNodes";
+		fetch(url)
+		.then(function (response) {
+			if (response.status !== 200) {
+				return Promise.reject(new Error(response.statusText))
+			}
+			return Promise.resolve(response)
+		})
+		.then(function (response) {
+			return response.json()
+		})
+		.then(function (data) {
+			player.api("file", playerPlaylistGenerator(id_t, dataPlayer, series_t, dataPlayerFirst, data[0]));
+			newSeriePlayer = parseInt(numSeriePlayer) + 1
+			playerID = "id:"+id_t+"s"+ newSeriePlayer
+			player.api("play", playerID)
+
+			console.log("Сервер обновлён, новый сервер - "+data[0]);
+		})
+	}
+}
+
+
+// Функции заполнения контента плейлиста RuTube
+function GeneratorRuTubeSerie(series, rutube_playlist){
+	document.getElementById('PlaySerieRuTube').innerHTML = '';
+	for(let j = 0; series > j; j++) {
+		i = j+1
+		var div = document.createElement('div');
+		document.getElementById('PlaySerieRuTube').appendChild(div);
+		div.setAttribute('onclick', `releaseHistoryPlayRuTube("${rutube_playlist[i]['rutube_id']}")`)
+		div.className = 'posterSerie';
+		div.innerHTML += `
+			<div class="SerieBlock" style="background: var(--ColorThemes3);">
+				<div class="posterSerieNum">Серия ${i}</div>
+				<img src="">
+			</div>
+		`;
+	}
+}
+// Функция смены серии плейлиста RuTube
+function releaseHistoryPlayRuTube(id){
+	var player = document.getElementById('PlayerRuTube');
+	player.contentWindow.postMessage(JSON.stringify({
+		type: 'player:changeVideo',
+		data: {
+			id: id,
+			params: {
+				color: 'd53c3c'
+			}
+		}
+	}), '*');
 }

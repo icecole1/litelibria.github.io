@@ -116,16 +116,30 @@ details span {
 /* Начало */
 .LoadAnim {
 	position: absolute;
-	left: 50%;
-	top: 50%;
+	left: calc(50% - 23.5px);
+	top: calc(50% - 23.5px);
 }
 /* Конец */
 /* Стили для анимации загрузки API */
 
 
 
+/* Стили для кнопки обновления API мобильной версии */
+/* Начало */
+#UpdateMobileApi{
+	display: none;
+}
+@media (max-width: 800px){
+	#UpdateMobileApi{
+		display: block;
+	}
+}
+/* Конец */
+/* Стили для кнопки обновления API мобильной версии */
 
-/* Стили для посьб и сообщений libriatyan */
+
+
+/* Стили для просьб и сообщений libriatyan */
 /* Начало */
 #PHPSESSIDNone,
 #FilterNone,
@@ -2135,6 +2149,16 @@ details span {
 	border-radius: 15px;
 	width: 100%;
 	display: none;
+}
+
+#ReleaseBlockPlayerRuTube{
+	display: none;
+}
+#ReleasePlayerRuTube iframe{
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	border-radius: 15px;
+	display: flex;
 }
 
 .ReleaseBlockPlayer{
