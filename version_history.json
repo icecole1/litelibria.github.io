@@ -1,6 +1,16 @@
 version_history = [
 	{
     "prefix":"Omega",
+    "version":"1.4.6",
+    "date":"13 September 2022",
+    "update":[
+			{
+				"type":"FIXED",
+        "text":"Исправлена ​​проблема с воспроизведением на iOS 16."
+			}
+    ]
+  },{
+    "prefix":"Omega",
     "version":"1.4.5",
     "date":"11 September 2022",
     "update":[

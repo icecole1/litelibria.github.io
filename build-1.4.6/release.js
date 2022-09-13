@@ -768,7 +768,6 @@ function playerLoad(id_t) {
 		hlsconfig:{
 			liveSyncDurationCount: 7,
 			loader: engine.createLoaderClass(),
-			startPosition: 15, // Временное исправление проблемы загрузки на ios 16
 		}
 	});
 
