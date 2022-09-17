@@ -1,12 +1,13 @@
 var styleSeason = 1;
-var urlGenerate = config["titels_api"]+"getUpdates?";
+var urlGenerateSeason = config["titels_api"]+"getUpdates?";
 var num = 24;
 var after = 0;
+let querySeason1 = [];
+let querySeason2 = [];
 
 function page_season(query) {
 	after = 0;
-	SeasonList = null;
-
+	querySeason2 = query;
   document.getElementById('app').innerHTML = `
 	<!-- Блок Отфильтрованные тайтлы	 -->
 	<div class="CatalogBlock">
@@ -43,7 +44,7 @@ function page_season(query) {
 			</div>	
 
 			<!-- Кнопка включения автодобавления тайтлов  -->
-			<button id="LoadApiSeasonButton" class="LoadApiButton" onclick="LoadApiSeasons();" style="display:none">Показать ещё</button>
+			<button id="LoadApiSeasonButton" class="LoadApiButton" onclick="LoadApiSeasons();">Показать ещё</button>
 			<span id="LoadApiSeason"></span>
 		</div>
 	</div>
@@ -51,8 +52,16 @@ function page_season(query) {
 
 	getSeasonStyle();
 
+	let querySeasonRes = JSON.stringify(querySeason1) === JSON.stringify(querySeason2);
+	
 	if(SeasonList == null) {
 		LoadSortingSeason(query);
+		querySeason1 = querySeason2;
+	} else if(!querySeasonRes) {
+		after = 0;
+		SeasonList = null;
+		LoadSortingSeason(query);
+		querySeason1 = querySeason2;
 	} else {
 		GeneratorSeason();
 	}
@@ -138,7 +147,7 @@ function LoadSortingSeason(query) {
     and_1 = ' and '
   }
 	if(query.year != null || query.code != null || query.genres != null || query.voice != null || query.timing != null || query.translator != null || query.editing != null || query.decor != null || query.type != null){
-		urlGenerate = config["titels_api"]+'advancedSearch?query='+ year_s + and_1 + code_s + genres_s + voice_s + timing_s + translator_s + editing_s + decor_s + type_s +'&';
+		urlGenerateSeason = config["titels_api"]+'advancedSearch?query='+ year_s + and_1 + code_s + genres_s + voice_s + timing_s + translator_s + editing_s + decor_s + type_s +'&';
 		LoadApiSeasons();
 	} else {
 		document.getElementById("FilterNone").style.display = "";
@@ -156,7 +165,7 @@ function LoadApiSeasons() {
 	document.getElementById("LoadAnimSeason").style.display = "block";
 
 	// Запрос к Api 
-	var url = urlGenerate + "filter=id,names.ru,posters.medium,player.series,description,genres,type&limit="+num+"&after="+after;
+	var url = urlGenerateSeason + "filter=id,names.ru,posters.medium,player.series,description,genres,type&limit="+num+"&after="+after;
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {

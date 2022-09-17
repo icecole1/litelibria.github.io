@@ -42,9 +42,15 @@ function parseURL(){
 
 	// Получение запроса query
 	var searchParams = new URLSearchParams(paramsString);
+
+	if(searchParams.get("id") != null) {
+
+	}
+
+
 	if(searchParams.get("id") != null || searchParams.get("nameT") != null || searchParams.get("year") != null || searchParams.get("code") != null || searchParams.get("genres") != null || searchParams.get("voice") != null || searchParams.get("timing") != null || searchParams.get("translator") != null || searchParams.get("editing") != null || searchParams.get("decor") != null || searchParams.get("type") != null || searchParams.get("q") != null){
 		query = {
-			'id': searchParams.get("id"), 
+			'id': searchParams.get("id"),
 			'nameT': searchParams.get("nameT"),
 			'year': searchParams.get("year"),
 			'code': searchParams.get("code"), 
@@ -57,6 +63,9 @@ function parseURL(){
 			'type': searchParams.get("type"),
 			'search': searchParams.get("q")
 		};
+
+		removeNulls(query)
+
 	} else {
 		query = null;
 	}
@@ -108,7 +117,6 @@ function pageColor(){
 function switchRoute(page, query, data){
 	styleFilter = 1; // Сбросить видимости фильтров
 	pageColor()
-	
 	switch (page) {
 		case '/release':
 			page_release(query.id, data)
@@ -215,6 +223,15 @@ function goRoute(namePage, querys, data = null) {
 	// Добавляем запись новой страницы в историю 
 	history.pushState({'position': 0}, null, url);
 	window.scroll(0, 0);
+}
+
+// Функция удаления null из масива
+function removeNulls(obj){
+	var isArray = obj instanceof Array;
+	for (var k in obj){
+		if (obj[k]===null) isArray ? obj.splice(k,1) : delete obj[k];
+		else if (typeof obj[k]=="object") removeNulls(obj[k]);
+	}
 }
 
 // Функция обработки кнопки поиска
