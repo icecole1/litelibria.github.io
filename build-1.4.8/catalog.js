@@ -144,6 +144,7 @@ function setCatalogStyle(){
 
 function FilterNoneTop(){
 	document.getElementById('FilterNone').style.top = "auto";
+	document.getElementById("LoadAnimCatalog").style = "top: 10px;position: relative;left: auto;";
 }
 
 // Функция для видимости фильтров
@@ -220,6 +221,7 @@ function LoadApiCatalog() {
 
 	// Запуск анимации загрузки контента
 	document.getElementById("LoadAnimCatalog").style.display = "block";
+	document.getElementById("LoadApiCatalogButton").style.display = "none";
 
 	// Запрос к Api 
 	var url = urlGenerate + "filter=id,names,posters.medium,player.series,description,genres,type&limit="+num+"&after="+after;
@@ -236,7 +238,7 @@ function LoadApiCatalog() {
   })
   .then(function (data) {
 		if(data.length == 0) {
-			document.getElementById("FilterNone").style.display = "";
+			document.getElementById("FilterNone").style = "top: 10px;position: relative;left: auto;";
 			document.getElementById("LoadApiCatalogButton").style.display = "none";
 		} else {
 			document.getElementById("FilterNone").style.display = "none";

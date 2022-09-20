@@ -515,9 +515,8 @@ function GeneratorRelise(data){
     var season_full_string = data["type"]["full_string"];
   }
 
-	document.title = data["names"]["ru"];
 
-  document.getElementById('rel_in_favorites').innerHTML = `В избранном у  ${data["in_favorites"]}`;
+	document.getElementById('rel_in_favorites').innerHTML = `В избранном у  ${data["in_favorites"]}`;
 
 	if (localStorage.getItem('postersMode') == 'webp') {
   	document.getElementById('rel_posters_1_url').src = config["webpPosters"]+data["id"]+'.webp';

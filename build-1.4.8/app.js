@@ -43,10 +43,6 @@ function parseURL(){
 	// Получение запроса query
 	var searchParams = new URLSearchParams(paramsString);
 
-	if(searchParams.get("id") != null) {
-
-	}
-
 
 	if(searchParams.get("id") != null || searchParams.get("nameT") != null || searchParams.get("year") != null || searchParams.get("code") != null || searchParams.get("genres") != null || searchParams.get("voice") != null || searchParams.get("timing") != null || searchParams.get("translator") != null || searchParams.get("editing") != null || searchParams.get("decor") != null || searchParams.get("type") != null || searchParams.get("q") != null){
 		query = {

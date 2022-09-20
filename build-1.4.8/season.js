@@ -44,7 +44,7 @@ function page_season(query) {
 			</div>	
 
 			<!-- Кнопка включения автодобавления тайтлов  -->
-			<button id="LoadApiSeasonButton" class="LoadApiButton" onclick="LoadApiSeasons();">Показать ещё</button>
+			<button id="LoadApiSeasonButton" class="LoadApiButton" onclick="LoadApiSeasons();FilterNoneTopSeasons();" style="display:none;">Показать ещё</button>
 			<span id="LoadApiSeason"></span>
 		</div>
 	</div>
@@ -70,6 +70,10 @@ function page_season(query) {
   Scroll_to_top();
 }
 
+function FilterNoneTopSeasons(){
+	document.getElementById('FilterNone').style.top = "auto";
+	document.getElementById("LoadAnimSeason").style = "top: 10px;position: relative;left: auto;";
+}
 
 // Функция обновления стилизации
 function getSeasonStyle(){
@@ -163,6 +167,7 @@ function LoadApiSeasons() {
 
 	// Запуск анимации загрузки контента
 	document.getElementById("LoadAnimSeason").style.display = "block";
+	document.getElementById("LoadApiSeasonButton").style.display = "none";
 
 	// Запрос к Api 
 	var url = urlGenerateSeason + "filter=id,names.ru,posters.medium,player.series,description,genres,type&limit="+num+"&after="+after;
@@ -179,7 +184,7 @@ function LoadApiSeasons() {
   })
   .then(function (data) {
 		if(data.length == 0) {
-			document.getElementById("FilterNone").style.display = "";
+			document.getElementById("FilterNone").style = "top: 10px;position: relative;left: auto;";
 			document.getElementById("LoadApiSeasonButton").style.display = "none";
 		} else {
 			document.getElementById("FilterNone").style.display = "none";
