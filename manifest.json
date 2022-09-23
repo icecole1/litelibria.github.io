@@ -7,8 +7,8 @@
   "scope": "/",
   "background_color": "#f3f3f3",
   "theme_color": "#fbfbfb",
-  "version": "1.4.8",
-  "version_name": "Omega-1.4.8",
+  "version": "1.4.9",
+  "version_name": "Omega-1.4.9",
   "icons": [
         { "src": "img/icon/web/favicon.ico", "type": "image/x-icon", "sizes": "32x32" },
         { "src": "img/icon/web/icon-192.png", "type": "image/png", "sizes": "192x192" },
