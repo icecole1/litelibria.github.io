@@ -384,7 +384,7 @@ details span {
   font-size: 14px;
   font-weight: 400;
   height: 30px;
-  width: 190px;
+  width: 235px;
   color: var(--ColorThemes3);
   padding: 0px 10px;
   background: var(--ColorThemes1);
@@ -450,6 +450,10 @@ details span {
 		justify-content: center;
 		padding: 0px;
 	}
+	.navigation ul {
+		width: 100%;
+		justify-content: space-around;
+	}
 	.small_bac {
     width: calc(100% - 20px);
     padding: 10px;
@@ -470,6 +474,17 @@ details span {
     width: 100%;
     top: 0;
     height: 60px;
+	}
+
+	#search_n {
+    width: 90%;
+		justify-content: center;
+	}
+	.form_s{
+		width: 100%;
+	}
+	.search_s .box_s {
+    width: calc(100% - 55px);
 	}
 }
 @media (max-width: 370px){

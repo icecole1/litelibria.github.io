@@ -24,7 +24,7 @@ function page_favorites() {
 					</span>
 				</label>
 			</span>	
-			<button class="SortingButton" onclick="SortingTitlesFavorites()">Показать</button>
+			<button class="SortingButton" onclick="ClearSortingTitlesFavorites()">Сбросить</button>
 		</div>
 	</div>
 
@@ -87,6 +87,8 @@ function page_favorites() {
 
 	appWidth();
   Scroll_to_top();
+
+	SortingEventFavorites();
 }
 
 // Функция обновления стилизации
@@ -151,6 +153,15 @@ function LoadPHPSESSID(){
   }
 }
 
+// Функция запуска сортировки
+function SortingEventFavorites(){
+	document.querySelector("#SortingOrderBy").addEventListener('change', function (e) {
+		SortingTitlesFavorites()
+	})
+	document.querySelector("#SortingChecUpTop").addEventListener('click', function (e) {
+		SortingTitlesFavorites()
+	})
+}
 
 // Функция сортировки
 function SortingTitlesFavorites(){
@@ -200,6 +211,16 @@ function SortingTitlesFavorites(){
 
 	document.getElementById('LineGenerator-Favorites').innerHTML = "";
 	GeneratorFavorites()
+}
+
+// Функция сброса сортировки
+function ClearSortingTitlesFavorites(){
+	document.querySelector("#SortingOrderBy").value = 0
+	document.querySelector("#SortingChecUpTop").checked=true
+	
+	FavoritesList = null;
+	document.getElementById('LineGenerator-Favorites').innerHTML = "";
+	LoadApiFavorites()
 }
 
 

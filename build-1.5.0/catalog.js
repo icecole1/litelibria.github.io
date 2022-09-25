@@ -11,13 +11,13 @@ function page_catalog() {
 	<div class="SortingBlock" id="SortingBlock" style="display: none">
 		<div class="SortingBlockForm">
 			<select class="SortingChosen" id="SortingGenres">
-				<option value="0">Выбрать жанры</option>
+				<option value="0" selected>Выбрать жанры</option>
 			</select>
 			<select class="SortingChosen" id="SortingYears">
-				<option value="0">Выбрать год</option>
+				<option value="0" selected>Выбрать год</option>
 			</select>
 			<select class="SortingChosen" id="SortingSeason">
-				<option value="0">Выбрать сезон</option>
+				<option value="0" selected>Выбрать сезон</option>
 				<option value="1">Зима</option>
 				<option value="2">Весна</option>
 				<option value="3">Лето</option>
@@ -25,7 +25,7 @@ function page_catalog() {
 			</select>
 			<span class="SortingContainer">
 				<select class="SortingChosen" id="SortingOrderBy">
-					<option value="">Сортировать по ...</option>
+					<option value="" selected>Сортировать по ...</option>
 					<option value="&order_by=season.year">Году</option>
 					<option value="&order_by=code">Названию</option>
 					<option value="&order_by=in_favorites">Популярности</option>
@@ -39,7 +39,7 @@ function page_catalog() {
 					</span>
 				</label>
 			</span>	
-			<button class="SortingButton" onclick="SortingTitles()">Показать</button>
+			<button class="SortingButton" onclick="ClearSortingTitles()">Сбросить</button>
 		</div>
 	</div>
 
@@ -107,6 +107,7 @@ function page_catalog() {
 
 	appWidth();
   Scroll_to_top();
+	SortingEvent();
 }
 
 
@@ -162,6 +163,25 @@ function setFilterCatalogStyle(){
 	}
 }
 
+// Функция запуска сортировки
+function SortingEvent(){
+	document.querySelector("#SortingGenres").addEventListener('change', function (e) {
+		SortingTitles()
+	})
+	document.querySelector("#SortingYears").addEventListener('change', function (e) {
+		SortingTitles()
+	})
+	document.querySelector("#SortingSeason").addEventListener('change', function (e) {
+		SortingTitles()
+	})
+	document.querySelector("#SortingOrderBy").addEventListener('change', function (e) {
+		SortingTitles()
+	})
+	document.querySelector("#SortingChecUpTop").addEventListener('click', function (e) {
+		SortingTitles()
+	})
+}
+
 // Функция сортировки
 function SortingTitles(){
 	num = 24;
@@ -198,15 +218,33 @@ function SortingTitles(){
     query_1 = '1'
   }
 
-  var checkbox_sorting = '1';
+  var checkbox_sorting = '0';
   if (document.querySelector('#SortingChecUpTop:checked')) {
-     checkbox_sorting = '0';
+     checkbox_sorting = '1';
   }
   if (genres_sort == 0 && years_sort == 0 && season_sort == 0 && orderBy_sort == '') {
 		urlGenerate = config["titels_api"]+'getUpdates?';
   } else {
 		urlGenerate = config["titels_api"]+'advancedSearch?query='+ query_1 + genres + and_1 + years + and_2 + season + orderBy_sort +'&sort_direction='+checkbox_sorting+'&';
   }
+
+	document.getElementById('LineGeneratorCatalog').innerHTML = "";
+	LoadApiCatalog()
+}
+
+// Функция сброса сортировки
+function ClearSortingTitles(){
+	num = 24;
+	after = 0;
+	CatalogsList = null;
+
+	document.querySelector("#SortingGenres").value = 0
+	document.querySelector("#SortingYears").value = 0
+	document.querySelector("#SortingSeason").value = 0
+	document.querySelector("#SortingOrderBy").value = ""
+	document.querySelector("#SortingChecUpTop").checked=true
+	
+	urlGenerate = config["titels_api"]+'getUpdates?';
 
 	document.getElementById('LineGeneratorCatalog').innerHTML = "";
 	LoadApiCatalog()

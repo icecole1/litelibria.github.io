@@ -15,7 +15,7 @@ function page_myHistory() {
 					</span>
 				</label>
 			</span>	
-			<button class="SortingButton" onclick="SortingHistory()">Показать</button>
+			<button class="SortingButton" onclick="ClearSortingHistory()">Сбросить</button>
 			<button class="SortingButton" id="authorize-button" onclick="logIn('authorize-button', 'signout-button')">Синхронизировать Google</button>
 			<button class="SortingButton" id="signout-button" onclick="logOut('authorize-button', 'signout-button')" style="display:none;">Выйти из Google</button>
 		</div>
@@ -45,8 +45,11 @@ function page_myHistory() {
   Scroll_to_top();
 
 	onSignInHistory();
+
+	SortingEventHistory();
 }
 
+// Функции проверки авторизации
 function onSignInHistory() {
 	if (googleLogIn) {
 		document.getElementById('signout-button').style.display = '';
@@ -57,6 +60,7 @@ function onSignInHistory() {
 	}
 }
 
+// Функции заполнения контента
 function GeneratorHistory() {
 	HistoryList = historyGet('date');
 
@@ -127,6 +131,7 @@ function GeneratorHistory() {
 	}
 }
 
+// Функции удаления релиза
 function myHistoryDell(title, serie){
 	document.getElementById('article_history'+title+"-"+serie).setAttribute("style", "display:none;");
 	historyDell(title, serie);
@@ -138,12 +143,24 @@ function myHistoryDell(title, serie){
 	saveConfig(HistoryList)
 }
 
+
+// Функция запуска сортировки
+function SortingEventHistory(){
+	document.querySelector("#SortingOrderBy").addEventListener('change', function (e) {
+		SortingHistory()
+	})
+	document.querySelector("#SortingChecUpTop").addEventListener('click', function (e) {
+		SortingHistory()
+	})
+}
+
+// Функция сортировки
 function SortingHistory(){
   var orderBy_sort = document.getElementById("SortingOrderBy").value;
 
-	var checkbox_sorting = '1';
+	var checkbox_sorting = '0';
   if (document.querySelector('#SortingChecUpTop:checked')) {
-     checkbox_sorting = '0';
+     checkbox_sorting = '1';
   }
 
 	document.getElementById('HistoryGenerator').innerHTML = '';
@@ -240,7 +257,14 @@ function SortingHistory(){
 	}
 }
 
-
+// Функция сброса сортировки
+function ClearSortingHistory(){
+	document.querySelector("#SortingOrderBy").value = "date"
+	document.querySelector("#SortingChecUpTop").checked=true
+	
+	document.getElementById('HistoryGenerator').innerHTML = `<div id="HistoryNone"><img src="img/libriatyan/4.webp" style="max-width: 145px;"><br /><br /><p style="color: var(--ColorThemes3);">Пока пусто...</p></div>`;
+	GeneratorHistory()
+}
 
 
 
