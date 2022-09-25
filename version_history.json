@@ -2,7 +2,7 @@ version_history = [
 	{
     "prefix":"Mineruva",
     "version":"1.5.0",
-    "date":"24 September 2022",
+    "date":"25 September 2022",
     "update":[
 			{
 				"type":"FIXED",
