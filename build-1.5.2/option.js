@@ -73,6 +73,12 @@ function page_options() {
 					<button id="backToTop1_style" class="OptionsCardButton" title="Выбрать" onclick="SetBackToTopStyle('true')">Включить</button>
 					<button id="backToTop2_style" class="OptionsCardButton" title="Выбрать" onclick="SetBackToTopStyle('false')">Отключить</button>
 				</div>
+				<hr>
+				<p class="settings_filter_p">Увеличеннгое мобильное меню</p>
+				<div id="settings_home_block_style" style="margin-bottom: 15px;">
+					<button id="navigation_ios1_style" class="OptionsCardButton" title="Выбрать" onclick="SetNavigationIOS('true')">Включить</button>
+					<button id="navigation_ios2_style" class="OptionsCardButton" title="Выбрать" onclick="SetNavigationIOS('false')">Отключить</button>
+				</div>
 				<p class="settings_filter_p">*Нажмите для выбора</p>
 			</div>
 
@@ -190,6 +196,7 @@ function page_options() {
 	GetPlayer_style();
 	GetPostersStyle();
 	GetBackToTopStyle();
+	GetNavigationIOS();
 
 
 	appWidth();
@@ -366,6 +373,31 @@ function SetBackToTopStyle(mode){
 		localStorage.setItem('backToTop', 'false');
 		document.getElementById('backToTop1_style').dataset.state = '';
 		document.getElementById('backToTop2_style').dataset.state = 'Select';
+	}
+}
+
+function GetNavigationIOS(){
+	backToTopMode = localStorage.getItem('iOS_nav');
+
+	if (backToTopMode == 'true') {
+		document.getElementById('navigation_ios1_style').dataset.state = 'Select';
+		document.getElementById('navigation_ios2_style').dataset.state = '';
+	} else {
+		document.getElementById('navigation_ios1_style').dataset.state = '';
+		document.getElementById('navigation_ios2_style').dataset.state = 'Select';
+	}
+}
+function SetNavigationIOS(mode){
+	if (mode == 'true') {
+		localStorage.setItem('iOS_nav', 'true');
+		document.getElementById('navigation_ios1_style').dataset.state = 'Select';
+		document.getElementById('navigation_ios2_style').dataset.state = '';
+		document.getElementById('navigation_block').dataset.state = 'iOS';
+	} else if (mode == 'false') {
+		localStorage.setItem('iOS_nav', 'false');
+		document.getElementById('navigation_ios1_style').dataset.state = '';
+		document.getElementById('navigation_ios2_style').dataset.state = 'Select';
+		document.getElementById('navigation_block').dataset.state = '';
 	}
 }
 

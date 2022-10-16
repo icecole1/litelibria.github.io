@@ -56,7 +56,14 @@ function detectOS() {
 
 function b_search() {
   document.getElementById('menu_n').setAttribute("style", "transform: translateY(-80px);opacity: 0;");
-  document.getElementById('search_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
+	document.getElementById('search_n').dataset.state = 'reflect';
+	SearchEvent();
+
+
+	var searchParams = parseLocationURL();
+	if(searchParams.get("q") == null && document.querySelector("#search_q").value.length > 0){
+		document.getElementById('search_list').dataset.state = 'reflect';
+	}
 }
 document.addEventListener('click', function(e) {
   var container = document.getElementById('search_n');
@@ -65,10 +72,64 @@ document.addEventListener('click', function(e) {
 	}
 });
 
-
 function b_navigation() {
   document.getElementById('menu_n').setAttribute("style", "transform: translateY(0px);opacity: 1;");
-  document.getElementById('search_n').setAttribute("style", "transform: translateY(-40px);opacity: 0;");
+	document.getElementById('search_n').dataset.state = '';
+	document.getElementById('search_list').dataset.state = '';
+}
+
+// Функция запуска поиска
+function SearchEvent(){
+	document.querySelector("#search_q").addEventListener('input', function (e) {
+		var searchParams = parseLocationURL();
+		if(searchParams.get("q") == null && document.querySelector("#search_q").value.length > 0){
+			document.getElementById('search_list').dataset.state = 'reflect';
+			SearchEventFetch(document.querySelector("#search_q").value)
+		}
+	})
+}
+
+function SearchEventFetch(q){
+	// Запрос к Api 
+	var url = config["titels_api"]+"searchTitles?search="+q+"&filter=id,names.ru,season,type&limit=3";
+  fetch(url)
+  .then(function (response) {
+    if (response.status !== 200) {
+      return Promise.reject(new Error(response.statusText))
+    }
+    return Promise.resolve(response)
+  })
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+		document.getElementById('search_list').innerHTML = "";
+
+		if(data.length == 0){
+			var div = document.createElement('div');
+			document.getElementById('search_list').appendChild(div);
+			div.innerHTML += `<div id="LoadAnimRecomendSearchList"><svg style="padding: 50px;width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg></div>`
+		} else {
+			for (let i = 0; data.length > i; i++) {
+				var div = document.createElement('div');
+				document.getElementById('search_list').appendChild(div);
+				div.innerHTML += `<div class="Search-List-Card" onclick='goRoute("/release", {id:${data[i].id}});b_navigation()'>
+													<img src="https://api.litelibria.com/posters/${data[i]["id"]}.webp" alt="">
+													<div class="Search-List-Card-BlockText">
+														<p class="Search-List-Card-Title">${data[i]["names"]["ru"]}</p>
+														<p class="Search-List-Card-Text">${data[i]["type"]["full_string"]}</p>
+														<p class="Search-List-Card-Text">${data[i]["season"]["year"]} ${data[i]["season"]["string"] != null ? data[i]["season"]["string"] : ""}</p>
+													</div>
+												</div>`;
+			}
+			var div = document.createElement('div');
+			document.getElementById('search_list').appendChild(div);
+			div.innerHTML += `<button id="but_search_list" class="search_list_button" onclick="search_b()">Еще...</button>`
+		}
+  })
+  .catch(function (error) {
+    console.log('error', error)
+  })
 }
 
 

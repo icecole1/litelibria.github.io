@@ -348,8 +348,7 @@ function LoadApiYearsCatalog() {
 // Функции заполнения контента
 function GeneratorCatalog() {
 	for (let i = after; CatalogsList.length > i; i++) {
-		var genres = '';
-		var TextSerie = '';
+		var genres = '', TextSerie = '', SerieLength = '';
 		for(let g = 0; CatalogsList[i].genres.length > g; g++){
 			if(genres == '') genres = CatalogsList[i].genres[g];
 			else genres = genres + ', ' +CatalogsList[i].genres[g];
@@ -367,7 +366,9 @@ function GeneratorCatalog() {
 				SerieType = "Серия"
 			}
 
-			TextSerie = `<div class="LineCard-TextSerie">${SerieType} ${CatalogsList[i].player.series.last}</div>`;
+			SerieLength = CatalogsList[i].type.series != null ? ` из ${CatalogsList[i].type.series}` : ""
+
+			TextSerie = `<div class="LineCard-TextSerie">${SerieType} ${CatalogsList[i].player.series.last}${SerieLength}</div>`;
 		}
 
 		if (localStorage.getItem('postersMode') == 'webp') {

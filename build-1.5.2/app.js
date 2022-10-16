@@ -1,5 +1,6 @@
 var query,
-		href;
+		href,
+		page;
 
 // Переменные запросов API
 var UpdatesList;
@@ -27,6 +28,23 @@ window.addEventListener('popstate', (event) => {
 });
 
 // Фунцкия получения адреса текущей страницы и запроса query
+function parseLocationURL(){
+	// Получение адреса текущей страницы
+	if(window.location.pathname != "/"){
+		href = window.location.pathname;
+		if(document.location.search){
+			var paramsString = document.location.search;
+		}
+	} else {
+		var hrefLoad = window.location.hash.replace('#', '').split("?");
+		href = hrefLoad[0];
+		paramsString = '?'+hrefLoad[1];
+	}
+
+	// Получение запроса query
+	return new URLSearchParams(paramsString);
+}
+
 function parseURL(){
 	// Получение адреса текущей страницы
 	if(window.location.pathname != "/"){
@@ -60,6 +78,8 @@ function parseURL(){
 			'search': searchParams.get("q")
 		};
 
+		console.log(searchParams.get("q"));
+
 		removeNulls(query)
 
 	} else {
@@ -79,6 +99,10 @@ function initApp() {
 
 	if(!localStorage.getItem('postersMode')){
 		localStorage.setItem('postersMode', 'webp')
+	}
+
+	if(localStorage.getItem('iOS_nav') == 'true'){
+		document.getElementById('navigation_block').dataset.state = 'iOS';
 	}
 }
 
@@ -234,6 +258,7 @@ function removeNulls(obj){
 function search_b() {
   var search_q = document.getElementById("search_q").value;
 	goRoute('/search', {search: `${search_q}`})
+	document.getElementById('search_list').dataset.state = '';
 }
 
 // Функция обработки кнопки обновить

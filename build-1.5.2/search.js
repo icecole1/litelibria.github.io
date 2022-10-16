@@ -122,9 +122,9 @@ function LoadApiSearch(s1) {
   .then(function (data) {
 		if(SearchList == null) SearchList = data;
 		else Array.prototype.push.apply(SearchList, data);
-
 		GeneratorSearch();
 		preloader_none();
+		
   })
   .catch(function (error) {
     console.log('error', error)

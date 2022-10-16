@@ -110,17 +110,17 @@
 	<script src="js/historySync.js"></script>
 
   <!-- Загрузка страниц -->
-	<script src="build-1.5.1/line.js"></script>
-	<script src="build-1.5.1/catalog.js"></script>
-	<script src="build-1.5.1/favorites.js"></script>
-	<script src="build-1.5.1/season.js"></script>
-	<script src="build-1.5.1/search.js"></script>
-	<script src="build-1.5.1/schedule.js"></script>
-	<script src="build-1.5.1/myHistory.js"></script>
-	<script src="build-1.5.1/option.js"></script>
-	<script src="build-1.5.1/release.js"></script>	
-	<script src="build-1.5.1/script.js"></script>
-	<script src="build-1.5.1/app.js" defer></script>
+	<script src="build-1.5.2/line.js"></script>
+	<script src="build-1.5.2/catalog.js"></script>
+	<script src="build-1.5.2/favorites.js"></script>
+	<script src="build-1.5.2/season.js"></script>
+	<script src="build-1.5.2/search.js"></script>
+	<script src="build-1.5.2/schedule.js"></script>
+	<script src="build-1.5.2/myHistory.js"></script>
+	<script src="build-1.5.2/option.js"></script>
+	<script src="build-1.5.2/release.js"></script>	
+	<script src="build-1.5.2/script.js"></script>
+	<script src="build-1.5.2/app.js" defer></script>
 
 	<!-- Подключенеие Google Service -->
 	<script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
@@ -162,7 +162,7 @@
 	
 	<div class="navigation_c" id="navi">
 		<center>
-			<div class="navigation">
+			<div class="navigation" id="navigation_block">
 				<ul id="menu_n">
 					<li id="but_home">
 						<a onclick="goRoute('/', null)">
@@ -216,7 +216,6 @@
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 20px;margin-top: 3px;"><path d="M456.69 421.39L362.6 327.3a173.81 173.81 0 0034.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.81 173.81 0 00327.3 362.6l94.09 94.09a25 25 0 0035.3-35.3zM97.92 222.72a124.8 124.8 0 11124.8 124.8 124.95 124.95 0 01-124.8-124.8z"></path></svg>
 						</button>
 					</form>
-					
 				</div>
 	
 				<div id="menu_right">
@@ -238,6 +237,15 @@
 					</ul>
 				</div>
 
+			</div>
+
+			<div class="search_list_center">
+				<div id="search_list" class="search_list">
+					<!-- Анимация загрузки -->
+					<div id="LoadAnimRecomendSearchList">
+						<svg style="padding: 50px;width: 45px;" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#d53c3c"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms" repeatCount="indefinite"></animateTransform></g></svg>
+					</div>
+				</div>
 			</div>
 		</center>
 	</div>
