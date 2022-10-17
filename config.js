@@ -12,7 +12,7 @@ let config = {
 	'g_apiKey': 'AIzaSyDnCKI8zpxJ5Iwpa7xpXx1jkKZY0Gr9yqo',
 	'g_clientId': '116898535578-na8fsq2p1igt77ve615sa444ur2l1bvv.apps.googleusercontent.com',
 	'domains': 'litelibria.com',
-	'CustomPosters':'https://api.7o7.co',
+	'CustomPosters':'https://api.7u7.uk',
 	'webpPosters':'https://api.litelibria.com/posters/',
 	'webpPreview':'https://api.litelibria.com/preview/',
 	'titels_api': localStorage.getItem("GetMirror") == "true" ? mirror_titels_api : 'https://api.anilibria.tv/v2.13/',
