@@ -1,49 +1,40 @@
+const queryAPI = "getUpdates",
+			queryImage = "/img/other/a/hero.jpg";
 let FinalAPI = []
 let FinalBaseImages = []
 let addresses = [
 	{
-		"tag": "mirror0",
-		"desc": "Основной домен",
+		"tag": "mirror",
 		"previewLiteLibria": "https://api.litelibria.com/preview/",
 		"previewT1MOXA": "https://api.7u7.uk/anilibria_bot/getThumbnail/",
-		"optimizedImages": "https://api.litelibria.com/posters/",
-		"baseImages": "https://anilibria.tv",
+		"optimizedImages": "https://api.litelibria.com/posters/"
+	}
+]
+let mirrorUrlImages = [
+	{
+		"baseImages": "https://anilibria.tv"
+	},
+	{
+		"baseImages": "https://static-libria.iss.bond"
+	},
+	{
+		"baseImages": "https://static.wwnd.space"
+	}
+]
+let mirrorUrlAPI = [
+	{
 		"api": "https://api.anilibria.tv/v2.13/"
 	},
 	{
-		"tag": "mirror1",
-		"desc": "Зеркало 1",
-		"previewLiteLibria": "https://api.litelibria.com/preview/",
-		"previewT1MOXA": "https://api.7u7.uk/anilibria_bot/getThumbnail/",
-		"optimizedImages": "https://api.litelibria.com/posters/",
-		"baseImages": "https://static-libria.iss.bond",
 		"api": "https://litelibria.anilib.top/api/v2.13/"
 	},
 	{
-		"tag": "mirror2",
-		"desc": "Зеркало 2",
-		"previewLiteLibria": "https://api.litelibria.com/preview/",
-		"previewT1MOXA": "https://api.7u7.uk/anilibria_bot/getThumbnail/",
-		"optimizedImages": "https://api.litelibria.com/posters/",
-		"baseImages": "https://static.wwnd.space",
 		"api": "https://litelibria.anilib.moe/api/v2.13/"
 	},
 	{
-		"tag": "mirror3",
-		"desc": "Зеркало 3",
-		"previewLiteLibria": "https://api.litelibria.com/preview/",
-		"previewT1MOXA": "https://api.7u7.uk/anilibria_bot/getThumbnail/",
-		"optimizedImages": "https://api.litelibria.com/posters/",
-		"baseImages": "https://static-libria.iss.bond",
 		"api": "https://litelibria.anilib.one/api/v2.13/"
 	},
 	{
-		"tag": "mirror4",
-		"desc": "Зеркало 4",
-		"previewLiteLibria": "https://api.litelibria.com/preview/",
-		"previewT1MOXA": "https://api.7u7.uk/anilibria_bot/getThumbnail/",
-		"optimizedImages": "https://api.litelibria.com/posters/",
-		"baseImages": "https://static.wwnd.space",
 		"api": "https://litelibria.anilib.icu/api/v2.13/"
 	}
 ]
@@ -90,13 +81,13 @@ function NewMirrorPreview(){
 	}
 }
 
-function NewMirrorAPI(){
+function NewMirrorAPI(q){
 	let urlsAPI = [
-		addresses[4].api+"getUpdates",
-		addresses[3].api+"getUpdates",
-		addresses[2].api+"getUpdates",
-		addresses[1].api+"getUpdates",
-		addresses[0].api+"getUpdates"
+		mirrorUrlAPI[4].api+queryAPI,
+		mirrorUrlAPI[3].api+queryAPI,
+		mirrorUrlAPI[2].api+queryAPI,
+		mirrorUrlAPI[1].api+queryAPI,
+		mirrorUrlAPI[0].api+queryAPI
 	];
 
 	// прервать через 30 секунду
@@ -110,7 +101,9 @@ function NewMirrorAPI(){
 					.then(function (response) {
 						if (response.status !== 200) {console.log("ERROR - " + url);return}
 						localStorage.setItem("GetMirrorAPI", url.replace("getUpdates", ""));
-						location.reload()
+						if(q!=1) {
+							location.reload()
+						}
 					})
 					.catch(function () {
 						console.log("ERROR - " + url);
@@ -120,11 +113,9 @@ function NewMirrorAPI(){
 
 function NewMirrorPosters(){
 	let urlsPosters = [
-		addresses[0].baseImages+"/img/other/a/hero.jpg",
-		addresses[1].baseImages+"/img/other/a/hero.jpg",
-		addresses[2].baseImages+"/img/other/a/hero.jpg",
-		addresses[3].baseImages+"/img/other/a/hero.jpg",
-		addresses[4].baseImages+"/img/other/a/hero.jpg"
+		mirrorUrlImages[0].baseImages+queryImage,
+		mirrorUrlImages[1].baseImages+queryImage,
+		mirrorUrlImages[2].baseImages+queryImage
 	];
 
 	// прервать через 30 секунду
@@ -137,7 +128,7 @@ function NewMirrorPosters(){
 					})
 					.then(function (response) {
 						if (response.status !== 200) {console.log("ERROR - " + url);return}
-						localStorage.setItem("GetMirrorPosters", url.replace("/img/other/a/hero.jpg", ""));
+						localStorage.setItem("GetMirrorPosters", url.replace(queryImage, ""));
 						console.log("OK - " + url);
 					})
 					.catch(function () {
@@ -178,7 +169,7 @@ function TestMirror(){
 	}
 
 	try {
-		fetch(mirror_posters+"/img/other/a/hero.jpg", {
+		fetch(mirror_posters+queryImage, {
 			signal: controller1.signal
 		})
 		.then(function (response) {
