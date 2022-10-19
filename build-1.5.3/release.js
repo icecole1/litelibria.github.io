@@ -574,7 +574,7 @@ function GeneratorPlaySerie(data, id){
 
 		poster = null;
 		if(data["player"]["playlist"][i]["preview"] == null){
-			poster = config["CustomPosters"] + "/anilibria_bot/getThumbnail/" + id + "/" + i + "/1.jpg";
+			poster = config["CustomPosters"] + id + "/" + i + "/1.jpg";
 		} else {
 			poster = config["posters"] + data["player"]["playlist"][i]["preview"];
 		}

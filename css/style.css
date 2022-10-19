@@ -560,6 +560,23 @@ details span {
 	opacity: 0.95;
 	z-index: 9999;
 }
+#update-banner-1-icon{
+	display: none;
+}
+#update-banner-1-icon svg{
+	padding: 0px 50px;
+	width: 25px;
+	margin: -4px;
+}
+#update-banner-2-icon{
+	width: 100%;
+	display: none;
+}
+#update-banner-2-icon svg{
+	padding: 0px 50px;
+	width: 25px;
+	margin: -3px;
+}
 
 @media (max-width: 800px){
 	.navigation {

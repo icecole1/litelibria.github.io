@@ -403,7 +403,7 @@ function GeneratorUpdates() {
 		if (localStorage.getItem('postersMode') == 'webp') {
 			var stylePoster = `<img src="${config["webpPreview"]}${UpdatesList[i].id}.webp" alt="">`
 		} else {
-			var stylePoster = `<img src="${config["CustomPosters"]}/anilibria_bot/getThumbnail/${UpdatesList[i].id}/${UpdatesList[i].player.series.last}/1.jpg" alt="">`
+			var stylePoster = `<img src="${config["CustomPosters"]}${UpdatesList[i].id}/${UpdatesList[i].player.series.last}/1.jpg" alt="">`
 		}
 
 		div.innerHTML += `

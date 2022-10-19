@@ -1,6 +1,22 @@
 version_history = [
 	{
     "prefix":"Mineruva",
+    "version":"1.5.3",
+    "date":"19 October 2022",
+    "update":[
+			{
+				"type":"FIXED",
+        "text":"Исправлены ошибки."
+			},{
+				"type":"ADDED",
+        "text":"Добавлен механизм автовыбора зеркал."
+			},{
+				"type":"ADDED",
+        "text":"Добавлена анимация загрузки обновления."
+			}
+    ]
+  },{
+    "prefix":"Mineruva",
     "version":"1.5.2",
     "date":"16 October 2022",
     "update":[
@@ -19,7 +35,7 @@ version_history = [
 			},{
 				"type":"ADDED",
         "text":"Добавлен режим увеличенного мобильного меню."
-			},
+			}
     ]
   },{
     "prefix":"Mineruva",

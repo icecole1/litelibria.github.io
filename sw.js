@@ -2,7 +2,7 @@ var CACHE_PREFIX = 'Mineruva';
 
 var CACHE_VERSION_MAJOR = 1;
 var CACHE_VERSION_MINOR = 5;
-var CACHE_VERSION_PATCH = 2;
+var CACHE_VERSION_PATCH = 3;
 
 var CACHE_VERSION = CACHE_VERSION_MAJOR+'.'+CACHE_VERSION_MINOR+'.'+CACHE_VERSION_PATCH;
 
@@ -14,11 +14,10 @@ const assetUrls = [
 
 	'/index.html',
 
-	'meeting_tips.json',
+	'meeting_tips.js',
 
   'config.js',
 
-  'offline.html',
   '/404.html',
 
   '/img/player.webp',
@@ -91,6 +90,9 @@ async function networkFirst(request) {
 		return response
   } catch (e) {
     const cached = await cache.match(request)
-    return cached ?? await caches.match('/offline.html')
+    return cached ?? new Response("Network error happened", {
+      status: 404,
+      headers: { "Content-Type": "text/plain" },
+    })
   }
 }

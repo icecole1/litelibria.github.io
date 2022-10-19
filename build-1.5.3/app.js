@@ -286,14 +286,20 @@ if ('serviceWorker' in navigator) {
 		document.querySelector('#update-banner-1 .headline').innerHTML = 'Доступно обновление';
 		document.querySelector('#update-banner-1 .subhead').innerHTML = 'Нажмите, чтобы обновить приложение до последней версии!';
 		document.getElementById('update-banner-1').addEventListener('click', clickEvent => {
-				serviceWorker.postMessage('skipWaiting');
+			document.getElementById('update-banner-1-icon').style.display = "block";
+			document.querySelector('#update-banner-1 .headline').innerHTML = '';
+			document.querySelector('#update-banner-1 .subhead').innerHTML = '';
+			serviceWorker.postMessage('skipWaiting');
 		});
 
 		document.getElementById('update-banner-2').dataset.state = 'updateavailable';
 		document.querySelector('#update-banner-2 .headline').innerHTML = 'Доступно обновление';
 		document.querySelector('#update-banner-2 .subhead').innerHTML = 'Нажмите, чтобы обновить приложение до последней версии!';
 		document.getElementById('update-banner-2').addEventListener('click', clickEvent => {
-				serviceWorker.postMessage('skipWaiting');
+			document.getElementById('update-banner-2-icon').style.display = "block";
+			document.querySelector('#update-banner-2 .headline').innerHTML = '';
+			document.querySelector('#update-banner-2 .subhead').innerHTML = '';
+			serviceWorker.postMessage('skipWaiting');
 		});
 	}
 

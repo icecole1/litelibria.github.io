@@ -113,14 +113,15 @@ function page_options() {
 				<p class="settings_filter_p">Режим</p>
 				<div id="settings_home_block_style" style="margin-bottom: 15px;">
 					<button id="MirrorModeOff" class="OptionsCardButton" title="Выбрать" onclick="SetMirrorMode('false')">Отключено</button>
-					<button id="MirrorModeOn" class="OptionsCardButton" title="Выбрать" onclick="SetMirrorMode('true')">Включено</button>
+					<button id="MirrorModeOn" class="OptionsCardButton" title="Выбрать" onclick="SetMirrorMode('true')">Автоматически</button>
 				</div>
+				<!--
 				<hr>
 				<p class="settings_filter_p">Своё зеркало</p>
 				<br>
 				<form name="formMirror" class="formMirror">
 					<div class="blockMirror">
-						<label>API</label><input required type="text" name="MirrorTitels" id="MirrorTitels" class="MirrorBox" placeholder="https://api.sdev.xyz/v2/">
+						<label>API</label><input required type="text" name="GetMirrorAPI" id="GetMirrorAPI" class="MirrorBox" placeholder="https://api.sdev.xyz/v2/">
 					</div>
 					<br>
 					<div class="blockMirror">
@@ -129,6 +130,7 @@ function page_options() {
 					<br>
 					<button class="OptionsCardButton" title="Выбрать" onclick="SetMirrorString()" data-state="Select">Сохранить</button>
 				</form>
+				-->
 				<p class="settings_filter_p">*Нажмите для выбора</p>
 			</div>
 
@@ -191,7 +193,7 @@ function page_options() {
 	LoadOptionPHPSESSID();
 	GetThemeEditStyle();
 	GetMirrorMode();
-	GetMirrorString();
+	// GetMirrorString();
 	GetOpening_style();
 	GetPlayer_style();
 	GetPostersStyle();
@@ -427,21 +429,21 @@ function SetMirrorMode(mode){
 	location.reload();
 }
 
-function GetMirrorString(){
-	var MirrorTitels = localStorage.getItem('GetMirrorTitels');
-	var MirrorPosters = localStorage.getItem('GetMirrorPosters');
+// function GetMirrorString(){
+// 	var GetMirrorAPI = localStorage.getItem('GetMirrorAPI');
+// 	var MirrorPosters = localStorage.getItem('GetMirrorPosters');
 
-	document.getElementById('MirrorTitels').value = MirrorTitels;
-	document.getElementById('MirrorPosters').value = MirrorPosters;
-}
-function SetMirrorString(){
+// 	document.getElementById('GetMirrorAPI').value = GetMirrorAPI;
+// 	document.getElementById('MirrorPosters').value = MirrorPosters;
+// }
+// function SetMirrorString(){
 
-	var MirrorTitels = document.getElementById('MirrorTitels').value;
-	var MirrorPosters = document.getElementById('MirrorPosters').value;
+// 	var MirrorAPI = document.getElementById('GetMirrorAPI').value;
+// 	var MirrorPosters = document.getElementById('MirrorPosters').value;
 
-	localStorage.setItem('GetMirrorTitels', MirrorTitels);
-	localStorage.setItem('GetMirrorPosters', MirrorPosters);
-}
+// 	localStorage.setItem('GetMirrorAPI', MirrorAPI);
+// 	localStorage.setItem('GetMirrorPosters', MirrorPosters);
+// }
 
 function GetOpening_style(){
 	var my_player_style = localStorage.getItem('my_player_style');

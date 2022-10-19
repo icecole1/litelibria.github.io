@@ -86,12 +86,15 @@ function SearchEvent(){
 			document.getElementById('search_list').dataset.state = 'reflect';
 			SearchEventFetch(document.querySelector("#search_q").value)
 		}
+		if(document.querySelector("#search_q").value.length == 0){
+			document.getElementById('search_list').dataset.state = '';
+		}
 	})
 }
 
 function SearchEventFetch(q){
 	// Запрос к Api 
-	var url = config["titels_api"]+"searchTitles?search="+q+"&filter=id,names.ru,season,type&limit=3";
+	var url = config["titels_api"]+"searchTitles?search="+q+"&filter=id,names.ru,season,type,posters.medium&limit=3";
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -113,8 +116,14 @@ function SearchEventFetch(q){
 			for (let i = 0; data.length > i; i++) {
 				var div = document.createElement('div');
 				document.getElementById('search_list').appendChild(div);
+				if (localStorage.getItem('postersMode') == 'webp') {
+					var stylePoster = `<img src="${config["webpPosters"]}${data[i].id}.webp" alt="">`
+				} else {
+					var stylePoster = `<img src="${config["posters"]}${data[i].posters.medium.url}" alt="">`
+				}
+
 				div.innerHTML += `<div class="Search-List-Card" onclick='goRoute("/release", {id:${data[i].id}});b_navigation()'>
-													<img src="https://api.litelibria.com/posters/${data[i]["id"]}.webp" alt="">
+													${stylePoster}
 													<div class="Search-List-Card-BlockText">
 														<p class="Search-List-Card-Title">${data[i]["names"]["ru"]}</p>
 														<p class="Search-List-Card-Text">${data[i]["type"]["full_string"]}</p>
