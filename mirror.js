@@ -57,7 +57,6 @@ mirror_api = localStorage.getItem("GetMirrorAPI")
 mirror_posters = localStorage.getItem("GetMirrorPosters");
 
 // Автоподбор зеркал
-
 TestMirror();
 
 function NewMirrorPreview(){
@@ -164,12 +163,10 @@ function TestMirror(){
 		.then(function (response) {
 			if (response.status !== 200) {
 				NewMirrorAPI();
-				console.log("Зеркало API не доступно...");
 			}
 		})
 		.catch(function () {
 			NewMirrorAPI();
-			console.log("Зеркало API не доступно...");
 		})
 	} catch(err) {
 		if (err.name == 'AbortError') {
@@ -177,7 +174,6 @@ function TestMirror(){
 			console.log("Зеркало API не отвечает...");
 		} else {
 			NewMirrorAPI();
-			console.log("Зеркало API не доступно...");
 		}
 	}
 
@@ -188,12 +184,10 @@ function TestMirror(){
 		.then(function (response) {
 			if (response.status !== 200) {
 				NewMirrorPosters();
-				console.log("Зеркало статики не доступно...");
 			}
 		})
 		.catch(function () {
 			NewMirrorPosters();
-			console.log("Зеркало статики не доступно...");
 		})
 	} catch(err) {
 		if (err.name == 'AbortError') {
@@ -201,7 +195,6 @@ function TestMirror(){
 			console.log("Зеркало статики не отвечает...");
 		} else {
 			NewMirrorPosters();
-			console.log("Зеркало статики не доступно...");
 		}
 	}
 }
