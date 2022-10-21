@@ -3,6 +3,43 @@ const queryAPI = "getUpdates",
 			webpPreview = "https://api.litelibria.com/preview/";
 let FinalAPI = []
 let FinalBaseImages = []
+let addresses = [
+	{
+		"tag": "mirror",
+		"previewLiteLibria": "https://api.litelibria.com/preview/",
+		"previewT1MOXA": "https://api.7u7.uk/anilibria_bot/getThumbnail/",
+		"optimizedImages": "https://api.litelibria.com/posters/"
+	}
+]
+let mirrorUrlImages = [
+	{
+		"baseImages": "https://anilibria.tv"
+	},
+	{
+		"baseImages": "https://static-libria.iss.bond"
+	},
+	{
+		"baseImages": "https://static.wwnd.space"
+	}
+]
+let mirrorUrlAPI = [
+	{
+		"api": "https://api.anilibria.tv/v2.13/"
+	},
+	{
+		"api": "https://litelibria.anilib.top/api/v2.13/"
+	},
+	{
+		"api": "https://litelibria.anilib.moe/api/v2.13/"
+	},
+	{
+		"api": "https://litelibria.anilib.one/api/v2.13/"
+	},
+	{
+		"api": "https://litelibria.anilib.icu/api/v2.13/"
+	}
+]
+
 
 if(!localStorage.getItem("GetMirrorPreview")) NewMirrorPreview();
 if(!localStorage.getItem("GetMirrorAPI")) NewMirrorAPI();
