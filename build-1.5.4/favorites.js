@@ -259,8 +259,7 @@ function LoadApiFavorites() {
 // Функции заполнения контента
 function GeneratorFavorites() {
 	for (let i = 0; FavoritesList.length > i; i++) {
-		var genres = '';
-		var TextSerie = '';
+		var genres = '', TextSerie = '', SerieLength = '';
 		for(let g = 0; FavoritesList[i].genres.length > g; g++){
 			if(genres == '') genres = FavoritesList[i].genres[g];
 			else genres = genres + ', ' +FavoritesList[i].genres[g];
@@ -278,7 +277,9 @@ function GeneratorFavorites() {
 				SerieType = "Серия"
 			}
 
-			TextSerie = `<div class="LineCard-TextSerie">${SerieType} ${FavoritesList[i].player.series.last}</div>`;
+			SerieLength = FavoritesList[i].type.series != null ? ` из ${FavoritesList[i].type.series}` : ""
+
+			TextSerie = `<div class="LineCard-TextSerie">${SerieType} ${FavoritesList[i].player.series.last}${SerieLength}</div>`;
 		}
 
 		if (localStorage.getItem('postersMode') == 'webp') {

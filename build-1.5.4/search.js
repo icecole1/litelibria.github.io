@@ -135,8 +135,7 @@ function LoadApiSearch(s1) {
 // Функции заполнения контента
 function GeneratorSearch() {
 	for (let i = after; SearchList.length > i; i++) {
-		var genres = '';
-		var TextSerie = '';
+		var genres = '', TextSerie = '', SerieLength = '';
 		for(let g = 0; SearchList[i].genres.length > g; g++){
 			if(genres == '') genres = SearchList[i].genres[g];
 			else genres = genres + ', ' +SearchList[i].genres[g];
@@ -154,7 +153,9 @@ function GeneratorSearch() {
 				SerieType = "Серия"
 			}
 
-			TextSerie = `<div class="LineCard-TextSerie">${SerieType} ${SearchList[i].player.series.last}</div>`;
+			SerieLength = SearchList[i].type.series != null ? ` из ${SearchList[i].type.series}` : ""
+
+			TextSerie = `<div class="LineCard-TextSerie">${SerieType} ${SearchList[i].player.series.last}${SerieLength}</div>`;
 		}
 
 		if (localStorage.getItem('postersMode') == 'webp') {

@@ -2,7 +2,7 @@ var CACHE_PREFIX = 'Mineruva';
 
 var CACHE_VERSION_MAJOR = 1;
 var CACHE_VERSION_MINOR = 5;
-var CACHE_VERSION_PATCH = 3;
+var CACHE_VERSION_PATCH = 4;
 
 var CACHE_VERSION = CACHE_VERSION_MAJOR+'.'+CACHE_VERSION_MINOR+'.'+CACHE_VERSION_PATCH;
 
@@ -14,9 +14,9 @@ const assetUrls = [
 
 	'/index.html',
 
-	'meeting_tips.js',
+	'/js/meeting_tips.js',
 
-  'config.js',
+  '/js/config.js',
 
   '/404.html',
 

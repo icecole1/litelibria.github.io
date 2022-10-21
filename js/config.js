@@ -16,10 +16,15 @@ let config = {
 	'titels_api': localStorage.getItem("GetMirror") == "true" ? mirror_api : 'https://api.anilibria.tv/v2.13/',
 	'posters': localStorage.getItem("GetMirror") == "true" ? mirror_posters : 'https://anilibria.tv',
 }
-let addresses = [
-	{
-		"previewLiteLibria": "https://api.litelibria.com/preview/",
-		"previewT1MOXA": "https://api.7u7.uk/anilibria_bot/getThumbnail/",
-		"optimizedImages": "https://api.litelibria.com/posters/"
-	}
+let mirrorUrlImages = [
+	"https://anilibria.tv",
+	"https://static-libria.iss.bond",
+	"https://static.wwnd.space"
+]
+let mirrorUrlAPI = [
+	"https://api.anilibria.tv/v2.13/",
+	"https://litelibria.anilib.top/api/v2.13/",
+	"https://litelibria.anilib.moe/api/v2.13/",
+	"https://litelibria.anilib.one/api/v2.13/",
+	"https://litelibria.anilib.icu/api/v2.13/"
 ]

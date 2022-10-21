@@ -33,7 +33,7 @@ a{
   cursor: pointer;
 }
 body{
-  background-color: #21221d;
+  background-color: var(--ColorThemes1);
   color: #fff;
   transition: .3s ease;
 }
@@ -48,13 +48,13 @@ body{
 .his h1{
   text-align: left;
   font-size: 24px;
-  color: #efefef;
+  color: var(--ColorThemes3);
   padding: 5px 10px;
 }
 .his a{
   text-align: left;
   font-size: 24px;
-  color: #efefef;
+  color: var(--ColorThemes3);
 	font-weight: 400;
 	border-bottom: 1px solid #d53c3c;
 }
@@ -62,7 +62,7 @@ body{
 .his_block{
   width: 100%;
   min-height: 10px;
-  background-color: #2e2e2e;
+  background-color: var(--ColorThemes2);
   margin: 10px 0 20px 0;
   border-radius: 10px;
   text-align: left;
@@ -73,13 +73,13 @@ body{
 }
 
 .his_block_v1 span{
-  color: #adadad;
+  color: var(--ColorThemes3);;
   padding: 5px 10px;
   border-radius: 10px;
 }
 .his_block_v2{
-  background: linear-gradient(140deg, #d93333, #b91d1d) !important;
-  color: #efefef !important;
+  background: var(--PrimaryColor) !important;
+  color: var(--PrimaryColorText) !important;
 }
 
 
@@ -87,7 +87,7 @@ body{
 .change-log {
   list-style: none !important;
   margin: 10px 10px 5px 10px;
-  background: #21221d;
+  background: var(--ColorThemes1);
   padding: 5px;
   border-radius: 10px;
 }
@@ -112,11 +112,11 @@ body{
   padding-top: 4px;
   font-size: 14px;
   font-weight: 300;
-  color: #d9d9d9;
+  color: var(--ColorThemes3);
 }
 .change-description a{
-  color: #d9d9d9;
-  border-bottom: 1px solid #d53c3c;
+  color: var(--ColorThemes3);
+  border-bottom: 1px solid var(--PrimaryColor);
   padding-top: 4px;
   font-size: 14px;
   font-weight: 300;
@@ -135,8 +135,8 @@ body{
 }
 .his_text{
   display: inline-block;
-  background: #21221d;
-  color: #efefef;
+  background: var(--ColorThemes1);
+  color: var(--ColorThemes3);
   padding: 5px 10px !important;
   border-radius: 10px;
   margin: 5px 0;

@@ -78,8 +78,6 @@ function parseURL(){
 			'search': searchParams.get("q")
 		};
 
-		console.log(searchParams.get("q"));
-
 		removeNulls(query)
 
 	} else {

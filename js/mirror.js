@@ -1,43 +1,8 @@
 const queryAPI = "getUpdates",
-			queryImage = "/img/other/a/hero.jpg";
+			queryImage = "/img/other/a/hero.jpg",
+			webpPreview = "https://api.litelibria.com/preview/";
 let FinalAPI = []
 let FinalBaseImages = []
-let addresses = [
-	{
-		"tag": "mirror",
-		"previewLiteLibria": "https://api.litelibria.com/preview/",
-		"previewT1MOXA": "https://api.7u7.uk/anilibria_bot/getThumbnail/",
-		"optimizedImages": "https://api.litelibria.com/posters/"
-	}
-]
-let mirrorUrlImages = [
-	{
-		"baseImages": "https://anilibria.tv"
-	},
-	{
-		"baseImages": "https://static-libria.iss.bond"
-	},
-	{
-		"baseImages": "https://static.wwnd.space"
-	}
-]
-let mirrorUrlAPI = [
-	{
-		"api": "https://api.anilibria.tv/v2.13/"
-	},
-	{
-		"api": "https://litelibria.anilib.top/api/v2.13/"
-	},
-	{
-		"api": "https://litelibria.anilib.moe/api/v2.13/"
-	},
-	{
-		"api": "https://litelibria.anilib.one/api/v2.13/"
-	},
-	{
-		"api": "https://litelibria.anilib.icu/api/v2.13/"
-	}
-]
 
 if(!localStorage.getItem("GetMirrorPreview")) NewMirrorPreview();
 if(!localStorage.getItem("GetMirrorAPI")) NewMirrorAPI();
@@ -56,7 +21,7 @@ function NewMirrorPreview(){
 	setTimeout(() => controller1.abort(), 30000);
 
 	try {
-		fetch(addresses[0].previewLiteLibria+"9200", {
+		fetch(webpPreview+"9200", {
 			signal: controller1.signal
 		})
 		.then(function (response) {
@@ -83,11 +48,11 @@ function NewMirrorPreview(){
 
 function NewMirrorAPI(q){
 	let urlsAPI = [
-		mirrorUrlAPI[4].api+queryAPI,
-		mirrorUrlAPI[3].api+queryAPI,
-		mirrorUrlAPI[2].api+queryAPI,
-		mirrorUrlAPI[1].api+queryAPI,
-		mirrorUrlAPI[0].api+queryAPI
+		mirrorUrlAPI[4]+queryAPI,
+		mirrorUrlAPI[3]+queryAPI,
+		mirrorUrlAPI[2]+queryAPI,
+		mirrorUrlAPI[1]+queryAPI,
+		mirrorUrlAPI[0]+queryAPI
 	];
 
 	// прервать через 30 секунду
@@ -104,6 +69,7 @@ function NewMirrorAPI(q){
 						if(q!=1) {
 							location.reload()
 						}
+						return
 					})
 					.catch(function () {
 						console.log("ERROR - " + url);
@@ -113,9 +79,9 @@ function NewMirrorAPI(q){
 
 function NewMirrorPosters(){
 	let urlsPosters = [
-		mirrorUrlImages[0].baseImages+queryImage,
-		mirrorUrlImages[1].baseImages+queryImage,
-		mirrorUrlImages[2].baseImages+queryImage
+		mirrorUrlImages[0]+queryImage,
+		mirrorUrlImages[1]+queryImage,
+		mirrorUrlImages[2]+queryImage
 	];
 
 	// прервать через 30 секунду

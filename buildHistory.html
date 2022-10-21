@@ -37,7 +37,22 @@
   <script>
       document.documentElement.setAttribute('class', 'ontouchend' in document ? 'touch' : 'no-touch');
   </script>
-  <link rel="stylesheet" type="text/css" href="css/buildHistory.css" />
+  <link rel="stylesheet" type="text/css" href="css/auto.css" />
+	<link rel="stylesheet" type="text/css" href="css/buildHistory.css" />
+
+	<!-- Смена темы при загрузке -->
+	<script>
+		if (localStorage.getItem('my_theme') == 'auto') {
+			document.querySelector('link[href="css/auto.css"]').href = 'css/auto.css';
+		} else if (localStorage.getItem('my_theme') == 'theme1') {
+			document.querySelector('link[href="css/auto.css"]').href = 'css/theme1.css';
+		} else if (localStorage.getItem('my_theme') == 'theme2') {
+			document.querySelector('link[href="css/auto.css"]').href = 'css/theme2.css';
+		} else {
+			localStorage.setItem('my_theme', 'auto');
+			document.querySelector('link[href="css/auto.css"]').href = 'css/auto.css';
+		}
+	</script>
 
   <!-- iOS web app configuration -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -56,8 +71,9 @@
   <link rel="apple-touch-startup-image" href="../img/icon/web/apple-touch-icon.png">
 
   <!-- Конфигурация приложения -->
-  <script src="config.js" ></script>
-  <script src="version_history.js"></script>
+  <script src="js/mirror.js" ></script>
+	<script src="js/config.js" ></script>
+  <script src="js/version_history.js"></script>
 
 
 </head>
@@ -78,7 +94,6 @@
             var more_text = '',
                 ver_type_html;
             for (var j = 0; j < update_json.length; j++) {
-              console.log(update_json[j]);
               if (update_json[j]['type'] == 'IMPROVED') {
                 ver_type_html = '<div class="change-badge his_IMPROVED">IMPROVED</div>';
               } else if (update_json[j]['type'] == 'FIXED') {
@@ -112,7 +127,7 @@
 
 
       </div>
-      <a href="https://rozenrod.github.io/" style="font-size: 15px;font-weight: 300;text-decoration: none;background: #2e2e2e;padding: 5px 10px;color: #efefef;float: right;margin-bottom: 65px;margin-right: 15px;border-radius: 10px;">Rozenrod 2022</a><br />
+      <a href="https://rozenrod.com/" style="font-size: 15px;font-weight: 300;text-decoration: none;background: #2e2e2e;padding: 5px 10px;color: #efefef;float: right;margin-bottom: 65px;margin-right: 15px;border-radius: 10px;">Rozenrod 2022</a><br />
     </div>
 
   </center>

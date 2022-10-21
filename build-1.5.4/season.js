@@ -206,8 +206,7 @@ function LoadApiSeasons() {
 // Функции заполнения контента
 function GeneratorSeason() {
 	for (let i = after; SeasonList.length > i; i++) {
-		var genres = '';
-		var TextSerie = '';
+		var genres = '', TextSerie = '', SerieLength = '';
 		for(let g = 0; SeasonList[i].genres.length > g; g++){
 			if(genres == '') genres = SeasonList[i].genres[g];
 			else genres = genres + ', ' +SeasonList[i].genres[g];
@@ -225,7 +224,9 @@ function GeneratorSeason() {
 				SerieType = "Серия"
 			}
 
-			TextSerie = `<div class="LineCard-TextSerie">${SerieType} ${SeasonList[i].player.series.last}</div>`;
+			SerieLength = SeasonList[i].type.series != null ? ` из ${SeasonList[i].type.series}` : ""
+
+			TextSerie = `<div class="LineCard-TextSerie">${SerieType} ${SeasonList[i].player.series.last}${SerieLength}</div>`;
 		}
 
 		if (localStorage.getItem('postersMode') == 'webp') {

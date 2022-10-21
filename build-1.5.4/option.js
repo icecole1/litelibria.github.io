@@ -144,12 +144,12 @@ function page_options() {
 				<p class="settings_filter_p">Ссылки</p>
 				<div id="settings_home_block_style" style="margin: 15px 0;">
 					<a href="https://rozenrod.com" class="OptionsCardButton">Разработчик</a>
-					<a href="game.html" class="OptionsCardButton">Встроенная игра</a>
+					<a href="game" class="OptionsCardButton">Встроенная игра</a>
 				</div>
 				<hr>
 				<p class="settings_filter_p">Версия приложения</p>
 				<div id="settings_home_block_style" style="margin: 15px 0;">
-					<a href="buildHistory.html" class="OptionsCardButton"><span id="app_version" title="Код обновления">app version</span></a>
+					<a href="buildHistory" class="OptionsCardButton"><span id="app_version" title="Код обновления">app version</span></a>
 				</div>
 				<p class="settings_filter_p">*Нажмите для выбора</p>
 			</div>

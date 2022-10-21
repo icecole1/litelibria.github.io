@@ -1,6 +1,16 @@
 version_history = [
 	{
     "prefix":"Mineruva",
+    "version":"1.5.4",
+    "date":"21 October 2022",
+    "update":[
+			{
+				"type":"FIXED",
+        "text":"Исправлены ошибки."
+			}
+    ]
+  },{
+    "prefix":"Mineruva",
     "version":"1.5.3",
     "date":"19 October 2022",
     "update":[
