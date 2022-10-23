@@ -1,6 +1,16 @@
 version_history = [
 	{
     "prefix":"Mineruva",
+    "version":"1.5.5",
+    "date":"23 October 2022",
+    "update":[
+			{
+				"type":"ADDED",
+        "text":"Добавлен новый вид отображения релизов каталога."
+			}
+    ]
+  },{
+    "prefix":"Mineruva",
     "version":"1.5.4",
     "date":"21 October 2022",
     "update":[
