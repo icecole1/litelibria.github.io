@@ -1,6 +1,6 @@
 const queryAPI = "getUpdates",
 			queryImage = "/img/other/a/hero.jpg",
-			webpPreview = "https://api.litelibria.com/preview/";
+			webpPreview = "https://api.litelibria.com/posters/";
 let FinalAPI = []
 let FinalBaseImages = []
 let addresses = [
