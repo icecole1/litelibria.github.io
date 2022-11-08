@@ -1318,6 +1318,7 @@ details span {
 	max-width: 1500px;
 	transition: .3s ease;
 	padding: 10px 0 10px 0;
+	margin-top: 10px;
 }
 .LineList-Updates h1 {
 	font-weight: 400;
