@@ -18,7 +18,7 @@ let config = {
 }
 let mirrorUrlImages = [
 	"https://anilibria.tv",
-	"https://static-libria.iss.bond",
+	"https://static-libria.weekstorm.one",
 	"https://static.wwnd.space"
 ]
 let mirrorUrlAPI = [
