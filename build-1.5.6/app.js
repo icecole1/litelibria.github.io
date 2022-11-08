@@ -320,18 +320,23 @@ if ('serviceWorker' in navigator) {
 			});
 		};
 
-			// Мы ждем ControllerEvent, который запускается, когда документ получает новый Service Worker.
-			navigator.serviceWorker.addEventListener('controllerchange', controllerchangeevent => {
+		// Мы ждем ControllerEvent, который запускается, когда документ получает новый Service Worker.
+		navigator.serviceWorker.addEventListener('controllerchange', controllerchangeevent => {
 
-					// Ждём новый Service Worker
-					controllerchangeevent.target.ready.then(registration => {
-							// Перезагружаем страницу
-							if (!window.isReloading) {
-									window.isReloading = true;
-									window.location.reload();
-							}
-							
-					});
-			});
+				// Ждём новый Service Worker
+				controllerchangeevent.target.ready.then(registration => {
+						// Перезагружаем страницу
+						if (!window.isReloading) {
+								window.isReloading = true;
+								window.location.reload();
+						}
+						
+				});
+		});
+
+		// Сообщение об обновлении версии приложения
+		navigator.serviceWorker.addEventListener('message', (event) => {
+			localStorage.setItem('mess_update_SW', event.data.msg)
+		});
 	});
 }

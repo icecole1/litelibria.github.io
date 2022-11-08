@@ -157,7 +157,8 @@ function page_options() {
 
 	</div>
   `;
-	document.getElementById('app_version').innerHTML = `${config["cache_prefix"]}-${config["cache_version"]}`;
+
+	document.getElementById('app_version').innerHTML = localStorage.getItem('mess_update');
 
 
 	const form_login = document.querySelector('#form_login');

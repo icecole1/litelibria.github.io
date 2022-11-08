@@ -2,7 +2,7 @@ var CACHE_PREFIX = 'Mineruva';
 
 var CACHE_VERSION_MAJOR = 1;
 var CACHE_VERSION_MINOR = 5;
-var CACHE_VERSION_PATCH = 5;
+var CACHE_VERSION_PATCH = 6;
 
 var CACHE_VERSION = CACHE_VERSION_MAJOR+'.'+CACHE_VERSION_MINOR+'.'+CACHE_VERSION_PATCH;
 
@@ -17,6 +17,7 @@ const assetUrls = [
 	'/js/meeting_tips.js',
 
   '/js/config.js',
+	'/js/mirror.js',
 
   '/404.html',
 
@@ -70,6 +71,14 @@ self.addEventListener('fetch', event => {
   } else {
     event.respondWith(networkFirst(request))
   }
+	event.waitUntil((async () => {
+		if (!event.clientId) return;
+		const client = await clients.get(event.clientId);
+		if (!client) return;
+		client.postMessage({
+			msg: `${CACHE_PREFIX}-${CACHE_VERSION}`
+		})
+	})());
 })
 
 self.addEventListener('message', event => {

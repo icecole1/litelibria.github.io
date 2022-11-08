@@ -224,10 +224,9 @@ function notif_none() {
 
 // Сообщение об обновлении версии приложения
 function mess_update(){
-	var update_text = `${config["cache_prefix"]}-${config["cache_version"]}`;
-	if(localStorage.getItem('mess_update') != update_text){
-		localStorage.setItem('mess_update', update_text);
-		message_body(`Приложение обновленно до версии ${config["cache_prefix"]}-${config["cache_version"]}`);
+	if(localStorage.getItem('mess_update_SW') != null && localStorage.getItem('mess_update') != localStorage.getItem('mess_update_SW')){
+		localStorage.setItem('mess_update', localStorage.getItem('mess_update_SW'));
+		message_body(`Приложение обновленно до версии ${localStorage.getItem('mess_update')}`);
 	}
 }
 
