@@ -407,7 +407,7 @@ function GeneratorUpdates() {
 		div.className = 'LineCard-BigHovers';
 
 		if (localStorage.getItem('postersMode') == 'webp') {
-			var stylePoster = `<img src="${config["webpPreview"]}${UpdatesList[i].id}.webp" alt="">`
+			var stylePoster = `<img src="${config["webpPreview"]}${UpdatesList[i].id}/${UpdatesList[i].player.series.last}.webp" alt="">`
 		} else {
 			var stylePoster = `<img src="${config["CustomPosters"]}${UpdatesList[i].id}/${UpdatesList[i].player.series.last}/1.jpg" alt="">`
 		}

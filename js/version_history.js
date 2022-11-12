@@ -1,6 +1,19 @@
 version_history = [
 	{
     "prefix":"Mineruva",
+    "version":"1.5.7",
+    "date":"12 November 2022",
+    "update":[
+			{
+				"type":"FIXED",
+        "text":"Исправлены ошибки плейлистов."
+			},{
+				"type":"IMPROVED",
+        "text":"Изменен адрес превью на главной странице."
+			}
+    ]
+  },{
+    "prefix":"Mineruva",
     "version":"1.5.6",
     "date":"8 November 2022",
     "update":[

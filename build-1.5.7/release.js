@@ -558,50 +558,56 @@ function GeneratorRelise(data){
 // Функции заполнения контента плейлиста
 function GeneratorPlaySerie(data, id){
 	document.getElementById('PlaySerie').innerHTML = '';
-	for(let j = data.player.series.first-1; data.player.series.last > j; j++) {
-		i = j+1;
+	for(let j = 0; data.player.series.last > j; j=j+0.5) {
+		i = j+0.5;
+		if(i*10 % 10 == 5.0)
+			series = i
+		else
+			series = Math.round(i)
 
-		minutes = "";
-		posterPercent = 0;
+		if(data["player"]["playlist"][series]){
+			minutes = "";
+			posterPercent = 0;
 
-		if(historyGet().length != 0){
-			if(historyGet('titel', id, i) != -1){
-				time = historyGet('titel', id, i).time[0]
-				minutes = "<br><span>" + (time / 60).toFixed(2).replace(".", ":") + "</span>";
-				posterPercent = historyGet('titel', id, i).time[0] / ( historyGet('titel', id, i).time[1] / 100) + "%"
+			if(historyGet().length != 0){
+				if(historyGet('titel', id, series) != -1){
+					time = historyGet('titel', id, series).time[0]
+					minutes = "<br><span>" + (time / 60).toFixed(2).replace(".", ":") + "</span>";
+					posterPercent = historyGet('titel', id, series).time[0] / ( historyGet('titel', id, series).time[1] / 100) + "%"
+				}
 			}
-		}
 
-		poster = null;
-		if(data["player"]["playlist"][i]["preview"] == null){
-			poster = config["CustomPosters"] + id + "/" + i + "/1.jpg";
-		} else {
-			poster = config["posters"] + data["player"]["playlist"][i]["preview"];
-		}
+			poster = null;
+			if(data["player"]["playlist"][series]["preview"] == null){
+				poster = config["CustomPosters"] + id + "/" + series + "/1.jpg";
+			} else {
+				poster = config["posters"] + data["player"]["playlist"][series]["preview"];
+			}
 
-		if(data.type.code == 0){
-			SerieType = "Фильм"
-		} else if(data.type.code == 2){
-			SerieType = "OVA"
-		} else if(data.type.code == 3){
-			SerieType = "ONA"
-		} else if(data.type.code == 4){
-			SerieType = "Спешл"
-		} else {
-			SerieType = "Серия"
-		}
+			if(data.type.code == 0){
+				SerieType = "Фильм"
+			} else if(data.type.code == 2){
+				SerieType = "OVA"
+			} else if(data.type.code == 3){
+				SerieType = "ONA"
+			} else if(data.type.code == 4){
+				SerieType = "Спешл"
+			} else {
+				SerieType = "Серия"
+			}
 
-		var div = document.createElement('div');
-		document.getElementById('PlaySerie').appendChild(div);
-		div.setAttribute('onclick', `releaseHistoryPlay("${id}", "${i}")`)
-		div.className = 'posterSerie';
-		div.innerHTML += `
-			<div class="SerieBlock">
-				<div class="posterPercentBlock"><span class="posterPercent" style="width: ${posterPercent}"></span></div>
-				<div class="posterSerieNum">${SerieType} ${i}${minutes}</div>
-				<img src="${poster}">
-			</div>
-		`;
+			var div = document.createElement('div');
+			document.getElementById('PlaySerie').appendChild(div);
+			div.setAttribute('onclick', `releaseHistoryPlay("${id}", "${series}")`)
+			div.className = 'posterSerie';
+			div.innerHTML += `
+				<div class="SerieBlock">
+					<div class="posterPercentBlock"><span class="posterPercent" style="width: ${posterPercent}"></span></div>
+					<div class="posterSerieNum">${SerieType} ${series}${minutes}</div>
+					<img src="${poster}">
+				</div>
+			`;
+		}
 	}
 }
 
@@ -678,63 +684,61 @@ function GeneratorReliseFavorites(id){
 
 // Функция генерирования плейлиста
 function playerPlaylistGenerator(id_t, dataPlayer, series_t, dataPlayerFirst, server=dataPlayer["host"]) {
-	var strPlayer = '';
+	var strPlayer = [];
   var my_skips_opening = localStorage.getItem('my_skips_opening');
-  for (let i = dataPlayerFirst; i < series_t; i++) {
-    var poster_preview
-    var i2 = i+1;
+  for (let i = 0; i <= series_t; i = i+0.5) {
 		var PlayerHost;
+		var arr = [];
+		var url_relise_480 = "";
+		var url_relise_720 = "";
+		var url_relise_1080 = "";
 
-    var remove = "";
-    if (dataPlayer["playlist"][i2]["skips"]["opening"][0] && dataPlayer["playlist"][i2]["skips"]["opening"][1]) {
-      if (my_skips_opening == '1') {
-        remove = '"start":"0", "remove":"'+dataPlayer["playlist"][i2]["skips"]["opening"][0]+'-'+dataPlayer["playlist"][i2]["skips"]["opening"][1]+'", ';
-      } else {
-				remove = '"skip":"'+dataPlayer["playlist"][i2]["skips"]["opening"][0]+'-'+dataPlayer["playlist"][i2]["skips"]["opening"][1]+'", '
-			}
-    }
+		if(i*10 % 10 == 5.0)
+			i2 = i
+		else
+			i2 = Math.round(i)
 
-
-		if(localStorage.getItem('my_server')){
-			if(localStorage.getItem('my_server') == "auto"){
-				PlayerHost = server;
+		if(dataPlayer["playlist"][i2]){
+			if(localStorage.getItem('my_server')){
+				if(localStorage.getItem('my_server') == "auto"){
+					PlayerHost = server;
+				} else {
+					PlayerHost = localStorage.getItem('my_server');
+				}
 			} else {
-				PlayerHost = localStorage.getItem('my_server');
+				PlayerHost = server;
 			}
-		} else {
-			PlayerHost = server;
-		}
 
-    var url_relise_480 = "";
-    var url_relise_720 = "";
-    var url_relise_1080 = "";
-    if (dataPlayer["playlist"][i2]) {
-      if (dataPlayer["playlist"][i2]["hls"]["sd"]) {
-        url_relise_480 = "[480p]https://"+PlayerHost+dataPlayer["playlist"][i2]["hls"]["sd"];
-      }
-      if (dataPlayer["playlist"][i2]["hls"]["hd"]) {
-        url_relise_720 = "[720p]https://"+PlayerHost+dataPlayer["playlist"][i2]["hls"]["hd"];
-      }
-      if (dataPlayer["playlist"][i2]["hls"]["fhd"]) {
-        url_relise_1080 = ",[1080p]https://"+PlayerHost+dataPlayer["playlist"][i2]["hls"]["fhd"];
-      }
-      if (dataPlayer["playlist"][i2]["preview"]) {
-        poster_preview = config["posters"]+''+dataPlayer["playlist"][i2]["preview"];
-      } else {
-        // poster_preview = "img/player.webp";
-        // poster_preview = "https://api.7o7.co/anilibria_bot/getPoster/"+id_t;
-				poster_preview = config["CustomPosters"] + "/anilibria_bot/getThumbnail/" + id_t + "/" + i2 + "/1.jpg";
-      }
-      var url_relise_comma = " ";
-      if (i2 != series_t) {
-        url_relise_comma = ", ";
-      }
-      var str_m_Player = `{"title":"Серия ${i2}","poster":"${poster_preview}", ${remove} "id": "${id_t}s${i2}", "file":"${url_relise_480}, ${url_relise_720} ${url_relise_1080}"}`+url_relise_comma;
-      strPlayer += str_m_Player;
-    }
+
+			if (dataPlayer["playlist"][i2]["hls"]["sd"]) {
+				url_relise_480 = "[480p]https://"+PlayerHost+dataPlayer["playlist"][i2]["hls"]["sd"];
+			}
+			if (dataPlayer["playlist"][i2]["hls"]["hd"]) {
+				url_relise_720 = ",[720p]https://"+PlayerHost+dataPlayer["playlist"][i2]["hls"]["hd"];
+			}
+			if (dataPlayer["playlist"][i2]["hls"]["fhd"]) {
+				url_relise_1080 = ",[1080p]https://"+PlayerHost+dataPlayer["playlist"][i2]["hls"]["fhd"];
+			}
+
+			arr['title'] = `Серия ${i2}`
+			arr['poster'] = dataPlayer["playlist"][i2]["preview"] ? config["posters"]+''+dataPlayer["playlist"][i2]["preview"] : config["CustomPosters"] + id_t + "/" + i2 + "/1.jpg"
+			arr['id'] = `${id_t}s${i2}`
+			arr['file'] = url_relise_480
+			arr['file'] += url_relise_720
+			arr['file'] += url_relise_1080
+
+			if (dataPlayer["playlist"][i2]["skips"]["opening"][0] && dataPlayer["playlist"][i2]["skips"]["opening"][1]) {
+				if (my_skips_opening == '1') {
+					arr['start'] = 0
+					arr['remove'] = dataPlayer["playlist"][i2]["skips"]["opening"][0]+'-'+dataPlayer["playlist"][i2]["skips"]["opening"][1]
+				} else {
+					arr['skip'] = dataPlayer["playlist"][i2]["skips"]["opening"][0]+'-'+dataPlayer["playlist"][i2]["skips"]["opening"][1]
+				}
+			}
+			strPlayer.push(arr);
+		}
   }
-  
-	return str_playlist = JSON.parse('['+strPlayer+']');
+	return str_playlist = strPlayer;
 }
 
 // Функция подключения и настройки плеера
@@ -742,7 +746,6 @@ function playerLoad(id_t) {
 	var engineConfig  = {
 		loader: {
 			trackerAnnounce: [
-				"wss://tracker.sdev.xyz",
 				"wss://tracker.litelibria.com",
 				// "wss://tracker.openwebtorrent.com"
 			],
