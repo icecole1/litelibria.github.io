@@ -747,6 +747,7 @@ function playerLoad(id_t) {
 		loader: {
 			trackerAnnounce: [
 				"wss://tracker.litelibria.com",
+				"wss://tracker2.litelibria.com",
 				// "wss://tracker.openwebtorrent.com"
 			],
 			cachedSegmentsCount: 50, // Количество сегментов видео которое мы храним для раздачи p2p пирам

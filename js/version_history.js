@@ -1,6 +1,19 @@
 version_history = [
 	{
     "prefix":"Mineruva",
+    "version":"1.5.8",
+    "date":"30 November 2022",
+    "update":[
+			{
+				"type":"ADDED",
+        "text":"Добавлен новый трекер для P2P."
+			},{
+				"type":"IMPROVED",
+        "text":"Обновлён PlayerJS."
+			}
+    ]
+  },{
+    "prefix":"Mineruva",
     "version":"1.5.7",
     "date":"12 November 2022",
     "update":[
