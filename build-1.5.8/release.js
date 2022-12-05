@@ -727,7 +727,7 @@ function playerPlaylistGenerator(id_t, dataPlayer, series_t, dataPlayerFirst, se
 			arr['file'] += url_relise_720
 			arr['file'] += url_relise_1080
 
-			if (dataPlayer["playlist"][i2]["skips"]["opening"][0] && dataPlayer["playlist"][i2]["skips"]["opening"][1]) {
+			if (dataPlayer["playlist"][i2]["skips"]["opening"].length != 0) {
 				if (my_skips_opening == '1') {
 					arr['start'] = 0
 					arr['remove'] = dataPlayer["playlist"][i2]["skips"]["opening"][0]+'-'+dataPlayer["playlist"][i2]["skips"]["opening"][1]
