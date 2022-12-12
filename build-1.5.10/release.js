@@ -19,6 +19,8 @@ var engine,
 
 var elementDisplays = "";
 
+var listServer;
+
 var width = document.documentElement.clientWidth;
 
 function page_release(id, data) {
@@ -209,10 +211,6 @@ function page_release(id, data) {
 				<div id="graph"></div>
 				<p style="font-size: 16px;margin: 5px 20px;">Трекеры:</p>
 				<p style="font-size: 14px;" id="trackerAnnounce"></p>
-
-				<details class="DetailsServers" id="servers">
-					<summary>Если серия не грузит, то попробуйте поменять сервер.</summary>
-				</details>
 			</details>
 
 			<div class="ReleaseBlockSlidersDetails" id="PlayerKeys">
@@ -238,9 +236,7 @@ function page_release(id, data) {
 	if(data != null) {
 		GeneratorRelise(data);
 	}
-	LoadApiRelise(id);
-	LoadApiReliseRecomend(id);
-	LoadApiServer();
+	LoadApiServer(id)
 
 	appWidth();
 }
@@ -252,6 +248,25 @@ function LoadRelisePHPSESSID(){
 
 
 // Функции запросов к Api
+function LoadApiServer(id){
+  var url = config["titels_api"]+"getCachingNodes";
+  fetch(url)
+  .then(function (response) {
+    if (response.status !== 200) {
+      return Promise.reject(new Error(response.statusText))
+    }
+    return Promise.resolve(response)
+  })
+  .then(function (response) {
+    return response.json()
+  })
+  .then(function (data) {
+		listServer = data;
+		LoadApiRelise(id);
+		LoadApiReliseRecomend(id);
+  })
+}
+
 function LoadApiRelise(id) {
 	id_t = id;
   url = config["titels_api"]+'getTitle?id='+id+'&remove=torrents';
@@ -342,69 +357,6 @@ function LoadApiReliseRecomend(id, urlR=null){
 	.catch((error) => {
 		LoadApiReliseRecomend(id, 1)
 	});
-}
-function LoadApiServer(){
-  var url = config["titels_api"]+"getCachingNodes";
-  fetch(url)
-  .then(function (response) {
-    if (response.status !== 200) {
-      return Promise.reject(new Error(response.statusText))
-    }
-    return Promise.resolve(response)
-  })
-  .then(function (response) {
-    return response.json()
-  })
-  .then(function (data) {
-		GeneratorServer(data)
-  })
-}
-
-
-function GeneratorServer(data){
-	var my_server = localStorage.getItem('my_server');
-	document.getElementById('servers').innerHTML = '<summary>Если серия не грузит, то попробуйте поменять сервер.</summary>';
-	for (var i = 0; i < data.length; i++) {
-		if (!my_server) {
-			var style_server = "";
-			var title_server = "Сменить сервер";
-		} else if (my_server == 'auto') {
-			var style_server = "";
-			var title_server = "Сменить сервер";
-		}else{
-			if (my_server == data[i]) {
-				var style_server = "background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;";
-				var title_server = "Выбранный сервер";
-			} else {
-				var style_server = "";
-				var title_server = "Сменить сервер";
-			}
-		}
-		var div = document.createElement('div');
-		document.getElementById('servers').appendChild(div);
-		div.setAttribute('onclick', `release_server('${data[i]}')`)
-		div.setAttribute('style', style_server);
-		div.setAttribute('title', title_server);
-		div.className = 'ServersButton';
-		div.innerHTML += `Сервер ${data[i]}`;
-	}
-
-	var div = document.createElement('div');
-	document.getElementById('servers').appendChild(div);
-	div.className = 'ServersButton';
-	div.setAttribute('onclick', `release_server(\'auto\')`);
-	if (!my_server) {
-		div.setAttribute('style', `background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;`);
-		div.setAttribute('title', 'Выбранный сервер');
-		div.innerHTML += `Сервер авто выбор`;
-	} else if (my_server == 'auto') {
-		div.setAttribute('style', `background: var(--PrimaryColor);color: var(--PrimaryColorText) !important;`);
-		div.setAttribute('title', 'Выбранный сервер');
-		div.innerHTML += `Сервер авто выбор`;
-	} else {
-		div.setAttribute('title', 'Сменить сервер');
-		div.innerHTML += `Сервер авто выбор`;
-	}
 }
 
 
@@ -683,15 +635,11 @@ function GeneratorReliseFavorites(id){
 }
 
 // Функция генерирования плейлиста
-function playerPlaylistGenerator(id_t, dataPlayer, series_t, dataPlayerFirst, server=dataPlayer["host"]) {
+function playerPlaylistGenerator(id_t, dataPlayer, series_t) {
 	var strPlayer = [];
   var my_skips_opening = localStorage.getItem('my_skips_opening');
   for (let i = 0; i <= series_t; i = i+0.5) {
-		var PlayerHost;
 		var arr = [];
-		var url_relise_480 = "";
-		var url_relise_720 = "";
-		var url_relise_1080 = "";
 
 		if(i*10 % 10 == 5.0)
 			i2 = i
@@ -699,33 +647,19 @@ function playerPlaylistGenerator(id_t, dataPlayer, series_t, dataPlayerFirst, se
 			i2 = Math.round(i)
 
 		if(dataPlayer["playlist"][i2]){
-			if(localStorage.getItem('my_server')){
-				if(localStorage.getItem('my_server') == "auto"){
-					PlayerHost = server;
-				} else {
-					PlayerHost = localStorage.getItem('my_server');
-				}
-			} else {
-				PlayerHost = server;
-			}
-
-
-			if (dataPlayer["playlist"][i2]["hls"]["sd"]) {
-				url_relise_480 = "[480p]https://"+PlayerHost+dataPlayer["playlist"][i2]["hls"]["sd"];
-			}
-			if (dataPlayer["playlist"][i2]["hls"]["hd"]) {
-				url_relise_720 = ",[720p]https://"+PlayerHost+dataPlayer["playlist"][i2]["hls"]["hd"];
-			}
-			if (dataPlayer["playlist"][i2]["hls"]["fhd"]) {
-				url_relise_1080 = ",[1080p]https://"+PlayerHost+dataPlayer["playlist"][i2]["hls"]["fhd"];
-			}
-
 			arr['title'] = `Серия ${i2}`
 			arr['poster'] = dataPlayer["playlist"][i2]["preview"] ? config["posters"]+''+dataPlayer["playlist"][i2]["preview"] : config["CustomPosters"] + id_t + "/" + i2 + "/1.jpg"
 			arr['id'] = `${id_t}s${i2}`
-			arr['file'] = url_relise_480
-			arr['file'] += url_relise_720
-			arr['file'] += url_relise_1080
+
+			if (dataPlayer["playlist"][i2]["hls"]["sd"]) {
+				arr['file'] = `[480p]https://${listServer[0]+dataPlayer["playlist"][i2]["hls"]["sd"]} and https://${listServer[1]+dataPlayer["playlist"][i2]["hls"]["sd"]} and https://${listServer[2]+dataPlayer["playlist"][i2]["hls"]["sd"]}`;
+			}
+			if (dataPlayer["playlist"][i2]["hls"]["hd"]) {
+				arr['file'] += `,[720p]https://${listServer[0]+dataPlayer["playlist"][i2]["hls"]["hd"]} and https://${listServer[1]+dataPlayer["playlist"][i2]["hls"]["hd"]} and https://${listServer[2]+dataPlayer["playlist"][i2]["hls"]["hd"]}`;
+			}
+			if (dataPlayer["playlist"][i2]["hls"]["fhd"]) {
+				arr['file'] += `,[1080p]https://${listServer[0]+dataPlayer["playlist"][i2]["hls"]["fhd"]} and https://${listServer[1]+dataPlayer["playlist"][i2]["hls"]["fhd"]} and https://${listServer[2]+dataPlayer["playlist"][i2]["hls"]["fhd"]}`;
+			}
 
 			if (dataPlayer["playlist"][i2]["skips"]["opening"].length != 0) {
 				if (my_skips_opening == '1') {
@@ -761,13 +695,14 @@ function playerLoad(id_t) {
 		}
 	};
 	engine = new p2pml.hlsjs.Engine(engineConfig);
-
+	var width = document.documentElement.clientWidth;
+	var colorTheme = width <= 800 ? 'var(--ColorThemes1)' : 'var(--ColorThemes2)';
 	player = new Playerjs({
 		id:"player",
 		poster:"img/player.webp",
 		file:"",
 		cuid: id_t,
-		bgcolor: 'var(--card-background-2)',
+		bgcolor: colorTheme,
 		hlsconfig:{
 			liveSyncDurationCount: 7,
 			loader: engine.createLoaderClass(),
@@ -978,75 +913,8 @@ function releaseHistoryPlay(titel, serie){
 			playerTime = "[seek:"+time+"]";
 		}
 	}
-	var url = config["titels_api"]+"getCachingNodes";
-		fetch(url)
-		.then(function (response) {
-			if (response.status !== 200) {
-				return Promise.reject(new Error(response.statusText))
-			}
-			return Promise.resolve(response)
-		})
-		.then(function (response) {
-			return response.json()
-		})
-		.then(function (data) {
-			player.api("file", playerPlaylistGenerator(id_t, dataPlayer, series_t, dataPlayerFirst, data[0]));
-			player.api("play", playerID+playerTime)
-
-			console.log("Сервер обновлён, новый сервер - "+data[0]);
-		})
+	player.api("play", playerID+playerTime)
 }
-
-// Функциb смены серии плейлиста из плеера
-function PlayerJSPrev(file){
-	numSeriePlayer = file.split('/')[7]
-	if(numSeriePlayer > 1){
-		var url = config["titels_api"]+"getCachingNodes";
-		fetch(url)
-		.then(function (response) {
-			if (response.status !== 200) {
-				return Promise.reject(new Error(response.statusText))
-			}
-			return Promise.resolve(response)
-		})
-		.then(function (response) {
-			return response.json()
-		})
-		.then(function (data) {
-			player.api("file", playerPlaylistGenerator(id_t, dataPlayer, series_t, dataPlayerFirst, data[0]));
-			newSeriePlayer = parseInt(numSeriePlayer) - 1
-			playerID = "id:"+id_t+"s"+ newSeriePlayer
-			player.api("play", playerID)
-
-			console.log("Сервер обновлён, новый сервер - "+data[0]);
-		})
-	}
-}
-function PlayerJSNext(file){
-	numSeriePlayer = file.split('/')[7]
-	if(numSeriePlayer < series_t){
-		var url = config["titels_api"]+"getCachingNodes";
-		fetch(url)
-		.then(function (response) {
-			if (response.status !== 200) {
-				return Promise.reject(new Error(response.statusText))
-			}
-			return Promise.resolve(response)
-		})
-		.then(function (response) {
-			return response.json()
-		})
-		.then(function (data) {
-			player.api("file", playerPlaylistGenerator(id_t, dataPlayer, series_t, dataPlayerFirst, data[0]));
-			newSeriePlayer = parseInt(numSeriePlayer) + 1
-			playerID = "id:"+id_t+"s"+ newSeriePlayer
-			player.api("play", playerID)
-
-			console.log("Сервер обновлён, новый сервер - "+data[0]);
-		})
-	}
-}
-
 
 // Функции заполнения контента плейлиста RuTube
 function GeneratorRuTubeSerie(series, rutube_playlist){
