@@ -510,7 +510,7 @@ function GeneratorRelise(data){
 // Функции заполнения контента плейлиста
 function GeneratorPlaySerie(data, id){
 	document.getElementById('PlaySerie').innerHTML = '';
-	for(let j = 0; data.player.series.last > j; j=j+0.5) {
+	for(let j = 0; data.player.series.last+1 > j; j=j+0.5) {
 		i = j;
 		if(i*10 % 10 == 5.0)
 			series = i
