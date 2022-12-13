@@ -511,7 +511,6 @@ function GeneratorRelise(data){
 function GeneratorPlaySerie(data, id){
 	document.getElementById('PlaySerie').innerHTML = '';
 	for(let j = 0; data.player.series.last > j; j=j+0.5) {
-		i = j+0.5;
 		if(i*10 % 10 == 5.0)
 			series = i
 		else
@@ -560,6 +559,8 @@ function GeneratorPlaySerie(data, id){
 				</div>
 			`;
 		}
+		
+		i = j+0.5;
 	}
 }
 
