@@ -774,6 +774,7 @@ details span {
 }
 .LineCard-History img{
   height: 90px;
+	min-width: 63px;
   aspect-ratio: 7 / 10;
 	border-radius: var(--card-border-radius);
 	padding: 10px;
@@ -1909,6 +1910,7 @@ details span {
 	align-items: center;
 }
 .HistoryCard img{
+	min-width: 63px;
   height: 90px;
   aspect-ratio: 7 / 10;
 	border-radius: var(--card-border-radius);
