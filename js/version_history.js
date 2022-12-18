@@ -1,5 +1,16 @@
 version_history = [
-	{
+  {
+    "prefix":"Mineruva",
+    "version":"1.5.12",
+    "date":"18 December 2022",
+    "update":[
+			{
+				"type":"IMPROVED",
+        "text":"Обновлён PlayerJS. В плеер добавлена реклама. Для удобства он будет отображаться не чаще, чем раз в 30 минут.,
+				
+			}
+    ]
+  },{
     "prefix":"Mineruva",
     "version":"1.5.11",
     "date":"17 December 2022",
