@@ -2,7 +2,7 @@ var MySessID;
 var player;
 
 var id_t,
-		name_t,
+		name_t = '',
 		series_t,
 		dataPlayer,
     cookie = localStorage.getItem('PHPSESSID');
@@ -18,8 +18,6 @@ var engine,
 		loadSpeedTimespan = 10;		
 
 var elementDisplays = "";
-
-var listServer;
 
 var width = document.documentElement.clientWidth;
 
@@ -100,7 +98,7 @@ function page_release(id, data) {
 	<div class="ReleaseBlock">
 		<div class="ReleaseBlockReverse">
 			<div class="ReleaseBlockAbout">
-				<div class="ReleaseBlockAbout-Poster">
+				<div class="ReleaseBlockAbout-Poster" id="ReleaseBlockAboutPoster">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"></path></svg>
 					<img id="rel_posters_1_url" src="" alt=""/>
 				</div>
@@ -236,7 +234,8 @@ function page_release(id, data) {
 	if(data != null) {
 		GeneratorRelise(data);
 	}
-	LoadApiServer(id)
+	LoadApiRelise(id);
+	LoadApiReliseRecomend(id);
 
 	appWidth();
 }
@@ -248,25 +247,6 @@ function LoadRelisePHPSESSID(){
 
 
 // Функции запросов к Api
-function LoadApiServer(id){
-  var url = config["titels_api"]+"getCachingNodes";
-  fetch(url)
-  .then(function (response) {
-    if (response.status !== 200) {
-      return Promise.reject(new Error(response.statusText))
-    }
-    return Promise.resolve(response)
-  })
-  .then(function (response) {
-    return response.json()
-  })
-  .then(function (data) {
-		listServer = data;
-		LoadApiRelise(id);
-		LoadApiReliseRecomend(id);
-  })
-}
-
 function LoadApiRelise(id) {
 	id_t = id;
   url = config["titels_api"]+'getTitle?id='+id+'&remove=torrents';
@@ -501,6 +481,9 @@ function GeneratorRelise(data){
   document.getElementById('rel_names_en').innerHTML = `Навзание EN: ${data["names"]["en"]}`;
   document.getElementById('rel_SHIKIMORI').href = `https://shikimori.one/animes?search=${data["names"]["en"]}`;
 
+	if(data.player.series.last == null){
+		document.getElementById('ReleaseBlockAboutPoster').setAttribute("style", "display:flex;");
+	}
 	if(data.player.series.last == 1){
 		document.getElementById('PlaySerie').setAttribute("style", "display:none;");
 		document.getElementById('ReleasePlayer').dataset.state = 'SerieOne';
@@ -653,13 +636,13 @@ function playerPlaylistGenerator(id_t, dataPlayer, series_t) {
 			arr['id'] = `${id_t}s${i2}`
 
 			if (dataPlayer["playlist"][i2]["hls"]["sd"]) {
-				arr['file'] = `[480p]https://${listServer[0]+dataPlayer["playlist"][i2]["hls"]["sd"]} and https://${listServer[1]+dataPlayer["playlist"][i2]["hls"]["sd"]} and https://${listServer[2]+dataPlayer["playlist"][i2]["hls"]["sd"]}`;
+				arr['file'] = `[480p]https://${dataPlayer["host"]+dataPlayer["playlist"][i2]["hls"]["sd"]}`;
 			}
 			if (dataPlayer["playlist"][i2]["hls"]["hd"]) {
-				arr['file'] += `,[720p]https://${listServer[0]+dataPlayer["playlist"][i2]["hls"]["hd"]} and https://${listServer[1]+dataPlayer["playlist"][i2]["hls"]["hd"]} and https://${listServer[2]+dataPlayer["playlist"][i2]["hls"]["hd"]}`;
+				arr['file'] += `,[720p]https://${dataPlayer["host"]+dataPlayer["playlist"][i2]["hls"]["hd"]}`;
 			}
 			if (dataPlayer["playlist"][i2]["hls"]["fhd"]) {
-				arr['file'] += `,[1080p]https://${listServer[0]+dataPlayer["playlist"][i2]["hls"]["fhd"]} and https://${listServer[1]+dataPlayer["playlist"][i2]["hls"]["fhd"]} and https://${listServer[2]+dataPlayer["playlist"][i2]["hls"]["fhd"]}`;
+				arr['file'] += `,[1080p]https://${dataPlayer["host"]+dataPlayer["playlist"][i2]["hls"]["fhd"]}`;
 			}
 
 			if (dataPlayer["playlist"][i2]["skips"]["opening"].length != 0) {
@@ -900,6 +883,7 @@ function releaseHistorySave(){
 	var time = player.api("time");
 	var duration = player.api("duration");
 	var date = Date.now();
+
 	historySave(titel, serie, time, duration, date, name_t)
 }
 

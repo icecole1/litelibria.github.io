@@ -592,52 +592,18 @@ function GeneratorHistoryLine() {
 			div.setAttribute("onclick", `goRoute('/release', {id:${HistoryList[i].id}})`);
 			div.id = 'article_history'+HistoryList[i].id;
 
-			if (localStorage.getItem('postersMode') == 'webp') {
-				var stylePoster = `<img src="${config["webpPosters"]}${HistoryList[i].id}.webp" alt="">`
-			} else {
-				var stylePoster = `<img class="img${HistoryList[i].id}" src="./img/poster.png" alt="">`
+			if(HistoryList[i].name == undefined ){
+				LoadNameHistory(HistoryList[i].id, HistoryList[i].serie, HistoryList[i].time[0], HistoryList[i].time[1], HistoryList[i].date)
 			}
 
 			div.innerHTML = `
-				${stylePoster}
+				<img src="${config["webpPosters"]}${HistoryList[i].id}.webp" alt="">
 				<div class="LineCard-History-BlockText">
-					<p class="LineCard-History-Title names${HistoryList[i].id}"></p>
+					<p class="LineCard-History-Title">${HistoryList[i].name}</p>
 					<p class="LineCard-History-Text">Серия ${HistoryList[i].serie}   Минута ${minutes}</p>
 					<p class="LineCard-History-Text">Дата ${date}</p>
 				</div>
 				`;
 		}
-		b = idH.filter(function(element, index, array) {
-			if (array.lastIndexOf(element) == index) return element
-		})
-		var url = config["titels_api"]+'getTitles?id_list='+b+'&filter=id,posters.small,names.ru';
-
-		fetch(url)
-		.then(function (response) {
-			if (response.status !== 200) {
-				return Promise.reject(new Error(response.statusText))
-			}
-			return Promise.resolve(response)
-		})
-		.then(function (response) {
-			return response.json();
-		})
-		.then(function (data) {
-			for (let t = 0; t < data.length; t++) {
-				if (localStorage.getItem('postersMode') != 'webp') {
-					var elemIMG = document.getElementsByClassName("img"+data[t]["id"])
-					for (let i = 0; i < elemIMG.length; i++) {
-						elemIMG[i].src = config["posters"]+data[t]["posters"]["small"]["url"];
-					}
-				}
-				var elemNAME = document.getElementsByClassName("names"+data[t]["id"])
-				for (let j = 0; j < elemNAME.length; j++) {
-					elemNAME[j].innerHTML = data[t]["names"]["ru"];
-				}
-			}
-		})
-		.catch(function (error) {
-			console.log('error', error)
-		})
 	}
 }

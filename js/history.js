@@ -30,7 +30,7 @@ function historyLoad(){
 
 
 // Функция добавления или изменения нового объекта в истории
-function historySave(id, serie, time1, time2, date, name=null){
+function historySave(id, serie, time1, time2, date, name){
 	var history = [];
 	if(localStorage.getItem("history")){
 		history = JSON.parse(localStorage.getItem("history"))

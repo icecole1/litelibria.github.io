@@ -1,13 +1,31 @@
 version_history = [
   {
     "prefix":"Mineruva",
+    "version":"1.5.13",
+    "date":"26 December 2022",
+    "update":[
+			{
+				"type":"IMPROVED",
+        "text":"Улучшение стабильности.",
+			},{
+				"type":"IMPROVED",
+        "text":"Обновлён PlayerJS.",
+			},{
+				"type":"IMPROVED",
+        "text":"Обновлены запросы к API AniLibria.tv.",
+			},{
+				"type":"FIXED",
+        "text":"Исправлено отображение имен релизов в истории просмотров.",
+			}
+    ]
+  },{
+    "prefix":"Mineruva",
     "version":"1.5.12",
     "date":"18 December 2022",
     "update":[
 			{
 				"type":"IMPROVED",
         "text":"Обновлён PlayerJS. В плеер добавлена реклама. Для удобства он будет отображаться не чаще, чем раз в 30 минут.",
-			
 			}
     ]
   },{
