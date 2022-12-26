@@ -6,7 +6,7 @@ version_history = [
     "update":[
 			{
 				"type":"IMPROVED",
-        "text":"Улучшение стабильности.",
+        "text":"Повышение стабильности.",
 			},{
 				"type":"IMPROVED",
         "text":"Обновлён PlayerJS.",
