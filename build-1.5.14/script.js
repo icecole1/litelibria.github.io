@@ -13,6 +13,10 @@ function editDomainHistory(){
   }
 }
 
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
+
 window.onload = function() {
   // if (!window.matchMedia('(display-mode: standalone)').matches) {
   //   if (localStorage.getItem('start_mess') != '1') {

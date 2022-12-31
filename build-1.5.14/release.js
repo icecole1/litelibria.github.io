@@ -195,7 +195,7 @@ function page_release(id, data) {
 				</div>
 			</div>
 
-			<details class="ReleaseBlockSlidersDetails">
+			<details class="ReleaseBlockSlidersDetails" style="display:none">
 				<summary>Информация о вашем подключении.</summary>
 				
 				<div id="chart_containerPad">
@@ -218,7 +218,7 @@ function page_release(id, data) {
 				<p><span>Стрелки ← и →</span><span>Перемотка</span></p>
 			</div>
 
-			<div class="ReleaseBlockSlidersDetails">
+			<div class="ReleaseBlockSlidersDetails" style="display:none">
 				<center><p style="font-size: 17px;">Наш сайт использует P2P подключение!</p></center>
 				<p>Как это устроено? Очень просто. У нас 4 пользователя, которые хотят посмотреть новую серию любимого аниме.
 				Все 4 пользователя начали смотреть серию не одновременно, а с интервалом в 2-10 минут. Самый первый загрузит серию с сервера AniLibria.tv. Второй и последующие пользователи загрузят большую часть у тех пользователей, которые уже немного прогрузили серию и совсем немного с сервера AniLibria.tv.</p>
@@ -681,16 +681,23 @@ function playerLoad(id_t) {
 	engine = new p2pml.hlsjs.Engine(engineConfig);
 	var width = document.documentElement.clientWidth;
 	var colorTheme = width <= 800 ? 'var(--ColorThemes1)' : 'var(--ColorThemes2)';
+	// player = new Playerjs({
+	// 	id:"player",
+	// 	poster:"img/player.webp",
+	// 	file:"",
+	// 	cuid: id_t,
+	// 	bgcolor: colorTheme,
+	// 	hlsconfig:{
+	// 		liveSyncDurationCount: 7,
+	// 		loader: engine.createLoaderClass(),
+	// 	}
+	// });
 	player = new Playerjs({
 		id:"player",
 		poster:"img/player.webp",
 		file:"",
 		cuid: id_t,
-		bgcolor: colorTheme,
-		hlsconfig:{
-			liveSyncDurationCount: 7,
-			loader: engine.createLoaderClass(),
-		}
+		bgcolor: colorTheme
 	});
 
 
@@ -717,41 +724,41 @@ function PlayerjsEvents(event,id,info){
 		engine.destroy(); // Разрываем P2P раздачу
 	}
 
-	if(event=="init"){
-		// Отобразить название трекеров
-		trackerAnnounce = engine.getSettings().loader.trackerAnnounce;
-		if (Array.isArray(trackerAnnounce)) {
-			for(var i=0; trackerAnnounce.length > i; i++){
-				document.getElementById("trackerAnnounce").innerHTML += `<span>${trackerAnnounce[i]}</span><br /><br />`;
-			}
-		}
-	}
+	// if(event=="init"){
+	// 	// Отобразить название трекеров
+	// 	trackerAnnounce = engine.getSettings().loader.trackerAnnounce;
+	// 	if (Array.isArray(trackerAnnounce)) {
+	// 		for(var i=0; trackerAnnounce.length > i; i++){
+	// 			document.getElementById("trackerAnnounce").innerHTML += `<span>${trackerAnnounce[i]}</span><br /><br />`;
+	// 		}
+	// 	}
+	// }
 
-	if(event=="new"){
-		engine.destroy(); // Разрываем P2P раздачу для прошлого файла
-		refreshChart(); // Обновление графика Rickshaw
-	}
+	// if(event=="new"){
+	// 	engine.destroy(); // Разрываем P2P раздачу для прошлого файла
+	// 	refreshChart(); // Обновление графика Rickshaw
+	// }
 
 	if(event=="play"){
-		if (p2pml.core.HybridLoader.isSupported()) {
-			// Запуск P2P раздачи
-			p2pml.hlsjs.initHlsJsPlayer(player.api('hls'));
+		// if (p2pml.core.HybridLoader.isSupported()) {
+		// 	// Запуск P2P раздачи
+		// 	p2pml.hlsjs.initHlsJsPlayer(player.api('hls'));
 
-			// Добавить на p2p-graph нового подключения
-			engine.on(p2pml.core.Events.PeerConnect, onPeerConnect.bind());
+		// 	// Добавить на p2p-graph нового подключения
+		// 	engine.on(p2pml.core.Events.PeerConnect, onPeerConnect.bind());
 
-			// Удалить на p2p-graph отключенного подключения
-			engine.on(p2pml.core.Events.PeerClose, onPeerClose.bind());
+		// 	// Удалить на p2p-graph отключенного подключения
+		// 	engine.on(p2pml.core.Events.PeerClose, onPeerClose.bind());
 
-			// Добавить количество загруженых Байт на график Rickshaw
-			engine.on(p2pml.core.Events.PieceBytesDownloaded, onBytesDownloaded.bind());
+		// 	// Добавить количество загруженых Байт на график Rickshaw
+		// 	engine.on(p2pml.core.Events.PieceBytesDownloaded, onBytesDownloaded.bind());
 
-			// Добавить количество отправленных Байт пирам P2P на график Rickshaw
-			engine.on(p2pml.core.Events.PieceBytesUploaded, onBytesUploaded.bind());
+		// 	// Добавить количество отправленных Байт пирам P2P на график Rickshaw
+		// 	engine.on(p2pml.core.Events.PieceBytesUploaded, onBytesUploaded.bind());
 
-			// Вывод в консоль отладочных P2P сообшений
-			// engine.on("segment_loaded", (segment, peerId) => console.log("segment_loaded from", peerId ? `peer ${peerId}` : "HTTP", segment));
-		}
+		// 	// Вывод в консоль отладочных P2P сообшений
+		// 	// engine.on("segment_loaded", (segment, peerId) => console.log("segment_loaded from", peerId ? `peer ${peerId}` : "HTTP", segment));
+		// }
 
 		mobile_play_fullscreen();
 	}

@@ -249,7 +249,7 @@ function LoadApiGenres() {
 	document.getElementById("LoadAnimGenres").style.display = "";
 
 	// Запрос к Api 
-  var url = config["titels_api"]+"getGenres?sorting_type=0";
+  var url = config["titels_api"]+"getGenres";
   fetch(url)
   .then(function (response) {
     if (response.status !== 200) {
@@ -426,13 +426,22 @@ function GeneratorUpdates() {
 
 function GeneratorGenres() {
 	document.getElementById('LineGenerator-Genres').innerHTML = "";
+	shuffle(GenresList);
 	for (let i = 0; GenresList.length > i; i++) {
+		var a = randomColor();
+		var b = randomColor();
+		var c = randomColor();
+		var alfa = 'b3'
 		var div = document.createElement('div');
 		document.getElementById('LineGenerator-Genres').appendChild(div);
-		div.className = 'LineCard-Genres';
-		div.setAttribute("style", `color: #${ColorGenresList[i]};`);
 		div.setAttribute("onclick", `goRoute('/season', {genres: "${GenresList[i]}"})`);
-		div.innerHTML += `<p>${GenresList[i]}</p>`;
+		div.innerHTML += `
+			<a class="GenresCard">
+				<img src="img/genres/${GenresList[i]}.webp" alt="">
+				<div class="GenresCardBG" style="background-image: linear-gradient(90deg,${a}${alfa}, ${b}${alfa}, ${c}${alfa})">
+					<span>${GenresList[i]}</span>
+				</div>
+			</a>`;
 	}
 }
 

@@ -269,6 +269,10 @@ function load_profile(sessionId) {
       }
     }
   })
+	.catch(function (error) {
+		// logout();
+		console.log('error', error)
+	})
 }
 
 function logout() {

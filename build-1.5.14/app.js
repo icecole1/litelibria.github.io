@@ -10,7 +10,6 @@ var VideoList;
 var RecomendList;
 var HistoryList;
 var GenresList;
-var ColorGenresList = ["A83845", "2E708A", "2D8653", "2A417E", "A953C6", "4BC3B5", "CCC966", "A3D175", "2A4C7E", "592E8A", "A471D0", "90A0DA", "90A0DA", "90A0DA", "6CBF40", "97C247", "75D1A0", "6E91CF", "6272CB", "34819D", "1D5849", "CABAE8", "BEA7E2", "321C54", "522163", "8A2E8A", "A838A5", "795EC9", "CF6E81",];
 var CatalogsList;
 var FavoritesList;
 var SearchList;

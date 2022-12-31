@@ -2,7 +2,7 @@ var CACHE_PREFIX = 'Mineruva';
 
 var CACHE_VERSION_MAJOR = 1;
 var CACHE_VERSION_MINOR = 5;
-var CACHE_VERSION_PATCH = 13;
+var CACHE_VERSION_PATCH = 14;
 
 var CACHE_VERSION = CACHE_VERSION_MAJOR+'.'+CACHE_VERSION_MINOR+'.'+CACHE_VERSION_PATCH;
 
@@ -18,6 +18,8 @@ const assetUrls = [
 
   '/js/config.js',
 	'/js/mirror.js',
+  
+  '/js/randomColor.min.js',
 
   '/404.html',
 
